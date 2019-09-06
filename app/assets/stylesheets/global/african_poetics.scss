@@ -1,0 +1,308 @@
+$gray-lightish: #aaa;
+$screen-tablet: 720px;
+
+@import "bootstrap-variables";
+
+// $brand-primary:         #be3c00 !default; //red
+// $brand-success:         #445444 !default; //orange
+// $brand-info:            #f5e898 !default; //yellow
+// $brand-warning:         #445444 !default; //dark green
+
+// Home
+
+a .home_callout {
+  color: $gray-base;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.home_callout {
+  min-height: 8em;
+  background-color: $brand-success;
+  p {
+    background-color: rgba(255,255,255,.8);
+    margin: 1em;
+    padding: .5em;
+    z-index: 2;
+  }
+}
+
+.home_callout_1 {
+  background-color: $brand-success;
+  background-image: image-url("home/stripes-light.png");
+  box-shadow: inset 0 0 0 1000px rgba($brand-success,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-success,.7);
+    p {
+      border-bottom: solid 20px $brand-success;
+    }
+  }
+}
+
+.home_callout_2 {
+  background-color: $brand-primary;
+  background-image: image-url("home/memphis-mini.png");
+  box-shadow: inset 0 0 0 1000px rgba($brand-primary,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-primary,.7);
+    p {
+      border-bottom: solid 20px $brand-primary;
+    }
+  }
+}
+
+.home_callout_3 {
+  background-color: $brand-warning;
+  background-image: image-url("home/tiny-squares.png");
+  box-shadow: inset 0 0 0 1000px rgba($brand-warning,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-warning,.7);
+    p {
+      border-bottom: solid 20px $brand-warning;
+    }
+  }
+}
+
+.home_callout_4 {
+  background-color: $brand-info;
+  background-image: image-url("home/country-quilt.png");
+  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
+    p {
+      border-bottom: solid 20px $brand-info;
+    }
+  }
+}
+
+// HTML
+
+body {
+  background-image: image-url("template/funky-lines.png"); 
+  height:100%;
+}
+
+h2 {
+  font-weight: 100;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+#body-wrapper {
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  min-height: 100vh;
+}
+
+.site_home #content-wrapper {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+#content-wrapper, .home_container {
+  background-color: rgba(255,255,255,.7);
+  flex-grow:1;
+  margin-bottom: 2em;
+
+}
+
+// Header
+
+#header {
+  text-align: center; 
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+#site-title {
+  background-color: rgba($gray-light,.2);
+  line-height: 1em;
+  padding: 1em;
+
+  h1, h2 {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 4em;
+    text-shadow:
+      4px -4px 0 rgba($brand-info, .2), 
+      3px -3px 0 rgba($brand-info, .2), 
+      2px -2px 0 rgba($brand-info, .2), 
+      1px -1px 0 rgba($brand-info, .2),
+      -4px 4px 0 rgba($brand-info, .2), 
+      -3px 3px 0 rgba($brand-info, .2), 
+      -2px 2px 0 rgba($brand-info, .2), 
+      -1px 1px 0 rgba($brand-info, .2)
+    ;
+  }
+
+  h2 {
+    font-size: 2.5em;
+    color: mix($brand-primary, $gray-base, 80%);
+  }
+}
+
+.navbar-default {
+  border: solid 3px mix($brand-warning, $brand-info, 70%);
+  border-right: none;
+  border-left: none;
+}
+
+.navbar-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+// Footer 
+
+#footer {
+  background-color: $gray-base;
+  color: white;
+  margin-bottom:0;
+  padding-bottom: 2em;
+  text-align: center;
+  
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+  p {
+    margin: 1em 0;
+  }
+
+}
+
+.footer_logo {
+  text-align: center;
+   img {
+    max-width: 50%;
+  }
+}
+
+.footer_logo_ford {
+ margin: 1em 0;
+}
+
+// Author pages
+
+.author_data {
+    margin-bottom: 1.8em;
+    margin-top: .5em;
+  h4 {
+    margin-top:-.15em;
+  }
+}
+
+@media (min-width: $screen-tablet) {
+  .author_cathead {
+    text-align: right;
+  }
+}
+
+@media (min-width: $screen-tablet) {
+  .author_catdata {
+    border-left: 4px solid $gray-lightish;
+  }
+}
+
+// Browse
+
+.item_title {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.browse_div .tab-pane {
+  display: flex;
+}
+
+.table_geo, .browse_map {
+  width: 50%;
+}
+
+// SVG Map colors
+
+svg path:nth-child(1n) {
+  fill: $brand-primary !important;
+}
+svg path:nth-child(2n) {
+  fill: $brand-success !important;
+}
+svg path:nth-child(3n) {
+  fill: $brand-info !important;
+}
+svg path:nth-child(4n) {
+  fill: $brand-warning !important;
+}
+svg path:nth-child(5n) {
+  fill: mix($brand-success, #fff, 80%) !important;
+}
+svg path:nth-child(6n) {
+  fill: mix($brand-info, #fff, 80%) !important;
+}
+svg path:nth-child(7n) {
+  fill: mix($brand-warning, #fff, 80%) !important;
+}
+svg path:nth-child(8n) {
+  fill: mix($brand-info, #fff, 80%) !important;
+}
+svg path:nth-child(9n) {
+  fill: mix($brand-info, #000, 80%) !important;
+}
+svg path:nth-child(10n) {
+  fill: mix($brand-success, #000, 80%) !important;
+}
+svg path:nth-child(11n) {
+  fill: mix($brand-info, #000, 80%) !important;
+}
+svg path:nth-child(12n) {
+  fill: mix($brand-warning, #000, 80%) !important;
+}
+svg path#Namibia,
+svg path#Eritrea,
+svg path#Malawi,
+svg path#Tunesien,
+svg path#Burkina_Faso {
+  fill: $brand-warning !important;
+}
+svg path#Senegal {
+  fill: mix($brand-warning, #fff, 80%) !important;
+}
+svg path#Sambia {
+  fill: mix($brand-info, #fff, 80%) !important;
+}
+svg path#Niger {
+  fill: mix($brand-warning, #fff, 80%) !important;
+}
+svg path#Kenia {
+  fill: mix($brand-info, #fff, 80%) !important;
+}
+svg path#Ruanda,
+svg path#path75 {
+  fill: $brand-primary !important;
+}
+
+// Have to hav ethe ID's ones for specificity
+svg path#Namibia:hover,
+svg path#Eritrea:hover,
+svg path#Malawi:hover,
+svg path#Tunesien:hover,
+svg path#Burkina_Faso:hover,
+svg path#Senegal:hover,
+svg path#Sambia:hover,
+svg path#Niger:hover,
+svg path#Kenia:hover,
+svg path#Ruanda:hover,
+svg path#path75:hover,
+svg path:hover {
+  fill: red !important;
+} 

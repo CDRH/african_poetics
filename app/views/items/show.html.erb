@@ -1,0 +1,82 @@
+<% if @res %>
+
+  <h2 class="item_title"><%= @res["title"] %></h2>
+
+  <%# pulling entirely from elasticsearch currently %>
+
+  <div class="metadata">
+    
+    <% if @res["person"]["role"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Gender</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["person"]["role"]%></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["places"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Country</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["places"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["keywords"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Region</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["keywords"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["works"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1">
+          <h4>Bibliography</h4>
+        </div>
+        <div class="author_catdata col-sm-7 bibliography">
+          <ul>
+            <% @res["works"].each do |work| %>
+              <li>
+                <%= work %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["source"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Source</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["source"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["person"]["id"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Authority File</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><a href="<%= @res["person"]["id"] %>"><%= @res["person"]["id"] %></a></p>
+        </div>
+      </div>
+    <% end %>
+
+</div>
+
+  <%# render "show_metadata" %>
+  <%# render "show_content" %>
+
+<% else %>
+
+  <h2><%= t("item.not_found", default: "Not Found") %></h2>
+  <%= t "item.no_item", id: params["id"], default: "No item with identifier #{params["id"]} found!" %>
+
+<% end %>
+

@@ -1,0 +1,51 @@
+default: &default
+
+  app_options:
+    version: 0.1.0
+    # defaults to "en" (english) if no default language set
+    language_default: en
+    # pipe delineated values (es|de) for all non-default languages
+    # languages:
+    # for application title settings, please alter the files in config/locales
+
+    # name of the appropriate directory in media server filesystem (project name)
+    media_server_dir: https://cdrhmedia.unl.edu
+    # thumbnail size, ! means not to alter ratio, then max-width, max-height
+    # IIIF size syntax reference: https://iiif.io/api/image/2.1/#size
+    thumbnail_size: !200,200
+
+  api_options:
+    # example of default filter for all queries
+    # f:
+    #   - subcategory|Writings
+    # sorting and response number
+    sort:
+      - title_sort|asc
+    rows: 50
+    # facet info on search page
+    facet_limit: 20
+    facet_sort: count|desc
+    # facet info on browse page
+    browse_sort: term|asc
+    # highlighting
+    hl_fl: annotations_text, transcription_t, text
+    hl_num: 5
+
+  date_range:
+    first:
+      - 1600
+      - 01
+      - 01
+    last:
+      - 2100
+      - 12
+      - 31
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default

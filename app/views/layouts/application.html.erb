@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" <%= site_section %>>
+  <%= render "layouts/head/head" %>
+  <body class="<%= "language_#{I18n.locale}" %>">
+    <div id="body-wrapper">
+      <%= render "layouts/body/header" %>
+      <%= render "layouts/body/contents" %>
+      <%= render "layouts/body/footer" %>
+    </div>
+  </body>
+</html>

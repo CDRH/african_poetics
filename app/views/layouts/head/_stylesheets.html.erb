@@ -1,0 +1,17 @@
+  <!-- Stylesheets -->
+  <%= stylesheet_link_tag 'application', media: nil %>
+  <% if @ext_css.present? || @inline_css.present? %>
+  <!-- Conditional -->
+  <% end %>
+  <% if @ext_css.present?
+    Array.wrap(@ext_css).each do |css| %>
+  <%= stylesheet_link_tag css, media: nil %>
+    <% end
+  end %>
+  <% if @inline_css.present?
+    Array.wrap(@inline_css).each do |css| %>
+  <style>
+<%= css.html_safe %>
+  </style>
+    <% end
+  end %>
