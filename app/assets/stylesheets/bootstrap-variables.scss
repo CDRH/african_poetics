@@ -18,7 +18,7 @@ $bootstrap-sass-asset-helper: false !default;
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #28282a !default;
+$gray-base:              #28282a !default; //bluegray
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   lighten($gray-base, 33.5%) !default; // #555
@@ -30,11 +30,11 @@ $light-lighter: lighten($light-base, 11%);
 
 $brand-primary:         #be3c00 !default; //red
 $brand-success:         #c77f22 !default; //orange
-$brand-info:            #f5e898 !default; //yellow
+$brand-info:            #bb8e39 !default; //tan
 $brand-warning:         #445444 !default; //dark green
-$brand-danger:          #D3D7D8 !default; //gray
+$brand-danger:          #b30606 !default; //bright red
 
-$nav-accent:            #f8f8f8 !default;
+$nav-accent:            #f5e898 !default; //yellow
 
 
 //== Scaffolding
@@ -392,7 +392,7 @@ $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
 $navbar-default-link-color:                #ffffff !default;
-$navbar-default-link-hover-color:          $brand-info !default;
+$navbar-default-link-hover-color:          $nav-accent !default;
 $navbar-default-link-hover-bg:             transparent !default;
 $navbar-default-link-active-color:         #fff !default;
 $navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;

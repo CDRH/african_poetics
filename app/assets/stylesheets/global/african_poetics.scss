@@ -4,9 +4,11 @@ $screen-tablet: 720px;
 @import "bootstrap-variables";
 
 // $brand-primary:         #be3c00 !default; //red
-// $brand-success:         #445444 !default; //orange
-// $brand-info:            #f5e898 !default; //yellow
+// $brand-success:         #c77f22 !default; //orange
+// $brand-info:            #bb8e39 !default; //tan
 // $brand-warning:         #445444 !default; //dark green
+// $brand-danger:          #b30606 !default; //bright red
+// $nav-accent:            #f5e898 !default; //yellow
 
 // Home
 
@@ -64,13 +66,13 @@ a .home_callout {
 }
 
 .home_callout_4 {
-  background-color: $brand-info;
+  background-color: $nav-accent;
   background-image: image-url("home/country-quilt.png");
-  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
+  box-shadow: inset 0 0 0 1000px rgba($nav-accent,.9);
   &:hover {
-    box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
+    box-shadow: inset 0 0 0 1000px rgba($nav-accent,.7);
     p {
-      border-bottom: solid 20px $brand-info;
+      border-bottom: solid 20px $nav-accent;
     }
   }
 }
@@ -132,14 +134,14 @@ h1 {
   h1 {
     font-size: 4em;
     text-shadow:
-      4px -4px 0 rgba($brand-info, .2), 
-      3px -3px 0 rgba($brand-info, .2), 
-      2px -2px 0 rgba($brand-info, .2), 
-      1px -1px 0 rgba($brand-info, .2),
-      -4px 4px 0 rgba($brand-info, .2), 
-      -3px 3px 0 rgba($brand-info, .2), 
-      -2px 2px 0 rgba($brand-info, .2), 
-      -1px 1px 0 rgba($brand-info, .2)
+      4px -4px 0 rgba($nav-accent, .2), 
+      3px -3px 0 rgba($nav-accent, .2), 
+      2px -2px 0 rgba($nav-accent, .2), 
+      1px -1px 0 rgba($nav-accent, .2),
+      -4px 4px 0 rgba($nav-accent, .2), 
+      -3px 3px 0 rgba($nav-accent, .2), 
+      -2px 2px 0 rgba($nav-accent, .2), 
+      -1px 1px 0 rgba($nav-accent, .2)
     ;
   }
 
@@ -150,7 +152,7 @@ h1 {
 }
 
 .navbar-default {
-  border: solid 3px mix($brand-warning, $brand-info, 70%);
+  border: solid 3px mix($brand-warning, $nav-accent, 70%);
   border-right: none;
   border-left: none;
 }
@@ -229,80 +231,150 @@ h1 {
   width: 50%;
 }
 
-// SVG Map colors
+// SVG Styling
 
-svg path:nth-child(1n) {
-  fill: $brand-primary !important;
-}
-svg path:nth-child(2n) {
-  fill: $brand-success !important;
-}
-svg path:nth-child(3n) {
-  fill: $brand-info !important;
-}
-svg path:nth-child(4n) {
-  fill: $brand-warning !important;
-}
-svg path:nth-child(5n) {
-  fill: mix($brand-success, #fff, 80%) !important;
-}
-svg path:nth-child(6n) {
-  fill: mix($brand-info, #fff, 80%) !important;
-}
-svg path:nth-child(7n) {
-  fill: mix($brand-warning, #fff, 80%) !important;
-}
-svg path:nth-child(8n) {
-  fill: mix($brand-info, #fff, 80%) !important;
-}
-svg path:nth-child(9n) {
-  fill: mix($brand-info, #000, 80%) !important;
-}
-svg path:nth-child(10n) {
-  fill: mix($brand-success, #000, 80%) !important;
-}
-svg path:nth-child(11n) {
-  fill: mix($brand-info, #000, 80%) !important;
-}
-svg path:nth-child(12n) {
-  fill: mix($brand-warning, #000, 80%) !important;
-}
-svg path#Namibia,
-svg path#Eritrea,
-svg path#Malawi,
-svg path#Tunesien,
-svg path#Burkina_Faso {
-  fill: $brand-warning !important;
-}
-svg path#Senegal {
-  fill: mix($brand-warning, #fff, 80%) !important;
-}
-svg path#Sambia {
-  fill: mix($brand-info, #fff, 80%) !important;
-}
-svg path#Niger {
-  fill: mix($brand-warning, #fff, 80%) !important;
-}
-svg path#Kenia {
-  fill: mix($brand-info, #fff, 80%) !important;
-}
-svg path#Ruanda,
-svg path#path75 {
-  fill: $brand-primary !important;
+svg {
+  width: 100%;
 }
 
-// Have to hav ethe ID's ones for specificity
-svg path#Namibia:hover,
-svg path#Eritrea:hover,
-svg path#Malawi:hover,
-svg path#Tunesien:hover,
-svg path#Burkina_Faso:hover,
-svg path#Senegal:hover,
-svg path#Sambia:hover,
-svg path#Niger:hover,
-svg path#Kenia:hover,
-svg path#Ruanda:hover,
-svg path#path75:hover,
-svg path:hover {
+// $brand-primary:         #be3c00 !default; //red
+// $brand-success:         #c77f22 !default; //orange
+// $brand-info:            #bb8e39 !default; //tan
+// $brand-warning:         #445444 !default; //dark green
+// $brand-danger:          #b30606 !default; //bright red
+// $nav-accent:            #f5e898 !default; //yellow
+
+svg path:nth-child(9n + 1) {
+  fill: $brand-primary;
+}
+svg path:nth-child(9n + 2) {
+  
+  fill: $nav-accent;
+}
+svg path:nth-child(9n + 3) {
+  fill: $brand-warning;
+}
+svg path:nth-child(9n + 4) {
+  fill: mix($brand-success, #fff, 80%);
+}
+svg path:nth-child(9n + 5) {
+  fill: mix($brand-warning, #fff, 70%);
+}
+svg path:nth-child(9n + 6) {
+  fill: mix($brand-warning, #000, 70%);
+}
+svg path:nth-child(9n + 7) {
+  fill: $brand-success;
+}
+svg path:nth-child(9n + 8) {
+  fill: mix($brand-success, #000, 80%);
+}
+svg path:nth-child(9n + 9) {
+  fill: mix($brand-primary, #000, 75%);
+}
+
+svg path#bf {
+  fill: mix($nav-accent, #000, 80%);
+}
+
+svg #sl path,
+svg path#cd {
+  fill: $brand-warning;
+}
+
+svg #gq path {
+  fill: mix($brand-warning, #fff, 70%);
+}
+
+svg path#za {
+  fill: mix($brand-primary, #000, 75%);
+}
+
+svg #ng path {
+  fill: $brand-primary;
+}
+
+// Styles pulled from SVG
+
+svg path.circle {
+  opacity:.5;
+  fill: $brand-primary;
+  fill-opacity:.5;
+  stroke: $brand-primary;
+  stroke-width:10;
+  // stroke-miterlimit:3.97446823;
+  stroke-dasharray:none;
+  stroke-opacity:.5;
+}
+
+// Land
+
+.land {
+  // fill: #b9b9b9;
+  // fill-opacity: 1;
+  stroke:black;
+  stroke-opacity: 1;
+  stroke-width:0.6;
+  stroke-miterlimit: 3.97446823;
+  stroke-dasharray: none;
+}
+
+//Styles for coastlines of islands with no borders
+
+.coast {
+  stroke-width: 0.3;
+}
+
+// Additional style rules
+// The following are examples of colouring countries.  
+// You can substitute these with your own styles to colour 
+// the countries on the map.
+
+//Color a few small country circles (and the countries):
+
+//.ms, .ky {
+//  opacity:    1;
+//  fill:       #ff0000;
+// }
+
+// Remove european territories (i.e. Madeira, Reunion etc.)
+// Highlight blue until I know what to do with them
+svg path.sh, 
+svg path.pt-30, 
+svg path.es-cn, 
+svg path.yt, 
+svg path.re {
+  // opacity: 0;
+  fill: $brand-warning;
+  fill-opacity:.5;
+  stroke: $brand-warning;
+}
+
+// mapdemo page
+
+ul.country_list {
+  margin: 0 0 2em 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.2em;
+  font-size: .9em;
+  columns: 2;
+
+  li {
+    padding: .05em .1em;
+    padding-left: 1.2em;
+    text-indent: -1em;
+
+  } 
+  li:hover {
+    background-color: $nav-accent;
+  }
+}
+
+.country_highlight {
   fill: red !important;
-} 
+}
+
+svg path#DZ {
+
+}
