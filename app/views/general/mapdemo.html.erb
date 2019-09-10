@@ -60,26 +60,32 @@ countrylookup = {
   "Seychelles": "SC"
 };
 
-
-
 $(document).ready(function() {
-
   $(".country").hover(
-  function () {
-    var urlstring = $(this).text();
-    var countrycode = countrylookup[urlstring];
-    var lc_countrycode = countrycode.toLowerCase();
-    $( "svg path#" + lc_countrycode ).addClass("country_highlight");
-    $( "svg #" + lc_countrycode + " path" ).addClass("country_highlight");
-  },
-  function () {
-    var urlstring = $(this).text();
-    var countrycode = countrylookup[urlstring];
-    var lc_countrycode = countrycode.toLowerCase();
-    $( "svg path#" + lc_countrycode ).removeClass("country_highlight");
-    $( "svg #" + lc_countrycode + " path" ).removeClass("country_highlight");
-  }
-);
+    function () {
+      var urlstring = $(this).text();
+      var countrycode = countrylookup[urlstring];
+      var lc_countrycode = countrycode.toLowerCase();
+      $( "svg path#" + lc_countrycode ).addClass("country_highlight");
+      $( "svg #" + lc_countrycode + " path" ).addClass("country_highlight");
+    },
+    function () {
+      var urlstring = $(this).text();
+      var countrycode = countrylookup[urlstring];
+      var lc_countrycode = countrycode.toLowerCase();
+      $( "svg path#" + lc_countrycode ).removeClass("country_highlight");
+      $( "svg #" + lc_countrycode + " path" ).removeClass("country_highlight");
+    }
+  );
+
+  // $("svg path").click(function() {
+  //   var urlstring = $(this).attr('id');
+  //   var countryname = countrylookup[urlstring];
+  //   console.log(countryname);
+  //   console.log(urlstring);
+    
+  // });
+
 
 });
 

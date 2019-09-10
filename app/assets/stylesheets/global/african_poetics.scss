@@ -373,8 +373,8 @@ ul.country_list {
 
 .country_highlight {
   fill: red !important;
-}
-
-svg path#DZ {
-
+  fill-opacity:1;
+  stroke: red !important;
+  stroke-width:1;
+  stroke-opacity:1;
 }
