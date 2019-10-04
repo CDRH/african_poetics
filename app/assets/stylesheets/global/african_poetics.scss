@@ -10,6 +10,17 @@ $screen-tablet: 720px;
 // $brand-danger:          #b30606 !default; //bright red
 // $nav-accent:            #f5e898 !default; //yellow
 
+// Site wide
+
+// temporary, until we can remove 
+.language_link {
+  display: none;
+}
+
+.highlight {
+  background-color: red;
+}
+
 // Home
 
 a .home_callout {
@@ -305,6 +316,13 @@ svg path.circle {
   // stroke-miterlimit:3.97446823;
   stroke-dasharray:none;
   stroke-opacity:.5;
+  opacity: 0;
+}
+
+// Hide Island countris for now 
+
+#es-cn, #cv, #st, #km, #mu, #sc {
+  display: none;
 }
 
 // Land
@@ -338,16 +356,16 @@ svg path.circle {
 // }
 
 // Remove european territories (i.e. Madeira, Reunion etc.)
-// Highlight blue until I know what to do with them
+// Hiding these for now
 svg path.sh, 
 svg path.pt-30, 
 svg path.es-cn, 
 svg path.yt, 
 svg path.re {
-  // opacity: 0;
-  fill: $brand-warning;
-  fill-opacity:.5;
-  stroke: $brand-warning;
+  opacity: 0;
+  // fill: $brand-warning;
+  // fill-opacity:.5;
+  // stroke: $brand-warning;
 }
 
 // mapdemo page
@@ -373,8 +391,13 @@ ul.country_list {
 
 .country_highlight {
   fill: red !important;
-  fill-opacity:1;
+  fill-opacity: 1;
   stroke: red !important;
-  stroke-width:1;
-  stroke-opacity:1;
+  stroke-width: 1;
+  stroke-opacity: 1;
+}
+
+.svg_hover {
+  fill: red !important;
+  cursor: pointer;
 }

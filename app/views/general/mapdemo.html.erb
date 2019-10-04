@@ -60,12 +60,22 @@ countrylookup = {
   "Seychelles": "SC"
 };
 
+// Create a version of the lookup where country code is first
+var countrylookup_inverse = {};
+for (var letter in countrylookup) {
+    var code = countrylookup[letter];
+    countrylookup_inverse[code] = letter;
+}
+
+// Hover over country names and highlight SVG
 $(document).ready(function() {
   $(".country").hover(
     function () {
       var urlstring = $(this).text();
       var countrycode = countrylookup[urlstring];
       var lc_countrycode = countrycode.toLowerCase();
+      // The following highlights both countries that are paths themselves 
+      // and countries that are paths inside groups
       $( "svg path#" + lc_countrycode ).addClass("country_highlight");
       $( "svg #" + lc_countrycode + " path" ).addClass("country_highlight");
     },
@@ -78,6 +88,47 @@ $(document).ready(function() {
     }
   );
 
+  // Highlight country name when hovering over country that is path
+  $("svg > g > path").hover(
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").addClass("highlight");
+      $(this).addClass("svg_hover");
+
+      $( "#testid" ).text(countryname);
+    },
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").removeClass("highlight");
+      $(this).removeClass("svg_hover");
+    }
+  );
+
+  // Highlight country name when hovering over country that is a path inside a group
+  $("svg > g > g").hover(
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").addClass("highlight");
+      $(this).children("path").addClass("svg_hover");
+
+      $( "#testid" ).text(countryname);
+    },
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").removeClass("highlight");
+      $(this).removeClass("svg_hover");
+      $(this).children("path").removeClass("svg_hover");
+    }
+  );
+
   // $("svg path").click(function() {
   //   var urlstring = $(this).attr('id');
   //   var countryname = countrylookup[urlstring];
@@ -85,7 +136,6 @@ $(document).ready(function() {
   //   console.log(urlstring);
     
   // });
-
 
 });
 
@@ -149,3 +199,6 @@ $(document).ready(function() {
       <%= render "general/map_africa" %>
     </div>
   </div>
+
+  <div id="testid">Test</div>
+
