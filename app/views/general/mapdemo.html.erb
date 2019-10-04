@@ -14,7 +14,7 @@ countrylookup = {
   "Chad": "TD",
   "Congo (Brazzaville)": "CG",
   "Congo, Democratic Republic Of": "CD",
-  "Cote d'Ivoire": "CI",
+  "Cote d’Ivoire": "CI",
   "Djibouti": "DJ",
   "Egypt": "EG",
   "Equatorial Guinea": "GQ",
@@ -67,6 +67,8 @@ for (var letter in countrylookup) {
     countrylookup_inverse[code] = letter;
 }
 
+var urlpiece = "search?f[]=places|"
+
 // Hover over country names and highlight SVG
 $(document).ready(function() {
   $(".country").hover(
@@ -96,8 +98,15 @@ $(document).ready(function() {
       var countryname = countrylookup_inverse[countrycodematch];
       $(".country:contains(" + countryname + ")").addClass("highlight");
       $(this).addClass("svg_hover");
+      // Testing code
+      //$( "#testid" ).text(countryname);
+      var href = countryname.replace(/ /g, '+');
+      var fullurl = urlpiece + href
 
-      $( "#testid" ).text(countryname);
+      window.status = "hello";
+  //   }, function () {
+  //       window.status = "";
+
     },
     function () {
       var countrycode = $(this).attr('id');
@@ -108,7 +117,8 @@ $(document).ready(function() {
     }
   );
 
-  // Highlight country name when hovering over country that is a path inside a group
+  // Highlight country name when hovering over country that is a 
+  // path inside a group
   $("svg > g > g").hover(
     function () {
       var countrycode = $(this).attr('id');
@@ -117,7 +127,7 @@ $(document).ready(function() {
       $(".country:contains(" + countryname + ")").addClass("highlight");
       $(this).children("path").addClass("svg_hover");
 
-      $( "#testid" ).text(countryname);
+      //$( "#testid" ).text(countryname);
     },
     function () {
       var countrycode = $(this).attr('id');
@@ -129,13 +139,40 @@ $(document).ready(function() {
     }
   );
 
-  // $("svg path").click(function() {
-  //   var urlstring = $(this).attr('id');
-  //   var countryname = countrylookup[urlstring];
-  //   console.log(countryname);
-  //   console.log(urlstring);
-    
-  // });
+  $("svg > g > path").click(function() {
+    var countrycode = $(this).attr('id');
+    var countrycodematch = countrycode.toUpperCase();
+    var countryname = countrylookup_inverse[countrycodematch];
+    var href = countryname.replace(/ /g, '+');
+    var fullurl = urlpiece + href
+
+    window.location = fullurl;  
+  });
+
+  $("svg > g > g > path").click(function() {
+    var countrycode = $(this).parent("g").attr('id');
+    var countrycodematch = countrycode.toUpperCase();
+    var countryname = countrylookup_inverse[countrycodematch];
+    var href = countryname.replace(/ /g, '+');
+    var fullurl = urlpiece + href
+
+    window.location = fullurl;  
+  });
+
+
+
+// Cody to make things into links
+  // $(".box1").click(function(){
+  //       window.location = $(this).find("a:first").attr("href");
+  //       return false;
+  //   });
+
+  //   // Show URL on Mouse Hover
+  //   $(".box1").hover(function () {
+  //       window.status = $(this).find("a:first").attr("href");
+  //   }, function () {
+  //       window.status = "";
+  //   });
 
 });
 
@@ -155,7 +192,7 @@ $(document).ready(function() {
         <li class="country">Chad</li>
         <li class="country">Congo (Brazzaville)</li>
         <li class="country">Congo, Democratic Republic Of</li>
-        <li class="country">Cote d'Ivoire</li>
+        <li class="country">Cote d’Ivoire</li>
         <li class="country">Djibouti</li>
         <li class="country">Egypt</li>
         <li class="country">Equatorial Guinea</li>
