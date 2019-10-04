@@ -80,6 +80,7 @@ $(document).ready(function() {
       // and countries that are paths inside groups
       $( "svg path#" + lc_countrycode ).addClass("country_highlight");
       $( "svg #" + lc_countrycode + " path" ).addClass("country_highlight");
+      $(this).addClass("element_hover");
     },
     function () {
       var urlstring = $(this).text();
@@ -87,8 +88,17 @@ $(document).ready(function() {
       var lc_countrycode = countrycode.toLowerCase();
       $( "svg path#" + lc_countrycode ).removeClass("country_highlight");
       $( "svg #" + lc_countrycode + " path" ).removeClass("country_highlight");
+      $(this).removeClass("element_hover");
     }
   );
+
+    $(".country").click(function() {
+    var countryname = $(this).text();
+    var href = countryname.replace(/ /g, '+');
+    var fullurl = urlpiece + href
+
+    window.location = fullurl;  
+  });
 
   // Highlight country name when hovering over country that is path
   $("svg > g > path").hover(
@@ -96,23 +106,14 @@ $(document).ready(function() {
       var countrycode = $(this).attr('id');
       var countrycodematch = countrycode.toUpperCase();
       var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").addClass("highlight");
+      $(".country:contains(" + countryname + ")").addClass("element_hover");
       $(this).addClass("svg_hover");
-      // Testing code
-      //$( "#testid" ).text(countryname);
-      var href = countryname.replace(/ /g, '+');
-      var fullurl = urlpiece + href
-
-      window.status = "hello";
-  //   }, function () {
-  //       window.status = "";
-
     },
     function () {
       var countrycode = $(this).attr('id');
       var countrycodematch = countrycode.toUpperCase();
       var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").removeClass("highlight");
+      $(".country:contains(" + countryname + ")").removeClass("element_hover");
       $(this).removeClass("svg_hover");
     }
   );
@@ -124,16 +125,14 @@ $(document).ready(function() {
       var countrycode = $(this).attr('id');
       var countrycodematch = countrycode.toUpperCase();
       var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").addClass("highlight");
+      $(".country:contains(" + countryname + ")").addClass("element_hover");
       $(this).children("path").addClass("svg_hover");
-
-      //$( "#testid" ).text(countryname);
     },
     function () {
       var countrycode = $(this).attr('id');
       var countrycodematch = countrycode.toUpperCase();
       var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").removeClass("highlight");
+      $(".country:contains(" + countryname + ")").removeClass("element_hover");
       $(this).removeClass("svg_hover");
       $(this).children("path").removeClass("svg_hover");
     }
@@ -158,22 +157,6 @@ $(document).ready(function() {
 
     window.location = fullurl;  
   });
-
-
-
-// Cody to make things into links
-  // $(".box1").click(function(){
-  //       window.location = $(this).find("a:first").attr("href");
-  //       return false;
-  //   });
-
-  //   // Show URL on Mouse Hover
-  //   $(".box1").hover(function () {
-  //       window.status = $(this).find("a:first").attr("href");
-  //   }, function () {
-  //       window.status = "";
-  //   });
-
 });
 
 </script>
@@ -236,6 +219,3 @@ $(document).ready(function() {
       <%= render "general/map_africa" %>
     </div>
   </div>
-
-  <div id="testid">Test</div>
-

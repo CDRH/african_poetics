@@ -382,11 +382,12 @@ ul.country_list {
     padding: .05em .1em;
     padding-left: 1.2em;
     text-indent: -1em;
-
   } 
-  li:hover {
-    background-color: $nav-accent;
-  }
+}
+
+.element_hover {
+  background-color: $nav-accent;
+  cursor: pointer;
 }
 
 .country_highlight {
