@@ -60,6 +60,24 @@ countrylookup = {
   "Seychelles": "SC"
 };
 
+// test code
+
+var regionlookup = new Object();
+regionlookup.regionone = ["country1", 
+                  "country2"
+                  ];
+regionlookup.regiontwo = ["country3", 
+                  "country4"
+                  ];
+
+var teststring = JSON.stringify( { regionlookup }, null, 2); 
+
+$(document).ready(function() {
+  $( ".test_div_to_show" ).text(teststring);
+});
+
+//end test code
+
 // Create a version of the lookup where country code is first
 var countrylookup_inverse = {};
 for (var letter in countrylookup) {
@@ -219,3 +237,7 @@ $(document).ready(function() {
       <%= render "general/map_africa" %>
     </div>
   </div>
+
+  <pre><div class="test_div_to_show">0</div></pre>
+
+  <pre><div class="test_div_to_show2" style="border: solid red 2px">0</div></pre>
