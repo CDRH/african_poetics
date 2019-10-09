@@ -5,6 +5,10 @@
       <li class="<%= active?(home_path) %>">
         <%= link_to "#{@section.titlecase} #{t("home.title", default: "Home")}", prefix_path("home_path") %>
       </li>
+       <!-- <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
+        request.path) %>">
+        <%# link_to t("browse.title", default: "Featured"), featured %>
+      </li>  -->
       <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
         request.path) %>">
         <%= link_to t("browse.title", default: "Browse"), prefix_path("browse_path") %>

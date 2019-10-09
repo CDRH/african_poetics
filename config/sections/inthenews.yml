@@ -20,22 +20,19 @@ default: &default
     en:
       person.name:
         label: Poet
+        display: false
       person.role:
         label: Gender
-        flags:
-          - search_filter
+        display: true
       places:
         label: Country
-        flags:
-          - search_filter
+        display: true
       keywords:
         label: Region
-        flags:
-          - search_filter
+        display: true
       works:
         label: Works
-        flags:
-          - search_filter
+        display: true
 
 test:
   <<: *default
