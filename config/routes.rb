@@ -19,11 +19,12 @@ Rails.application.routes.draw do
 
     # Faked Featured Section for now
     get '/featured', to: 'contemporarypoets#featured', as: 'featured', defaults: { section: "contemporarypoets" }
+    
     get '/featured/Ama_Ata_Aidoo', to: 'contemporarypoets#featured_Ama_Ata_Aidoo', as: 'featured_Ama_Ata_Aidoo', defaults: { section: "contemporarypoets" }
-    get '/featured/Gabriel_Okara', to: 'contemporarypoets#Gabriel_Okara', as: 'featured_Gabriel_Okara', defaults: { section: "contemporarypoets" }
-    get '/featured/Kofi_Awoonor', to: 'contemporarypoets#Kofi_Awoonor', as: 'featured_Kofi_Awoonor', defaults: { section: "contemporarypoets" }
-    get '/featured/Ladan_Osman', to: 'contemporarypoets#Ladan_Osman', as: 'featured_Ladan_Osman', defaults: { section: "contemporarypoets" }
-    get '/featured/Mahtem_Shiferraw', to: 'contemporarypoets#Mahtem_Shiferraw', as: 'featured_Mahtem_Shiferraw', defaults: { section: "contemporarypoets" }
+    get '/featured/Gabriel_Okara', to: 'contemporarypoets#featured_Gabriel_Okara', as: 'featured_Gabriel_Okara', defaults: { section: "contemporarypoets" }
+    get '/featured/Kofi_Awoonor', to: 'contemporarypoets#featured_Kofi_Awoonor', as: 'featured_Kofi_Awoonor', defaults: { section: "contemporarypoets" }
+    get '/featured/Ladan_Osman', to: 'contemporarypoets#featured_Ladan_Osman', as: 'featured_Ladan_Osman', defaults: { section: "contemporarypoets" }
+    get '/featured/Mahtem_Shiferraw', to: 'contemporarypoets#featured_Mahtem_Shiferraw', as: 'featured_Mahtem_Shiferraw', defaults: { section: "contemporarypoets" }
 
     Orchid::Routing.draw(section: 'contemporarypoets',
       routes: ["browse", "browse_facet", "search", "item"], scope: '/contemporarypoets')
