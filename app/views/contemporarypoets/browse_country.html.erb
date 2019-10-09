@@ -1,82 +1,165 @@
+<%# call like below, see https://html.spec.whatwg.org/#the-script-element %>
+<%# var stuff = JSON.parse(document.getElementById('stuff').innerHTML); %>
+
+<script type="application/json" id="country_lookup">
+{
+  "countrycodes": {
+    "Algeria": "DZ",
+    "Angola": "AO",
+    "Benin": "BJ",
+    "Botswana": "BW",
+    "Burkina Faso": "BF",
+    "Burundi": "BI",
+    "Cameroon": "CM",
+    "Central Africa": "CF",
+    "Chad": "TD",
+    "Congo (Brazzaville)": "CG",
+    "Congo Democratic Republic Of": "CD",
+    "Cote d’Ivoire": "CI",
+    "Djibouti": "DJ",
+    "Egypt": "EG",
+    "Equatorial Guinea": "GQ",
+    "Eritrea": "ER",
+    "Ethiopia": "ET",
+    "Gabon": "GA",
+    "Ghana": "GH",
+    "Guinea": "GN",
+    "Guinea-Bissau": "GW",
+    "Kenya": "KE",
+    "Lesotho": "LS",
+    "Liberia": "LR",
+    "Libya": "LY",
+    "Madagascar": "MG",
+    "Malawi": "MW",
+    "Mali": "ML",
+    "Mauritania": "MR",
+    "Morocco": "MA",
+    "Mozambique": "MZ",
+    "Namibia": "NA",
+    "Niger": "NE",
+    "Nigeria": "NG",
+    "Rwanda": "RW",
+    "Senegal": "SN",
+    "Sierra Leone": "SL",
+    "Somalia": "SO",
+    "South Africa": "ZA",
+    "Sudan": "SD",
+    "Swaziland": "SZ",
+    "Tanzania": "TZ",
+    "The Gambia": "GM",
+    "Togo": "TG",
+    "Tunisia": "TN",
+    "Uganda": "UG",
+    "Western Sahara": "EH",
+    "Zambia": "ZM",
+    "Zimbabwe": "ZW",
+    "Cape Verde": "CV",
+    "Mauritius": "MU",
+    "Réunion": "RE",
+    "Saint Helena": "SH-HL",
+    "Sao Tome & Principe": "ST",
+    "Seychelles": "SC"
+  },
+  "regions": {
+    "Eastern Africa": [
+      "Burundi",
+      "Comoros",
+      "Djibouti",
+      "Eritrea",
+      "Ethiopia",
+      "Kenya",
+      "Madagascar",
+      "Malawi",
+      "Mauritius",
+      "Mayotte",
+      "Mozambique",
+      "Reunion",
+      "Rwanda",
+      "Seychelles",
+      "Somalia",
+      "Tanzania, United Republic of",
+      "Uganda",
+      "Zambia",
+      "Zimbabwe"
+    ],
+    "Middle Africa": [
+      "Angola",
+      "Cameroon",
+      "Central African Republic",
+      "Chad",
+      "Congo (Brazzaville)",
+      "Congo, Democratic Republic of the",
+      "Equatorial Guinea",
+      "Gabon",
+      "Sao Tome and Principe"
+    ],
+    "Western Africa": [
+      "Benin",
+      "Burkina Faso",
+      "Cape Verde",
+      "Cote d’Ivoire (Ivory Coast)",
+      "Gambia",
+      "Ghana",
+      "Guinea",
+      "Guinea-Bissau",
+      "Liberia",
+      "Mali",
+      "Mauritania",
+      "Niger",
+      "Nigeria",
+      "Saint Helena",
+      "Senegal",
+      "Sierra Leone",
+      "Togo"
+    ],
+    "Northern Africa": [
+      "Algeria",
+      "Egypt",
+      "Libyan Arab Jamahiriya",
+      "Morocco",
+      "South Sudan",
+      "Sudan",
+      "Tunisia",
+      "Western Sahara",
+      "Botswana",
+      "Lesotho",
+      "Namibia",
+      "South Africa ",
+      "Swaziland"
+    ],
+    "Southern Africa": [
+      "Botswana",
+      "Lesotho",
+      "Namibia",
+      "South Africa",
+      "Swaziland"
+    ]
+  }
+}
+</script>
+
 <script>
- 
-var countrylookup = {};
 
-countrylookup = {
-  "Algeria": "DZ",
-  "Angola": "AO",
-  "Benin": "BJ",
-  "Botswana": "BW",
-  "Burkina Faso": "BF",
-  "Burundi": "BI",
-  "Cameroon": "CM",
-  "Central Africa": "CF",
-  "Chad": "TD",
-  "Congo (Brazzaville)": "CG",
-  "Congo, Democratic Republic Of": "CD",
-  "Cote d’Ivoire": "CI",
-  "Djibouti": "DJ",
-  "Egypt": "EG",
-  "Equatorial Guinea": "GQ",
-  "Eritrea": "ER",
-  "Ethiopia": "ET",
-  "Gabon": "GA",
-  "Ghana": "GH",
-  "Guinea": "GN",
-  "Guinea-Bissau": "GW",
-  "Kenya": "KE",
-  "Lesotho": "LS",
-  "Liberia": "LR",
-  "Libya": "LY",
-  "Madagascar": "MG",
-  "Malawi": "MW",
-  "Mali": "ML",
-  "Mauritania": "MR",
-  "Morocco": "MA",
-  "Mozambique": "MZ",
-  "Namibia": "NA",
-  "Niger": "NE",
-  "Nigeria": "NG",
-  "Rwanda": "RW",
-  "Senegal": "SN",
-  "Sierra Leone": "SL",
-  "Somalia": "SO",
-  "South Africa": "ZA",
-  "Sudan": "SD",
-  "Swaziland": "SZ",
-  "Tanzania": "TZ",
-  "The Gambia": "GM",
-  "Togo": "TG",
-  "Tunisia": "TN",
-  "Uganda": "UG",
-  "Western Sahara": "EH",
-  "Zambia": "ZM",
-  "Zimbabwe": "ZW",
-  "Cape Verde": "CV",
-  "Mauritius": "MU",
-  "Réunion": "RE",
-  "Saint Helena": "SH-HL",
-  "Sao Tome & Principe": "ST",
-  "Seychelles": "SC"
-};
+var json_parse = JSON.parse(document.getElementById('country_lookup').innerHTML);
+var countrylookup = json_parse.countrycodes;
+var regionlookup = json_parse.regions;
 
-// test code
+// TEST CODE 
 
-var regionlookup = new Object();
-regionlookup.regionone = ["country1", 
-                  "country2"
-                  ];
-regionlookup.regiontwo = ["country3", 
-                  "country4"
-                  ];
+// var teststring3 = JSON.stringify( { countrylookup }, null, 2);
+// var teststring4 = JSON.stringify( { regionlookup }, null, 2);
 
-var teststring = JSON.stringify( { regionlookup }, null, 2); 
+// $(document).ready(function() {
+//   $( ".test_div_to_show" ).text(teststring3);
+// });
 
-$(document).ready(function() {
-  $( ".test_div_to_show" ).text(teststring);
-});
+// $(document).ready(function() {
+//   $( ".test_div_to_show2" ).text(teststring4);
+// });
 
-//end test code
+
+
+//end TEST CODE
 
 // Create a version of the lookup where country code is first
 var countrylookup_inverse = {};

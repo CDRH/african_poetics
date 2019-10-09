@@ -1,0 +1,45 @@
+default: &default
+
+  api_options:
+    # only return section items by default
+    f:
+      - subcategory|Contemporary Poet 
+    # sorting and response number
+    sort:
+      - date|asc
+    num: 50
+    # facet info on search page
+    facet_limit: 20
+    facet_sort: count|desc
+    # facet info on browse page
+    browse_sort: term|asc
+    # highlighting
+    hl_num: 5
+
+  facets:
+    en:
+      person.name:
+        label: Poet
+        display: false
+      person.role:
+        label: Gender
+        display: true
+      places:
+        label: Country
+        display: true
+      keywords:
+        label: Region
+        display: true
+      works:
+        label: Works
+        display: true
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+

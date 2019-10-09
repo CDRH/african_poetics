@@ -28,13 +28,22 @@ $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 $light-base: #d3dbde;
 $light-lighter: lighten($light-base, 11%);
 
-$brand-primary:         #be3c00 !default; //red
-$brand-success:         #c77f22 !default; //orange
-$brand-info:            #bb8e39 !default; //tan
-$brand-warning:         #445444 !default; //dark green
-$brand-danger:          #b30606 !default; //bright red
+// $brand-primary:         #be3c00 !default; //red
+// $brand-success:         #c77f22 !default; //orange
+// $brand-info:            #bb8e39 !default; //tan
+// $brand-warning:         #445444 !default; //dark green
+// $brand-danger:          #b30606 !default; //bright red
 
-$nav-accent:            #f5e898 !default; //yellow
+// $nav-accent:            #f5e898 !default; //yellow
+
+//alt colors from illustration
+$brand-primary:         #8E0917 !default; //red
+$brand-success:         #F06A16 !default; //orange
+$brand-info:            #EBF684 !default; //lightyellow
+$brand-warning:         #559927 !default; //lightish green
+$brand-danger:          #40247E !default; //purple
+
+$nav-accent:            #F5CF0A !default; //yellow
 
 
 //== Scaffolding

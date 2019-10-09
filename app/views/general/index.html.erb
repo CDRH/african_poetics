@@ -1,42 +1,29 @@
+
+<p><strong>The African Poetry Digital Portal</strong> is a project of the <a href="about_africanpoetrybookfund">African Poetry Book Fund</a>. The Portal  is a resource for the study of the history of African Poetry providing access to biographical information, artifacts, news, video recording, images and documents related to African poetry from antiquity to the present. It will also feature specially curated digital projects on various aspects of African poetry. </p>
+
+<div class="row" style="margin-bottom: 1.5em;">
+  <%= link_to contemporarypoets_home_path do %>
+    <div class="col-sm-6 home_callout home_callout_1">
+      <p>Index of Contemporary African Poets</p>
+    </div>
+  <% end %>
+  <%= link_to inthenews_home_path do %>
+    <div class="col-sm-6 home_callout home_callout_2">
+      <p>African Poets and Poetry in the News</p>
+    </div>
+  <% end %>
 </div>
-<div class="container-fluid home_container">
 
-  <div class="row">
-    <div class="col-sm-6">
-      <p class="lead">Proin gravida finibus gravida. Ut tincidunt libero in justo fringilla semper. Donec non erat facilisis.</p>
+<p>The first two sections of the portal—<a href="index_contemporarypoets">The Index of Contemporary African Poets</a> and <a href="inthenews">The African Poets and Poetry in the News</a> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://www.fordfoundation.org/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
 
-      <p>Facilisis mollis volutpat. Proin interdum, ipsum laoreet fermentum efficitur, justo orci ullamcorper orci, sit amet scelerisque eros nulla id lectus. Nulla placerat quam eu volutpat hendrerit. Donec mollis tristique purus quis auctor. Duis sit amet luctus nulla. Nulla risus eros, bibendum ut lobortis nec, luctus at leo. Morbi id justo porta, blandit neque nec, ultricies nibh. </p>
+<p>Image Credit<br/>
+<a href="http://victorehi.com/">Victor Ehikhamenora</a>.  "Front of Card" 
+</p>
 
-      <div class="row">
-        <%= link_to browse_facet_path(facet: "person.name") do %>
-          <div class="col-sm-6 home_callout home_callout_1">
-            <p>Browse by Poet</p>
-          </div>
-        <% end %>
-        <%= link_to browse_facet_path(facet: "places") do %>
-          <div class="col-sm-6 home_callout home_callout_2">
-            <p>Browse by Country</p>
-          </div>
-        <% end %>
-      </div>
-      <div class="row">
-        <%= link_to browse_facet_path(facet: "keywords") do %>
-          <div class="col-sm-6 home_callout home_callout_3">
-            <p>Browse by Region</p>
-          </div>
-        <% end %>
-        <%= link_to browse_facet_path(facet: "works") do %>
-          <div class="col-sm-6 home_callout home_callout_4">
-            <p>Browse by Works</p>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <%= render "general/map_africa" %>
-    </div>
-  </div>
 
-  <p>
-    <%# link_to "Map Demo", browse_mapdemo %>
-  </p>
+
+
+
+
+
+
