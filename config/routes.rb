@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/country', to: 'general#country', as: 'country'
+  #get '/country', to: 'general#country', as: 'country'
 
   scope "/contemporarypoets" do
     get '/', to: 'contemporarypoets#home', as: :contemporarypoets_home,
       defaults: { section: "contemporarypoets" }
+
+      get '/country', to: 'contemporarypoets#browse_country', as: 'country', defaults: { section: "contemporarypoets" }
 
     # Faked Featured Section for now
     get '/featured', to: 'contemporarypoets#featured', as: 'featured', defaults: { section: "contemporarypoets" }
@@ -30,9 +32,10 @@ Rails.application.routes.draw do
 
   scope "/about" do
     get '/', to: 'about#homeabout', as: :about_homeabout, defaults: { section: "about" }
-    get '/africanpoetrybookfund', to: 'about#africanpoetrybookfund', as: :about_africanpoetrybookfund, defaults: { section: "about" }
+    get '/africanpoetrybookfund', to: 'about#africanpoetrybookfund', as: 
+      :about_africanpoetrybookfund, defaults: { section: "about" }
 
-    Orchid::Routing.draw(section: 'about')
+    # Orchid::Routing.draw(section: 'about')
   end
 
 
