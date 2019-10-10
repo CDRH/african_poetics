@@ -2,16 +2,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/country', to: 'general#country', as: 'country'
-  
-  # temp about pages
-  get '/about_africanpoetrybookfund', to: 'general#about_africanpoetrybookfund', as: 'about_africanpoetrybookfund'
-
-  # temp cap home page
-  
-  #get '/index_contemporarypoets', to: 'general#index_contemporarypoets', as: 'index_contemporarypoets'
-
-  #landing page for "in the news" (not developed yet)
-  # get '/inthenews', to: 'general#inthenews', as: 'inthenews'
 
   scope "/contemporarypoets" do
     get '/', to: 'contemporarypoets#home', as: :contemporarypoets_home,
@@ -19,7 +9,7 @@ Rails.application.routes.draw do
 
     # Faked Featured Section for now
     get '/featured', to: 'contemporarypoets#featured', as: 'featured', defaults: { section: "contemporarypoets" }
-    
+
     get '/featured/Ama_Ata_Aidoo', to: 'contemporarypoets#featured_Ama_Ata_Aidoo', as: 'featured_Ama_Ata_Aidoo', defaults: { section: "contemporarypoets" }
     get '/featured/Gabriel_Okara', to: 'contemporarypoets#featured_Gabriel_Okara', as: 'featured_Gabriel_Okara', defaults: { section: "contemporarypoets" }
     get '/featured/Kofi_Awoonor', to: 'contemporarypoets#featured_Kofi_Awoonor', as: 'featured_Kofi_Awoonor', defaults: { section: "contemporarypoets" }
@@ -36,6 +26,13 @@ Rails.application.routes.draw do
 
     Orchid::Routing.draw(section: 'inthenews',
       routes: ["browse", "browse_facet", "search"], scope: '/inthenews')
+  end
+
+  scope "/about" do
+    get '/', to: 'about#homeabout', as: :about_homeabout, defaults: { section: "about" }
+    get '/africanpoetrybookfund', to: 'about#africanpoetrybookfund', as: :about_africanpoetrybookfund, defaults: { section: "about" }
+
+    Orchid::Routing.draw(section: 'about')
   end
 
 
