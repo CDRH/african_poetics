@@ -7,4 +7,8 @@ class ContemporarypoetsController < ApplicationController
   def search
 
   end
+
+  
+
+
 end

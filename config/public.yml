@@ -75,7 +75,7 @@ default: &default
         flags:
           - search_filter
       person.name:
-        label: People
+        label: Poet
         flags:
           - search_filter
       languages:

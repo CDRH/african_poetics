@@ -32,10 +32,6 @@ default: &default
         label: Region
         flags:
           - search_filter
-      works:
-        label: Works
-        flags:
-          - search_filter
 
 test:
   <<: *default

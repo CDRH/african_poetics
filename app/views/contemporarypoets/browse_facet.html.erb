@@ -1,0 +1,61 @@
+<%# expects
+  - "sort_by" sort value (e.g. "count|desc")
+%>
+
+<h1><%= t "browse.browse_type", default: "Browse by" %> <%= @browse_facet_info["label"] %></h1>
+
+<%= render "contemporarypoets/browse_tabs" %>
+
+<div class="btn-group buffer-bottom-sm">
+  <button type="button" class="btn btn-default dropdown-toggle"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= t "browse.sort_by", default: "Sort by" %>: <%= sort_selected_label("facets", sort_by) %>
+    <span class="caret"></span>
+  </button>
+
+  <ul class="dropdown-menu">
+    <% sort_fields_facets.each do |sort_field, label| %>
+      <%= render_overridable("sort_dropdown_item", label: label,
+        sort_url: prefix_path("browse_facet_path", facet_sort: sort_field)) %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <% @page_facets.each_with_index do |(facet_name, facet_info), index| %>
+    <% id = facet_name.parameterize(separator: ".")  %>
+    <div role="tabpanel"
+      class="tab-pane <%= active?(facet_name, @browse_facet) %>" id="<%= id %>">
+      <% if @res.key?(facet_name) %>
+        <table class="index_table">
+          <tbody>
+            <% @res[facet_name].each do |list| %>
+              <tr>
+                  <% text = list[0].blank? ? t("browse.no_label", default: "No label") : value_label(facet_name, list[0]) %>
+                  <td class="index_num">
+                    <%= link_to prefix_path("search_path",
+                      f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
+                      <%= list[1] %>
+                    <% end %>
+                  </td>
+                  <td class="index_spacer">
+                    <%= link_to prefix_path("search_path",
+                      f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
+                      <span></span>
+                    <% end %>
+                  </td>
+                  <td class="index_name">
+                    <%= link_to prefix_path("search_path",
+                      f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
+                      <%= text %>
+                    <% end %>
+                  </td>
+              </tr>
+            <% end %>
+          <tbody>
+        </table>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

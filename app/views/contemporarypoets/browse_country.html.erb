@@ -168,7 +168,7 @@ for (var letter in countrylookup) {
     countrylookup_inverse[code] = letter;
 }
 
-var urlpiece = "search?f[]=places|"
+var urlpiece = "../search?f[]=places|"
 
 // Hover over country names and highlight SVG
 $(document).ready(function() {
@@ -262,7 +262,9 @@ $(document).ready(function() {
 
 </script>
 
-<h1>Browse Poet by Country</h1>
+<h1>Browse Poet by Country Map</h1>
+
+<%= render "contemporarypoets/browse_tabs" %>
 
   <div class="row">
     <div class="col-sm-4">

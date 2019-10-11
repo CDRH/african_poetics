@@ -85,6 +85,18 @@ a .home_callout {
     p {
       border-bottom: solid 20px $nav-accent;
     }
+  }  
+}
+
+.home_callout_5 {
+  background-color: $nav-accent;
+  background-image: image-url("home/swirl_pattern.png");
+  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
+    p {
+      border-bottom: solid 20px $brand-info;
+    }
   }
 }
 
