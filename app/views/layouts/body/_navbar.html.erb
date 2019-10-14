@@ -2,15 +2,18 @@
   <div class="container navbar-container">
     
       <ul class="nav navbar-nav">
+        <% if !(current_page?(home_path)) %>
         <li class="<%= active?(home_path) %>">
           <%= link_to t("home.title", default: "Home"), home_path %>
+         
         </li>
+        <% end %>
         <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
           request.path) %>">
-          <%= link_to t("browse.title", default: "Browse"), browse_path %>
+          <%= link_to "Contemporary African Poets", contemporarypoets_home_path %>
         </li>
         <li class="<%= active?(search_path) %>">
-          <%= link_to t("search.title", default: "Search"), search_path, rel: "search" %>
+          <%= link_to "African Poets and Poetry in the News", inthenews_home_path %>
         </li>
         <li class="<%= active?(about_path) %>">
           <%= link_to t("about.title", default: "About"), about_path %>

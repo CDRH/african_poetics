@@ -1,0 +1,41 @@
+<% if @section.present? %>
+<% if @section == "contemporarypoets" %>
+<div class="navbar navbar-inverse">
+  <div class="container navbar-container">  
+    <ul class="nav navbar-nav">
+      <li class="<%= active?(home_path) %>">
+        <%= link_to "Contemporary Poets Home", prefix_path("home_path") %>
+      </li>
+       <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
+        request.path) %>">
+        <%= link_to "Featured", featured_path %>
+      </li>
+      <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
+        request.path) %>">
+        <%= link_to t("browse.title", default: "Browse"), prefix_path("browse_path") %>
+      </li>
+      <li class="<%= active?(search_path) %>">
+        <%= link_to t("search.title", default: "Search"), prefix_path("search_path"), rel: "search" %>
+      </li>
+    </ul>
+  </div>
+</div><!-- /navbar -->
+<% end %>
+<% if @section == "about" %>
+<div class="navbar navbar-inverse">
+  <div class="container navbar-container">
+    <ul class="nav navbar-nav">
+      <li>
+        <%= link_to "Credits", about_homeabout_path %>
+      </li>
+      <li>
+        <%= link_to "African Poetry Book Fund", about_africanpoetrybookfund_path %>
+      </li>
+      <li>
+        <%= link_to "Technical Details", about_technicaldetails_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+<% end %>
+<% end %>

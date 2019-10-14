@@ -1,14 +1,22 @@
-<div id="header">
+<!-- <div id="header">
   <div class="container">
-    <%= link_to home_path do %>
+    <%# link_to home_path do %>
       <div id="site-title">
-        <h1><%= t "general.project_name" %></h1>
-        <h2><%= t "general.project_subtitle" %></h2>
+        <h1><%# t "general.project_name" %></h1>
+        <h2><%# t "general.project_subtitle" %></h2>
       </div>
-    <% end %>
-  </div>
+    <%# end %>
+  </div> -->
+
+<div id="header">
+  <%= render_overridable("layouts/body", "title") %>
+  <%= render_overridable("layouts/body", "languages") %>
+  <%= render_overridable("layouts/body", "navbar") %>
+  <%= render_overridable("layouts/body", "navbar_section") %>
+  <%= render_overridable("layouts/body", "breadcrumbs") %>
+
 
   <%= render "layouts/body/languages" %>
-  <%= render "layouts/body/navbar" %>
+  <%# render "layouts/body/navbar" %>
   <%= render "layouts/body/breadcrumbs" %>
 </div><!-- /header -->

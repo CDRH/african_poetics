@@ -85,6 +85,18 @@ a .home_callout {
     p {
       border-bottom: solid 20px $nav-accent;
     }
+  }  
+}
+
+.home_callout_5 {
+  background-color: $nav-accent;
+  background-image: image-url("home/swirl_pattern.png");
+  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
+    p {
+      border-bottom: solid 20px $brand-info;
+    }
   }
 }
 
@@ -95,11 +107,11 @@ body {
   height:100%;
 }
 
-h2 {
+h2, .h2 {
   font-weight: 100;
 }
 
-h1 {
+h1, .h1 {
   font-weight: 900;
 }
 
@@ -108,12 +120,6 @@ h1 {
   flex-direction:column;
   height:100%;
   min-height: 100vh;
-}
-
-.site_home #content-wrapper {
-  margin: 0;
-  padding: 0;
-  display: inline;
 }
 
 #content-wrapper, .home_container {
@@ -127,45 +133,35 @@ h1 {
 
 #header {
   text-align: center; 
+
   a:hover {
     text-decoration: none;
   }
 }
 
-#site-title {
-  background-color: rgba($gray-light,.2);
+.site-title-container {
+  background-color: rgba(255,255,255,.6 );
+  box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
   line-height: 1em;
   padding: 1em;
 
-  h1, h2 {
+  .h1, .h2 {
     margin: 0;
     padding: 0;
   }
 
-  h1 {
-    font-size: 4em;
+$site-title-shadow: darken($brand-info, 30%);
+  .site-title {
+    font-size: 1.5em;
     text-shadow:
-      4px -4px 0 rgba($nav-accent, .2), 
-      3px -3px 0 rgba($nav-accent, .2), 
-      2px -2px 0 rgba($nav-accent, .2), 
-      1px -1px 0 rgba($nav-accent, .2),
-      -4px 4px 0 rgba($nav-accent, .2), 
-      -3px 3px 0 rgba($nav-accent, .2), 
-      -2px 2px 0 rgba($nav-accent, .2), 
-      -1px 1px 0 rgba($nav-accent, .2)
-    ;
+      -4px 4px 0 rgba($site-title-shadow, .2);
   }
 
-  h2 {
-    font-size: 2.5em;
+  .site-subtitle {
     color: mix($brand-primary, $gray-base, 80%);
+    display: block;
+    font-size: 1em;
   }
-}
-
-.navbar-default {
-  border: solid 3px mix($brand-warning, $nav-accent, 70%);
-  border-right: none;
-  border-left: none;
 }
 
 .navbar-container {
@@ -227,11 +223,18 @@ h1 {
   }
 }
 
-// Browse
+// Item
 
 .item_title {
   text-align: center;
-  margin-bottom: 1.5em;
+  padding-bottom: 0;
+}
+
+.item_subtitle {
+  text-align: center;
+  margin-top:0;
+  padding-top: 0;
+  font-size: 1.8em;
 }
 
 .browse_div .tab-pane {
@@ -242,18 +245,24 @@ h1 {
   width: 50%;
 }
 
+.metadata {
+  margin-top: 40px;
+  flex-grow: 1;
+}
+
+.poet_metadata_contain {
+  display: flex;
+}
+
+.poet_image {
+  border: 2px solid #aaa;
+}
+
 // SVG Styling
 
 svg {
   width: 100%;
 }
-
-// $brand-primary:         #be3c00 !default; //red
-// $brand-success:         #c77f22 !default; //orange
-// $brand-info:            #bb8e39 !default; //tan
-// $brand-warning:         #445444 !default; //dark green
-// $brand-danger:          #b30606 !default; //bright red
-// $nav-accent:            #f5e898 !default; //yellow
 
 svg path:nth-child(9n + 1) {
   fill: $brand-primary;
@@ -308,15 +317,14 @@ svg #ng path {
 // Styles pulled from SVG
 
 svg path.circle {
-  opacity:.5;
-  fill: $brand-primary;
   fill-opacity:.5;
-  stroke: $brand-primary;
-  stroke-width:10;
-  // stroke-miterlimit:3.97446823;
+  fill: $brand-primary;
+  opacity: 0;
+  opacity:.5;
   stroke-dasharray:none;
   stroke-opacity:.5;
-  opacity: 0;
+  stroke-width:10;
+  stroke: $brand-primary;
 }
 
 // Hide Island countris for now 
@@ -328,13 +336,11 @@ svg path.circle {
 // Land
 
 .land {
-  // fill: #b9b9b9;
-  // fill-opacity: 1;
-  stroke:black;
+  stroke-dasharray: none;
+  stroke-miterlimit: 3.97446823;
   stroke-opacity: 1;
   stroke-width:0.6;
-  stroke-miterlimit: 3.97446823;
-  stroke-dasharray: none;
+  stroke:black;
 }
 
 //Styles for coastlines of islands with no borders
@@ -371,33 +377,109 @@ svg path.re {
 // mapdemo page
 
 ul.country_list {
+  columns: 2;
+  font-size: .9em;
+  line-height: 1.2em;
+  list-style: none;
   margin: 0 0 2em 0;
   padding: 0;
-  list-style: none;
-  line-height: 1.2em;
-  font-size: .9em;
-  columns: 2;
 
   li {
-    padding: .05em .1em;
     padding-left: 1.2em;
+    padding: .05em .1em;
     text-indent: -1em;
-
   } 
-  li:hover {
-    background-color: $nav-accent;
-  }
+}
+
+.element_hover {
+  background-color: $nav-accent;
+  cursor: pointer;
 }
 
 .country_highlight {
-  fill: red !important;
   fill-opacity: 1;
-  stroke: red !important;
-  stroke-width: 1;
+  fill: red !important;
   stroke-opacity: 1;
+  stroke-width: 1;
+  stroke: red !important;
 }
 
 .svg_hover {
-  fill: red !important;
   cursor: pointer;
+  fill: red !important;
+}
+
+#content-wrapper {
+  padding-top: 20px;
+}
+
+.lead {
+  font-size: 1.3em;
+}
+
+
+// SPLASH PAGE
+
+.site_home {
+
+  .home_callout_links {
+    
+  }
+  .navbar-default {
+    border: none;
+  }
+
+  #header {
+    background-color: $brand-info;
+    background-image: image-url("home/swirl_pattern.png");
+    box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
+
+    .site-subtitle {
+      display: none;
+    }
+  }
+
+  .home_illustration {
+    background-image: image-url("home/Portal_Cover_cropped.jpg");
+    background-position: top;
+    background-size: cover;
+    border-left: none;
+    border-right: none;
+    border: solid 1px $brand-info;
+    height: 350px;
+    z-index: -1;
+  }
+
+  .home_callout_links {
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,1);
+    margin-bottom: 20px;
+    margin-top: -50px;
+  }
+
+  #content-wrapper {
+    background-color: transparent;
+    margin-bottom: 30px;
+  }
+
+  .home_para {
+    background-color: rgba(255,255,255,.6 );
+    box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
+    padding: 20px;
+    text-align: center;
+  }
+
+  .site-title-container {
+    background: none;
+    box-shadow: none;
+
+    .site-title {
+      color: #fff;
+      margin-bottom: 50px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
 }

@@ -1,0 +1,332 @@
+<%# call like below, see https://html.spec.whatwg.org/#the-script-element %>
+<%# var stuff = JSON.parse(document.getElementById('stuff').innerHTML); %>
+
+<script type="application/json" id="country_lookup">
+{
+  "countrycodes": {
+    "Algeria": "DZ",
+    "Angola": "AO",
+    "Benin": "BJ",
+    "Botswana": "BW",
+    "Burkina Faso": "BF",
+    "Burundi": "BI",
+    "Cameroon": "CM",
+    "Central Africa": "CF",
+    "Chad": "TD",
+    "Congo (Brazzaville)": "CG",
+    "Congo Democratic Republic Of": "CD",
+    "Cote d’Ivoire": "CI",
+    "Djibouti": "DJ",
+    "Egypt": "EG",
+    "Equatorial Guinea": "GQ",
+    "Eritrea": "ER",
+    "Ethiopia": "ET",
+    "Gabon": "GA",
+    "Ghana": "GH",
+    "Guinea": "GN",
+    "Guinea-Bissau": "GW",
+    "Kenya": "KE",
+    "Lesotho": "LS",
+    "Liberia": "LR",
+    "Libya": "LY",
+    "Madagascar": "MG",
+    "Malawi": "MW",
+    "Mali": "ML",
+    "Mauritania": "MR",
+    "Morocco": "MA",
+    "Mozambique": "MZ",
+    "Namibia": "NA",
+    "Niger": "NE",
+    "Nigeria": "NG",
+    "Rwanda": "RW",
+    "Senegal": "SN",
+    "Sierra Leone": "SL",
+    "Somalia": "SO",
+    "South Africa": "ZA",
+    "Sudan": "SD",
+    "Swaziland": "SZ",
+    "Tanzania": "TZ",
+    "The Gambia": "GM",
+    "Togo": "TG",
+    "Tunisia": "TN",
+    "Uganda": "UG",
+    "Western Sahara": "EH",
+    "Zambia": "ZM",
+    "Zimbabwe": "ZW",
+    "Cape Verde": "CV",
+    "Mauritius": "MU",
+    "Réunion": "RE",
+    "Saint Helena": "SH-HL",
+    "Sao Tome & Principe": "ST",
+    "Seychelles": "SC"
+  },
+  "regions": {
+    "Eastern Africa": [
+      "Burundi",
+      "Comoros",
+      "Djibouti",
+      "Eritrea",
+      "Ethiopia",
+      "Kenya",
+      "Madagascar",
+      "Malawi",
+      "Mauritius",
+      "Mayotte",
+      "Mozambique",
+      "Reunion",
+      "Rwanda",
+      "Seychelles",
+      "Somalia",
+      "Tanzania, United Republic of",
+      "Uganda",
+      "Zambia",
+      "Zimbabwe"
+    ],
+    "Middle Africa": [
+      "Angola",
+      "Cameroon",
+      "Central African Republic",
+      "Chad",
+      "Congo (Brazzaville)",
+      "Congo, Democratic Republic of the",
+      "Equatorial Guinea",
+      "Gabon",
+      "Sao Tome and Principe"
+    ],
+    "Western Africa": [
+      "Benin",
+      "Burkina Faso",
+      "Cape Verde",
+      "Cote d’Ivoire (Ivory Coast)",
+      "Gambia",
+      "Ghana",
+      "Guinea",
+      "Guinea-Bissau",
+      "Liberia",
+      "Mali",
+      "Mauritania",
+      "Niger",
+      "Nigeria",
+      "Saint Helena",
+      "Senegal",
+      "Sierra Leone",
+      "Togo"
+    ],
+    "Northern Africa": [
+      "Algeria",
+      "Egypt",
+      "Libyan Arab Jamahiriya",
+      "Morocco",
+      "South Sudan",
+      "Sudan",
+      "Tunisia",
+      "Western Sahara",
+      "Botswana",
+      "Lesotho",
+      "Namibia",
+      "South Africa ",
+      "Swaziland"
+    ],
+    "Southern Africa": [
+      "Botswana",
+      "Lesotho",
+      "Namibia",
+      "South Africa",
+      "Swaziland"
+    ]
+  }
+}
+</script>
+
+<script>
+
+var json_parse = JSON.parse(document.getElementById('country_lookup').innerHTML);
+var countrylookup = json_parse.countrycodes;
+var regionlookup = json_parse.regions;
+
+// TEST CODE 
+
+// var teststring3 = JSON.stringify( { countrylookup }, null, 2);
+// var teststring4 = JSON.stringify( { regionlookup }, null, 2);
+
+// $(document).ready(function() {
+//   $( ".test_div_to_show" ).text(teststring3);
+// });
+
+// $(document).ready(function() {
+//   $( ".test_div_to_show2" ).text(teststring4);
+// });
+
+
+
+//end TEST CODE
+
+// Create a version of the lookup where country code is first
+var countrylookup_inverse = {};
+for (var letter in countrylookup) {
+    var code = countrylookup[letter];
+    countrylookup_inverse[code] = letter;
+}
+
+var urlpiece = "../search?f[]=places|"
+
+// Hover over country names and highlight SVG
+$(document).ready(function() {
+  $(".country").hover(
+    function () {
+      var urlstring = $(this).text();
+      var countrycode = countrylookup[urlstring];
+      var lc_countrycode = countrycode.toLowerCase();
+      // The following highlights both countries that are paths themselves 
+      // and countries that are paths inside groups
+      $( "svg path#" + lc_countrycode ).addClass("country_highlight");
+      $( "svg #" + lc_countrycode + " path" ).addClass("country_highlight");
+      $(this).addClass("element_hover");
+    },
+    function () {
+      var urlstring = $(this).text();
+      var countrycode = countrylookup[urlstring];
+      var lc_countrycode = countrycode.toLowerCase();
+      $( "svg path#" + lc_countrycode ).removeClass("country_highlight");
+      $( "svg #" + lc_countrycode + " path" ).removeClass("country_highlight");
+      $(this).removeClass("element_hover");
+    }
+  );
+
+    $(".country").click(function() {
+    var countryname = $(this).text();
+    var href = countryname.replace(/ /g, '+');
+    var fullurl = urlpiece + href
+
+    window.location = fullurl;  
+  });
+
+  // Highlight country name when hovering over country that is path
+  $("svg > g > path").hover(
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").addClass("element_hover");
+      $(this).addClass("svg_hover");
+    },
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").removeClass("element_hover");
+      $(this).removeClass("svg_hover");
+    }
+  );
+
+  // Highlight country name when hovering over country that is a 
+  // path inside a group
+  $("svg > g > g").hover(
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").addClass("element_hover");
+      $(this).children("path").addClass("svg_hover");
+    },
+    function () {
+      var countrycode = $(this).attr('id');
+      var countrycodematch = countrycode.toUpperCase();
+      var countryname = countrylookup_inverse[countrycodematch];
+      $(".country:contains(" + countryname + ")").removeClass("element_hover");
+      $(this).removeClass("svg_hover");
+      $(this).children("path").removeClass("svg_hover");
+    }
+  );
+
+  $("svg > g > path").click(function() {
+    var countrycode = $(this).attr('id');
+    var countrycodematch = countrycode.toUpperCase();
+    var countryname = countrylookup_inverse[countrycodematch];
+    var href = countryname.replace(/ /g, '+');
+    var fullurl = urlpiece + href
+
+    window.location = fullurl;  
+  });
+
+  $("svg > g > g > path").click(function() {
+    var countrycode = $(this).parent("g").attr('id');
+    var countrycodematch = countrycode.toUpperCase();
+    var countryname = countrylookup_inverse[countrycodematch];
+    var href = countryname.replace(/ /g, '+');
+    var fullurl = urlpiece + href
+
+    window.location = fullurl;  
+  });
+});
+
+</script>
+
+<h1>Browse Poet by Region Map</h1>
+
+<%= render "contemporarypoets/browse_tabs" %>
+
+<p>In Progress</p>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <ul class="country_list">
+        <li class="country">Algeria</li>
+        <li class="country">Angola</li>
+        <li class="country">Benin</li>
+        <li class="country">Botswana</li>
+        <li class="country">Burkina Faso</li>
+        <li class="country">Burundi</li>
+        <li class="country">Cameroon</li>
+        <li class="country">Central Africa</li>
+        <li class="country">Chad</li>
+        <li class="country">Congo (Brazzaville)</li>
+        <li class="country">Congo, Democratic Republic Of</li>
+        <li class="country">Cote d’Ivoire</li>
+        <li class="country">Djibouti</li>
+        <li class="country">Egypt</li>
+        <li class="country">Equatorial Guinea</li>
+        <li class="country">Eritrea</li>
+        <li class="country">Ethiopia</li>
+        <li class="country">Gabon</li>
+        <li class="country">Ghana</li>
+        <li class="country">Guinea</li>
+        <li class="country">Guinea-Bissau</li>
+        <li class="country">Kenya</li>
+        <li class="country">Lesotho</li>
+        <li class="country">Liberia</li>
+        <li class="country">Libya</li>
+        <li class="country">Madagascar</li>
+        <li class="country">Malawi</li>
+        <li class="country">Mali</li>
+        <li class="country">Mauritania</li>
+        <li class="country">Morocco</li>
+        <li class="country">Mozambique</li>
+        <li class="country">Namibia</li>
+        <li class="country">Niger</li>
+        <li class="country">Nigeria</li>
+        <li class="country">Rwanda</li>
+        <li class="country">Senegal</li>
+        <li class="country">Sierra Leone</li>
+        <li class="country">Somalia</li>
+        <li class="country">South Africa</li>
+        <li class="country">Sudan</li>
+        <li class="country">Swaziland</li>
+        <li class="country">Tanzania</li>
+        <li class="country">The Gambia</li>
+        <li class="country">Togo</li>
+        <li class="country">Tunisia</li>
+        <li class="country">Uganda</li>
+        <li class="country">Western Sahara</li>
+        <li class="country">Zambia</li>
+        <li class="country">Zimbabwe</li>
+      </ul>
+    </div>
+    <div class="col-sm-8">
+      <%= render "partials/map_africa" %>
+    </div>
+  </div>
+
+  <pre><div class="test_div_to_show">0</div></pre>
+
+  <pre><div class="test_div_to_show2" style="border: solid red 2px">0</div></pre>

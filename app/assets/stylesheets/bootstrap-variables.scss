@@ -28,13 +28,22 @@ $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 $light-base: #d3dbde;
 $light-lighter: lighten($light-base, 11%);
 
-$brand-primary:         #be3c00 !default; //red
-$brand-success:         #c77f22 !default; //orange
-$brand-info:            #bb8e39 !default; //tan
-$brand-warning:         #445444 !default; //dark green
-$brand-danger:          #b30606 !default; //bright red
+// $brand-primary:         #be3c00 !default; //red
+// $brand-success:         #c77f22 !default; //orange
+// $brand-info:            #bb8e39 !default; //tan
+// $brand-warning:         #445444 !default; //dark green
+// $brand-danger:          #b30606 !default; //bright red
 
-$nav-accent:            #f5e898 !default; //yellow
+// $nav-accent:            #f5e898 !default; //yellow
+
+//alt colors from illustration
+$brand-primary:         #8E0917 !default; //red
+$brand-success:         #F06A16 !default; //orange
+$brand-info:            #164889 !default; //blue
+$brand-warning:         #559927 !default; //lightish green
+$brand-danger:          #40247E !default; //purple
+
+$nav-accent:            #F5CF0A !default; //yellow
 
 
 //== Scaffolding
@@ -65,7 +74,7 @@ $font-family-serif:            Georgia, "Times New Roman", Times, serif !default
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif-body !default;
 
-$font-size-base:          20px !default;
+$font-size-base:          18px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -387,7 +396,7 @@ $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2
 $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #ffffff !default;
-$navbar-default-bg:                rgba($brand-warning, .95) !default;
+$navbar-default-bg:                $brand-info !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
@@ -413,7 +422,7 @@ $navbar-default-toggle-border-color:       #ddd !default;
 //=== Inverted navbar
 // Reset inverted navbar basics
 $navbar-inverse-color:                      lighten($gray-light, 15%) !default;
-$navbar-inverse-bg:                         #222 !default;
+$navbar-inverse-bg:                         darken($brand-info, 10%) !default;
 $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 
 // Inverted navbar links

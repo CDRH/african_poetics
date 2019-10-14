@@ -30,8 +30,8 @@ default: &default
     # SECTIONS
     # List of section names corresponding to YAML files in config/sections/
     # YAML file contains api_options and facets values applied section-wide
-    # sections:
-    #   - section_name
+    sections:
+      - contemporarypoets
 
   api_options:
     # example of default filter for all queries
@@ -75,7 +75,7 @@ default: &default
         flags:
           - search_filter
       person.name:
-        label: People
+        label: Poet
         flags:
           - search_filter
       languages:
