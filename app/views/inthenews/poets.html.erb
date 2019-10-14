@@ -1,0 +1,84 @@
+<h1>The African Poets and Poetry in the News</h1>
+
+<%= render "inthenews/top_include" %>
+
+<h2>Poets</h2>
+
+<div class="row">
+  <div class="col-md-5">
+  
+    <label for="exampleInput">Search Poets</label>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+
+
+    <ul class="timeslider">
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+      <li>D</li>
+      <li>E</li>
+      <li>F</li>
+      <li>G</li>
+      <li>H</li>
+      <li>I</li>
+      <li>J</li>
+      <li>K</li>
+      <li>L</li>
+      <li>M</li>
+      <li>N</li>
+      <li>O</li>
+      <li>P</li>
+      <li>Q</li>
+      <li>R</li>
+      <li>S</li>
+      <li>T</li>
+      <li>U</li>
+      <li>V</li>
+      <li>W</li>
+      <li>X</li>
+      <li>Y</li>
+      <li>Z</li>
+    </ul>
+    <p>Search by first letter of last name</p>
+
+
+    <ul class="timeslider">
+      <li>1864</li>
+      <li>1920</li>
+      <li>1900</li>
+      <li>1940</li>
+      <li>1960</li>
+      <li>1980</li>
+      <li>2000</li>
+    </ul>
+    <p>Search by decade by sliding the timeline to see the distribution of the Poets who had events in the news during that time period.</p>
+
+    
+  </div>
+
+  <div class="col-md-5">
+
+    <%= render "partials/map_africa" %>
+
+    <p>Browse by location<br/>
+  Select a location to see the distribution of poets in the news around the continent</p>
+  </div>
+
+  <div class="col-md-2 inthenews_sidebar">
+    <h3>Nigeria</h3>
+
+    <ul>
+      <li><strong><%= link_to "Soyinka, Wole", inthenews_wolesoyinkamain_path %></strong></li>
+      <li>Clark, John Pepper</li>
+      <li>Echerup, Michael J.C.</li>
+      <li>Ogundipe-Leslie, Omolara</li>
+      <li>Okara, Gabriel</li>
+      <li>Okigbo, Christopher</li>
+    </ul>
+  </div>
+</div>

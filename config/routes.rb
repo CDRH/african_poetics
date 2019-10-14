@@ -24,6 +24,30 @@ Rails.application.routes.draw do
     get '/', to: 'inthenews#home', as: :inthenews_home,
       defaults: { section: "inthenews" }
 
+    # Wireframes
+    get '/poets', to: 'inthenews#poets', as: :inthenews_poets,
+      defaults: { section: "inthenews" }
+    get '/events', to: 'inthenews#events', as: :inthenews_events,
+      defaults: { section: "inthenews" }
+    get '/news', to: 'inthenews#news', as: :inthenews_news,
+      defaults: { section: "inthenews" }
+    get '/relationships', to: 'inthenews#relationships', as: :inthenews_relationships,
+      defaults: { section: "inthenews" }
+    get '/about', to: 'inthenews#about', as: :inthenews_about,
+      defaults: { section: "inthenews" }
+
+    get '/poets/wolesoyinkamain', to: 'inthenews#wolesoyinkamain', as: :inthenews_wolesoyinkamain,
+      defaults: { section: "inthenews" }
+    get '/poets/wolesoyinkaevents', to: 'inthenews#wolesoyinkaevents', as: :inthenews_wolesoyinkaevents,
+      defaults: { section: "inthenews" }
+
+    get '/events/ap.ev.001', to: 'inthenews#event001', as: :inthenews_event001,
+      defaults: { section: "inthenews" }
+    get '/events/ap.item.001', to: 'inthenews#item001', as: :inthenews_item001,
+      defaults: { section: "inthenews" }
+
+      
+
     Orchid::Routing.draw(section: 'inthenews',
       routes: ["browse", "browse_facet", "search"], scope: '/inthenews')
   end

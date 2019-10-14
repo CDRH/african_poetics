@@ -1,15 +1,40 @@
 <h1>The African Poets and Poetry in the News</h1>
 
-<p>Coming soon</p>
+<%= render "inthenews/top_include" %>
 
-<p><strong>African Poets and Poetry in the News</strong> is a database of news articles and artifacts that are related to African poets and poetry. This digital project augments existing work on the history of African poetry and preserves news articles, interviews, images, reviews and any references to African poetry in major historical African Newspapers and also in British (colonial) Newspapers from 1865- 1985.</p>
- 
-<p><strong>African Poetry in the Mother Country: A Survey of African Poetry in the London Times, Sunday Times, the Financial Times and the Times Literary Supplement: 1865-1985</strong></p>
+</div>
+<div class="container-fluid home_container">
 
-<p>The first section of African Poets and Poetry in the News gathers together documents and artifacts that offer an insightful view of how African poetry was portrayed through colonial British news from 1865-1985.</p>
+<div class="row">
+  <div class="col-md-6">
 
+    <p>African Poetry and Poetics in the News  explores how depictions of African poetry in the news media have influenced and shaped perceptions of what African poetry is in the 21st century.  It facilitates and supports current research relating to Poetry and Revolution, Race and Poetry, and Poetry and Migration as it relates to the African continent and cultures.</p>
 
+    <p>This first installment “African Poetry and Poetics in the Mother Country: A survey of African Poetry in the Londont TImes, Sunday Times, Financial TImes and the TImes Literay Supplement 1865-1985” contains commentary , critical articles, interviews, images, reviews and any references to African poetics in three British (colonial) newspapers; The London Times , The Financial Times and the Sunday Times Newspapers  from 1864-1978.</p>
 
+    <div class="row">
+      <%= link_to inthenews_poets_path do %>
+        <div class="col-sm-6 home_callout home_callout_1">
+          <p>Browse Poets</p>
+        </div>
+      <% end %>
+      <%= link_to inthenews_events_path do %>
+        <div class="col-sm-6 home_callout home_callout_2">
+          <p>Browse Events</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= link_to inthenews_news_path do %>
+        <div class="col-sm-12 home_callout home_callout_3">
+          <p>Browse News</p>
+        </div>
+      <% end %>
+    </div>
 
+  </div>
 
-
+  <div class="col-md-6">
+    <%= render "partials/map_africa" %>
+  </div>
+</div>
