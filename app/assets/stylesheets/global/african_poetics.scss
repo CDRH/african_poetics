@@ -122,12 +122,6 @@ h1, .h1 {
   min-height: 100vh;
 }
 
-// .site_home #content-wrapper {
-//   margin: 0;
-//   padding: 0;
-//   display: inline;
-// }
-
 #content-wrapper, .home_container {
   background-color: rgba(255,255,255,.7);
   flex-grow:1;
@@ -139,17 +133,17 @@ h1, .h1 {
 
 #header {
   text-align: center; 
+
   a:hover {
     text-decoration: none;
   }
 }
 
 .site-title-container {
-  //background-color: rgba($gray-light,.2);
+  background-color: rgba(255,255,255,.6 );
+  box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
   line-height: 1em;
   padding: 1em;
-  background-color: rgba(255,255,255,.6 );
-    box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
 
   .h1, .h2 {
     margin: 0;
@@ -160,29 +154,15 @@ $site-title-shadow: darken($brand-info, 30%);
   .site-title {
     font-size: 1.5em;
     text-shadow:
-      // 4px -4px 0 rgba($site-title-shadow, .2), 
-      // 3px -3px 0 rgba($site-title-shadow, .2), 
-      // 2px -2px 0 rgba($site-title-shadow, .2), 
-      // 1px -1px 0 rgba($site-title-shadow, .2),
-      -4px 4px 0 rgba($site-title-shadow, .2), 
-      // -3px 3px 0 rgba($site-title-shadow, .2), 
-      // -2px 2px 0 rgba($site-title-shadow, .2), 
-      // -1px 1px 0 rgba($site-title-shadow, .2)
-    ;
+      -4px 4px 0 rgba($site-title-shadow, .2);
   }
 
   .site-subtitle {
-    font-size: 1em;
     color: mix($brand-primary, $gray-base, 80%);
-    display:block;
+    display: block;
+    font-size: 1em;
   }
 }
-
-// .navbar-default {
-//   border: solid 3px mix($brand-warning, $nav-accent, 70%);
-//   border-right: none;
-//   border-left: none;
-// }
 
 .navbar-container {
   display: flex;
@@ -243,11 +223,18 @@ $site-title-shadow: darken($brand-info, 30%);
   }
 }
 
-// Browse
+// Item
 
 .item_title {
   text-align: center;
-  margin-bottom: 1.5em;
+  padding-bottom: 0;
+}
+
+.item_subtitle {
+  text-align: center;
+  margin-top:0;
+  padding-top: 0;
+  font-size: 1.8em;
 }
 
 .browse_div .tab-pane {
@@ -258,18 +245,24 @@ $site-title-shadow: darken($brand-info, 30%);
   width: 50%;
 }
 
+.metadata {
+  margin-top: 40px;
+  flex-grow: 1;
+}
+
+.poet_metadata_contain {
+  display: flex;
+}
+
+.poet_image {
+  border: 2px solid #aaa;
+}
+
 // SVG Styling
 
 svg {
   width: 100%;
 }
-
-// $brand-primary:         #be3c00 !default; //red
-// $brand-success:         #c77f22 !default; //orange
-// $brand-info:            #bb8e39 !default; //tan
-// $brand-warning:         #445444 !default; //dark green
-// $brand-danger:          #b30606 !default; //bright red
-// $nav-accent:            #f5e898 !default; //yellow
 
 svg path:nth-child(9n + 1) {
   fill: $brand-primary;
@@ -324,15 +317,14 @@ svg #ng path {
 // Styles pulled from SVG
 
 svg path.circle {
-  opacity:.5;
-  fill: $brand-primary;
   fill-opacity:.5;
-  stroke: $brand-primary;
-  stroke-width:10;
-  // stroke-miterlimit:3.97446823;
+  fill: $brand-primary;
+  opacity: 0;
+  opacity:.5;
   stroke-dasharray:none;
   stroke-opacity:.5;
-  opacity: 0;
+  stroke-width:10;
+  stroke: $brand-primary;
 }
 
 // Hide Island countris for now 
@@ -344,13 +336,11 @@ svg path.circle {
 // Land
 
 .land {
-  // fill: #b9b9b9;
-  // fill-opacity: 1;
-  stroke:black;
+  stroke-dasharray: none;
+  stroke-miterlimit: 3.97446823;
   stroke-opacity: 1;
   stroke-width:0.6;
-  stroke-miterlimit: 3.97446823;
-  stroke-dasharray: none;
+  stroke:black;
 }
 
 //Styles for coastlines of islands with no borders
@@ -387,16 +377,16 @@ svg path.re {
 // mapdemo page
 
 ul.country_list {
+  columns: 2;
+  font-size: .9em;
+  line-height: 1.2em;
+  list-style: none;
   margin: 0 0 2em 0;
   padding: 0;
-  list-style: none;
-  line-height: 1.2em;
-  font-size: .9em;
-  columns: 2;
 
   li {
-    padding: .05em .1em;
     padding-left: 1.2em;
+    padding: .05em .1em;
     text-indent: -1em;
   } 
 }
@@ -407,16 +397,16 @@ ul.country_list {
 }
 
 .country_highlight {
-  fill: red !important;
   fill-opacity: 1;
-  stroke: red !important;
-  stroke-width: 1;
+  fill: red !important;
   stroke-opacity: 1;
+  stroke-width: 1;
+  stroke: red !important;
 }
 
 .svg_hover {
-  fill: red !important;
   cursor: pointer;
+  fill: red !important;
 }
 
 #content-wrapper {
@@ -436,109 +426,56 @@ ul.country_list {
     
   }
   .navbar-default {
-    //display: none;
     border: none;
   }
 
   #header {
-    //  a:hover {
-    //   color: $brand-primary;
-    // }
     background-color: $brand-info;
+    background-image: image-url("home/swirl_pattern.png");
+    box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
 
     .site-subtitle {
       display: none;
     }
   }
 
-  body {
-    //background-image: image-url("home/Portal_Cover.jpg");
-    //background-size: cover;
-    //background-position: top;
-  }
-
   .home_illustration {
     background-image: image-url("home/Portal_Cover_cropped.jpg");
-    background-size: cover;
     background-position: top;
-    height: 350px;
-
-    // margin-top: -100px;
-    z-index: -1;
-    border: solid 1px $brand-info;
-    border-right: none;
+    background-size: cover;
     border-left: none;
-
+    border-right: none;
+    border: solid 1px $brand-info;
+    height: 350px;
+    z-index: -1;
   }
 
   .home_callout_links {
-    margin-top: -50px;
     box-shadow: 0px 0px 14px 0px rgba(0,0,0,1);
     margin-bottom: 20px;
+    margin-top: -50px;
   }
 
   #content-wrapper {
     background-color: transparent;
     margin-bottom: 30px;
-    
   }
 
   .home_para {
-    text-align: center;
     background-color: rgba(255,255,255,.6 );
     box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
     padding: 20px;
+    text-align: center;
   }
-
-  p {
-      // background-color: rgba(255,255,255,.85);
-      // padding: 1em;
-      // // margin-bottom: 2em;
-      // font-size: 1.2em;
-      // border: double 5px #161245;
-      // text-align: center;
-    }
 
   .site-title-container {
     background: none;
     box-shadow: none;
 
     .site-title {
-
+      color: #fff;
       margin-bottom: 50px;
       margin-top: 20px;
-      color: #fff;
-
-      // $t_n_x: 0;
-      // $t_n_y: 0;
-      // $t_n_spread: 1.2em;
-      // $t_n_color: white;
-
-      // text-shadow:  
-      //   4px -4px 0 rgba($nav-accent, .2), 
-      //   3px -3px 0 rgba($nav-accent, .2), 
-      //   2px -2px 0 rgba($nav-accent, .2), 
-      //   1px -1px 0 rgba($nav-accent, .2),
-      //   -4px 4px 0 rgba($nav-accent, .2), 
-      //   -3px 3px 0 rgba($nav-accent, .2), 
-      //   -2px 2px 0 rgba($nav-accent, .2), 
-      //   -1px 1px 0 rgba($nav-accent, .2),
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color,
-      //   $t_n_x $t_n_y $t_n_spread $t_n_color
-      //   ;
     }
   }
 }

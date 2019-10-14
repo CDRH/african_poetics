@@ -1,21 +1,6 @@
 <h1>Browse Poets By:</h1>
 
-<!-- Adding extra buttons -->
 
-<div class="row buffer-bottom-lg">
-    <div class="col-md-6">
-        <%= link_to country_path, html_options = {"aria-controls": "country_map",
-          class: "btn btn-lg btn-block btn-default"} do %>
-          Country Map
-        <% end %>
-      </div>
-      <div class="col-md-6">
-        <%= link_to region_path, html_options = {"aria-controls": "region_map",
-          class: "btn btn-lg btn-block btn-default"} do %>
-          Region Map
-        <% end %>
-      </div>
-  </div>
 
 <!-- buttons generated from yaml file -->
 
@@ -37,6 +22,24 @@
   
   
 <% end %>
+
+
+<!-- Adding extra buttons -->
+
+<div class="row buffer-bottom-lg">
+    <div class="col-md-6">
+        <%= link_to country_path, html_options = {"aria-controls": "country_map",
+          class: "btn btn-lg btn-block btn-default"} do %>
+          Country Map
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <%= link_to region_path, html_options = {"aria-controls": "region_map",
+          class: "btn btn-lg btn-block btn-default"} do %>
+          Region Map
+        <% end %>
+      </div>
+  </div>
 
   <!-- Adding featured link -->
   <div class="row buffer-bottom-lg">
