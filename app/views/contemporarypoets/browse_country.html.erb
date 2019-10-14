@@ -1,148 +1,6 @@
-<%# call like below, see https://html.spec.whatwg.org/#the-script-element %>
-<%# var stuff = JSON.parse(document.getElementById('stuff').innerHTML); %>
-
-<script type="application/json" id="country_lookup">
-{
-  "countrycodes": {
-    "Algeria": "DZ",
-    "Angola": "AO",
-    "Benin": "BJ",
-    "Botswana": "BW",
-    "Burkina Faso": "BF",
-    "Burundi": "BI",
-    "Cameroon": "CM",
-    "Central Africa": "CF",
-    "Chad": "TD",
-    "Congo (Brazzaville)": "CG",
-    "Congo, Democratic Republic Of": "CD",
-    "Cote d’Ivoire": "CI",
-    "Djibouti": "DJ",
-    "Egypt": "EG",
-    "Equatorial Guinea": "GQ",
-    "Eritrea": "ER",
-    "Ethiopia": "ET",
-    "Gabon": "GA",
-    "Ghana": "GH",
-    "Guinea": "GN",
-    "Guinea-Bissau": "GW",
-    "Kenya": "KE",
-    "Lesotho": "LS",
-    "Liberia": "LR",
-    "Libya": "LY",
-    "Madagascar": "MG",
-    "Malawi": "MW",
-    "Mali": "ML",
-    "Mauritania": "MR",
-    "Morocco": "MA",
-    "Mozambique": "MZ",
-    "Namibia": "NA",
-    "Niger": "NE",
-    "Nigeria": "NG",
-    "Rwanda": "RW",
-    "Senegal": "SN",
-    "Sierra Leone": "SL",
-    "Somalia": "SO",
-    "South Africa": "ZA",
-    "Sudan": "SD",
-    "Swaziland": "SZ",
-    "Tanzania": "TZ",
-    "The Gambia": "GM",
-    "Togo": "TG",
-    "Tunisia": "TN",
-    "Uganda": "UG",
-    "Western Sahara": "EH",
-    "Zambia": "ZM",
-    "Zimbabwe": "ZW",
-    "Cape Verde": "CV",
-    "Mauritius": "MU",
-    "Réunion": "RE",
-    "Saint Helena": "SH-HL",
-    "Sao Tome & Principe": "ST",
-    "Seychelles": "SC"
-  },
-  "regions": {
-    "Eastern Africa": [
-      "Burundi",
-      "Comoros",
-      "Djibouti",
-      "Eritrea",
-      "Ethiopia",
-      "Kenya",
-      "Madagascar",
-      "Malawi",
-      "Mauritius",
-      "Mayotte",
-      "Mozambique",
-      "Reunion",
-      "Rwanda",
-      "Seychelles",
-      "Somalia",
-      "Tanzania, United Republic of",
-      "Uganda",
-      "Zambia",
-      "Zimbabwe"
-    ],
-    "Middle Africa": [
-      "Angola",
-      "Cameroon",
-      "Central African Republic",
-      "Chad",
-      "Congo (Brazzaville)",
-      "Congo, Democratic Republic of the",
-      "Equatorial Guinea",
-      "Gabon",
-      "Sao Tome and Principe"
-    ],
-    "Western Africa": [
-      "Benin",
-      "Burkina Faso",
-      "Cape Verde",
-      "Cote d’Ivoire (Ivory Coast)",
-      "Gambia",
-      "Ghana",
-      "Guinea",
-      "Guinea-Bissau",
-      "Liberia",
-      "Mali",
-      "Mauritania",
-      "Niger",
-      "Nigeria",
-      "Saint Helena",
-      "Senegal",
-      "Sierra Leone",
-      "Togo"
-    ],
-    "Northern Africa": [
-      "Algeria",
-      "Egypt",
-      "Libyan Arab Jamahiriya",
-      "Morocco",
-      "South Sudan",
-      "Sudan",
-      "Tunisia",
-      "Western Sahara",
-      "Botswana",
-      "Lesotho",
-      "Namibia",
-      "South Africa ",
-      "Swaziland"
-    ],
-    "Southern Africa": [
-      "Botswana",
-      "Lesotho",
-      "Namibia",
-      "South Africa",
-      "Swaziland"
-    ]
-  }
-}
-</script>
-
 <script>
 
-var json_parse = JSON.parse(document.getElementById('country_lookup').innerHTML);
-var countrylookup = json_parse.countrycodes;
-var regionlookup = json_parse.regions;
+var countrylookup = <%= JSON.pretty_generate(COUNTRY_CODES).html_safe %>;
 var urlpiece = "../search?f[]=places|"
 
 // Hover over country names and highlight SVG
@@ -257,17 +115,18 @@ $(document).ready(function() {
         <li class="country">Burkina Faso</li>
         <li class="country">Burundi</li>
         <li class="country">Cameroon</li>
-        <li class="country">Central Africa</li>
+        <li class="country">Central African Republic</li>
         <li class="country">Chad</li>
         <li class="country">Congo (Brazzaville)</li>
-        <li class="country">Congo, Democratic Republic Of</li>
-        <li class="country">Cote d’Ivoire</li>
+        <li class="country">Congo, Democratic Republic of the</li>
+        <li class="country">Cote d’Ivoire (Ivory Coast)</li>
         <li class="country">Djibouti</li>
         <li class="country">Egypt</li>
         <li class="country">Equatorial Guinea</li>
         <li class="country">Eritrea</li>
         <li class="country">Ethiopia</li>
         <li class="country">Gabon</li>
+        <li class="country">Gambia, The</li>
         <li class="country">Ghana</li>
         <li class="country">Guinea</li>
         <li class="country">Guinea-Bissau</li>
@@ -292,7 +151,6 @@ $(document).ready(function() {
         <li class="country">Sudan</li>
         <li class="country">Swaziland</li>
         <li class="country">Tanzania</li>
-        <li class="country">The Gambia</li>
         <li class="country">Togo</li>
         <li class="country">Tunisia</li>
         <li class="country">Uganda</li>
