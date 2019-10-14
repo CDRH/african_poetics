@@ -14,7 +14,7 @@
     "Central Africa": "CF",
     "Chad": "TD",
     "Congo (Brazzaville)": "CG",
-    "Congo Democratic Republic Of": "CD",
+    "Congo, Democratic Republic Of": "CD",
     "Cote d’Ivoire": "CI",
     "Djibouti": "DJ",
     "Egypt": "EG",
@@ -143,60 +143,51 @@
 var json_parse = JSON.parse(document.getElementById('country_lookup').innerHTML);
 var countrylookup = json_parse.countrycodes;
 var regionlookup = json_parse.regions;
-
-// TEST CODE 
-
-// var teststring3 = JSON.stringify( { countrylookup }, null, 2);
-// var teststring4 = JSON.stringify( { regionlookup }, null, 2);
-
-// $(document).ready(function() {
-//   $( ".test_div_to_show" ).text(teststring3);
-// });
-
-// $(document).ready(function() {
-//   $( ".test_div_to_show2" ).text(teststring4);
-// });
-
-
-
-//end TEST CODE
-
-// Create a version of the lookup where country code is first
-var countrylookup_inverse = {};
-for (var letter in countrylookup) {
-    var code = countrylookup[letter];
-    countrylookup_inverse[code] = letter;
-}
-
 var urlpiece = "../search?f[]=places|"
 
 // Hover over country names and highlight SVG
 $(document).ready(function() {
+
+  // KE -> Specific list element with the inner text Kenya
+  function selectCountryElementByCode(code) {
+    var countryName = selectCountryNameByCode(code);
+    return $(".country").filter(function() {
+      return $(this).text() == countryName;
+    });
+  }
+
+  // KE -> Kenya
+  function selectCountryNameByCode(code) {
+    for (var countryName in countrylookup) {
+      if (countrylookup[countryName] == code.toUpperCase()) {
+        return countryName;
+      }
+    }
+  }
+
   $(".country").hover(
     function () {
-      var urlstring = $(this).text();
-      var countrycode = countrylookup[urlstring];
-      var lc_countrycode = countrycode.toLowerCase();
+      var countryName = $(this).text();
+      var countryCode = countrylookup[countryName].toLowerCase();
       // The following highlights both countries that are paths themselves 
       // and countries that are paths inside groups
-      $( "svg path#" + lc_countrycode ).addClass("country_highlight");
-      $( "svg #" + lc_countrycode + " path" ).addClass("country_highlight");
+      $( "svg path#" + countryCode ).addClass("country_highlight");
+      $( "svg #" + countryCode + " path" ).addClass("country_highlight");
       $(this).addClass("element_hover");
     },
     function () {
-      var urlstring = $(this).text();
-      var countrycode = countrylookup[urlstring];
-      var lc_countrycode = countrycode.toLowerCase();
-      $( "svg path#" + lc_countrycode ).removeClass("country_highlight");
-      $( "svg #" + lc_countrycode + " path" ).removeClass("country_highlight");
+      var countryName = $(this).text();
+      var countryCode = countrylookup[countryName].toLowerCase();
+      $( "svg path#" + countryCode ).removeClass("country_highlight");
+      $( "svg #" + countryCode + " path" ).removeClass("country_highlight");
       $(this).removeClass("element_hover");
     }
   );
 
-    $(".country").click(function() {
-    var countryname = $(this).text();
-    var href = countryname.replace(/ /g, '+');
-    var fullurl = urlpiece + href
+  $(".country").click(function() {
+    var countryName = $(this).text();
+    var href = countryName.replace(/ /g, '+');
+    var fullurl = urlpiece + href;
 
     window.location = fullurl;  
   });
@@ -204,17 +195,13 @@ $(document).ready(function() {
   // Highlight country name when hovering over country that is path
   $("svg > g > path").hover(
     function () {
-      var countrycode = $(this).attr('id');
-      var countrycodematch = countrycode.toUpperCase();
-      var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").addClass("element_hover");
+      var $country = selectCountryElementByCode($(this).attr("id"));
+      $country.addClass("element_hover");
       $(this).addClass("svg_hover");
     },
     function () {
-      var countrycode = $(this).attr('id');
-      var countrycodematch = countrycode.toUpperCase();
-      var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").removeClass("element_hover");
+      var $country = selectCountryElementByCode($(this).attr("id"));
+      $country.removeClass("element_hover");
       $(this).removeClass("svg_hover");
     }
   );
@@ -223,37 +210,31 @@ $(document).ready(function() {
   // path inside a group
   $("svg > g > g").hover(
     function () {
-      var countrycode = $(this).attr('id');
-      var countrycodematch = countrycode.toUpperCase();
-      var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").addClass("element_hover");
+      var $country = selectCountryElementByCode($(this).attr("id"));
+      $country.addClass("element_hover");
       $(this).children("path").addClass("svg_hover");
     },
     function () {
-      var countrycode = $(this).attr('id');
-      var countrycodematch = countrycode.toUpperCase();
-      var countryname = countrylookup_inverse[countrycodematch];
-      $(".country:contains(" + countryname + ")").removeClass("element_hover");
+      var $country = selectCountryElementByCode($(this).attr("id"));
+      $country.removeClass("element_hover");
       $(this).removeClass("svg_hover");
       $(this).children("path").removeClass("svg_hover");
     }
   );
 
   $("svg > g > path").click(function() {
-    var countrycode = $(this).attr('id');
-    var countrycodematch = countrycode.toUpperCase();
-    var countryname = countrylookup_inverse[countrycodematch];
-    var href = countryname.replace(/ /g, '+');
+    var countryCode = $(this).attr('id');
+    var countryName = selectCountryNameByCode(countryCode);
+    var href = countryName.replace(/ /g, '+');
     var fullurl = urlpiece + href
 
     window.location = fullurl;  
   });
 
   $("svg > g > g > path").click(function() {
-    var countrycode = $(this).parent("g").attr('id');
-    var countrycodematch = countrycode.toUpperCase();
-    var countryname = countrylookup_inverse[countrycodematch];
-    var href = countryname.replace(/ /g, '+');
+    var countryCode = $(this).parent("g").attr("id");
+    var countryName = selectCountryNameByCode(countryCode);
+    var href = countryName.replace(/ /g, "+");
     var fullurl = urlpiece + href
 
     window.location = fullurl;  
