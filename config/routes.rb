@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
     get '/browse/country', to: 'contemporarypoets#browse_country', 
       as: 'country', defaults: { section: "contemporarypoets" }
-    get '/browse/region', to: 'contemporarypoets#browse_region', 
-      as: 'region', defaults: { section: "contemporarypoets" }
 
     # Faked Featured Section for now
     get '/browse/featured', to: 'contemporarypoets#featured', 
