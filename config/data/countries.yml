@@ -149,6 +149,7 @@ countries:
     region: Southern Africa
   # not on SVG
   South Sudan:
+    code: SS
     region: Northern Africa
   Sudan:
     code: SD
