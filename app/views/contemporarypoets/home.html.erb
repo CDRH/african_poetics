@@ -20,12 +20,12 @@
         <% end %>
       </div>
       <div class="row">
-        <%= link_to country_path do %>
+        <%= link_to contemporarypoets_browse_facet_path(facet: "places") do %>
           <div class="col-sm-6 home_callout home_callout_3">
-            <p>Browse by Country Map</p>
+            <p>Browse by Country</p>
           </div>
         <% end %>
-        <%= link_to region_path do %>
+        <%= link_to contemporarypoets_browse_facet_path(facet: "keywords") do %>
           <div class="col-sm-6 home_callout home_callout_4">
             <p>Browse by Region Map</p>
           </div>

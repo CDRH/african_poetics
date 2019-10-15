@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     get '/', to: 'contemporarypoets#home', as: :contemporarypoets_home,
       defaults: { section: "contemporarypoets" }
 
-    get '/browse/country', to: 'contemporarypoets#browse_country', 
-      as: 'country', defaults: { section: "contemporarypoets" }
-
     # Faked Featured Section for now
     get '/browse/featured', to: 'contemporarypoets#featured', 
       as: 'featured', defaults: { section: "contemporarypoets" }
