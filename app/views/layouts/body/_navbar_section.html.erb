@@ -17,6 +17,9 @@
           <li class="<%= active?(search_path) %>">
             <%= link_to t("search.title", default: "Search"), prefix_path("search_path"), rel: "search" %>
           </li>
+          <li class="<%= active?(search_path) %>">
+            <%= link_to "About", contemporarypoets_about_path, rel: "about" %>
+          </li>
         </ul>
       </div>
     </div><!-- /navbar -->
