@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     get '/browse/featured', to: 'contemporarypoets#featured', 
       as: 'featured', defaults: { section: "contemporarypoets" }
 
+    get '/about', to: 'contemporarypoets#about', 
+      as: 'contemporarypoets_about', defaults: { section: "contemporarypoets" }
+
+    get '/about/consultedsources', to: 'contemporarypoets#about_consultedsources', 
+      as: 'contemporarypoets_about_consultedsources', defaults: { section: "contemporarypoets" }
+
     Orchid::Routing.draw(section: 'contemporarypoets',
       routes: ["browse", "browse_facet", "search", "item"], scope: '/contemporarypoets')
   end
