@@ -1,0 +1,66 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<%= render "inthenews/top_include" %>
+
+<h2>Events</h2>
+
+<div class="row">
+  <div class="col-md-5">
+    
+    <label for="exampleInput">Search Events</label>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+
+    <p>Select a type of event to see the distribution of the news about these events on the continent.</p>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Event Type <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Professional</a></li>
+        <li><a href="#">Political</a></li>
+        <li><a href="#">Social</a></li>
+        <li><a href="#">Personal</a></li>
+      </ul>
+    </div>
+
+ <ul class="timeslider">
+      <li>1864</li>
+      <li>1920</li>
+      <li>1900</li>
+      <li>1940</li>
+      <li>1960</li>
+      <li>1980</li>
+      <li>2000</li>
+    </ul>
+    <p> <br/>Search by decade by sliding the timeline to see the distribution of the Poets who had events in the news during that time period.</p>
+
+     <p><strong>Example Event Page</strong></p>
+    <ul>
+      <li><%= link_to "Execution of Activist Ken Saro-Wiwa", inthenews_event001_path %></li>
+    </ul>
+
+  </div>
+
+  <div class="col-md-5">
+    <%= render "partials/map_africa" %>
+
+    <p>Select a country to see the distribution of the news about these events in the country.</p>
+
+  </div>
+
+  <div class="col-md-2 inthenews_sidebar">
+    <h3>News</h3>
+
+    <ul>
+      <li>Reviews (18)</li>
+      <li>Critical Articles (20)</li>
+      <li>News Reports (32)</li>
+    </ul>
+  </div>
+</div>
