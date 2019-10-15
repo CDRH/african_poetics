@@ -4,11 +4,8 @@ class ContemporarypoetsController < ApplicationController
     @title = "Title"
   end
 
-  def search
-
-  end
-
-  
-
+  # NOTE being overridden in items_override.rb
+  # def browse_facet
+  # end
 
 end

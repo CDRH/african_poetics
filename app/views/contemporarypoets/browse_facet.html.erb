@@ -6,6 +6,8 @@
 
 <h2><%= t "browse.browse_type", default: "Browse by" %> <%= @browse_facet_info["label"] %></h2>
 
+<%# deviation from orchid default: moving the tabs to a partial for
+    inclusion from other templates %>
 <%= render "contemporarypoets/browse_tabs" %>
 
 <div class="btn-group buffer-bottom-sm">
