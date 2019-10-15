@@ -50,13 +50,13 @@ $(document).ready(function() {
     function () {
       var regionCode = getRegionCodeFromClass($(this).attr("class"));
       var regionName = getRegionTextFromCode(regionCode);
-      $(".td.index_name > a:contains(" + regionName + ")").addClass("element_hover");
+      $(".index_name > a:contains(" + regionName + ")").addClass("element_hover");
       $("."+regionCode).addClass("svg_hover");
     },
     function () {
       var regionCode = getRegionCodeFromClass($(this).attr("class"));
       var regionName = getRegionTextFromCode(regionCode);
-      $(".td.index_name > a:contains(" + regionName + ")").removeClass("element_hover");
+      $(".index_name > a:contains(" + regionName + ")").removeClass("element_hover");
       $("."+regionCode).removeClass("svg_hover");
     }
   );
