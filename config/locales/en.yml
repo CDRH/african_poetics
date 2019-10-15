@@ -22,7 +22,7 @@ en:
     # <title>, meta application-name
     project_shortname: african_poetics
     # Header subtitle
-    project_subtitle: Contemporary African Poetics
+    project_subtitle:
 
   #########
   # ABOUT #
@@ -257,4 +257,4 @@ en:
   inthenews:
     title: African Poets and Poetry in the News
   About:
-      title: About
+    title: About
