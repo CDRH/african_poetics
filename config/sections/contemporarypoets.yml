@@ -32,6 +32,11 @@ default: &default
         label: Region
         flags:
           - search_filter
+      # NOTE the featured field will NEVER be searched
+      # and all functionality is being overridden by the browse_facet
+      # action
+      featured:
+        label: "Featured Poets"
 
 test:
   <<: *default

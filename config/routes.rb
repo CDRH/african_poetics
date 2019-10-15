@@ -7,10 +7,6 @@ Rails.application.routes.draw do
     get '/', to: 'contemporarypoets#home', as: :contemporarypoets_home,
       defaults: { section: "contemporarypoets" }
 
-    # Faked Featured Section for now
-    get '/browse/featured', to: 'contemporarypoets#featured', 
-      as: 'featured', defaults: { section: "contemporarypoets" }
-
     Orchid::Routing.draw(section: 'contemporarypoets',
       routes: ["browse", "browse_facet", "search", "item"], scope: '/contemporarypoets')
   end
