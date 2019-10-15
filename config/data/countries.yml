@@ -1,0 +1,180 @@
+countries:
+  Algeria:
+    code: DZ
+    region: Northern Africa
+  Angola:
+    code: AO
+    region: Middle Africa
+  Benin:
+    code: BJ
+    region: Western Africa
+  Botswana:
+    code: BW
+    region: Southern Africa
+  Burkina Faso:
+    code: BF
+    region: Western Africa
+  Burundi:
+    code: BI
+    region: Eastern Africa
+  Cameroon:
+    code: CM
+    region: Middle Africa
+  Cape Verde:
+    code: CV
+    region: Western Africa
+  Central African Republic:
+    code: CF
+    region: Middle Africa
+  Chad:
+    code: TD
+    region: Middle Africa
+  # not on SVG
+  Comoros, Union of the:
+    region: Eastern Africa
+  Congo (Brazzaville):
+    code: CG
+    region: Middle Africa
+  Congo, Democratic Republic of the:
+    code: CD
+    region: Middle Africa
+  Cote d’Ivoire (Ivory Coast):
+    code: CI
+    region: Western Africa
+  Djibouti:
+    code: DJ
+    region: Eastern Africa
+  Egypt:
+    code: EG
+    region: Northern Africa
+  Equatorial Guinea:
+    code: GQ
+    region: Middle Africa
+  Eritrea:
+    code: ER
+    region: Eastern Africa
+  Ethiopia:
+    code: ET
+    region: Eastern Africa
+  Gabon:
+    code: GA
+    region: Middle Africa
+  Gambia, The:
+    code: GM
+    region: Western Africa
+  Ghana:
+    code: GH
+    region: Western Africa
+  Guinea:
+    code: GN
+    region: Western Africa
+  Guinea-Bissau:
+    code: GW
+    region: Western Africa
+  Kenya:
+    code: KE
+    region: Eastern Africa
+  Lesotho:
+    code: LS
+    region: Southern Africa
+  Liberia:
+    code: LR
+    region: Western Africa
+  Libya:
+    code: LY
+    region: Northern Africa
+  # TODO this is not an existing country, should we
+  # mark it on the map with the Libya code LY?
+  Libyan Arab Jamahiriya:
+    region: Northern Africa
+  Madagascar:
+    code: MG
+    region: Eastern Africa
+  Malawi:
+    code: MW
+    region: Eastern Africa
+  Mali:
+    code: ML
+    region: Western Africa
+  Mauritania:
+    code: MR
+    region: Western Africa
+  Mauritius, Republic of:
+    code: MU
+    region: Eastern Africa
+  # not on SVG
+  Mayotte:
+    region: Eastern Africa
+  Morocco:
+    code: MA
+    region: Northern Africa
+  Mozambique:
+    code: MZ
+    region: Eastern Africa
+  Namibia:
+    code: NA
+    region: Southern Africa
+  Niger:
+    code: NE
+    region: Western Africa
+  Nigeria:
+    code: NG
+    region: Western Africa
+  Réunion:
+    code: RE
+    region: Eastern Africa
+  Rwanda:
+    code: RW
+    region: Eastern Africa
+  Saint Helena:
+    code: SH-HL
+    region: Western Africa
+  Sao Tome & Principe:
+    code: ST
+    region: Middle Africa
+  Senegal:
+    code: SN
+    region: Western Africa
+  Seychelles:
+    code: SC
+    region: Eastern Africa
+  Sierra Leone:
+    code: SL
+    region: Western Africa
+  Somalia:
+    code: SO
+    region: Eastern Africa
+  South Africa:
+    code: ZA
+    region: Southern Africa
+  # not on SVG
+  South Sudan:
+    code: SS
+    region: Northern Africa
+  Sudan:
+    code: SD
+    region: Northern Africa
+  Swaziland:
+    code: SZ
+    region: Southern Africa
+  Tanzania, United Republic of:
+    code: TZ
+    region: Eastern Africa
+  Togo:
+    code: TG
+    region: Western Africa
+  Tunisia:
+    code: TN
+    region: Northern Africa
+  Uganda:
+    code: UG
+    region: Eastern Africa
+  Western Sahara:
+    code: EH
+    region: Northern Africa
+  Zambia:
+    code: ZM
+    region: Eastern Africa
+  Zimbabwe:
+    code: ZW
+    region: Eastern Africa

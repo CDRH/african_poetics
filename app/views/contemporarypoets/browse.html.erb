@@ -1,7 +1,5 @@
 <h1>Browse Poets By:</h1>
 
-
-
 <!-- buttons generated from yaml file -->
 
 <% @page_facets.each_slice(2) do |slice| %>
@@ -17,36 +15,15 @@
       </div>
     <% end %>
   </div>
-
-
-  
   
 <% end %>
 
-
-<!-- Adding extra buttons -->
-
+<!-- Adding featured link -->
 <div class="row buffer-bottom-lg">
-    <div class="col-md-6">
-        <%= link_to country_path, html_options = {"aria-controls": "country_map",
-          class: "btn btn-lg btn-block btn-default"} do %>
-          Country Map
-        <% end %>
-      </div>
-      <div class="col-md-6">
-        <%= link_to region_path, html_options = {"aria-controls": "region_map",
-          class: "btn btn-lg btn-block btn-default"} do %>
-          Region Map
-        <% end %>
-      </div>
-  </div>
-
-  <!-- Adding featured link -->
-  <div class="row buffer-bottom-lg">
-    <div class="col-md-12">
-        <%= link_to featured_path, html_options = {"aria-controls": "featured",
-          class: "btn btn-lg btn-block btn-default"} do %>
-          Featured
-        <% end %>
-      </div>
-  </div>
+  <div class="col-md-12">
+      <%= link_to featured_path, html_options = {"aria-controls": "featured",
+        class: "btn btn-lg btn-block btn-default"} do %>
+        Featured
+      <% end %>
+    </div>
+</div>
