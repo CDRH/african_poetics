@@ -15,3 +15,49 @@
 #regions_map .Western_Africa { 
   fill: mix($brand-info, #fff, 70%);
 }
+
+// Interactivity for Region Browse 
+
+.element_hover, .element_hover a {
+  background-color: $brand-danger;
+  color: white !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.country_highlight {
+  fill-opacity: 1;
+  fill: $brand-danger !important;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  stroke: white !important;
+}
+
+.svg_hover {
+  cursor: pointer;
+  fill: $brand-danger !important;
+  stroke: white;
+}
+
+// map display for regions
+
+@media (min-width: $screen-phone) {
+  #keywords.tab-pane {
+    display: flex; // child elements are table and div#regions_map
+
+    .index_name {
+      white-space: nowrap;
+      a {
+        padding: 0 .3em;
+      }
+    }
+
+    #regions_map {
+      width: 100%;
+        svg {
+          margin-top: -40px;
+          max-height:60vh;
+      }
+    }
+  }
+}
