@@ -339,8 +339,8 @@ svg path.circle {
   stroke-dasharray: none;
   stroke-miterlimit: 3.97446823;
   stroke-opacity: 1;
-  stroke-width:0.6;
-  stroke:black;
+  stroke-width: 0.6;
+  stroke: black;
 }
 
 //Styles for coastlines of islands with no borders
@@ -391,22 +391,25 @@ ul.country_list {
   } 
 }
 
-.element_hover {
-  background-color: $nav-accent;
+.element_hover, .element_hover a {
+  background-color: $brand-danger;
+  color: white !important;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .country_highlight {
   fill-opacity: 1;
-  fill: red !important;
+  fill: $brand-danger !important;
   stroke-opacity: 1;
   stroke-width: 1;
-  stroke: red !important;
+  stroke: white !important;
 }
 
 .svg_hover {
   cursor: pointer;
-  fill: red !important;
+  fill: $brand-danger !important;
+  stroke: white;
 }
 
 #content-wrapper {
@@ -510,3 +513,31 @@ ul.country_list {
 
   }
 }
+
+// I could not narrow this down by page
+
+// make this not flex on mobile
+
+@media (min-width: $screen-phone) {
+  .site_contemporarypoets #keywords.tab-pane {
+    display: flex; // child elements are table and div#regions_map
+
+    .index_name {
+      white-space: nowrap;
+      a {
+        padding: 0 .3em;
+      }
+      
+    }
+
+    #regions_map {
+      width: 100%;
+        svg {
+          margin-top: -40px;
+          max-height:60vh;
+      }
+    }
+  }
+}
+
+

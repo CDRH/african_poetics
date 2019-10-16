@@ -1,15 +1,27 @@
+@import "bootstrap-variables";
+
+// $brand-primary:         #8E0917 !default; //red
+// $brand-success:         #F06A16 !default; //orange
+// $brand-info:            #164889 !default; //blue
+// $brand-warning:         #559927 !default; //lightish green
+// $brand-danger:          #40247E !default; //purple
+
+// $nav-accent:            #F5CF0A !default; //yellow
+
 #regions_map .Eastern_Africa {
-  fill: #88b868;
+  fill: mix($brand-success, #fff, 80%);
 }
 #regions_map .Middle_Africa {
-  fill: #F06A16;
+  fill: mix($nav-accent, #fff, 80%);
 }
 #regions_map .Northern_Africa {
-  fill: #F5CF0A;
+  fill: mix($brand-warning, #fff, 90%);
 }
 #regions_map .Southern_Africa {
-  fill: #8E0917;
+  fill: mix($brand-primary, #fff, 78%);
 }
-#regions_map .Western_Africa {
-  fill: #3C6B1B;
+#regions_map .Western_Africa { 
+  fill: mix($brand-info, #fff, 70%);
 }
+
+

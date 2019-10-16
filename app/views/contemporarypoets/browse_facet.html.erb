@@ -59,15 +59,14 @@
           <tbody>
         </table>
       <% end %>
-    </div>
+      <% if @browse_facet_info["label"] == "Region" %>
+        <%# include assets for map with regions %>
+        <% @ext_css = add_assets(@ext_css, "map_regions") %>
+        <% @ext_js = add_assets(@ext_js, "map_regions") %>
+        <div id="regions_map">
+          <%= render "partials/map_africa" %>
+        </div>
+      <% end %>
+    </div><%# /tabpanel %>
   <% end %>
 </div>
-
-<% if @browse_facet_info["label"] == "Region" %>
-  <%# include assets for map with regions %>
-  <% @ext_css = add_assets(@ext_css, "map_regions") %>
-  <% @ext_js = add_assets(@ext_js, "map_regions") %>
-  <div id="regions_map">
-    <%= render "partials/map_africa" %>
-  </div>
-<% end %>
