@@ -515,11 +515,12 @@ ul.country_list {
 }
 
 // I could not narrow this down by page
+// .site_contemporarypoets  does not stick from server to server
 
 // make this not flex on mobile
 
 @media (min-width: $screen-phone) {
-  .site_contemporarypoets #keywords.tab-pane {
+  #keywords.tab-pane {
     display: flex; // child elements are table and div#regions_map
 
     .index_name {
