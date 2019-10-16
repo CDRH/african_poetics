@@ -1,13 +1,5 @@
 @import "bootstrap-variables";
 
-// $brand-primary:         #8E0917 !default; //red
-// $brand-success:         #F06A16 !default; //orange
-// $brand-info:            #164889 !default; //blue
-// $brand-warning:         #559927 !default; //lightish green
-// $brand-danger:          #40247E !default; //purple
-
-// $nav-accent:            #F5CF0A !default; //yellow
-
 #regions_map .Eastern_Africa {
   fill: mix($brand-success, #fff, 80%);
 }
@@ -23,5 +15,3 @@
 #regions_map .Western_Africa { 
   fill: mix($brand-info, #fff, 70%);
 }
-
-
