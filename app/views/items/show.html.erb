@@ -7,7 +7,10 @@
   </h2>
 
   <%= render "show_metadata" %>
-  <%= render "show_content" %>
+
+  <% if @res["type"] == "Featured" %>
+    <%= render "show_content" %>
+  <% end %>
 
 <% else %>
 
