@@ -1,12 +1,7 @@
 <%# poet_metadata_contain exists so I can include image using the flex layout %>
 <div class="poet_metadata_contain">
-  <% if @res["type"] == "Featured" %>
-    <div class="poet_image pull-right">
-      <% imageloc = "poets/" + @res["identifier"] %>
-      <%= image_tag imageloc, height: "400" %>
-    </div>
-  <% end %>
 
+  <p>TESTING <%= @res["uri_html"] %></p>
   <%# pulling entirely from elasticsearch currently %>
   <div class="metadata">
     

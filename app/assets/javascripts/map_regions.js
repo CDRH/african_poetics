@@ -16,7 +16,7 @@ $(document).ready(function() {
     }
   }
 
-  function getRegionCodeFromText(text, replace_char="_") {
+  function getRegionCodeFromText(text, replace_char) {
     return text ? text.trim().replace(" ", replace_char) : null;
   }
 
@@ -30,12 +30,12 @@ $(document).ready(function() {
 
   $("td.index_name > a").hover(
     function () {
-      var regionCode = getRegionCodeFromText($(this).text());
+      var regionCode = getRegionCodeFromText($(this).text(), "_");
       $( "svg ." + regionCode).addClass("country_highlight");
       $(this).addClass("element_hover");
     },
     function () {
-      var regionCode = getRegionCodeFromText($(this).text());
+      var regionCode = getRegionCodeFromText($(this).text(), "_");
       $( "svg ." + regionCode).removeClass("country_highlight");
       $(this).removeClass("element_hover");
     }
