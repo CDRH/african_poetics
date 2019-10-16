@@ -271,8 +271,9 @@ $site-title-shadow: darken($brand-info, 30%);
   display: flex;
 }
 
-.poet_image {
+.poet_image img {
   border: 2px solid #aaa;
+  max-height: 400px;
 }
 
 // Region/Country map
