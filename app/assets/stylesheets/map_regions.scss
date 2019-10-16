@@ -1,15 +1,63 @@
+@import "bootstrap-variables";
+
 #regions_map .Eastern_Africa {
-  fill: #88b868;
+  fill: mix($brand-success, #fff, 80%);
 }
 #regions_map .Middle_Africa {
-  fill: #F06A16;
+  fill: mix($nav-accent, #fff, 80%);
 }
 #regions_map .Northern_Africa {
-  fill: #F5CF0A;
+  fill: mix($brand-warning, #fff, 90%);
 }
 #regions_map .Southern_Africa {
-  fill: #8E0917;
+  fill: mix($brand-primary, #fff, 78%);
 }
-#regions_map .Western_Africa {
-  fill: #3C6B1B;
+#regions_map .Western_Africa { 
+  fill: mix($brand-info, #fff, 70%);
+}
+
+// Interactivity for Region Browse 
+
+.element_hover, .element_hover a {
+  background-color: $brand-danger;
+  color: white !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.country_highlight {
+  fill-opacity: 1;
+  fill: $brand-danger !important;
+  stroke-opacity: 1;
+  stroke-width: 1;
+  stroke: white !important;
+}
+
+.svg_hover {
+  cursor: pointer;
+  fill: $brand-danger !important;
+  stroke: white;
+}
+
+// map display for regions
+
+@media (min-width: $screen-phone) {
+  #keywords.tab-pane {
+    display: flex; // child elements are table and div#regions_map
+
+    .index_name {
+      white-space: nowrap;
+      a {
+        padding: 0 .3em;
+      }
+    }
+
+    #regions_map {
+      width: 100%;
+        svg {
+          margin-top: -40px;
+          max-height:60vh;
+      }
+    }
+  }
 }

@@ -3,25 +3,67 @@ $screen-tablet: 720px;
 
 @import "bootstrap-variables";
 
-// $brand-primary:         #be3c00 !default; //red
-// $brand-success:         #c77f22 !default; //orange
-// $brand-info:            #bb8e39 !default; //tan
-// $brand-warning:         #445444 !default; //dark green
-// $brand-danger:          #b30606 !default; //bright red
-// $nav-accent:            #f5e898 !default; //yellow
+// temporary, until orchid is changed to not show language link
 
-// Site wide
-
-// temporary, until we can remove 
 .language_link {
   display: none;
 }
 
-.highlight {
-  background-color: red;
+
+// ------------
+// HTML
+// ------------
+
+body {
+  background-image: image-url("template/funky-lines.png"); 
+  height:100%;
 }
 
-// Home
+h2, .h2 {
+  font-weight: 100;
+}
+
+h1, .h1 {
+  font-weight: 900;
+}
+
+#body-wrapper {
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  min-height: 100vh;
+}
+
+#content-wrapper, .home_container {
+  background-color: rgba(255,255,255,.7);
+  flex-grow:1;
+  margin-bottom: 2em;
+
+}
+
+#content-wrapper {
+  padding-top: 20px;
+}
+
+//overwriting bootstrap default
+
+.nav > li {
+  display: inline-block;
+}
+
+.lead {
+  font-size: 1.3em;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+// ------------
+// Site Wide code
+// ------------
+
+// Callouts
 
 a .home_callout {
   color: $gray-base;
@@ -100,35 +142,6 @@ a .home_callout {
   }
 }
 
-// HTML
-
-body {
-  background-image: image-url("template/funky-lines.png"); 
-  height:100%;
-}
-
-h2, .h2 {
-  font-weight: 100;
-}
-
-h1, .h1 {
-  font-weight: 900;
-}
-
-#body-wrapper {
-  display:flex;
-  flex-direction:column;
-  height:100%;
-  min-height: 100vh;
-}
-
-#content-wrapper, .home_container {
-  background-color: rgba(255,255,255,.7);
-  flex-grow:1;
-  margin-bottom: 2em;
-
-}
-
 // Header
 
 #header {
@@ -201,6 +214,10 @@ $site-title-shadow: darken($brand-info, 30%);
  margin: 1em 0;
 }
 
+// ------------
+// Individual Pages
+// ------------
+
 // Author pages
 
 .author_data {
@@ -223,7 +240,7 @@ $site-title-shadow: darken($brand-info, 30%);
   }
 }
 
-// Item
+// Item page (currently CAP only)
 
 .item_title {
   text-align: center;
@@ -258,11 +275,13 @@ $site-title-shadow: darken($brand-info, 30%);
   border: 2px solid #aaa;
 }
 
-// SVG Styling
+// Region/Country map
 
 svg {
   width: 100%;
 }
+
+// Country Styling
 
 svg path:nth-child(9n + 1) {
   fill: $brand-primary;
@@ -314,7 +333,7 @@ svg #ng path {
   fill: $brand-primary;
 }
 
-// Styles pulled from SVG
+// Styles pulled from Wikipedia SVG
 
 svg path.circle {
   fill-opacity:.5;
@@ -339,8 +358,8 @@ svg path.circle {
   stroke-dasharray: none;
   stroke-miterlimit: 3.97446823;
   stroke-opacity: 1;
-  stroke-width:0.6;
-  stroke:black;
+  stroke-width: 0.6;
+  stroke: black;
 }
 
 //Styles for coastlines of islands with no borders
@@ -349,82 +368,49 @@ svg path.circle {
   stroke-width: 0.3;
 }
 
-// Additional style rules
-// The following are examples of colouring countries.  
-// You can substitute these with your own styles to colour 
-// the countries on the map.
-
-//Color a few small country circles (and the countries):
-
-//.ms, .ky {
-//  opacity:    1;
-//  fill:       #ff0000;
-// }
-
 // Remove european territories (i.e. Madeira, Reunion etc.)
 // Hiding these for now
+
 svg path.sh, 
 svg path.pt-30, 
 svg path.es-cn, 
 svg path.yt, 
 svg path.re {
   opacity: 0;
-  // fill: $brand-warning;
-  // fill-opacity:.5;
-  // stroke: $brand-warning;
 }
 
-// mapdemo page
+// African Poets and Poetry in the News
 
-ul.country_list {
-  columns: 2;
-  font-size: .9em;
-  line-height: 1.2em;
+.timeslider {
+  background-color: rgba($brand-success,.1);
+  border-bottom: solid 2px #aaa;
+  display: flex;
+  justify-content: space-between;
   list-style: none;
-  margin: 0 0 2em 0;
+  margin: 1.4em 0 0 0;
   padding: 0;
-
   li {
-    padding-left: 1.2em;
-    padding: .05em .1em;
-    text-indent: -1em;
-  } 
+    display: inline-block;
+    flex-basis: 1;
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.element_hover {
-  background-color: $nav-accent;
-  cursor: pointer;
+.inthenews_sidebar {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: .9em;
+
+  }
 }
 
-.country_highlight {
-  fill-opacity: 1;
-  fill: red !important;
-  stroke-opacity: 1;
-  stroke-width: 1;
-  stroke: red !important;
-}
-
-.svg_hover {
-  cursor: pointer;
-  fill: red !important;
-}
-
-#content-wrapper {
-  padding-top: 20px;
-}
-
-.lead {
-  font-size: 1.3em;
-}
-
-
-// SPLASH PAGE
+// Home Page
 
 .site_home {
 
-  .home_callout_links {
-    
-  }
   .navbar-default {
     border: none;
   }
@@ -477,36 +463,5 @@ ul.country_list {
       margin-bottom: 50px;
       margin-top: 20px;
     }
-  }
-}
-
-.navbar {
-  margin-bottom: 0;
-}
-
-
-.timeslider {
-  background-color: rgba($brand-success,.1);
-  border-bottom: solid 2px #aaa;
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  margin: 1.4em 0 0 0;
-  padding: 0;
-  li {
-    display: inline-block;
-    flex-basis: 1;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.inthenews_sidebar {
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: .9em;
-
   }
 }
