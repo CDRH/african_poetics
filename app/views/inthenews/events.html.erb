@@ -7,29 +7,16 @@
 <div class="row">
   <div class="col-md-5">
     
-    <label for="exampleInput">Search Events</label>
+    <label for="exampleInput">Search Events (coming soon)</label>
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">Go!</button>
       </span>
     </div><!-- /input-group -->
+    <%= link_to "Browse All Events", inthenews_search_events_path %>
 
-    <p>Select a type of event to see the distribution of the news about these events on the continent.</p>
-
-    <div class="btn-group">
-      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Event Type <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Professional</a></li>
-        <li><a href="#">Political</a></li>
-        <li><a href="#">Social</a></li>
-        <li><a href="#">Personal</a></li>
-      </ul>
-    </div>
-
- <ul class="timeslider">
+<!--     <ul class="timeslider">
       <li>1864</li>
       <li>1920</li>
       <li>1900</li>
@@ -38,29 +25,27 @@
       <li>1980</li>
       <li>2000</li>
     </ul>
-    <p> <br/>Search by decade by sliding the timeline to see the distribution of the Poets who had events in the news during that time period.</p>
-
-     <p><strong>Example Event Page</strong></p>
-    <ul>
-      <li><%= link_to "Execution of Activist Ken Saro-Wiwa", inthenews_event001_path %></li>
-    </ul>
+ -->
+    <p>(Coming soon) Search by decade by sliding the timeline to see the distribution of the Poets who had events in the news during that time period.</p>
 
   </div>
 
   <div class="col-md-5">
     <%= render "partials/map_africa" %>
 
-    <p>Select a country to see the distribution of the news about these events in the country.</p>
+    <p>(Coming soon) Select a country to see the distribution of the news about these events in the country.</p>
 
   </div>
 
   <div class="col-md-2 inthenews_sidebar">
-    <h3>News</h3>
+    <h3>Events</h3>
 
     <ul>
-      <li>Reviews (18)</li>
-      <li>Critical Articles (20)</li>
-      <li>News Reports (32)</li>
+      <% @event_types.each do |label, count| %>
+        <% l = "#{label} (#{count})" %>
+        <% path = inthenews_search_events_path(event_type: label) %>
+        <li><%= link_to l, path %></li>
+      <% end %>
     </ul>
   </div>
 </div>
