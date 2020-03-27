@@ -1,0 +1,95 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+<!-- TODO redo h tags -->
+
+<h1 class="item_title"><%= @item.name %></h1>
+<% if @item.name_alt.present? %>
+  <h2 class="item_subtitle">Alternate names: <%= @item.name_alt %></h2>
+<% end %>
+<h3>
+  <div class="nationalities"><%= @item.nationalities %></div>
+  <span class="birth"><%= @item.date_birth %></span>
+    to
+  <span class="death"><%= @item.date_death %></span>
+</h3>
+
+<div class="row">
+
+  <!-- BIOGRAPHY -->
+
+  <div class="col-md-7">
+    <p><%= @item.short_biography %></p>
+    <div class="row">
+
+      <!-- NEWS -->
+      <div class="col-md-6">
+        <h3>In the News</h3>
+        <% if @news_items.blank? %>
+          No news items
+        <% end %>
+        <ul>
+          <% @news_items.each do |label, count| %>
+            <li>
+              <% l = "#{label.pluralize(count)} (#{count})" %>
+              <% path = inthenews_search_news_items_path(
+                person_id: @item.id,
+                news_type: label
+              ) %>
+              <%= link_to l, path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!-- EVENTS -->
+      <div class="col-md-6">
+        <h3>Events</h3>
+        <% if @events.blank? %>
+          No events
+        <% end %>
+        <ul>
+          <% @events.each do |label, count| %>
+            <li>
+              <%# NOTE: do not pluralize the label for events %>
+              <% l = "#{label} (#{count})" %>
+              <% path = inthenews_search_events_path(person_id: @item.id, event_type: label) %>
+              <%= link_to l, path %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <p class="well">Coming soon: Network diagram showing the relationship with other poets, professionals, and family.</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Relationships</h3>
+        In progress
+        <!-- <ul>
+          <li>Dr. Mairi J. Blacklings</li>
+          <li>U'Tamsi</li>
+          <li>Awooner</li>
+          <li>Marechera</li>
+          <li>Breytonbach</li>
+          <li>Rimbaud</li>
+        </ul> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h3>Works</h3>
+  <% if @works.blank? %>
+    No works
+  <% end %>
+  <ul>
+    <% @works.each do |label, count| %>
+      <li>
+        <%= label.pluralize(count) %> (<%= count %>)
+      </li>
+    <% end %>
+  </ul>
+</div>

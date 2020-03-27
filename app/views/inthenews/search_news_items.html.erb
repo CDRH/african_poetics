@@ -1,0 +1,17 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>News Search</h2>
+
+<%= will_paginate @items %>
+<%= pluralize @items.count, "News Item" %>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%# link_to item.name, inthenews_news_path(item) %>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate @items %>
