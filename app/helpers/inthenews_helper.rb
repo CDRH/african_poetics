@@ -26,6 +26,7 @@ module InthenewsHelper
       end
     end
 
+    people.delete(current_person)
     people.sort_by { |k,v| v }.reverse
   end
 
