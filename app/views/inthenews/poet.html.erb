@@ -25,19 +25,23 @@
         <h3>In the News</h3>
         <% if @news_items.blank? %>
           No news items
-        <% end %>
-        <ul>
-          <% @news_items.each do |label, count| %>
-            <li>
-              <% l = "#{label.pluralize(count)} (#{count})" %>
-              <% path = inthenews_search_news_items_path(
-                person_id: @item.id,
-                news_type: label
-              ) %>
-              <%= link_to l, path %>
+        <% else %>
+          <ul>
+            <li><%= link_to "All poet news items",
+              inthenews_search_news_items_path(person_id: @item.id) %>
             </li>
-          <% end %>
-        </ul>
+            <% @news_items.each do |label, count| %>
+              <li>
+                <% l = "#{label.pluralize(count)} (#{count})" %>
+                <% path = inthenews_search_news_items_path(
+                  person_id: @item.id,
+                  news_type: label
+                ) %>
+                <%= link_to l, path %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
 
       <!-- EVENTS -->
@@ -45,17 +49,21 @@
         <h3>Events</h3>
         <% if @events.blank? %>
           No events
-        <% end %>
-        <ul>
-          <% @events.each do |label, count| %>
-            <li>
-              <%# NOTE: do not pluralize the label for events %>
-              <% l = "#{label} (#{count})" %>
-              <% path = inthenews_search_events_path(person_id: @item.id, event_type: label) %>
-              <%= link_to l, path %>
+        <% else %>
+          <ul>
+            <li><%= link_to "All poet events",
+              inthenews_search_events_path(person_id: @item.id) %>
             </li>
-          <% end %>
-        </ul>
+            <% @events.each do |label, count| %>
+              <li>
+                <%# NOTE: do not pluralize the label for events %>
+                <% l = "#{label} (#{count})" %>
+                <% path = inthenews_search_events_path(person_id: @item.id, event_type: label) %>
+                <%= link_to l, path %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
@@ -66,7 +74,23 @@
     <div class="row">
       <div class="col-md-6">
         <h3>Relationships</h3>
-        In progress
+        <h4>Direct Relationships</h4>
+        Coming soon
+
+        <h4>Through News Items, Events, Works, and Educations</h4>
+        <ul>
+          <% all_related_people(@item).each do |person, count| %>
+            <li>
+              <% if person.poet_id.present? %>
+                <%= link_to person.name, inthenews_poet_path(person) %>
+              <% else %>
+                <%= person.name %>
+              <% end %>
+              (<%= count %>)
+            </li>
+          <% end %>
+        </ul>
+
         <!-- <ul>
           <li>Dr. Mairi J. Blacklings</li>
           <li>U'Tamsi</li>

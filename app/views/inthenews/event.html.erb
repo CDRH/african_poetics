@@ -1,0 +1,61 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2><%= @item.name %></h2>
+<h3><%= @item.location.name %> | <%= @item.date %></h3>
+
+<div class="row">
+  <div class="col-md-7">
+    <strong><%= @item.event_type %> event</strong>
+    <% if @item.summary.present? %>
+      <p><%= @item.summary %></p>
+    <% end %>
+
+    <div class="row">
+      <!-- TODO I don't know what should go in this section -->
+      <!-- <div class="col-md-6">
+        <h3>Access Details:</h3>
+        <ul>
+          <li>Database Holders or Print Holdings Locations</li>
+        </ul>
+      </div> -->
+
+      <div class="col-md-6">
+        <h3>Relationships</h3>
+
+        <% if @item.people %>
+          <ul>
+            <% @item.people.each do |person| %>
+              <li>
+                <% if person.poet_id %>
+                  <%= link_to person.name, inthenews_poet_path(person) %>
+                <% else %>
+                  <%= person.name %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          No people associated with this event
+        <% end %>
+        <ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <% if @item.news_items.present? %>
+      <div class="well">
+        <ul>
+          <% @item.news_items.each do |news| %>
+            <li>
+              <%= news.name %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      No news items associated with this event
+    <% end %>
+  </div>
+
+</div>

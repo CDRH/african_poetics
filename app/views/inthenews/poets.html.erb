@@ -42,20 +42,19 @@
   </div>
 
   <div class="col-md-5">
-
     <%= render "partials/map_africa" %>
-
-    <p>(Coming Soon)</p>
-    <p>Browse by location<br/>
-    Select a location to see the distribution of poets in the news around the continent</p>
   </div>
 
   <div class="col-md-2 inthenews_sidebar">
-    <h4>Example: Nigeria</h4>
+    <h4>Browse by Region</h4>
 
     <ul>
-      <% @mock_country.each do |poet| %>
-        <li><%= link_to poet.name, inthenews_poet_path(id: poet.id) %></li>
+      <% @regions.each do |label, count| %>
+        <% l = "#{label} (#{count})" %>
+        <% path = inthenews_search_poets_path(region: label) %>
+        <li>
+          <%= link_to l, path %>
+        </li>
       <% end %>
     </ul>
   </div>

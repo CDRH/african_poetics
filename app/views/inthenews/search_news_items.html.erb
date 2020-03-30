@@ -8,8 +8,7 @@
 <ul>
   <% @items.each do |item| %>
     <li>
-      <%# link_to item.name, inthenews_news_path(item) %>
-      <%= item.name %>
+      <%= link_to item.name, inthenews_news_item_path(item) %>
     </li>
   <% end %>
 </ul>

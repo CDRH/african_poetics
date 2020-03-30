@@ -26,17 +26,17 @@ Rails.application.routes.draw do
     # events
     get "/events", to: "inthenews#events", as: :inthenews_events,
       defaults: { section: "inthenews" }
-    get "/events/ap.ev.001", to: "inthenews#event001", as: :inthenews_event001,
-      defaults: { section: "inthenews" }
-    get "/events/ap.item.001", to: "inthenews#item001", as: :inthenews_item001,
-      defaults: { section: "inthenews" }
     get "/events/search", to: "inthenews#search_events", as: :inthenews_search_events,
+      defaults: { section: "inthenews" }
+    get "/events/:id", to: "inthenews#event", as: :inthenews_event,
       defaults: { section: "inthenews" }
 
     # news items
-    get "/news", to: "inthenews#news", as: :inthenews_news,
+    get "/news", to: "inthenews#news_items", as: :inthenews_news_items,
       defaults: { section: "inthenews" }
     get "/news/search", to: "inthenews#search_news_items", as: :inthenews_search_news_items,
+      defaults: { section: "inthenews" }
+    get "/news/:id", to: "inthenews#news_item", as: :inthenews_news_item,
       defaults: { section: "inthenews" }
 
     # poets

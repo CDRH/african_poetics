@@ -4,6 +4,69 @@ class InthenewsController < ApplicationController
     @title = "African Poets in the News"
   end
 
+  ##########
+  # EVENTS #
+  ##########
+
+  def event
+    @item = Event.find(params[:id])
+    @title = @item.name
+  end
+
+  def events
+    @title = "Events"
+    @event_types = Event.group(:event_type).count
+  end
+
+  def search_events
+    @title = "Event Search"
+    items = Event.all
+    if params[:event_type].present?
+      items = items.where(event_type: params[:event_type])
+    end
+    if params[:person_id].present?
+      items = items.joins(:people)
+        .where(people: { id: params[:person_id] })
+    end
+    @items = items.paginate(page: params[:page])
+  end
+
+  ##############
+  # NEWS ITEMS #
+  ##############
+
+  def news_item
+    @item = NewsItem.find(params[:id])
+    @title = @item.name
+  end
+
+  # /news links here
+  def news_items
+    @title = "News"
+    @news_item_types = NewsItemType
+      .joins(:news_items)
+      .group(:name)
+      .count
+  end
+
+  def search_news_items
+    @title = "News Search"
+    items = NewsItem.all
+    if params[:news_type].present?
+      items = items.joins(:news_item_type)
+        .where(news_item_types: { name: params[:news_type] })
+    end
+    if params[:person_id].present?
+      items = items.joins(:people)
+        .where(people: { id: params[:person_id] })
+    end
+    @items = items.paginate(page: params[:page])
+  end
+
+  #########
+  # POETS #
+  #########
+
   def poet
     @item = Person.find(params[:id])
     @title = @item.name
@@ -26,59 +89,25 @@ class InthenewsController < ApplicationController
         .count
   end
 
-  def events
-    @title = "Events"
-    @event_types = Event.group(:event_type).count
-  end
-
-  def news
-    @title = "News"
-    @news_item_types = NewsItemType
-      .joins(:news_items)
-      .group(:name)
-      .count
-  end
-
   def poets
     @title = "Poets"
-    @mock_country = Person
+    @regions = Person
       .joins(:locations)
-      .where(locations: { country: "Nigeria" })
-      .limit(5)
-  end
-
-  def search_events
-    @title = "Event Search"
-    items = Event.all
-    if params[:event_type].present?
-      items = items.where(event_type: params[:event_type])
-    end
-    if params[:person_id].present?
-      items = items.joins(:people)
-        .where(people: { id: params[:person_id] })
-    end
-    @items = items.paginate(page: params[:page])
-  end
-
-  def search_news_items
-    @title = "News Search"
-    items = NewsItem.all
-    if params[:news_type].present?
-      items = items.joins(:news_item_type)
-        .where(news_item_types: { name: params[:news_type] })
-    end
-    if params[:person_id].present?
-      items = items.joins(:people)
-        .where(people: { id: params[:person_id] })
-    end
-    @items = items.paginate(page: params[:page])
+      .group("locations.region")
+      .count
   end
 
   def search_poets
     @title = "Poet Search"
     items = Person.poet
     if params[:letter].present?
-      items = items.where("name_last LIKE (?)", "#{params[:letter]}%")
+      items = items
+        .where("name_last LIKE (?)", "#{params[:letter]}%")
+    end
+    if params[:region].present?
+      items = items
+        .joins(:locations)
+        .where(locations: { region: params[:region] })
     end
     @items = items.paginate(page: params[:page])
   end
