@@ -46,8 +46,6 @@ Rails.application.routes.draw do
       defaults: { section: "inthenews" }
     get "/poets/:id", to: "inthenews#poet", as: :inthenews_poet,
       defaults: { section: "inthenews" }
-    get "/poets/wolesoyinkaevents", to: "inthenews#wolesoyinkaevents", as: :inthenews_wolesoyinkaevents,
-      defaults: { section: "inthenews" }
 
     get "/relationships", to: "inthenews#relationships", as: :inthenews_relationships,
       defaults: { section: "inthenews" }
