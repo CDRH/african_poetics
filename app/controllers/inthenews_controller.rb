@@ -44,18 +44,30 @@ class InthenewsController < ApplicationController
 
   def events
     @title = "Events"
-    @event_types = Event.group(:event_type).count
+    @event_types = Event
+      .joins(:event_type)
+      .group("event_types.name")
+      .count
+    @regions = Event
+      .joins(:region)
+      .group("regions.name")
+      .count
   end
 
   def search_events
     @title = "Event Search"
     items = Event.all
     if params[:event_type].present?
-      items = items.where(event_type: params[:event_type])
+      items = items.joins(:event_type)
+        .where(event_types: { name: params[:event_type] })
     end
     if params[:person_id].present?
       items = items.joins(:people)
         .where(people: { id: params[:person_id] })
+    end
+    if params[:region].present?
+      items = items.joins(:region)
+        .where(regions: { name: params[:region] })
     end
     @items = items.paginate(page: params[:page])
   end
@@ -107,9 +119,9 @@ class InthenewsController < ApplicationController
         .group("news_item_types.name")
         .count
     # TODO will need to redo this if event_type is its own table
-    @events = Event.joins(:people)
+    @events = Event.joins(:event_type, :people)
         .where(people: { id: params[:id] })
-        .group(:event_type)
+        .group("event_types.name")
         .count
     @works = Work.joins(:people)
         .where(people: { id: params[:id] })
@@ -121,8 +133,9 @@ class InthenewsController < ApplicationController
   def poets
     @title = "Poets"
     @regions = Person
-      .joins(:locations)
-      .group("locations.region")
+      .poet
+      .joins(:regions)
+      .group("regions.name")
       .count
   end
 
@@ -135,8 +148,8 @@ class InthenewsController < ApplicationController
     end
     if params[:region].present?
       items = items
-        .joins(:locations)
-        .where(locations: { region: params[:region] })
+        .joins(:regions)
+        .where(regions: { name: params[:region] })
     end
     @items = items.paginate(page: params[:page])
   end

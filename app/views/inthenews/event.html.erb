@@ -5,7 +5,7 @@
 
 <div class="row">
   <div class="col-md-7">
-    <strong><%= @item.event_type %> event</strong>
+    <strong><%= @item.event_type.name %> event</strong>
     <% if @item.summary.present? %>
       <p><%= @item.summary %></p>
     <% end %>

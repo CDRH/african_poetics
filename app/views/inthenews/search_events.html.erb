@@ -9,7 +9,7 @@
   <% @items.each do |item| %>
     <li>
       <%= link_to item.name, inthenews_event_path(item) %>
-      | <%= item.event_type %>
+      | <%= item.event_type.name %>
     </li>
   <% end %>
 </ul>

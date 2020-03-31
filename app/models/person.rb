@@ -12,6 +12,8 @@ class Person < ApplicationRecord
     dependent: :destroy
   has_and_belongs_to_many :locations,
     dependent: :destroy  # nationality
+  has_many :regions,
+    through: :locations
 
   # join tables with attributes
   has_many :news_item_roles, dependent: :destroy

@@ -32,7 +32,6 @@
     <%= render "partials/map_africa" %>
 
     <p>(Coming soon) Select a country to see the distribution of the news about these events in the country.</p>
-
   </div>
 
   <div class="col-md-2 inthenews_sidebar">
@@ -42,6 +41,15 @@
       <% @event_types.each do |label, count| %>
         <% l = "#{label} (#{count})" %>
         <% path = inthenews_search_events_path(event_type: label) %>
+        <li><%= link_to l, path %></li>
+      <% end %>
+    </ul>
+
+    <h3>Regions</h3>
+    <ul>
+      <% @regions.each do |label, count| %>
+        <% l = "#{label} (#{count})" %>
+        <% path = inthenews_search_events_path(region: label) %>
         <li><%= link_to l, path %></li>
       <% end %>
     </ul>

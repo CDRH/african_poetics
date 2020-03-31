@@ -10,6 +10,9 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :people,
     dependent: :destroy
 
+  belongs_to :event_type
   belongs_to :location, optional: true
+
+  has_one :region, through: :location
 
 end
