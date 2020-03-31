@@ -18,6 +18,17 @@
 
   <div class="col-md-7">
     <p><%= @item.short_biography %></p>
+    <% if @item.educations.present? %>
+      <h4>Education</h4>
+      <ul>
+        <% @item.educations.each do |edu| %>
+          <li>
+            <%= edu.name %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <div class="row">
 
       <!-- NEWS -->
