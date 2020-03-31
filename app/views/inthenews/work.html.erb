@@ -6,16 +6,12 @@
 <div class="row">
   <%# NEWS ITEMS %>
   <div class="col-md-6">
-    <% if @item.news_items.present? %>
-      <h3>Mentioned in News Items</h3>
-      <ul>
-        <% @item.news_items.each do |item| %>
-          <li>
-            <%= link_to item.name, inthenews_news_item_path(item) %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <%= render partial: "simple_association_list", locals: {
+      item: @item,
+      label: "News Items",
+      assoc: "news_items",
+      path: "inthenews_news_item_path"
+    } %>
   </div>
 
   <%# PEOPLE %>
@@ -40,15 +36,13 @@
 
 <div class="row">
   <div class="col-md-6">
-    <% if @item.commentaries.present? %>
-      <h3>Commentaries</h3>
-      <ul>
-        <% @item.commentaries.each do |item| %>
-          <li>
-            <%= link_to item.name, inthenews_commentary_path(item) %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+    <div class="col-md-6">
+      <%= render partial: "simple_association_list", locals: {
+        item: @item,
+        label: "Commentaries",
+        assoc: "commentaries",
+        path: "inthenews_commentary_path"
+      } %>
+    </div>
   </div>
 </div>

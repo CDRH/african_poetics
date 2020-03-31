@@ -30,4 +30,22 @@ module InthenewsHelper
     people.sort_by { |k,v| v }.reverse
   end
 
+  def link_complex_li_item(value, count, path, query_param, default_params: {})
+    label = "#{value.pluralize(count)} (#{count})"
+    default_params[query_param] = value
+    link_to label, send(path, default_params)
+  end
+
+  def link_simple_li_item(assoc_rec, path)
+    # check path to see if this should be linked at all
+    # and if so, make sure that only poets are linked from Person
+    okay_to_link = !@item.respond_to?(:poet_id) || @item.poet_id.present?
+    if path && okay_to_link
+      link_to assoc_rec.name, send(path, assoc_rec)
+    else
+      # just return a string
+      assoc_rec.name
+    end
+  end
+
 end

@@ -14,89 +14,52 @@
 
 <div class="row">
 
+
   <!-- BIOGRAPHY -->
 
   <div class="col-md-7">
     <p><%= @item.short_biography %></p>
-    <% if @item.educations.present? %>
-      <h4>Education</h4>
-      <ul>
-        <% @item.educations.each do |edu| %>
-          <li>
-            <%= edu.name %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+
+    <%= render partial: "simple_association_list", locals: {
+      item: @item,
+      label: "Education",
+      assoc: "educations",
+      path: nil
+    } %>
 
     <div class="row">
 
       <!-- NEWS -->
       <div class="col-md-6">
-        <h3>In the News</h3>
-        <% if @news_items.blank? %>
-          No news items
-        <% else %>
-          <ul>
-            <li><%= link_to "All poet news items",
-              inthenews_search_news_items_path(person_id: @item.id) %>
-            </li>
-            <% @news_items.each do |label, count| %>
-              <li>
-                <% l = "#{label.pluralize(count)} (#{count})" %>
-                <% path = inthenews_search_news_items_path(
-                  person_id: @item.id,
-                  news_type: label
-                ) %>
-                <%= link_to l, path %>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
+        <%= render partial: "group_count_list", locals: {
+          header: "News Items",
+          collection: @news_items,
+          default_params: { person_id: @item.id },
+          path: "inthenews_search_news_items_path",
+          query_param: :news_type
+        } %>
       </div>
 
       <!-- EVENTS -->
       <div class="col-md-6">
-        <h3>Events</h3>
-        <% if @events.blank? %>
-          No events
-        <% else %>
-          <ul>
-            <li><%= link_to "All poet events",
-              inthenews_search_events_path(person_id: @item.id) %>
-            </li>
-            <% @events.each do |label, count| %>
-              <li>
-                <%# NOTE: do not pluralize the label for events %>
-                <% l = "#{label} (#{count})" %>
-                <% path = inthenews_search_events_path(person_id: @item.id, event_type: label) %>
-                <%= link_to l, path %>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
+        <%= render partial: "group_count_list", locals: {
+          header: "Events",
+          collection: @events,
+          default_params: { person_id: @item.id },
+          path: "inthenews_search_events_path",
+          query_param: :event_type
+        } %>
       </div>
+
     </div>
     <div class="row">
-      <h3>Works</h3>
-      <% if @works.blank? %>
-        No works
-      <% end %>
-      <ul>
-        <li>
-          <%= link_to "All works",
-              inthenews_search_works_path(person_id: @item.id) %>
-        </li>
-        <% @works.each do |label, count| %>
-          <li>
-            <% l = "#{label.pluralize(count)} (#{count})" %>
-            <% path = inthenews_search_works_path(
-              person_id: @item.id, work_type: label)
-            %>
-            <%= link_to l, path %>
-          </li>
-        <% end %>
-      </ul>
+      <%= render partial: "group_count_list", locals: {
+        header: "Works",
+        collection: @works,
+        default_params: { person_id: @item.id },
+        path: "inthenews_search_works_path",
+        query_param: :work_type
+      } %>
     </div>
   </div>
 
