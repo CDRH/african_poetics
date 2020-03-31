@@ -66,6 +66,27 @@
         <% end %>
       </div>
     </div>
+    <div class="row">
+      <h3>Works</h3>
+      <% if @works.blank? %>
+        No works
+      <% end %>
+      <ul>
+        <li>
+          <%= link_to "All works",
+              inthenews_search_works_path(person_id: @item.id) %>
+        </li>
+        <% @works.each do |label, count| %>
+          <li>
+            <% l = "#{label.pluralize(count)} (#{count})" %>
+            <% path = inthenews_search_works_path(
+              person_id: @item.id, work_type: label)
+            %>
+            <%= link_to l, path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <div class="col-md-5">
@@ -93,18 +114,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <h3>Works</h3>
-  <% if @works.blank? %>
-    No works
-  <% end %>
-  <ul>
-    <% @works.each do |label, count| %>
-      <li>
-        <%= label.pluralize(count) %> (<%= count %>)
-      </li>
-    <% end %>
-  </ul>
 </div>

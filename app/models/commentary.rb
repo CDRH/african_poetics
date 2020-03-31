@@ -11,4 +11,8 @@ class Commentary < ApplicationRecord
   has_and_belongs_to_many :works,
     dependent: :destroy
 
+  def author_credit
+    commentary_authors.map { |c| c.name }.join("; ")
+  end
+
 end

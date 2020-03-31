@@ -23,6 +23,14 @@ Rails.application.routes.draw do
     get "/about", to: "inthenews#about", as: :inthenews_about,
       defaults: { section: "inthenews" }
 
+    # commentaries
+    get "/commentaries", to: "inthenews#commentaries", as: :inthenews_commentaries,
+      defaults: { section: "inthenews" }
+    get "/commentaries/search", to: "inthenews#search_commentaries", as: :inthenews_search_commentaries,
+      defaults: { section: "inthenews" }
+    get "/commentaries/:id", to: "inthenews#commentary", as: :inthenews_commentary,
+      defaults: { section: "inthenews" }
+
     # events
     get "/events", to: "inthenews#events", as: :inthenews_events,
       defaults: { section: "inthenews" }
@@ -47,6 +55,14 @@ Rails.application.routes.draw do
     get "/poets/:id", to: "inthenews#poet", as: :inthenews_poet,
       defaults: { section: "inthenews" }
 
+    get "/works", to: "inthenews#works", as: :inthenews_works,
+      defaults: { section: "inthenews" }
+    get "/works/search", to: "inthenews#search_works", as: :inthenews_search_works,
+      defaults: { section: "inthenews" }
+    get "/works/:id", to: "inthenews#work", as: :inthenews_work,
+      defaults: { section: "inthenews" }
+
+    # leftover from the wireframes but not actually used
     get "/relationships", to: "inthenews#relationships", as: :inthenews_relationships,
       defaults: { section: "inthenews" }
 

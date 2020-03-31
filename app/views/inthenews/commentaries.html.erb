@@ -1,0 +1,33 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>Commentaries</h2>
+
+<div class="row">
+
+  <div class="col-md-5">
+  
+    <label for="exampleInput">Search Commentaries (coming soon)</label>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for...">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+    <%= link_to "Browse All Commentaries", inthenews_search_commentaries_path %>
+  </div>
+  <div class="col-md-7">
+    Other ideas for how to browse commentaries might be featured commentaries, random selection, etc
+
+    <h3>Commentary Authors</h3>
+    <ul>
+      <% @authors.each do |label, count| %>
+        <li>
+          <% l = label.reverse.join(" ") %>
+          <% path = inthenews_search_commentaries_path(author_name: label) %>
+          <%= link_to "#{l} (#{count})", path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  
+</div>

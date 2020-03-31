@@ -4,6 +4,35 @@ class InthenewsController < ApplicationController
     @title = "African Poets in the News"
   end
 
+  ################
+  # COMMENTARIES #
+  ################
+
+  def commentary
+    @item = Commentary.find(params[:id])
+    @title = @item.name
+  end
+
+  def commentaries
+    @title = "Commentaries"
+    @authors = CommentaryAuthor.joins(:commentaries)
+      .group("name_last", "name_given")
+      .count
+  end
+
+  def search_commentaries
+    @title = "Commentary Search"
+    items = Commentary.all
+    if params[:author_name].present?
+      last, given = params[:author_name]
+      items = items.joins(:commentary_authors)
+        .where(commentary_authors: {
+            name_last: last, name_given: given
+        })
+    end
+    @items = items.paginate(page: params[:page])
+  end
+
   ##########
   # EVENTS #
   ##########
@@ -109,6 +138,35 @@ class InthenewsController < ApplicationController
         .joins(:locations)
         .where(locations: { region: params[:region] })
     end
+    @items = items.paginate(page: params[:page])
+  end
+
+  #########
+  # WORKS #
+  #########
+
+  def work
+    @item = Work.find(params[:id])
+    @title = @item.name
+  end
+
+  def works
+    @title = "Works"
+  end
+
+  def search_works
+    @title = "Work Search"
+    items = Work.all
+
+    if params[:person_id].present?
+      items = items.joins(:people)
+        .where(people: { id: params[:person_id] })
+    end
+    if params[:work_type].present?
+      items = items.joins(:work_type)
+        .where(work_types: { name: params[:work_type] })
+    end
+
     @items = items.paginate(page: params[:page])
   end
 

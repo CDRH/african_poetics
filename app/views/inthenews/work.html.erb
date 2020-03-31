@@ -1,0 +1,54 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+<!-- TODO redo h tags -->
+
+<h2 class="item_title"><%= @item.name %></h2>
+
+<div class="row">
+  <%# NEWS ITEMS %>
+  <div class="col-md-6">
+    <% if @item.news_items.present? %>
+      <h3>Mentioned in News Items</h3>
+      <ul>
+        <% @item.news_items.each do |item| %>
+          <li>
+            <%= link_to item.name, inthenews_news_item_path(item) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <%# PEOPLE %>
+  <div class="col-md-6">
+    <% if @item.work_roles.present? %>
+      <h3>People</h3>
+      <ul>
+        <% @item.work_roles.each do |item| %>
+          <% person = item.person %>
+          <li>
+            <% if person.poet_id.present? %>
+              <%= link_to item.name, inthenews_poet_path(person) %>
+            <% else %>
+              <%= item.name %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <% if @item.commentaries.present? %>
+      <h3>Commentaries</h3>
+      <ul>
+        <% @item.commentaries.each do |item| %>
+          <li>
+            <%= link_to item.name, inthenews_commentary_path(item) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
