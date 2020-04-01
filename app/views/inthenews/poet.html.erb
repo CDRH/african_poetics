@@ -53,13 +53,23 @@
 
     </div>
     <div class="row">
-      <%= render partial: "group_count_list", locals: {
-        header: "Works",
-        collection: @works,
-        default_params: { person_id: @item.id },
-        path: "inthenews_search_works_path",
-        query_param: :work_type
-      } %>
+      <div class="col-md-6">
+        <%= render partial: "group_count_list", locals: {
+          header: "Works",
+          collection: @works,
+          default_params: { person_id: @item.id },
+          path: "inthenews_search_works_path",
+          query_param: :work_type
+        } %>
+      </div>
+      <div class="col-md-6">
+        <%= render partial: "simple_association_list", locals: {
+          item: @item,
+          label: "Commentaries",
+          assoc: "commentaries",
+          path: "inthenews_commentary_path"
+        } %>
+      </div>
     </div>
   </div>
 
