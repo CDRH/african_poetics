@@ -36,6 +36,11 @@ module InthenewsHelper
     link_to label, send(path, default_params)
   end
 
+  def link_search_result_item(item, attr, path)
+    label = item.send(attr)
+    link_to label, send(path, item)
+  end
+
   def link_simple_li_item(assoc_rec, path)
     # check path to see if this should be linked at all
     # and if so, make sure that only poets are linked from Person
