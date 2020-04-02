@@ -34,7 +34,7 @@
         <%= render partial: "group_count_list", locals: {
           header: "News Items",
           collection: @news_items,
-          default_params: { person_id: @item.id },
+          default_params: { person: @item },
           path: "inthenews_search_news_items_path",
           query_param: :news_type
         } %>
@@ -45,7 +45,7 @@
         <%= render partial: "group_count_list", locals: {
           header: "Events",
           collection: @events,
-          default_params: { person_id: @item.id },
+          default_params: { person: @item },
           path: "inthenews_search_events_path",
           query_param: :event_type
         } %>
@@ -57,7 +57,7 @@
         <%= render partial: "group_count_list", locals: {
           header: "Works",
           collection: @works,
-          default_params: { person_id: @item.id },
+          default_params: { person: @item },
           path: "inthenews_search_works_path",
           query_param: :work_type
         } %>
