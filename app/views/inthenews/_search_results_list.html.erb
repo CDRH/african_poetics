@@ -19,8 +19,9 @@ Expecting the following variables:
 <div class="pagination">
   <%= will_paginate @items %>
 </div>
-<div class="search-item-count">
-  <%= pluralize @items.count, label %>
+<div class="search-item-summary">
+  <p><%= pluralize @items.count, label %></p>
+  <p><%= list_search_filters(label) %></p>
 </div>
 
 <div class="search-results-list">
