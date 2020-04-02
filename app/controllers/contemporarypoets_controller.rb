@@ -1,7 +1,7 @@
 class ContemporarypoetsController < ApplicationController
 
   def home
-    @title = "Title"
+    @title = "Contemporary African Poets"
   end
 
   # NOTE being overridden in items_override.rb
