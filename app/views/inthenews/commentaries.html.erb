@@ -18,12 +18,14 @@
   <div class="col-md-7">
     Other ideas for how to browse commentaries might be featured commentaries, random selection, etc
 
-    <h3>Commentary Authors</h3>
+    <h3>Featured Poets</h3>
     <ul>
-      <% @authors.each do |label, count| %>
+      <% @poets.each do |label, count| %>
         <li>
+          <%# can almost use view partial for this
+            except for reverseing label, consider altering in future %>
           <% l = label.reverse.join(" ") %>
-          <% path = inthenews_search_commentaries_path(author_name: label) %>
+          <% path = inthenews_search_commentaries_path(person: label) %>
           <%= link_to "#{l} (#{count})", path %>
         </li>
       <% end %>

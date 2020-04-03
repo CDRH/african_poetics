@@ -15,7 +15,7 @@ class InthenewsController < ApplicationController
 
   def commentaries
     @title = "Commentaries"
-    @authors = CommentaryAuthor.joins(:commentaries)
+    @poets = Person.poet.joins(:commentaries)
       .group("name_last", "name_given")
       .count
   end
@@ -23,10 +23,11 @@ class InthenewsController < ApplicationController
   def search_commentaries
     @title = "Commentary Search"
     items = Commentary.all
-    if params[:author_name].present?
-      last, given = params[:author_name]
-      items = items.joins(:commentary_authors)
-        .where(commentary_authors: {
+    if params[:person].present?
+      last, given = params[:person]
+      @person = Person.find_by(name_last: last, name_given: given)
+      items = items.joins(:people)
+        .where(people: {
             name_last: last, name_given: given
         })
     end
