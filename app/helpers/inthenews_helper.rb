@@ -60,8 +60,10 @@ module InthenewsHelper
       v = @person.name if k == "person"
       filters << "#{v} (#{k.titleize.downcase})"
     end
-    text = filters.join(", ")
-    "#{label.pluralize} filtered by #{text}"
+    if filters.present?
+      text = filters.join(", ")
+      "#{label.pluralize} filtered by #{text}"
+    end
   end
 
 end
