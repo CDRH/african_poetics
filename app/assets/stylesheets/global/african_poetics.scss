@@ -408,6 +408,13 @@ svg path.re {
   }
 }
 
+/* TODO this and others like it should only
+   be applied to the inthenews section */
+.search-results-item {
+  border-top: $brand-info solid 2px;
+  padding: 8px 0px;
+}
+
 // Home Page
 
 .site_home {

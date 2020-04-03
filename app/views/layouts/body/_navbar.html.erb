@@ -8,14 +8,14 @@
          
         </li>
         <% end %>
-        <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
+        <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets/,
           request.path) %>">
           <%= link_to "Contemporary African Poets", contemporarypoets_home_path %>
         </li>
-        <li class="<%= active?(search_path) %>">
+        <li class="<%= active?(/^#{config.relative_url_root}\/inthenews/, request.path) %>">
           <%= link_to "African Poets and Poetry in the News", inthenews_home_path %>
         </li>
-        <li class="<%= active?(about_path) %>">
+        <li class="<%= active?(/^#{config.relative_url_root}\/about/, request.path) %>">
           <%= link_to t("about.title", default: "About"), about_path %>
         </li>
       </ul>

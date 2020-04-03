@@ -1,17 +1,8 @@
-<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
-
-<h2>Commentary Search</h2>
-
-<%= will_paginate @items %>
-<%= pluralize @items.count, "Commentary" %>
-
-<ul>
-  <% @items.each do |item| %>
-    <li>
-      <%= link_to item.name, inthenews_commentary_path(item) %>
-      | <%= item.author_credit %>
-    </li>
-  <% end %>
-</ul>
-
-<%= will_paginate @items %>
+<%# NOTE: apparently have to use layout not "partial" if passing a block %>
+<%= render layout: "search_results_list", locals: {
+  label: "Commentary",
+  link_label_attr: "name",
+  link_path: "inthenews_commentary_path"
+} do |item| %>
+  <%# nothing %>
+<% end %>

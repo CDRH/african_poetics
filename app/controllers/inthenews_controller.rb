@@ -61,9 +61,10 @@ class InthenewsController < ApplicationController
       items = items.joins(:event_type)
         .where(event_types: { name: params[:event_type] })
     end
-    if params[:person_id].present?
+    if params[:person].present?
+      @person = Person.find(params[:person])
       items = items.joins(:people)
-        .where(people: { id: params[:person_id] })
+        .where(people: { id: params[:person] })
     end
     if params[:region].present?
       items = items.joins(:region)
@@ -97,9 +98,10 @@ class InthenewsController < ApplicationController
       items = items.joins(:news_item_type)
         .where(news_item_types: { name: params[:news_type] })
     end
-    if params[:person_id].present?
+    if params[:person].present?
+      @person = Person.find(params[:person])
       items = items.joins(:people)
-        .where(people: { id: params[:person_id] })
+        .where(people: { id: params[:person] })
     end
     @items = items.paginate(page: params[:page])
   end
@@ -171,9 +173,10 @@ class InthenewsController < ApplicationController
     @title = "Work Search"
     items = Work.all
 
-    if params[:person_id].present?
+    if params[:person].present?
+      @person = Person.find(params[:person])
       items = items.joins(:people)
-        .where(people: { id: params[:person_id] })
+        .where(people: { id: params[:person] })
     end
     if params[:work_type].present?
       items = items.joins(:work_type)
