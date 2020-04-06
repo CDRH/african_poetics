@@ -176,8 +176,11 @@ class InthenewsController < ApplicationController
 
     if params[:person].present?
       @person = Person.find(params[:person])
-      items = items.joins(:people)
-        .where(people: { id: params[:person] })
+      items = items.joins(:work_roles)
+        .where(work_roles: {
+          person_id: params[:person],
+          role: Role.find_by(name: "Poet")
+        })
     end
     if params[:work_type].present?
       items = items.joins(:work_type)

@@ -44,7 +44,7 @@ module InthenewsHelper
   def link_simple_li_item(assoc_rec, path)
     # check path to see if this should be linked at all
     # and if so, make sure that only poets are linked from Person
-    okay_to_link = !@item.respond_to?(:poet_id) || @item.poet_id.present?
+    okay_to_link = !@item.respond_to?(:major_african_poet) || @item.major_african_poet.present?
     if path && okay_to_link
       link_to assoc_rec.name, send(path, assoc_rec)
     else

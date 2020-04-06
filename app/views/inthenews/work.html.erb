@@ -22,7 +22,7 @@
         <% @item.work_roles.each do |item| %>
           <% person = item.person %>
           <li>
-            <% if person.poet_id.present? %>
+            <% if person.major_african_poet %>
               <%= link_to item.name, inthenews_poet_path(person) %>
             <% else %>
               <%= item.name %>

@@ -1,7 +1,8 @@
 <h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
 
 <h2><%= @item.name %></h2>
-<h3><%= @item.date.strftime("%Y-%m-%d") if @item.date %></h3>
+<p><%= @item.date.strftime("%Y-%m-%d") if @item.date %></p>
+<p><%= @item.authors %></p>
 
 <div class="row">
   <div class="col-md-7">
@@ -49,10 +50,10 @@
         <% @item.news_item_roles.each do |role| %>
           <% person = role.person %>
           <li>
-            <% if person.poet_id %>
-              <%= link_to person.name, inthenews_poet_path(person) %> | <%= role.role %>
+            <% if person.major_african_poet %>
+              <%= link_to person.name, inthenews_poet_path(person) %> | <%= role.role.name %>
             <% else %>
-              <%= person.name %> | <%= role.role %>
+              <%= person.name %> | <%= role.role.name %>
             <% end %>
           </li>
         <% end %>

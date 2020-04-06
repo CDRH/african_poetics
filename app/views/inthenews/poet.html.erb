@@ -86,7 +86,7 @@
         <ul>
           <% all_related_people(@item).each do |person, count| %>
             <li>
-              <% if person.poet_id.present? %>
+              <% if person.major_african_poet %>
                 <%= link_to person.name, inthenews_poet_path(person) %>
               <% else %>
                 <%= person.name %>

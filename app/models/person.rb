@@ -1,8 +1,8 @@
 class Person < ApplicationRecord
 
-  scope :poet, -> { where.not(poet_id: nil) }
+  scope :poet, -> { where(major_african_poet: true) }
 
-  # foreign keys
+  belongs_to :gender, optional: true
   has_many :educations, dependent: :destroy
 
   # join tables
