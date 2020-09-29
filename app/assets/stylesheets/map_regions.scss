@@ -1,18 +1,18 @@
 @import "bootstrap-variables";
 
-#regions_map .Eastern_Africa {
+#regions_map .East_Africa {
   fill: mix($brand-success, #fff, 80%);
 }
-#regions_map .Middle_Africa {
+#regions_map .Central_Africa {
   fill: mix($nav-accent, #fff, 80%);
 }
-#regions_map .Northern_Africa {
+#regions_map .North_Africa {
   fill: mix($brand-warning, #fff, 90%);
 }
 #regions_map .Southern_Africa {
   fill: mix($brand-primary, #fff, 78%);
 }
-#regions_map .Western_Africa { 
+#regions_map .West_Africa {
   fill: mix($brand-info, #fff, 70%);
 }
 

@@ -10,7 +10,7 @@ $(document).ready(function() {
 
   function getRegionCodeFromClass(classes) {
     if (classes) {
-      // TODO this will not aswork if diaspora is somehow represented on the map
+      // TODO this will not work if diaspora is somehow represented on the map
       var region = classes.match(/\S*_Africa/g)
       return region ? region[0] : null
     }
