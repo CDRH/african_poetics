@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-  // TODO pull the link from the search results instead to overlay on the map
-  // but for now, using this to construct the query if user clicks the map
-  var urlpiece = "../search?f[]=keywords|"
-  
   /////////////
   // HELPERS //
   /////////////
@@ -69,7 +65,15 @@ $(document).ready(function() {
     var regionCode = getRegionCodeFromClass($(this).attr("class"));
     var regionName = getRegionTextFromCode(regionCode);
     var href = getRegionCodeFromText(regionName, "+");
-    var fullurl = urlpiece + href;
+    if (search_path) {
+      // if a search_path variable was provided, use that
+      var fullurl = search_path + "?region=" + href;
+    } else {
+      // if no search_path variable provided, default to
+      // the contemporary african poets search
+      var urlpiece = "../search?f[]=keywords|";
+      var fullurl = urlpiece + href;
+    }
     window.location = fullurl;  
   });
 

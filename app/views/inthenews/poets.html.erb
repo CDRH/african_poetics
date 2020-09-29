@@ -1,3 +1,7 @@
+<script>
+  var search_path = "<%= inthenews_search_poets_path %>";
+</script>
+
 <h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
 
 <h2>Poets</h2>
@@ -42,21 +46,28 @@
     
   </div>
 
-  <div class="col-md-5">
+  <div class="col-md-5" id="regions_map">
     <%= render "partials/map_africa" %>
   </div>
 
   <div class="col-md-2 inthenews_sidebar">
     <h4>Browse by Region</h4>
 
-    <ul>
-      <% @regions.each do |label, count| %>
-        <% l = "#{label} (#{count})" %>
-        <% path = inthenews_search_poets_path(region: label) %>
-        <li>
-          <%= link_to l, path %>
-        </li>
-      <% end %>
-    </ul>
+    <table>
+      <body>
+        <% @regions.each do |label, count| %>
+          <% path = inthenews_search_poets_path(region: label) %>
+          <tr>
+            <td class="index_num"><%= link_to count, path %></td>
+            <td class="index_spacer">
+              <%= link_to path do %>
+                <span></span>
+              <% end %>
+            </td>
+            <td class="index_name"><%= link_to label, path %></td>
+          </tr>
+        <% end %>
+      </body>
+    </table>
   </div>
 </div>
