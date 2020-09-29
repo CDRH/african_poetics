@@ -154,6 +154,9 @@ class InthenewsController < ApplicationController
         .joins(:regions)
         .where(regions: { name: params[:region] })
     end
+    if params[:q].present?
+      items = text_query_poet(items, params[:q])
+    end
     @items = items.paginate(page: params[:page])
   end
 
@@ -188,6 +191,22 @@ class InthenewsController < ApplicationController
     end
 
     @items = items.paginate(page: params[:page])
+  end
+
+  private
+
+  def text_query_poet(items, query)
+    fields = %w[
+      name_last
+      name_given
+      name_alt
+      bibliography
+      short_biography
+    ]
+    text = fields.join(" LIKE :search OR ")
+    text += " LIKE :search"
+    puts text
+    items.where(text, search: "%#{query}%")
   end
 
 end
