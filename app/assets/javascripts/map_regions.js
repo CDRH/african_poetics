@@ -12,10 +12,12 @@ $(document).ready(function() {
     }
   }
 
+  // North Africa -> North_Africa or North+Africa, etc
   function getRegionCodeFromText(text, replace_char) {
     return text ? text.trim().replace(" ", replace_char) : null;
   }
 
+  // North_Africa -> North Africa
   function getRegionTextFromCode(text) {
     return text ? text.replace("_", " ") : null;
   }
@@ -61,16 +63,20 @@ $(document).ready(function() {
   // CLICK ON MAP //
   //////////////////
 
+  // create links for the regions to search results
+  //   - CAP uses different path structure than the In the News section
+  //   - In the News needs to provide "search_path" variable, since
+  //     there are many different possible subjects (poets, events, works, etc)
   $("svg path").click(function() {
     var regionCode = getRegionCodeFromClass($(this).attr("class"));
     var regionName = getRegionTextFromCode(regionCode);
     var href = getRegionCodeFromText(regionName, "+");
-    if (search_path) {
-      // if a search_path variable was provided, use that
+
+    // in the news
+    if (typeof search_path !== 'undefined') {
       var fullurl = search_path + "?region=" + href;
+    // CAP
     } else {
-      // if no search_path variable provided, default to
-      // the contemporary african poets search
       var urlpiece = "../search?f[]=keywords|";
       var fullurl = urlpiece + href;
     }
