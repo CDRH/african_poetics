@@ -45,17 +45,14 @@
     <div class="navbar navbar-inverse">
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
-          <li class="<%= active?(inthenews_home_path) %>">
-            <%= link_to "In The News Home", inthenews_home_path %>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/news/, request.path) %>">
+            <%= link_to "News", inthenews_news_items_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/poets/, request.path) %>">
             <%= link_to "Poets", inthenews_poets_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/events/, request.path) %>">
             <%= link_to "Events", inthenews_events_path %>
-          </li>
-          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/news/, request.path) %>">
-            <%= link_to "News", inthenews_news_items_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/works/, request.path) %>">
             <%= link_to "Works", inthenews_works_path %>
