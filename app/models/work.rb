@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
 
+  belongs_to :location, optional: true
   belongs_to :publisher, optional: true
   belongs_to :work_type, optional: true
 
@@ -10,6 +11,8 @@ class Work < ApplicationRecord
     dependent: :destroy
   has_and_belongs_to_many :news_items,
     dependent: :destroy
+
+  has_one :region, through: :location
 
   def name
     "#{title} (#{year})"

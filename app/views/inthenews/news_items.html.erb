@@ -5,41 +5,32 @@
 <div class="row">
   <div class="col-md-5">
     
-    <label for="exampleInput">Search News (coming soon)</label>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
+    <%= render partial: "search_text_field", locals: {
+      url: inthenews_search_news_items_path,
+      label: "Search News"
+    } %>
     <%= link_to "Browse All News", inthenews_search_news_items_path %>
 
-    <p><br/>Select a news format to see the distribution of poetry news around the continent. Search by decade by sliding the timeline to see the distribution of poetry news publications in regions of Africa during that time period.</p>
+    <h3>Decades</h3>
+    <%= render partial: "group_count_table", locals: {
+      collection: @decades,
+      query_param: "decade",
+      path: "inthenews_search_news_items_path"
+    } %>
 
-<!--     <ul class="timeslider">
-      <li>1864</li>
-      <li>1920</li>
-      <li>1900</li>
-      <li>1940</li>
-      <li>1960</li>
-      <li>1980</li>
-      <li>2000</li>
-    </ul> -->
-    <p>Search by decade by sliding the timeline. (Coming Soon)</p>
   </div>
 
   <div class="col-md-5">
+    <p>No regional search available for news items</p>
     <%= render "partials/map_africa" %>
   </div>
 
   <div class="col-md-2 inthenews_sidebar">
     <h3>News Format</h3>
-    <ul>
-      <% @news_item_types.each do |label, count| %>
-        <% l = "#{label} (#{count})" %>
-        <% path = inthenews_search_news_items_path(news_type: label) %>
-        <li><%= link_to l, path %></li>
-      <% end %>
-    </ul>
+    <%= render partial: "group_count_table", locals: {
+      collection: @news_item_types,
+      query_param: "news_type",
+      path: "inthenews_search_news_items_path"
+    } %>
   </div>
 </div>

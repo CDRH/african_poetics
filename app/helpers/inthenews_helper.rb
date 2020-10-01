@@ -31,7 +31,8 @@ module InthenewsHelper
   end
 
   def link_complex_li_item(value, count, path, query_param, default_params: {})
-    label = "#{value.pluralize(count)} (#{count})"
+    value = "Unknown" if value.nil?
+    label = "#{value} (#{count})"
     default_params[query_param] = value
     link_to label, send(path, default_params)
   end

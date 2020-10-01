@@ -6,13 +6,10 @@
 
   <div class="col-md-5">
   
-    <label for="exampleInput">Search Commentaries (coming soon)</label>
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
+    <%= render partial: "search_text_field", locals: {
+      url: inthenews_search_commentaries_path,
+      label: "Search Commentaries"
+    } %>
     <%= link_to "Browse All Commentaries", inthenews_search_commentaries_path %>
   </div>
   <div class="col-md-7">

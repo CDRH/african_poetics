@@ -10,15 +10,10 @@
 
   <div class="col-md-5">
   
-    <%= form_with(url: inthenews_search_poets_path, method: "get", local: true) do %>
-      <%= label_tag(:q, "Search Poets") %>
-      <div class="input-group">
-        <%= text_field_tag(:q, nil, class: "form-control", placeholder: "Search for...") %>
-        <span class="input-group-btn">
-          <%= submit_tag("Search", class: "btn btn-default") %>
-        </span>
-      </div>
-    <% end %>
+    <%= render partial: "search_text_field", locals: {
+      url: inthenews_search_poets_path,
+      label: "Search Poets"
+    } %>
 
     <%= link_to "Browse All Poets", inthenews_search_poets_path %>
 
@@ -39,21 +34,11 @@
   <div class="col-md-2 inthenews_sidebar">
     <h4>Browse by Region</h4>
 
-    <table>
-      <body>
-        <% @regions.each do |label, count| %>
-          <% path = inthenews_search_poets_path(region: label) %>
-          <tr>
-            <td class="index_num"><%= link_to count, path %></td>
-            <td class="index_spacer">
-              <%= link_to path do %>
-                <span></span>
-              <% end %>
-            </td>
-            <td class="index_name"><%= link_to label, path %></td>
-          </tr>
-        <% end %>
-      </body>
-    </table>
+    <%= render partial: "group_count_table", locals: {
+      collection: @regions,
+      query_param: "region",
+      path: "inthenews_search_poets_path"
+    } %>
+
   </div>
 </div>

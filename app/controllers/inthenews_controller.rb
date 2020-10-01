@@ -31,6 +31,9 @@ class InthenewsController < ApplicationController
             name_last: last, name_given: given
         })
     end
+    if params[:q].present?
+      items = text_query_commentary(items, params[:q])
+    end
     @items = items.paginate(page: params[:page])
   end
 
@@ -53,11 +56,20 @@ class InthenewsController < ApplicationController
       .joins(:region)
       .group("regions.name")
       .count
+    # decade calculated with syntax found here:
+    # https://stackoverflow.com/a/22224123/4154134
+    @decades = Event
+      .order(date_not_before: :asc)
+      .group("FLOOR(year(date_not_before)/10)*10")
+      .count
   end
 
   def search_events
     @title = "Event Search"
     items = Event.all
+    if params[:decade].present?
+      items = decade_search(items, "date_not_before")
+    end
     if params[:event_type].present?
       items = items.joins(:event_type)
         .where(event_types: { name: params[:event_type] })
@@ -70,6 +82,9 @@ class InthenewsController < ApplicationController
     if params[:region].present?
       items = items.joins(:region)
         .where(regions: { name: params[:region] })
+    end
+    if params[:q].present?
+      items = text_query_event(items, params[:q])
     end
     @items = items.paginate(page: params[:page])
   end
@@ -90,11 +105,18 @@ class InthenewsController < ApplicationController
       .joins(:news_items)
       .group(:name)
       .count
+    @decades = NewsItem
+      .order(date: :asc)
+      .group("FLOOR(year(date)/10)*10")
+      .count
   end
 
   def search_news_items
     @title = "News Search"
     items = NewsItem.all
+    if params[:decade].present?
+      items = decade_search(items, "date")
+    end
     if params[:news_type].present?
       items = items.joins(:news_item_type)
         .where(news_item_types: { name: params[:news_type] })
@@ -103,6 +125,9 @@ class InthenewsController < ApplicationController
       @person = Person.find(params[:person])
       items = items.joins(:people)
         .where(people: { id: params[:person] })
+    end
+    if params[:q].present?
+      items = text_query_news_item(items, params[:q])
     end
     @items = items.paginate(page: params[:page])
   end
@@ -171,12 +196,26 @@ class InthenewsController < ApplicationController
 
   def works
     @title = "Works"
+    @decades = Work
+      .order(year: :asc)
+      .group("FLOOR(year/10)*10")
+      .count
+    @regions = Work
+      .joins(:region)
+      .group("regions.name")
+      .count
+    @work_types = Work.joins(:work_type)
+      .group("work_types.name")
+      .count
   end
 
   def search_works
     @title = "Work Search"
     items = Work.all
 
+    if params[:decade].present?
+      items = decade_search(items, "year", field_type: "integer")
+    end
     if params[:person].present?
       @person = Person.find(params[:person])
       items = items.joins(:work_roles)
@@ -184,6 +223,13 @@ class InthenewsController < ApplicationController
           person_id: params[:person],
           role: Role.find_by(name: "Poet")
         })
+    end
+    if params[:q].present?
+      items = text_query_work(items, params[:q])
+    end
+    if params[:region].present?
+      items = items.joins(:region)
+        .where(regions: { name: params[:region] })
     end
     if params[:work_type].present?
       items = items.joins(:work_type)
@@ -195,6 +241,77 @@ class InthenewsController < ApplicationController
 
   private
 
+  def decade_search(items, date_field, field_type: "date")
+    if params[:decade] == "Unknown"
+      items
+        .where(date_field => nil)
+    elsif field_type == "date"
+      start = Date.new(params[:decade].to_i)
+      finish = Date.new(params[:decade].to_i)+10.year-1.day
+      items
+        .where(date_field => start..finish)
+    else
+      # assume this is an integer field YYYY
+      start = params[:decade].to_i
+      finish = start + 9
+      items
+        .where(date_field => start..finish)
+    end
+  end
+
+  def text_query(items, fields, query)
+    text = fields.join(" LIKE :search OR ")
+    text += " LIKE :search"
+    items.where(text, search: "%#{query}%").distinct
+  end
+
+  def text_query_commentary(items, query)
+    items = items.left_joins(:commentary_authors, :events, :news_items, :people, :works)
+    fields = %w[
+      commentaries.name
+      commentaries.content
+      commentary_authors.name_last
+      commentary_authors.name_given
+      commentary_authors.short_biography
+      events.name
+      news_items.article_title
+      people.name_last
+      people.name_given
+      people.name_alt
+      works.title
+    ]
+    text_query(items, fields, query)
+  end
+
+  def text_query_event(items, query)
+    items = items.left_joins(:location, :people)
+    fields = %w[
+      name
+      summary
+      people.name_last
+      people.name_given
+      people.name_alt
+      locations.place
+      locations.city
+      locations.country
+    ]
+    text_query(items, fields, query)
+  end
+
+  def text_query_news_item(items, query)
+    items = items.left_joins(:people, :publisher)
+    fields = %w[
+      article_title
+      excerpt
+      summary
+      publishers.name
+      people.name_last
+      people.name_given
+      people.name_alt
+    ]
+    text_query(items, fields, query)
+  end
+
   def text_query_poet(items, query)
     fields = %w[
       name_last
@@ -203,10 +320,20 @@ class InthenewsController < ApplicationController
       bibliography
       short_biography
     ]
-    text = fields.join(" LIKE :search OR ")
-    text += " LIKE :search"
-    puts text
-    items.where(text, search: "%#{query}%")
+    text_query(items, fields, query)
+  end
+
+  def text_query_work(items, query)
+    items = items.left_joins(:publisher, :location)
+    fields = %w[
+      title
+      citation
+      publishers.name
+      locations.place
+      locations.city
+      locations.country
+    ]
+    text_query(items, fields, query)
   end
 
 end

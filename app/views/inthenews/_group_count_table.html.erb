@@ -1,0 +1,23 @@
+<%# expects
+    collection: expects hash of counts like { "label" => count }
+    query_param - a parameter that will be assigned in the link
+    path - link helper path
+%>
+
+<table>
+  <body>
+    <% collection.each do |label, count| %>
+      <% label = "Unknown" if label.nil? %>
+      <% url = send(path, { query_param => label }) %>
+      <tr>
+        <td class="index_name"><%= link_to label, url %></td>
+        <td class="index_spacer">
+          <%= link_to url do %>
+            <span></span>
+          <% end %>
+        </td>
+        <td class="index_num"><%= link_to count, url %></td>
+      </tr>
+    <% end %>
+  </body>
+</table>
