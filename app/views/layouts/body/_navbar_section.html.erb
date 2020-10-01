@@ -3,21 +3,18 @@
     <div class="navbar navbar-inverse">
       <div class="container navbar-container">  
         <ul class="nav navbar-nav">
-          <li class="<%= active?(home_path) %>">
-            <%= link_to "Contemporary Poets Home", prefix_path("home_path") %>
-          </li>
-           <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
+           <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse/,
             request.path) %>">
             <%= link_to "Featured", contemporarypoets_browse_facet_path(facet: "featured") %>
           </li>
-          <li class="<%= active?(/^#{config.relative_url_root}\/browse/,
+          <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse/,
             request.path) %>">
             <%= link_to t("browse.title", default: "Browse"), prefix_path("browse_path") %>
           </li>
-          <li class="<%= active?(search_path) %>">
+          <li class="<%= active?(contemporarypoets_search_path) %>">
             <%= link_to t("search.title", default: "Search"), prefix_path("search_path"), rel: "search" %>
           </li>
-          <li class="<%= active?(search_path) %>">
+          <li class="<%= active?(contemporarypoets_about_path) %>">
             <%= link_to "About", contemporarypoets_about_path, rel: "about" %>
           </li>
         </ul>
@@ -28,13 +25,13 @@
     <div class="navbar navbar-inverse">
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
-          <li>
+          <li class="<%= active?(about_homeabout_path) %>">
             <%= link_to "Credits", about_homeabout_path %>
           </li>
-          <li>
+          <li class="<%= active?(about_africanpoetrybookfund_path) %>">
             <%= link_to "African Poetry Book Fund", about_africanpoetrybookfund_path %>
           </li>
-          <li>
+          <li class="<%= active?(about_technicaldetails_path) %>">
             <%= link_to "Technical Details", about_technicaldetails_path %>
           </li>
         </ul>
@@ -45,22 +42,22 @@
     <div class="navbar navbar-inverse">
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
-          <li>
-            <%= link_to "In The News Home", inthenews_home_path %>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/news/, request.path) %>">
+            <%= link_to "News", inthenews_news_items_path %>
           </li>
-          <li>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/poets/, request.path) %>">
             <%= link_to "Poets", inthenews_poets_path %>
           </li>
-          <li>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/events/, request.path) %>">
             <%= link_to "Events", inthenews_events_path %>
           </li>
-          <li>
-            <%= link_to "News", inthenews_news_path %>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/works/, request.path) %>">
+            <%= link_to "Works", inthenews_works_path %>
           </li>
-          <!-- <li>
-            <%# link_to "Relationships", inthenews_relationships_path %>
-          </li> -->
-          <li>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/commentaries/, request.path) %>">
+            <%= link_to "Commentaries", inthenews_commentaries_path %>
+          </li>
+          <li class="<%= active?(inthenews_about_path) %>">
             <%= link_to "About", inthenews_about_path %>
           </li>
         </ul>

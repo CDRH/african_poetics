@@ -1,25 +1,23 @@
 $(document).ready(function() {
 
-  // TODO pull the link from the search results instead to overlay on the map
-  // but for now, using this to construct the query if user clicks the map
-  var urlpiece = "../search?f[]=keywords|"
-  
   /////////////
   // HELPERS //
   /////////////
 
   function getRegionCodeFromClass(classes) {
     if (classes) {
-      // TODO this will not aswork if diaspora is somehow represented on the map
+      // TODO this will not work if diaspora is somehow represented on the map
       var region = classes.match(/\S*_Africa/g)
       return region ? region[0] : null
     }
   }
 
+  // North Africa -> North_Africa or North+Africa, etc
   function getRegionCodeFromText(text, replace_char) {
     return text ? text.trim().replace(" ", replace_char) : null;
   }
 
+  // North_Africa -> North Africa
   function getRegionTextFromCode(text) {
     return text ? text.replace("_", " ") : null;
   }
@@ -65,11 +63,23 @@ $(document).ready(function() {
   // CLICK ON MAP //
   //////////////////
 
+  // create links for the regions to search results
+  //   - CAP uses different path structure than the In the News section
+  //   - In the News needs to provide "search_path" variable, since
+  //     there are many different possible subjects (poets, events, works, etc)
   $("svg path").click(function() {
     var regionCode = getRegionCodeFromClass($(this).attr("class"));
     var regionName = getRegionTextFromCode(regionCode);
     var href = getRegionCodeFromText(regionName, "+");
-    var fullurl = urlpiece + href;
+
+    // in the news
+    if (typeof search_path !== 'undefined') {
+      var fullurl = search_path + "?region=" + href;
+    // CAP
+    } else {
+      var urlpiece = "../search?f[]=keywords|";
+      var fullurl = urlpiece + href;
+    }
     window.location = fullurl;  
   });
 

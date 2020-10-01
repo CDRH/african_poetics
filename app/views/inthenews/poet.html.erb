@@ -1,0 +1,101 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+<!-- TODO redo h tags -->
+
+<h1 class="item_title"><%= @item.name %></h1>
+<% if @item.name_alt.present? %>
+  <h2 class="item_subtitle">Alternate names: <%= @item.name_alt %></h2>
+<% end %>
+<h3>
+  <div class="nationalities"><%= @item.nationalities %></div>
+  <span class="birth"><%= @item.date_birth %></span>
+    to
+  <span class="death"><%= @item.date_death %></span>
+</h3>
+
+<div class="row">
+
+
+  <!-- BIOGRAPHY -->
+
+  <div class="col-md-7">
+    <p><%= @item.short_biography %></p>
+
+    <%= render partial: "simple_association_list", locals: {
+      item: @item,
+      label: "Education",
+      assoc: "educations",
+      path: nil
+    } %>
+
+    <div class="row">
+
+      <!-- NEWS -->
+      <div class="col-md-6">
+        <%= render partial: "group_count_list", locals: {
+          header: "News Items",
+          collection: @news_items,
+          default_params: { person: @item },
+          path: "inthenews_search_news_items_path",
+          query_param: :news_type
+        } %>
+      </div>
+
+      <!-- EVENTS -->
+      <div class="col-md-6">
+        <%= render partial: "group_count_list", locals: {
+          header: "Events",
+          collection: @events,
+          default_params: { person: @item },
+          path: "inthenews_search_events_path",
+          query_param: :event_type
+        } %>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= render partial: "group_count_list", locals: {
+          header: "Works",
+          collection: @works,
+          default_params: { person: @item },
+          path: "inthenews_search_works_path",
+          query_param: :work_type
+        } %>
+      </div>
+      <div class="col-md-6">
+        <%= render partial: "simple_association_list", locals: {
+          item: @item,
+          label: "Commentaries",
+          assoc: "commentaries",
+          path: "inthenews_commentary_path"
+        } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <p class="well">Coming soon: Network diagram showing the relationship with other poets, professionals, and family.</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Relationships</h3>
+        <h4>Direct Relationships</h4>
+        Coming soon
+
+        <h4>Through News Items, Events, Works, and Educations</h4>
+        <ul>
+          <% all_related_people(@item).each do |person, count| %>
+            <li>
+              <% if person.major_african_poet %>
+                <%= link_to person.name, inthenews_poet_path(person) %>
+              <% else %>
+                <%= person.name %>
+              <% end %>
+              (<%= count %>)
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

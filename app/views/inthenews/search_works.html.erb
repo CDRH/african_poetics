@@ -1,0 +1,8 @@
+<%# NOTE: apparently have to use layout not "partial" if passing a block %>
+<%= render layout: "search_results_list", locals: {
+  label: "Work",
+  link_label_attr: "name",
+  link_path: "inthenews_work_path"
+} do |item| %>
+  <%= item.work_type.name if item.work_type %>
+<% end %>
