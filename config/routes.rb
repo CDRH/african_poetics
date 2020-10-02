@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
 
   scope "/inthenews" do
+
+
     get "/", to: "inthenews#home", as: :inthenews_home,
       defaults: { section: "inthenews" }
     get "/about", to: "inthenews#about", as: :inthenews_about,
@@ -50,10 +52,10 @@ Rails.application.routes.draw do
     # poets
     get "/poets", to: "inthenews#poets", as: :inthenews_poets,
       defaults: { section: "inthenews" }
-    get "/poets/search", to: "inthenews#search_poets", as: :inthenews_search_poets,
-      defaults: { section: "inthenews" }
-    get "/poets/:id", to: "inthenews#poet", as: :inthenews_poet,
-      defaults: { section: "inthenews" }
+    # get "/poets/search", to: "inthenews#search_poets", as: :inthenews_search_poets,
+    #   defaults: { section: "inthenews" }
+    # get "/poets/:id", to: "inthenews#poet", as: :inthenews_poet,
+    #   defaults: { section: "inthenews" }
 
     get "/works", to: "inthenews#works", as: :inthenews_works,
       defaults: { section: "inthenews" }
@@ -68,6 +70,9 @@ Rails.application.routes.draw do
 
     # Orchid::Routing.draw(section: "inthenews",
     #   routes: ["browse", "browse_facet", "search"], scope: "/inthenews")
+
+    Orchid::Routing.draw(section: "inthenews_poets",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/inthenews/poets")
   end
 
   scope "/about" do

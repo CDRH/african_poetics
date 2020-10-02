@@ -3,7 +3,8 @@ default: &default
   api_options:
     # only return section items by default
     f:
-      - subcategory|Contemporary Poet 
+      - category|In the News
+      - subcategory|Person (Poet)
     # sorting and response number
     sort:
       - date|asc
@@ -20,19 +21,20 @@ default: &default
     en:
       person.name:
         label: Poet
-        display: false
-      person.role:
-        label: Gender
-        display: true
+        flags:
+          - search_filter
       places:
-        label: Country
-        display: true
-      keywords:
+        label: Nationality
+        flags:
+          - search_filter
+      topics:
         label: Region
-        display: true
-      works:
-        label: Works
-        display: true
+        flags:
+          - search_filter
+      source:
+        label: News Items
+        flags:
+          - search_filter
 
 test:
   <<: *default
