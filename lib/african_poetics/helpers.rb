@@ -22,19 +22,27 @@ module Helpers
 
   def date_standardize(date, before: true)
     if date
-      y, m, d = date.split(/-|\//)
-      if y && y.length == 4
-        # use -1 to indicate that this will be the last possible
-        m_default = before ? "01" : "-1"
-        d_default = before ? "01" : "-1"
-        m = m_default if !m
-        d = d_default if !d
+      if date.class != ActiveSupport::TimeWithZone
+        y, m, d = date.to_s.split(/-|\//)
+        if y && y.length == 4
+          # use -1 to indicate that this will be the last possible
+          m_default = before ? "01" : "-1"
+          d_default = before ? "01" : "-1"
+          m = m_default if !m
+          d = d_default if !d
 
-        if Date.valid_date?(y.to_i, m.to_i, d.to_i)
-          date = Date.new(y.to_i, m.to_i, d.to_i)
-          date.strftime("%Y-%m-%d")
+          if Date.valid_date?(y.to_i, m.to_i, d.to_i)
+            date = Date.new(y.to_i, m.to_i, d.to_i)
+          else
+            puts "SOMETHING WRONG WITH DATE #{y}-#{m}-#{d}"
+            return nil
+          end
+        else
+          # if there's not even a year, can't do anything with this date
+          return nil
         end
       end
+      date.strftime("%Y-%m-%d")
     end
   end
 

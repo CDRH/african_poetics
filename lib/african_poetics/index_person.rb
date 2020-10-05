@@ -51,10 +51,9 @@ class IndexPerson < Index
 
   def spatial
     if @record.regions
-
       # TODO should probably put full locations here
       # but only using regions for speed's sake
-      @record.regions.map { |r| r.name }
+      @record.regions.map { |r| { "region" => r.name } }
     else
       []
     end
@@ -74,10 +73,6 @@ class IndexPerson < Index
       source,
       works
     ]
-  end
-
-  def title
-    @record.name
   end
 
   def topics

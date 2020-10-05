@@ -39,6 +39,7 @@ module Fields
   end
 
   def date_display
+    date_display_format(date)
   end
 
   def date_not_after
@@ -117,6 +118,7 @@ module Fields
 
   # nested field
   def spatial
+    []
   end
 
   def subjects
@@ -140,10 +142,17 @@ module Fields
   end
 
   def title
+    @record.name
   end
 
   def title_sort
-    # TODO
+    t = title
+    if t
+      down = t.downcase
+      subbed = down.gsub(/^the |^a |^an /, "")
+      # converts characters like ü to u
+      I18n.transliterate(subbed)
+    end
   end
 
   # USING FOR DECADE

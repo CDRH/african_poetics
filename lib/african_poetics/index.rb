@@ -61,8 +61,7 @@ class Index
     @json["type"] = type
     @json["extent"] = extent
     @json["medium"] = medium
-    # TODO this is messing up the request for some reason
-    # @json["spatial"] = spatial
+    @json["spatial"] = spatial
 
     # people
     @json["person"] = person
