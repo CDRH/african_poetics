@@ -19,11 +19,14 @@ default: &default
 
   facets:
     en:
-      # TODO need authors AND poets separated
-      # so we will probably need two fields for that
-      # or we will need to alter the API
-      # TODO poet
-      # TODO author
+      creator.name:
+        label: Author
+        flags:
+          - search_filter
+      person.name:
+        label: Poets
+        flags:
+          - search_filter
       topics:
         label: Decade
         flags:

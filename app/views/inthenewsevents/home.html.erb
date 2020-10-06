@@ -18,10 +18,12 @@
 
     <h3>Decades</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["topics"],
-      query_param: "topics",
+      facet: "topics",
       path: "inthenews_events_search_path"
     } %>
+
+    <h3>Poets</h3>
+    <%= link_to "Browse by Poet", inthenews_events_browse_facet_path(facet: "person.name") %>
 
   </div>
 
@@ -32,15 +34,13 @@
   <div class="col-md-2 inthenews_sidebar">
     <h3>Event Types</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["type"],
-      query_param: "type",
+      facet: "type",
       path: "inthenews_events_search_path"
     } %>
 
     <h3>Regions</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["spatial.region"],
-      query_param: "spatial.region",
+      facet: "spatial.region",
       path: "inthenews_events_search_path"
     } %>
   </div>

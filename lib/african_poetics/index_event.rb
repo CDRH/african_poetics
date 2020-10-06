@@ -33,19 +33,31 @@ class IndexEvent < Index
     @record.summary
   end
 
-  # TODO
-  # def person
-  # end
+  def person
+    @record.people.map do |p|
+      {
+        "name" => p.name,
+        "id" => p.id,
+        "role" => "none"
+      }
+    end
+  end
 
   def places
     @record.location.name if @record.location
   end
 
   def spatial
-    if @record.region
+    # TODO coordinates for latlng
+    l = @record.location
+    if l
       [
         {
-          "region" => @record.region.name
+          "title" => l.name,
+          "place_name" => l.place,
+          "city" => l.city,
+          "country" => l.country,
+          "region" => l.region.name
         }
       ]
     else

@@ -25,6 +25,13 @@
     </ul>
     <p>Search by first letter of last name</p>
 
+    <h3>Other</h3>
+    Browse by
+    <%= link_to "university", inthenews_poets_browse_facet_path(facet: "keywords") %>
+    |
+    <%= link_to "nationality",
+      inthenews_poets_browse_facet_path(facet: "places") %>
+
   </div>
 
   <div class="col-md-5" id="regions_map">
@@ -35,8 +42,7 @@
     <h4>Browse by Region</h4>
 
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["spatial.region"],
-      query_param: "region",
+      facet: "spatial.region",
       path: "inthenews_poets_search_path"
     } %>
 

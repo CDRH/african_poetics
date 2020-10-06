@@ -5,7 +5,19 @@ class IndexNewsItem < Index
   end
 
   def creator
-    # TODO
+    authors = @record.people
+      .includes(:news_item_roles)
+      .where(news_item_roles: {
+        role: Role.find_by(name: ["Author", "Editor"])
+      })
+      .distinct
+    authors.map do |author|
+      {
+        "name" => author.name,
+        "role" => "Author",
+        "id" => author.id
+      }
+    end
   end
 
   def date
@@ -24,12 +36,25 @@ class IndexNewsItem < Index
     @record.summary
   end
 
+  # NOTE this field is for the poet in the news item
   def person
-    # TODO
+    poets = @record.people
+      .includes(:news_item_roles)
+      .where(news_item_roles: { role: Role.find_by(name: "Poet") })
+      .distinct
+    poets.map do |author|
+      {
+        "name" => author.name,
+        "role" => "Poet",
+        "id" => author.id
+      }
+    end
   end
 
   def places
-    # TODO from publisher location?
+    if @record.publisher && @record.publisher.location
+      @record.publisher.location.name
+    end
   end
 
   def publisher

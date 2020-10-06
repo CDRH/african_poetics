@@ -4,9 +4,6 @@ class InthenewsworksController < ItemsController
     @title = "Works"
     @facets = @items_api.query({
       "facet" => [
-        "creator.name",
-        "places",
-        "publication",
         "spatial.region",
         "topics",
         "type"

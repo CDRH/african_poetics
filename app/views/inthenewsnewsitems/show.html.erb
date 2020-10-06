@@ -18,7 +18,7 @@
           item: @item,
           label: "Events",
           assoc: "events",
-          path: "inthenews_event_path"
+          path: "inthenews_events_search_path"
         } %>
       </div>
       <div class="col-md-6">
@@ -51,7 +51,7 @@
           <% person = role.person %>
           <li>
             <% if person.major_african_poet %>
-              <%= link_to person.name, inthenews_poet_path(person) %> | <%= role.role.name %>
+              <%= link_to person.name, inthenews_poets_item_path(person) %> | <%= role.role.name %>
             <% else %>
               <%= person.name %> | <%= role.role.name %>
             <% end %>

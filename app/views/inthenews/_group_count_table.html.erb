@@ -1,14 +1,15 @@
 <%# expects
-    collection: expects hash of counts like { "label" => count }
-    query_param - a parameter that will be assigned in the link
+    facet: the facet and query param in question
+      like "topics" or "creator.name"
     path - link helper path
 %>
 
 <table>
   <body>
+    <% collection = @facets[facet] %>
     <% collection.each do |label, count| %>
       <% label = "Unknown" if label.nil? %>
-      <% url = send(path, { query_param => label }) %>
+      <% url = send(path, { "f" => ["#{facet}|#{label}"] }) %>
       <tr>
         <td class="index_name"><%= link_to label, url %></td>
         <td class="index_spacer">

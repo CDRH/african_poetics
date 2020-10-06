@@ -18,18 +18,22 @@
 
     <h3>Work Types</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["type"],
-      query_param: "type",
+      facet: "type",
       path: "inthenews_works_search_path"
     } %>
+
+    <h3>Other</h3>
+    Browse by:
+    <%= link_to "City", inthenews_works_browse_facet_path(facet: "places") %>
+    |
+    <%= link_to "Author", inthenews_works_browse_facet_path(facet: "creator.name") %>
   </div>
 
   <div class="col-md-5" id="regions_map">
     <%= render "partials/map_africa" %>
     <h3>Regions</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["spatial.region"],
-      query_param: "spatial.region",
+      facet: "spatial.region",
       path: "inthenews_works_search_path"
     } %>
   </div>
@@ -37,8 +41,7 @@
   <div class="col-md-2">
     <h3>Decades</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["topics"],
-      query_param: "topics",
+      facet: "topics",
       path: "inthenews_works_search_path"
     } %>
   </div>

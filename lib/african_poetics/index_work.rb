@@ -46,16 +46,36 @@ class IndexWork < Index
     @record.citation
   end
 
-  # TODO
   def places
+    if @record.publisher && @record.publisher.location
+      @record.publisher.location.name
+    end
   end
 
   def publisher
     @record.publisher.name if @record.publisher
   end
 
+  # TODO latlng coordinates
+  def spatial
+    if @record.publisher && @record.publisher.location
+      l = @record.publisher.location
+      [
+        {
+          "title" => l.name,
+          "city" => l.city,
+          "country" => l.country,
+          "region" => l.region.name
+        }
+      ]
+    end
+  end
+
   def type
-    @record.work_type.name if @record.work_type
+    if @record.work_type
+      t = @record.work_type.name
+      t.sub("|", ", ") if t
+    end
   end
 
 end

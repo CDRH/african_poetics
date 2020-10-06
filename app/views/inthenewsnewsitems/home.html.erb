@@ -13,10 +13,18 @@
 
     <h3>Decades</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["topics"],
-      query_param: "topics",
+      facet: "topics",
       path: "inthenews_news_items_search_path"
     } %>
+
+    <h3>Other</h3>
+    Browse by
+    <%= link_to "author", inthenews_news_items_browse_facet_path(facet: "creator.name") %>
+    |
+    <%= link_to "poet", inthenews_news_items_browse_facet_path(facet: "person.name") %>
+    |
+    <%= link_to "publisher",
+      inthenews_news_items_browse_facet_path(facet: "publisher") %>
 
   </div>
 
@@ -28,8 +36,7 @@
   <div class="col-md-2 inthenews_sidebar">
     <h3>News Format</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
-      collection: @facets["type"],
-      query_param: "type",
+    facet: "type",
       path: "inthenews_news_items_search_path"
     } %>
   </div>
