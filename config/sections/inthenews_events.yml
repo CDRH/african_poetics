@@ -4,7 +4,7 @@ default: &default
     # only return section items by default
     f:
       - category|In the News
-      - subcategory|person
+      - subcategory|event
     # sorting and response number
     sort:
       - date|asc
@@ -19,24 +19,24 @@ default: &default
 
   facets:
     en:
+      topics:
+        label: Decade
+        flags:
+          - search_filter
+      type:
+        label: Type
+        flags:
+          - search_filter
+      person.name:
+        label: Poets
+        flags:
+          - search_filter
       places:
-        label: Nationality
+        label: Location
         flags:
           - search_filter
       spatial.region:
         label: Region
-        flags:
-          - search_filter
-      topics:
-        label: Birth Decade
-        flags:
-          - search_filter
-      alternative:
-        label: Letter of Last Name
-        flags:
-          - search_filter
-      keywords:
-        label: Education
         flags:
           - search_filter
 

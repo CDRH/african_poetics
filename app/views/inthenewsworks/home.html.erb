@@ -1,0 +1,46 @@
+<script>
+  var search_path = "<%= inthenews_works_search_path %>";
+</script>
+
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>Works</h2>
+
+<div class="row">
+
+  <div class="col-md-5">
+  
+    <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_works_search_path,
+      label: "Search Works"
+    } %>
+    <%= link_to "Browse All Works", inthenews_works_search_path %>
+
+    <h3>Work Types</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["type"],
+      query_param: "type",
+      path: "inthenews_works_search_path"
+    } %>
+  </div>
+
+  <div class="col-md-5" id="regions_map">
+    <%= render "partials/map_africa" %>
+    <h3>Regions</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["spatial.region"],
+      query_param: "spatial.region",
+      path: "inthenews_works_search_path"
+    } %>
+  </div>
+
+  <div class="col-md-2">
+    <h3>Decades</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["topics"],
+      query_param: "topics",
+      path: "inthenews_works_search_path"
+    } %>
+  </div>
+
+</div>

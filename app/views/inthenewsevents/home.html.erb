@@ -1,0 +1,47 @@
+<script>
+  var search_path = "<%= inthenews_events_search_path %>";
+</script>
+
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>Events</h2>
+
+<div class="row">
+  <div class="col-md-5">
+    
+    <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_events_search_path,
+      label: "Search Events"
+    } %>
+
+    <%= link_to "Browse All Events", inthenews_events_search_path %>
+
+    <h3>Decades</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["topics"],
+      query_param: "topics",
+      path: "inthenews_events_search_path"
+    } %>
+
+  </div>
+
+  <div class="col-md-5" id="regions_map">
+    <%= render "partials/map_africa" %>
+  </div>
+
+  <div class="col-md-2 inthenews_sidebar">
+    <h3>Event Types</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["type"],
+      query_param: "type",
+      path: "inthenews_events_search_path"
+    } %>
+
+    <h3>Regions</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["spatial.region"],
+      query_param: "spatial.region",
+      path: "inthenews_events_search_path"
+    } %>
+  </div>
+</div>

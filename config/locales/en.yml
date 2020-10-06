@@ -204,6 +204,9 @@ en:
         no_title: Untitled
         # the source of the item, such as the repository
         source: Source
+
+        # AFRICAN POETICS OVERRIDES
+        keywords: University
       # how to display number of results when a search / filter have been applied
       # and therefore the user is browsing a subset of items
       query:

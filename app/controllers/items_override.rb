@@ -1,5 +1,7 @@
 ItemsController.class_eval do
 
+  helper_method :es_to_db_record
+
   # NOTE below method is entirely the same as the default except
   # for "if @browse_facet == 'featured' if / else"
   def browse_facet
@@ -56,6 +58,13 @@ ItemsController.class_eval do
       @title = "#{t "browse.browse_type"} #{@browse_facet_info["label"]}"
       render_overridable("items", "browse_facet", locals: { sort_by: sort_by })
     end
+  end
+
+  private
+
+  def es_to_db_record(model, es_id)
+    db_id = es_id[/ap\.\w*\.(\d*)/,1]
+    model.constantize.find(db_id)
   end
 
 end

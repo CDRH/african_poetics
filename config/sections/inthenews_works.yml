@@ -4,7 +4,7 @@ default: &default
     # only return section items by default
     f:
       - category|In the News
-      - subcategory|person
+      - subcategory|work
     # sorting and response number
     sort:
       - date|asc
@@ -20,7 +20,7 @@ default: &default
   facets:
     en:
       places:
-        label: Nationality
+        label: Location
         flags:
           - search_filter
       spatial.region:
@@ -28,15 +28,20 @@ default: &default
         flags:
           - search_filter
       topics:
-        label: Birth Decade
+        label: Decade
         flags:
           - search_filter
-      alternative:
-        label: Letter of Last Name
+      creator.name:
+        label: Author
         flags:
           - search_filter
-      keywords:
-        label: Education
+      # TODO poets
+      publisher:
+        label: Publisher
+        flags:
+          - search_filter
+      type:
+        label: Type
         flags:
           - search_filter
 

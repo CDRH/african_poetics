@@ -1,0 +1,15 @@
+<% rec = es_to_db_record("Person", item["identifier"]) %>
+
+<% if rec.place_of_birth %>
+  <li>Birthplace: <%= rec.place_of_birth.name %></li>
+<% end %>
+
+<% if rec.date_birth %>
+  <li>Birthdate: <%= rec.date_birth %></li>
+<% end %>
+
+<% if rec.educations %>
+  <% rec.educations.each do |ed| %>
+    <li>Education: <%= ed.name %></li>
+  <% end %>
+<% end %>

@@ -20,7 +20,7 @@
   <div class="col-md-7">
     <p><%= @item.short_biography %></p>
 
-    <%= render partial: "simple_association_list", locals: {
+    <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
       label: "Education",
       assoc: "educations",
@@ -31,22 +31,22 @@
 
       <!-- NEWS -->
       <div class="col-md-6">
-        <%= render partial: "group_count_list", locals: {
+        <%= render partial: "inthenews/group_count_list", locals: {
           header: "News Items",
           collection: @news_items,
           default_params: { person: @item },
-          path: "inthenews_search_news_items_path",
+          path: "inthenews_news_items_search_path",
           query_param: :news_type
         } %>
       </div>
 
       <!-- EVENTS -->
       <div class="col-md-6">
-        <%= render partial: "group_count_list", locals: {
+        <%= render partial: "inthenews/group_count_list", locals: {
           header: "Events",
           collection: @events,
           default_params: { person: @item },
-          path: "inthenews_search_events_path",
+          path: "inthenews_events_search_path",
           query_param: :event_type
         } %>
       </div>
@@ -54,16 +54,16 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <%= render partial: "group_count_list", locals: {
+        <%= render partial: "inthenews/group_count_list", locals: {
           header: "Works",
           collection: @works,
           default_params: { person: @item },
-          path: "inthenews_search_works_path",
+          path: "inthenews_works_search_path",
           query_param: :work_type
         } %>
       </div>
       <div class="col-md-6">
-        <%= render partial: "simple_association_list", locals: {
+        <%= render partial: "inthenews/simple_association_list", locals: {
           item: @item,
           label: "Commentaries",
           assoc: "commentaries",
@@ -87,7 +87,7 @@
           <% all_related_people(@item).each do |person, count| %>
             <li>
               <% if person.major_african_poet %>
-                <%= link_to person.name, inthenews_poet_path(person) %>
+                <%= link_to person.name, inthenews_poets_item_path(person) %>
               <% else %>
                 <%= person.name %>
               <% end %>

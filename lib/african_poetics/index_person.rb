@@ -6,6 +6,12 @@ class IndexPerson < Index
 
   private
 
+  # first letter of last name
+  # TODO this shouldn't go in this field permanently
+  def alternative
+    @record.name_last[0]
+  end
+
   # using birthday for now
   def date
     date_normalize(@record.date_birth)
@@ -27,6 +33,11 @@ class IndexPerson < Index
     @record.short_biography
   end
 
+  def keywords
+    # TODO is this a good location for educations?
+    @record.educations.map { |edu| edu.uni_name }
+  end
+
   def person
     [
       {
@@ -38,10 +49,10 @@ class IndexPerson < Index
   end
 
   def places
-    # use nationalities currently
-    @record.nationalities
-
-    # TODO should we also be including birthplace, education, nationality, etc?
+    bp = @record.place_of_birth
+    if bp
+      bp.country
+    end
   end
 
   def source
@@ -59,13 +70,11 @@ class IndexPerson < Index
     end
   end
 
-  def subcategory
-    if @record.major_african_poet
-      "Person (Poet)"
-    else
-      "Person (Non-Poet)"
-    end
-  end
+  # NOTE only poets should be getting indexed,
+  # so there is no need to distinguish which are
+  # major african poets here
+  # def subcategory
+  # end
 
   def text_additional
     # education?
@@ -73,10 +82,6 @@ class IndexPerson < Index
       source,
       works
     ]
-  end
-
-  def topics
-    @record.regions.map { |r| r.name }
   end
 
   def works

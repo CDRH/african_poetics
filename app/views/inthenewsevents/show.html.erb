@@ -12,11 +12,11 @@
   </div>
 
   <div class="col-md-6">
-    <%= render partial: "simple_association_list", locals: {
+    <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
       label: "Relationships",
       assoc: "people",
-      path: "inthenews_poet_path"
+      path: "inthenews_poets_item_path"
     } %>
   </div>
 </div>
@@ -24,17 +24,17 @@
 <div class="row">
   <div class="col-md-6">
     <% if @item.news_items.present? %>
-      <%= render partial: "simple_association_list", locals: {
+      <%= render partial: "inthenews/simple_association_list", locals: {
         item: @item,
         label: "News Items",
         assoc: "news_items",
-        path: "inthenews_news_item_path"
+        path: "inthenews_news_items_item_path"
       } %>
     <% end %>
   </div>
 
   <div class="col-md-6">
-    <%= render partial: "simple_association_list", locals: {
+    <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
       label: "Commentaries",
       assoc: "commentaries",

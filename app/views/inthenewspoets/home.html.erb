@@ -1,5 +1,5 @@
 <script>
-  var search_path = "<%= inthenews_search_poets_path %>";
+  var search_path = "<%= inthenews_poets_search_path %>";
 </script>
 
 <h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
@@ -10,17 +10,17 @@
 
   <div class="col-md-5">
   
-    <%= render partial: "search_text_field", locals: {
-      url: inthenews_search_poets_path,
+    <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_poets_search_path,
       label: "Search Poets"
     } %>
 
-    <%= link_to "Browse All Poets", inthenews_search_poets_path %>
+    <%= link_to "Browse All Poets", inthenews_poets_search_path %>
 
 
     <ul class="timeslider">
       <% ("A".."Z").each do |letter| %>
-        <li><%= link_to letter, inthenews_search_poets_path(letter: letter) %></li>
+        <li><%= link_to letter, inthenews_poets_search_path(f: ["alternative|#{letter}"]) %></li>
       <% end %>
     </ul>
     <p>Search by first letter of last name</p>
@@ -34,10 +34,10 @@
   <div class="col-md-2 inthenews_sidebar">
     <h4>Browse by Region</h4>
 
-    <%= render partial: "group_count_table", locals: {
-      collection: @regions,
+    <%= render partial: "inthenews/group_count_table", locals: {
+      collection: @facets["spatial.region"],
       query_param: "region",
-      path: "inthenews_search_poets_path"
+      path: "inthenews_poets_search_path"
     } %>
 
   </div>

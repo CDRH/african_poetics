@@ -33,7 +33,7 @@ class IndexNewsItem < Index
   end
 
   def publisher
-    @record.publisher.name
+    @record.publisher.name if @record.publisher
   end
 
   def source
@@ -44,6 +44,10 @@ class IndexNewsItem < Index
     [
       @record.excerpt
     ]
+  end
+
+  def type
+    @record.news_item_type.name if @record.news_item_type
   end
 
   def works

@@ -14,6 +14,7 @@ class IndexWork < Index
     # now filter those people to those who are poets / authors
     authors = all_people.where(roles: { name: "Poet" })
       .or(all_people.where(roles: { name: "Author" }))
+      .distinct
     if authors
       authors.map do |a|
         {
@@ -51,6 +52,10 @@ class IndexWork < Index
 
   def publisher
     @record.publisher.name if @record.publisher
+  end
+
+  def type
+    @record.work_type.name if @record.work_type
   end
 
 end

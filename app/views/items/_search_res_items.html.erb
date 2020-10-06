@@ -1,0 +1,75 @@
+<%# overridden because each template has specific
+information which is needs to display %>
+
+<% if @res.count > 0 %>
+  <% @res.items.each do |item| %>
+    <div class="searchResults buffer-bottom-sm">
+      <h3><%= search_item_link(item) %></h3>
+      <div class="row">
+        <div class="<%= item["highlight"].present? ? "col-md-4" : "col-md-12" %> search_results_info">
+          <ul>
+
+            <% if @section == "inthenews_events" %>
+              <%= render partial: "inthenewsevents/search_res_item", locals: { item: item } %>
+
+            <% elsif @section == "inthenews_news_items" %>
+              <%= render partial: "inthenewsnewsitems/search_res_item", locals: {
+                item: item
+              } %>
+
+            <% elsif @section == "inthenews_poets" %>
+              <%= render partial: "inthenewspoets/search_res_item", locals: { item: item } %>
+
+            <% elsif @section == "inthenews_works" %>
+              <%= render partial: "inthenewsworks/search_res_item", locals: { item: item } %>
+
+
+            <%# beyond this point is the default orchid behavior %>
+
+            <% else %>
+              <% if item["date_display"].present? %>
+                <li>
+                  <%= metadata(item, t("search.results.item.date",
+                    default: "Date"), "date_display", link: false) %>
+                </li>
+              <% end %>
+              <%# creator is a multivalued, nested field %>
+              <% if item["creator"].present? %>
+                <li>
+                  <%= metadata(item, t("search.results.item.creator",
+                    default: "Creator"), "creator.name", link: false) %>
+                </li>
+              <% end %>
+              <%# format can be a multivalued or single keyword field %>
+              <% if item["format"].present? %>
+                <li>
+                  <%= metadata(item, t("search.results.item.format",
+                    default: "Format"), "format", link: false) %>
+                </li>
+              <% end %>
+              <%# source can be a multivalued or single keyword field %>
+              <% if item["source"].present? %>
+                <li>
+                  <%= metadata(item, t("search.results.item.source",
+                    default: "Source"), "source", link: false) %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <% if item["highlight"].present? %>
+          <div class="col-md-8 search_results_text">
+            <% item["highlight"].each do |key, hls| %>
+              <div class="search_results_highlights well">
+                <strong><%= key.titleize %>:</strong>
+                <% hls.each do |hl| %>
+                  <p><%= hl.html_safe %></p>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

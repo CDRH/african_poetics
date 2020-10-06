@@ -37,7 +37,7 @@ class IndexEvent < Index
   # def person
   # end
 
-  def place
+  def places
     @record.location.name if @record.location
   end
 
