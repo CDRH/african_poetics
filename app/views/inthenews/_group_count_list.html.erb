@@ -1,6 +1,5 @@
 <%# expecting the following variables
 
-  header - description of what we're displaying
   collection - a hash of labels => count
   default_params - hash of params necessary for this view
     for example: poet page might always have person_id: 1
@@ -9,15 +8,11 @@
 
 %>
 
-<h3><%= header %></h3>
-
-<% if collection.blank? %>
-  No <%= header.downcase %>
-<% else %>
+<% if collection.present? %>
   <ul>
     <%# provide a handy way to view all results at once %>
     <li>
-      <%= link_to "All #{header.downcase} results",
+      <%= link_to "All results",
         send(path, default_params) %>
     </li>
 

@@ -1,99 +1,125 @@
 <h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
-<!-- TODO redo h tags -->
 
-<h1 class="item_title"><%= @item.name %></h1>
+<h2><%= @item.name %></h2>
 <% if @item.name_alt.present? %>
   <h2 class="item_subtitle">Alternate names: <%= @item.name_alt %></h2>
 <% end %>
-<h3>
-  <div class="nationalities"><%= @item.nationalities %></div>
-  <span class="birth"><%= @item.date_birth %></span>
-    to
-  <span class="death"><%= @item.date_death %></span>
-</h3>
 
-<div class="row">
+<h3>Biography</h3>
 
-
-  <!-- BIOGRAPHY -->
-
-  <div class="col-md-7">
-    <p><%= @item.short_biography %></p>
-
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "educations",
-      path: nil
-    } %>
-
-    <div class="row">
-
-      <!-- NEWS -->
-      <div class="col-md-6">
-        <%= render partial: "inthenews/group_count_list", locals: {
-          header: "News Items",
-          collection: @news_items,
-          default_params: { person: @item },
-          path: "inthenews_news_items_search_path",
-          query_param: :news_type
-        } %>
-      </div>
-
-      <!-- EVENTS -->
-      <div class="col-md-6">
-        <%= render partial: "inthenews/group_count_list", locals: {
-          header: "Events",
-          collection: @events,
-          default_params: { person: @item },
-          path: "inthenews_events_search_path",
-          query_param: :event_type
-        } %>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <%= render partial: "inthenews/group_count_list", locals: {
-          header: "Works",
-          collection: @works,
-          default_params: { person: @item },
-          path: "inthenews_works_search_path",
-          query_param: :work_type
-        } %>
-      </div>
-      <div class="col-md-6">
-        <%= render partial: "inthenews/simple_association_list", locals: {
-          item: @item,
-          assoc: "commentaries",
-          path: "inthenews_commentary_path"
-        } %>
-      </div>
-    </div>
+<% if @item.nationalities.present? %>
+  <div>
+    <%= @item.nationalities.join(", ") %>
   </div>
+<% end %>
 
-  <div class="col-md-5">
-    <p class="well">Coming soon: Network diagram showing the relationship with other poets, professionals, and family.</p>
-
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Relationships</h3>
-        <h4>Direct Relationships</h4>
-        Coming soon
-
-        <h4>Through News Items, Events, Works, and Educations</h4>
-        <ul>
-          <% all_related_people(@item).each do |person, count| %>
-            <li>
-              <% if person.major_african_poet %>
-                <%= link_to person.name, inthenews_poets_item_path(person) %>
-              <% else %>
-                <%= person.name %>
-              <% end %>
-              (<%= count %>)
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+<% if @item.date_birth.present? %>
+  <div>
+    Birth date: <%= @item.date_birth %>
   </div>
+<% end %>
+
+<% if @item.place_of_birth.present? %>
+  <div>
+    Birth location: <%= @item.place_of_birth.name %>
+  </div>
+<% end %>
+
+<% if @item.date_death.present? %>
+  <div>
+    <% if @item.date_death == "Present" %>
+      Currently Living
+    <% else %>
+      Death date: <%= @item.date_death %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="well">
+  <%= @item.short_biography %>
 </div>
+
+<% if @item.educations.present? %>
+  <h3>Education</h3>
+  <%= render partial: "inthenews/simple_association_list", locals: {
+    item: @item,
+    assoc: "educations",
+    path: nil
+  } %>
+<% end %>
+
+<% if @item.news_item_roles.present? %>
+  <h3>News Items (<%= @item.news_item_roles.count %>)</h3>
+  <ul>
+    <% @item.news_item_roles.each do |role| %>
+      <li>
+        <% id = db_to_es_id("news", role.news_item.id) %>
+        [<%= role.news_item.news_item_type.name %>]
+        <%= link_to inthenews_news_items_item_path(id: id) do %>
+          <%= role.news_item.name %>
+        <% end %>
+        (<%= role.role.name %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @item.events.present? %>
+  <h3>Events (<%= @item.events.count %>)</h3>
+  <ul>
+    <% @item.events.each do |event| %>
+      <li>
+        <% id = db_to_es_id("event", event.id) %>
+        <%= link_to event.name, inthenews_events_item_path(id: id) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @item.work_roles.present? %>
+  <h3>Works (<%= @item.work_roles.count %>)</h3>
+  <ul>
+    <% @item.work_roles.each do |role| %>
+      <li>
+        <% id = db_to_es_id("work", role.work.id) %>
+        <%= link_to inthenews_works_item_path(id: id) do %>
+          <%= role.work.name %>
+        <% end %>
+        (<%= role.role.name %>)
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @item.commentaries.present? %>
+  <h3>Commentaries (<%= @item.commentaries.count %>)</h3>
+  <ul>
+    <% @item.commentaries.each do |comm| %>
+      <li>
+        <% id = db_to_es_id("commentary", comm.id) %>
+        <%# TODO once we have actual paths for commentaries %>
+        <%= comm.name %>
+        <%# link_to comm.name, inthenews_commentaries_item_path(id: id) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%# TODO could possibly construct this more easily with elasticsearch,
+assuming that all poets are readily available as person.name, etc %>
+
+<% rel_people = all_related_people(@item) %>
+<h3>Relationships Through News Items, Events, Works, and Educations (<%= rel_people.length %></h3>
+<ul>
+  <% rel_people.each do |person, count| %>
+    <li>
+      <% if person.major_african_poet %>
+        <% id = db_to_es_id("person", person.id) %>
+        <%= link_to person.name, inthenews_poets_item_path(id: id) %>
+      <% else %>
+        <%= person.name %>
+      <% end %>
+      (<%= count %>)
+    </li>
+  <% end %>
+</ul>

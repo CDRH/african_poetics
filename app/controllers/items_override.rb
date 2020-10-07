@@ -1,6 +1,6 @@
 ItemsController.class_eval do
 
-  helper_method :es_to_db_record
+  helper_method :db_to_es_id, :es_to_db_record
 
   # NOTE below method is entirely the same as the default except
   # for "if @browse_facet == 'featured' if / else"
@@ -61,6 +61,10 @@ ItemsController.class_eval do
   end
 
   private
+
+  def db_to_es_id(category, id)
+    "ap.#{category}.#{id}"
+  end
 
   def es_to_db_record(model, es_id)
     db_id = es_id[/ap\.\w*\.(\d*)/,1]
