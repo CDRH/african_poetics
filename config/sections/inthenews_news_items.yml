@@ -43,6 +43,10 @@ default: &default
         label: Publisher
         flags:
           - search_filter
+      keywords:
+        label: Tags
+        flags:
+          - search_filter
 
 test:
   <<: *default

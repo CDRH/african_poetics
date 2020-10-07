@@ -30,6 +30,10 @@ class IndexNewsItem < Index
     @record.summary
   end
 
+  def keywords
+    @record.tags.map { |t| t.name }
+  end
+
   # NOTE this field is for the poet in the news item
   def person
     poets = @record.people
