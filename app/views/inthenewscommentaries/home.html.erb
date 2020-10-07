@@ -1,0 +1,49 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>Commentaries</h2>
+
+<div class="row">
+
+  <div class="col-md-5">
+  
+    <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_commentaries_search_path,
+      label: "Search Commentaries"
+    } %>
+    <%= link_to "Browse All Commentaries", inthenews_commentaries_search_path %>
+  </div>
+  <div class="col-md-7">
+
+    <h3>Commentary Authors</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      facet: "creator.name",
+      path: "inthenews_commentaries_search_path"
+    } %>
+
+    <h3>Regarding Events</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      facet: "keywords",
+      path: "inthenews_commentaries_search_path"
+    } %>
+
+    <h3>Regarding News Items</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      facet: "subjects",
+      path: "inthenews_commentaries_search_path"
+    } %>
+
+    <h3>Regarding People</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      facet: "person.name",
+      path: "inthenews_commentaries_search_path"
+    } %>
+
+    <h3>Regarding Works</h3>
+    <%= render partial: "inthenews/group_count_table", locals: {
+      facet: "works",
+      path: "inthenews_commentaries_search_path"
+    } %>
+
+  </div>
+  
+</div>

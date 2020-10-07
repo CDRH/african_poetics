@@ -97,9 +97,7 @@
     <% @item.commentaries.each do |comm| %>
       <li>
         <% id = db_to_es_id("commentary", comm.id) %>
-        <%# TODO once we have actual paths for commentaries %>
-        <%= comm.name %>
-        <%# link_to comm.name, inthenews_commentaries_item_path(id: id) %>
+        <%= link_to comm.name, inthenews_commentaries_item_path(id: id) %>
       </li>
     <% end %>
   </ul>

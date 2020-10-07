@@ -9,7 +9,11 @@ information which is needs to display %>
         <div class="<%= item["highlight"].present? ? "col-md-4" : "col-md-12" %> search_results_info">
           <ul>
 
-            <% if @section == "inthenews_events" %>
+            <% if @section == "inthenews_commentaries" %>
+
+              <%= render partial: "inthenewscommentaries/search_res_item", locals: { item: item } %>
+
+            <% elsif @section == "inthenews_events" %>
               <%= render partial: "inthenewsevents/search_res_item", locals: { item: item } %>
 
             <% elsif @section == "inthenews_news_items" %>

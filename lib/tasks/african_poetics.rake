@@ -1,5 +1,6 @@
 require "african_poetics/elasticsearch"
 require "african_poetics/index"
+require "african_poetics/index_commentary"
 require "african_poetics/index_event"
 require "african_poetics/index_news_item"
 require "african_poetics/index_person"
@@ -11,6 +12,9 @@ namespace :african_poetics do
   desc "creates documents and posts information to Elasticsearch"
   task index: :environment do
     es = Elasticsearch.new()
+    Commentary.all.each do |comm|
+      IndexCommentary.new(comm, es).post
+    end
     Event.all.each do |event|
       IndexEvent.new(event, es).post
     end

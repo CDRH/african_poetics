@@ -28,12 +28,12 @@ Rails.application.routes.draw do
       defaults: { section: "inthenews" }
 
     # commentaries
-    get "/commentaries", to: "inthenews#commentaries", as: :inthenews_commentaries,
-      defaults: { section: "inthenews" }
-    get "/commentaries/search", to: "inthenews#search_commentaries", as: :inthenews_search_commentaries,
-      defaults: { section: "inthenews" }
-    get "/commentaries/:id", to: "inthenews#commentary", as: :inthenews_commentary,
-      defaults: { section: "inthenews" }
+    Orchid::Routing.draw(section: "inthenews_commentaries",
+      routes: ["browse", "browse_facet", "search"], scope: "/inthenews/commentaries")
+    get "/commentaries", to: "inthenewscommentaries#home", as: :inthenews_commentaries,
+      defaults: { section: "inthenews_commentaries" }
+    get "/commentaries/:id", to: "inthenewscommentaries#show", as: :inthenews_commentaries_item,
+      defaults: { section: "inthenews_commentaries" }, constraints: { id: with_period }
 
     # events
     Orchid::Routing.draw(section: "inthenews_events",
