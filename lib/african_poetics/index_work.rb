@@ -5,18 +5,8 @@ class IndexWork < Index
   end
 
   def creator
-    # it's a little bit of work to get
-    # the authors / poets so do some joining
-    all_people = Person
-      .joins(work_roles: :role)
-      .where(work_roles: { work_id: @record.id })
-
-    # now filter those people to those who are poets / authors
-    authors = all_people.where(roles: { name: "Poet" })
-      .or(all_people.where(roles: { name: "Author" }))
-      .distinct
-    if authors
-      authors.map do |a|
+    if @record.authors
+      @record.authors.map do |a|
         {
           name: a.name,
           id: a.id,

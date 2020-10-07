@@ -1,42 +1,57 @@
 <h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
 
 <h2><%= @item.name %></h2>
-<h3><%= @item.location.name %> | <%= @item.date %></h3>
 
-<div class="row">
-  <div class="col-md-6">
-    <strong><%= @item.event_type.name %> event</strong>
-    <% if @item.summary.present? %>
-      <p><%= @item.summary %></p>
+<h3>Summary</h3>
+
+<% if @item.location.present? %>
+  <div>
+    Location: <%= @item.location.name %>
+  </div>
+<% end %>
+
+<% if @item.date.present? %>
+  <div>
+    Date: <%= @item.date %>
+  </div>
+<% end %>
+
+<% if @item.event_type.present? %>
+  <div>
+    Type: <%= @item.event_type.name %>
+  </div>
+<% end %>
+
+<% if @item.summary.present? %>
+  <div class="well">
+    <%= sanitize @item.summary %>
+  </div>
+<% end %>
+
+<% if @item.news_items.present? %>
+  <h3>News Items (<%= @item.news_items.count %>)</h3>
+  <ul>
+    <% @item.news_items.each do |ni| %>
+      <% id = db_to_es_id("news", ni.id) %>
+      <li>
+        <%= link_to ni.name, inthenews_news_items_item_path(id: id) %>
+      </li>
     <% end %>
-  </div>
+  </ul>
+<% end %>
 
-  <div class="col-md-6">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "people",
-      path: "inthenews_poets_item_path"
-    } %>
-  </div>
-</div>
+<% if @item.people.present? %>
+  <h3>People (<%= @item.people.count %>)</h3>
+  <%= render partial: "inthenews/simple_association_list", locals: {
+    item: @item,
+    assoc: "people",
+    path: "inthenews_poets_item_path"
+  } %>
+<% end %>
 
-<div class="row">
-  <div class="col-md-6">
-    <% if @item.news_items.present? %>
-      <%= render partial: "inthenews/simple_association_list", locals: {
-        item: @item,
-        assoc: "news_items",
-        path: "inthenews_news_items_item_path"
-      } %>
-    <% end %>
-  </div>
-
-  <div class="col-md-6">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "commentaries",
-      path: "inthenews_commentary_path"
-    } %>
-  </div>
-
-</div>
+<%# TODO revisit once we have commentary paths %>
+<%= render partial: "inthenews/simple_association_list", locals: {
+  item: @item,
+  assoc: "commentaries",
+  path: "inthenews_commentary_path"
+} %>

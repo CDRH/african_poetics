@@ -1,46 +1,65 @@
 <h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
-<!-- TODO redo h tags -->
 
 <h2 class="item_title"><%= @item.name %></h2>
 
-<div class="row">
-  <%# NEWS ITEMS %>
-  <div class="col-md-6">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "news_items",
-      path: "inthenews_news_item_path"
-    } %>
-  </div>
+<h3>Summary</h3>
 
-  <%# PEOPLE %>
-  <div class="col-md-6">
-    <% if @item.work_roles.present? %>
-      <h3>People</h3>
-      <ul>
-        <% @item.work_roles.each do |item| %>
-          <% person = item.person %>
-          <li>
-            <% if person.major_african_poet %>
-              <%= link_to item.name, inthenews_poet_path(person) %>
-            <% else %>
-              <%= item.name %>
-            <% end %>
-          </li>
+<% if @item.year.present? %>
+  <div>
+    Date: <%= @item.year %>
+  </div>
+<% end %>
+
+<% if @item.publisher.present? %>
+  <div>
+    Publisher: <%= @item.publisher.name %>
+  </div>
+<% end %>
+
+<% if @item.location.present? %>
+  <div>
+    Location: <%= @item.location.name %>
+  </div>
+<% end %>
+
+<% if @item.work_type.present? %>
+  <div>
+    Type: <%= @item.work_type.name %>
+  </div>
+<% end %>
+
+<% if @item.work_roles.present? %>
+  <h3>People (<%= @item.work_roles.count %>)</h3>
+  <ul>
+    <% @item.work_roles.each do |role| %>
+      <% person = role.person %>
+      <li>
+        <% if person.major_african_poet %>
+          <%= link_to role.name, inthenews_poets_item_path(person) %>
+        <% else %>
+          <%= role.name %>
         <% end %>
-      </ul>
+      </li>
     <% end %>
-  </div>
-</div>
+  </ul>
+<% end %>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="col-md-6">
-      <%= render partial: "inthenews/simple_association_list", locals: {
-        item: @item,
-        assoc: "commentaries",
-        path: "inthenews_commentary_path"
-      } %>
-    </div>
-  </div>
-</div>
+<% if @item.news_items.present? %>
+  <h3>News Items (<%= @item.news_items.count %>)</h3>
+  <ul>
+    <% @item.news_items.each do |ni| %>
+      <li>
+        <% id = db_to_es_id("news", ni.id) %>
+        <%= link_to ni.name, inthenews_news_items_item_path(id: id) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%# TODO commentary stuff %>
+
+<%= render partial: "inthenews/simple_association_list", locals: {
+  item: @item,
+  assoc: "commentaries",
+  path: "inthenews_commentary_path"
+} %>
