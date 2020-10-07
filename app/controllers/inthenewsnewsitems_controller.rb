@@ -11,8 +11,8 @@ class InthenewsnewsitemsController < ItemsController
   end
 
   def show
-    @item = es_to_db_record("NewsItem", params[:id])
-    @title = @item.name
+    @record = es_to_db_record("NewsItem", params[:id])
+    @title = @record.name
   end
 
 end

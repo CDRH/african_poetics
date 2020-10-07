@@ -15,4 +15,8 @@ class Event < ApplicationRecord
 
   has_one :region, through: :location
 
+  def es_id
+    "ap.event.#{id}"
+  end
+
 end

@@ -15,4 +15,8 @@ class Commentary < ApplicationRecord
     commentary_authors.map { |c| c.name }.join("; ")
   end
 
+  def es_id
+    "ap.commentary.#{id}"
+  end
+
 end

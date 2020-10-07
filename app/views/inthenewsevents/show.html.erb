@@ -14,7 +14,6 @@
   <div class="col-md-6">
     <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
-      label: "Relationships",
       assoc: "people",
       path: "inthenews_poets_item_path"
     } %>
@@ -26,7 +25,6 @@
     <% if @item.news_items.present? %>
       <%= render partial: "inthenews/simple_association_list", locals: {
         item: @item,
-        label: "News Items",
         assoc: "news_items",
         path: "inthenews_news_items_item_path"
       } %>
@@ -36,7 +34,6 @@
   <div class="col-md-6">
     <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
-      label: "Commentaries",
       assoc: "commentaries",
       path: "inthenews_commentary_path"
     } %>

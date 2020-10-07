@@ -22,7 +22,6 @@
 
     <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
-      label: "Education",
       assoc: "educations",
       path: nil
     } %>
@@ -65,7 +64,6 @@
       <div class="col-md-6">
         <%= render partial: "inthenews/simple_association_list", locals: {
           item: @item,
-          label: "Commentaries",
           assoc: "commentaries",
           path: "inthenews_commentary_path"
         } %>

@@ -8,7 +8,6 @@
   <div class="col-md-6">
     <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
-      label: "News Items",
       assoc: "news_items",
       path: "inthenews_news_item_path"
     } %>
@@ -39,7 +38,6 @@
     <div class="col-md-6">
       <%= render partial: "inthenews/simple_association_list", locals: {
         item: @item,
-        label: "Commentaries",
         assoc: "commentaries",
         path: "inthenews_commentary_path"
       } %>

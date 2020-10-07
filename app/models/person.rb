@@ -31,6 +31,10 @@ class Person < ApplicationRecord
   has_many :work_roles, dependent: :destroy
   has_many :works, through: :work_roles
 
+  def es_id
+    "ap.person.#{id}"
+  end
+
   def name
     [ name_last, name_given ].compact.join(", ")
   end

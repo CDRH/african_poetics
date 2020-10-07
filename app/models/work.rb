@@ -14,6 +14,10 @@ class Work < ApplicationRecord
 
   has_one :region, through: :location
 
+  def es_id
+    "ap.work.#{id}"
+  end
+
   def name
     "#{title} (#{year})"
   end

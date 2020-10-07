@@ -5,17 +5,11 @@ class IndexNewsItem < Index
   end
 
   def creator
-    authors = @record.people
-      .includes(:news_item_roles)
-      .where(news_item_roles: {
-        role: Role.find_by(name: ["Author", "Editor"])
-      })
-      .distinct
-    authors.map do |author|
+    @record.authors.map do |a|
       {
-        "name" => author.name,
-        "role" => "Author",
-        "id" => author.id
+        "name" => a.person.name,
+        "id" => a.id,
+        "role" => "Creator"
       }
     end
   end
