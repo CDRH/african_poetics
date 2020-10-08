@@ -56,10 +56,11 @@
   </ul>
 <% end %>
 
-<%# TODO commentary stuff %>
-<h3>Commentaries (<%= @item.commentaries.count %>)</h3>
-<%= render partial: "inthenews/simple_association_list", locals: {
-  item: @item,
-  assoc: "commentaries",
-  path: "inthenews_commentaries_item_path"
-} %>
+<% if @item.commentaries.present? %>
+  <h3>Commentaries (<%= @item.commentaries.count %>)</h3>
+  <%= render partial: "inthenews/simple_association_list", locals: {
+    item: @item,
+    assoc: "commentaries",
+    path: "inthenews_commentaries_item_path"
+  } %>
+<% end %>

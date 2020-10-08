@@ -25,20 +25,42 @@ class NewsItem < ApplicationRecord
   def citation
     # TODO make this logic much better, but for the sake of getting
     # something displaying on many pages, here's a sample citation format
-    if date && publisher && repositories && source_access_date
-      a = authors.map { |role| role.person.name }.join("; ")
-      # formatting if there are authors
-      if a.present?
-        a += ". "
-      end
-      <<-TEXT
-      #{a}"#{article_title}",
-      #{publisher.name}, #{date.strftime('%d %b. %Y')},
-      #{source_page_no}
-      #{repositories.first.name}, #{source_link}.
-      Accessed #{source_access_date.strftime('%d %b %Y')}.
-      TEXT
+    cit = ""
+
+    a = authors.map { |role| role.person.name }.join("; ")
+    # formatting if there are authors
+    if a.present?
+      cit = "#{a}. "
     end
+
+    if article_title
+      cit += "\"#{article_title}\", "
+    end
+
+    if publisher
+      cit += "#{publisher.name}, "
+    end
+
+    if date
+      cit += "#{date.strftime('%d %b. %Y')}, "
+    end
+
+    if source_page_no
+      cit += "#{source_page_no} "
+    end
+
+    if repositories && repositories.first
+      cit += "#{repositories.first.name}, "
+    end
+
+    if source_link
+      cit += "<a href=\"#{source_link}\">#{source_link}</a>. "
+    end
+
+    if source_access_date
+      cit += "Accessed #{source_access_date.strftime('%d %b. %Y')}."
+    end
+    cit
   end
 
   def es_id

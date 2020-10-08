@@ -39,6 +39,15 @@ class IndexCommentary < Index
     @record.news_items.map { |ni| ni.name }
   end
 
+  def text_additional
+    auth = []
+    @record.commentary_authors.each do |a|
+      auth << a.name
+      auth << a.short_biography
+    end
+    auth
+  end
+
   def works
     @record.works.map { |w| w.name }
   end

@@ -38,7 +38,7 @@ class IndexWork < Index
 
   def places
     if @record.publisher && @record.publisher.location
-      @record.publisher.location.name
+      [ @record.publisher.location.name ]
     end
   end
 

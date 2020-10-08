@@ -19,7 +19,7 @@
 
 <h3>Citation</h3>
 <div class="well">
-  <%= @record.citation %>
+  <%= sanitize @record.citation %>
 </div>
 
 <% if @record.summary.present? %>

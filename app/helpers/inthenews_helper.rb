@@ -54,17 +54,4 @@ module InthenewsHelper
     end
   end
 
-  def list_search_filters(label)
-    filters = []
-    params.each do |k, v|
-      next if [ "action", "controller" ].include?(k)
-      v = @person.name if k == "person"
-      filters << "#{v} (#{k.titleize.downcase})"
-    end
-    if filters.present?
-      text = filters.join(", ")
-      "#{label.pluralize} filtered by #{text}"
-    end
-  end
-
 end
