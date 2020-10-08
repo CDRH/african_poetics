@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/CDRH/orchid
-  revision: c1c70132688e0611f4a22a17054a6595158077ef
-  tag: v3.0.0-beta
+  revision: 107f473c6204046d3b81f184d4298162f0752fbf
+  tag: v3.1.0
   specs:
-    orchid (2.1.0)
+    orchid (3.1.0)
       rails (~> 5.2.0)
 
 GEM
@@ -223,4 +223,4 @@ DEPENDENCIES
   will_paginate (~> 3.3.0)
 
 BUNDLED WITH
-   2.1.2
+   2.1.4

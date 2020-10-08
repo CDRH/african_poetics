@@ -62,7 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'will_paginate', '~> 3.3.0'
 
-gem 'orchid', git: 'https://github.com/CDRH/orchid', tag: 'v3.0.0-beta'
+gem 'orchid', git: 'https://github.com/CDRH/orchid', tag: 'v3.1.0'
 
 gem 'bootstrap-sass', '~> 3.4'
 gem 'jquery-rails', '~> 4.3'
