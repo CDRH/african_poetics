@@ -5,6 +5,13 @@ default: &default
   # path to iiif server, NOT including the project directory
   iiif_path: https://cdrhmedia.unl.edu/iiif/2
 
+  # IN THE NEWS CONFIG
+  # elasticsearch settings to post / clear in the news records
+  es_category: In the News
+  es_collection: african_poetics
+  es_index: index_name
+  es_path: elasticsearch_posting_path
+
 test:
   <<: *default
 

@@ -1,12 +1,10 @@
 class Elasticsearch
 
   def initialize
-    # TODO ultimately we need to get these from a config
-    # or something, but using this for now
-    @category = "In the News"
-    @collection = "african_poetics"
-    @es_index = "test2"
-    @es_path = "http://localhost:9200"
+    @category = ES_RAKE_SETTINGS["category"]
+    @collection = ES_RAKE_SETTINGS["collection"]
+    @es_index = ES_RAKE_SETTINGS["index"]
+    @es_path = ES_RAKE_SETTINGS["path"]
   end
 
   def clear()
@@ -52,7 +50,7 @@ class Elasticsearch
     begin
       req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       req.body = data.to_json
-      res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https") do |http|
         http.request(req)
       end
       handle_res(res, ok_msg: ok_msg)

@@ -55,3 +55,10 @@ DATE_DISPLAY_LAST = date_display(DATE_LAST)
 
 
 # App Config
+
+ES_RAKE_SETTINGS = {
+  "category" => PRIVATE["es_category"],
+  "collection" => PRIVATE["es_collection"],
+  "index" => PRIVATE["es_index"],
+  "path" => PRIVATE["es_path"],
+}
