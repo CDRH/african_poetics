@@ -466,3 +466,71 @@ svg path.re {
     }
   }
 }
+
+// inthenews potential changes
+
+.browse_categories {
+  display: flex;
+  flex-wrap: wrap;
+
+  .browse_all {
+    width: 100%;
+  }
+
+  .display_callout {
+    flex-grow: 1;
+    padding: 1.2em .5em;
+    color: #fff;
+    text-align: center;
+    margin: 1px;
+  }
+}
+
+.display_callout_1 {
+  background-color: $brand-success;
+  box-shadow: inset 0 0 0 1000px rgba($brand-success,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-success,.7);
+  }
+}
+
+.display_callout_2 {
+  background-color: $brand-primary;
+  box-shadow: inset 0 0 0 1000px rgba($brand-primary,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-primary,.7);
+  }
+}
+
+.display_callout_3 {
+  background-color: $brand-warning;
+  box-shadow: inset 0 0 0 1000px rgba($brand-warning,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-warning,.7);
+  }
+}
+
+.display_callout_4 {
+  background-color: $nav-accent;
+  box-shadow: inset 0 0 0 1000px rgba($nav-accent,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($nav-accent,.7);
+  }  
+}
+
+.display_callout_5 {
+  background-color: $nav-accent;
+  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
+  &:hover {
+    box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
+  }
+}
+
+.subtle_callout {
+    background-color: white;
+  overflow: auto;
+  padding: .3em;
+  border: solid 1px #aaa;
+  margin-bottom: 1em;
+}
+
