@@ -14,7 +14,7 @@ class Person < ApplicationRecord
   # join tables
   has_and_belongs_to_many :commentaries
   has_and_belongs_to_many :events
-  # nationality
+  # country of nationality
   has_and_belongs_to_many :locations
   has_many :regions, through: :locations
 

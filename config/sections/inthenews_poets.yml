@@ -20,7 +20,7 @@ default: &default
   facets:
     en:
       places:
-        label: Nationality
+        label: Country of Nationality
         flags:
           - search_filter
       spatial.region:
