@@ -7,43 +7,45 @@
 <h2>Works</h2>
 
 <div class="row">
+  <div class="col-md-3">
+    <h3>Browse</h3>
+    <div class="browse_categories">
+      <%= link_to "Browse All", inthenews_works_browse_path, 
+        class: "display_callout display_callout_1 browse_all" %>
+      <%= link_to "Location", inthenews_works_browse_facet_path(facet: "places"), 
+        class: "display_callout display_callout_2" %>
+      <%= link_to "Region", inthenews_works_browse_facet_path(facet: "spatial.region"), 
+        class: "display_callout display_callout_3" %>
+      <%= link_to "Decade", inthenews_works_browse_facet_path(facet: "topics"), 
+        class: "display_callout display_callout_4" %>
+      <%= link_to "Author", inthenews_works_browse_facet_path(facet: "creator.name"), 
+        class: "display_callout display_callout_1" %>
+      <%= link_to "Publisher", inthenews_works_browse_facet_path(facet: "publisher"), 
+        class: "display_callout display_callout_2" %>
+      <%= link_to "Type", inthenews_works_browse_facet_path(facet: "type"), 
+        class: "display_callout display_callout_3" %>
+    </div>
+  </div>
 
-  <div class="col-md-5">
-  
+  <div class="col-md-6">
     <%= render partial: "inthenews/search_text_field", locals: {
       url: inthenews_works_search_path,
       label: "Search Works"
     } %>
-    <%= link_to "Browse All Works", inthenews_works_search_path %>
+    <p><%= link_to "Advanced Search/View All Results", inthenews_works_search_path %></p>
 
-    <h3>Work Types</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "type",
-      path: "inthenews_works_search_path"
-    } %>
+    <br/>
 
-    <h3>Other</h3>
-    Browse by:
-    <%= link_to "City", inthenews_works_browse_facet_path(facet: "places") %>
-    |
-    <%= link_to "Author", inthenews_works_browse_facet_path(facet: "creator.name") %>
+    <div id="regions_map">
+      <%= render "partials/map_africa" %>
+    </div>
   </div>
 
-  <div class="col-md-5" id="regions_map">
-    <%= render "partials/map_africa" %>
+  <div class="col-md-3">
     <h3>Regions</h3>
     <%= render partial: "inthenews/group_count_table", locals: {
       facet: "spatial.region",
       path: "inthenews_works_search_path"
     } %>
   </div>
-
-  <div class="col-md-2">
-    <h3>Decades</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "topics",
-      path: "inthenews_works_search_path"
-    } %>
-  </div>
-
 </div>

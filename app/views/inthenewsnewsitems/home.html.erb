@@ -23,14 +23,6 @@
       <%= link_to "Tags", inthenews_news_items_browse_facet_path(facet: "keywords"), 
         class: "display_callout display_callout_4" %>
     </div>
-
-   
-
-    <%#<h3>Decades</h3>%>
-      <%# render partial: "inthenews/group_count_table", locals: {
-        facet: "topics",
-        path: "inthenews_news_items_search_path"
-      } %>
   </div>
 
   <div class="col-md-6">
@@ -40,29 +32,18 @@
     } %>
     <p><%= link_to "Advanced Search/View All Results", inthenews_news_items_search_path %></p>
 
-   <br/>
+    <br/>
 
-   <div id="regions_map">
+    <div id="regions_map_decorative">
       <%= render "partials/map_africa" %>
     </div>
-
   </div>
 
   <div class="col-md-3">
- <h3>News Format</h3>
+    <h3>News Format</h3>
       <%= render partial: "inthenews/group_count_table", locals: {
         facet: "type",
         path: "inthenews_news_items_search_path"
       } %>
   </div>
 </div>
-
-
-
-    
-
-    <%#<p>No regional search available for news items</p>%>
-    <%# render "partials/map_africa" %>
-
-
-

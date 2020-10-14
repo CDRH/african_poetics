@@ -41,66 +41,76 @@
 
 <% if @item.educations.present? %>
   <h3>Education</h3>
-  <%= render partial: "inthenews/simple_association_list", locals: {
-    item: @item,
-    assoc: "educations",
-    path: nil
-  } %>
+  <div class="item_data">
+    <%= render partial: "inthenews/simple_association_list", locals: {
+      item: @item,
+      assoc: "educations",
+      path: nil
+    } %>
+  </div><%# /.item_data %>
 <% end %>
 
 <% if @item.news_item_roles.present? %>
   <h3>News Items (<%= @item.news_item_roles.count %>)</h3>
-  <ul>
-    <% @item.news_item_roles.each do |role| %>
-      <li>
-        <% id = db_to_es_id("news", role.news_item.id) %>
-        [<%= role.news_item.news_item_type.name %>]
-        <%= link_to inthenews_news_items_item_path(id: id) do %>
-          <%= role.news_item.name %>
-        <% end %>
-        (<%= role.role.name %>)
-      </li>
-    <% end %>
-  </ul>
+  <div class="item_data">
+    <ul>
+      <% @item.news_item_roles.each do |role| %>
+        <li>
+          <% id = db_to_es_id("news", role.news_item.id) %>
+          [<%= role.news_item.news_item_type.name %>]
+          <%= link_to inthenews_news_items_item_path(id: id) do %>
+            <%= role.news_item.name %>
+          <% end %>
+          (<%= role.role.name %>)
+        </li>
+      <% end %>
+    </ul>
+  </div><%# /.item_data %>
 <% end %>
 
 <% if @item.events.present? %>
   <h3>Events (<%= @item.events.count %>)</h3>
-  <ul>
-    <% @item.events.each do |event| %>
-      <li>
-        <% id = db_to_es_id("event", event.id) %>
-        <%= link_to event.name, inthenews_events_item_path(id: id) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="item_data">
+    <ul>
+      <% @item.events.each do |event| %>
+        <li>
+          <% id = db_to_es_id("event", event.id) %>
+          <%= link_to event.name, inthenews_events_item_path(id: id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div><%# /.item_data %>
 <% end %>
 
 <% if @item.work_roles.present? %>
   <h3>Works (<%= @item.work_roles.count %>)</h3>
-  <ul>
-    <% @item.work_roles.each do |role| %>
-      <li>
-        <% id = db_to_es_id("work", role.work.id) %>
-        <%= link_to inthenews_works_item_path(id: id) do %>
-          <%= role.work.name %>
-        <% end %>
-        (<%= role.role.name %>)
-      </li>
-    <% end %>
-  </ul>
+  <div class="item_data">
+    <ul>
+      <% @item.work_roles.each do |role| %>
+        <li>
+          <% id = db_to_es_id("work", role.work.id) %>
+          <%= link_to inthenews_works_item_path(id: id) do %>
+            <%= role.work.name %>
+          <% end %>
+          (<%= role.role.name %>)
+        </li>
+      <% end %>
+    </ul>
+  </div><%# /.item_data %>
 <% end %>
 
 <% if @item.commentaries.present? %>
   <h3>Commentaries (<%= @item.commentaries.count %>)</h3>
-  <ul>
-    <% @item.commentaries.each do |comm| %>
-      <li>
-        <% id = db_to_es_id("commentary", comm.id) %>
-        <%= link_to comm.name, inthenews_commentaries_item_path(id: id) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="item_data">
+    <ul>
+      <% @item.commentaries.each do |comm| %>
+        <li>
+          <% id = db_to_es_id("commentary", comm.id) %>
+          <%= link_to comm.name, inthenews_commentaries_item_path(id: id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div><%# /.item_data %>
 <% end %>
 
 <%# TODO could possibly construct this more easily with elasticsearch,
@@ -108,16 +118,18 @@ assuming that all poets are readily available as person.name, etc %>
 
 <% rel_people = all_related_people(@item) %>
 <h3>Relationships Through News Items, Events, Works, and Educations (<%= rel_people.length %></h3>
-<ul>
-  <% rel_people.each do |person, count| %>
-    <li>
-      <% if person.major_african_poet %>
-        <% id = db_to_es_id("person", person.id) %>
-        <%= link_to person.name, inthenews_poets_item_path(id: id) %>
-      <% else %>
-        <%= person.name %>
-      <% end %>
-      (<%= count %>)
-    </li>
-  <% end %>
-</ul>
+<div class="item_data">
+  <ul>
+    <% rel_people.each do |person, count| %>
+      <li>
+        <% if person.major_african_poet %>
+          <% id = db_to_es_id("person", person.id) %>
+          <%= link_to person.name, inthenews_poets_item_path(id: id) %>
+        <% else %>
+          <%= person.name %>
+        <% end %>
+        (<%= count %>)
+      </li>
+    <% end %>
+  </ul>
+</div><%# /.item_data %>

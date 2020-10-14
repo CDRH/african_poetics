@@ -30,30 +30,36 @@
 
 <% if @item.news_items.present? %>
   <h3>News Items (<%= @item.news_items.count %>)</h3>
-  <ul>
-    <% @item.news_items.each do |ni| %>
-      <% id = db_to_es_id("news", ni.id) %>
-      <li>
-        <%= link_to ni.name, inthenews_news_items_item_path(id: id) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="item_data">
+    <ul>
+      <% @item.news_items.each do |ni| %>
+        <% id = db_to_es_id("news", ni.id) %>
+        <li>
+          <%= link_to ni.name, inthenews_news_items_item_path(id: id) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <% if @item.people.present? %>
   <h3>People (<%= @item.people.count %>)</h3>
-  <%= render partial: "inthenews/simple_association_list", locals: {
-    item: @item,
-    assoc: "people",
-    path: "inthenews_poets_item_path"
-  } %>
+  <div class="item_data">
+    <%= render partial: "inthenews/simple_association_list", locals: {
+      item: @item,
+      assoc: "people",
+      path: "inthenews_poets_item_path"
+    } %>
+  </div><%# / .item_data %>
 <% end %>
 
 <% if @item.commentaries.present? %>
   <h3>Commentaries (<%= @item.commentaries.count %>)</h3>
-  <%= render partial: "inthenews/simple_association_list", locals: {
-    item: @item,
-    assoc: "commentaries",
-    path: "inthenews_commentaries_item_path"
-  } %>
+  <div class="item_data">
+    <%= render partial: "inthenews/simple_association_list", locals: {
+      item: @item,
+      assoc: "commentaries",
+      path: "inthenews_commentaries_item_path"
+    } %>
+  <div class="item_data">
 <% end %>
