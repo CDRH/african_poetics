@@ -67,18 +67,17 @@ $(document).ready(function() {
   //   - CAP uses different path structure than the In the News section
   //   - In the News needs to provide "search_path" variable, since
   //     there are many different possible subjects (poets, events, works, etc)
-  $("svg path").click(function() {
+  $("#regions_map svg path").click(function() {
     var regionCode = getRegionCodeFromClass($(this).attr("class"));
     var regionName = getRegionTextFromCode(regionCode);
     var href = getRegionCodeFromText(regionName, "+");
 
     // in the news
     if (typeof search_path !== 'undefined') {
-      var fullurl = search_path + "?region=" + href;
+      var fullurl = search_path + "?f[]=spatial.region|" + href;
     // CAP
     } else {
-      var urlpiece = "../search?f[]=keywords|";
-      var fullurl = urlpiece + href;
+      var fullurl = "../search?f[]=keywords|"+href;
     }
     window.location = fullurl;  
   });
