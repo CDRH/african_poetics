@@ -15,15 +15,10 @@ class Work < ApplicationRecord
   has_one :region, through: :location
 
   def authors
-    # TODO is there a better way to get this information?
-    # I am having trouble when starting from "self.people" type relationship
     all_people = Person
       .joins(work_roles: :role)
       .where(work_roles: { work_id: id })
-
-    # now filter those people to those who are poets / authors
-    all_people.where(roles: { name: "Poet" })
-      .or(all_people.where(roles: { name: "Author" }))
+      .where(roles: { name: ["Author", "Poet"]})
       .distinct
   end
 
