@@ -1,0 +1,50 @@
+<script>
+  var search_path = "<%= inthenews_poets_search_path %>";
+</script>
+
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>Poets</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <h3>Browse</h3>
+    <div class="browse_categories">
+      <%= link_to "Browse All", inthenews_poets_browse_path, 
+        class: "display_callout display_callout_1 browse_all" %>
+      <%= link_to "Country of Nationality", inthenews_poets_browse_facet_path(facet: "places"), 
+        class: "display_callout display_callout_2" %>
+      <%= link_to "Region", inthenews_poets_browse_facet_path(facet: "spatial.region"), 
+        class: "display_callout display_callout_3" %>
+      <%= link_to "Birth Decade", inthenews_poets_browse_facet_path(facet: "topics"), 
+        class: "display_callout display_callout_4" %>
+      <%= link_to "First Letter of Last Name", inthenews_poets_browse_facet_path(facet: "alternative"), 
+        class: "display_callout display_callout_1" %>
+      <%= link_to "Education", inthenews_poets_browse_facet_path(facet: "keywords"), 
+        class: "display_callout display_callout_2" %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="subtle_callout">
+      <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_poets_search_path,
+      label: "Search Poets"
+      } %>
+      <p><%= link_to "Advanced Search/View All Results", inthenews_poets_search_path %></p>
+    </div>
+
+    <div id="regions_map">
+      <%= render "partials/map_africa" %>
+    </div>
+  </div>
+
+  <div class="col-md-3 inthenews_sidebar">
+    <h3>Regions</h3>
+
+    <%= render partial: "inthenews/group_count_table", locals: {
+      facet: "spatial.region",
+      path: "inthenews_poets_search_path"
+    } %>
+  </div>
+</div>

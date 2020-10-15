@@ -1,0 +1,24 @@
+<% rec = es_to_db_record("Event", item["identifier"]) %>
+
+<% if rec.date %>
+  <li>Date: <%= rec.date %></li>
+<% end %>
+
+<% if rec.event_type %>
+  <li>Type: <%= rec.event_type.name %></li>
+<% end %>
+
+<%# use solr to populate the poets %>
+<% if item["person"] %>
+  <% item["person"].each do |pers| %>
+    <li>Poets: <%= pers["name"] %></li>
+  <% end %>
+<% end %>
+
+<% if rec.location %>
+  <li>Location: <%= rec.location.name %></li>
+<% end %>
+
+<% if rec.region %>
+  <li>Region: <%= rec.region.name %></li>
+<% end %>

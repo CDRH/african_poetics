@@ -1,0 +1,59 @@
+default: &default
+
+  api_options:
+    # only return section items by default
+    f:
+      - category|In the News
+      - subcategory|news
+    # sorting and response number
+    sort:
+      - date|asc
+    num: 50
+    # facet info on search page
+    facet_limit: 20
+    facet_sort: count|desc
+    # facet info on browse page
+    browse_sort: term|asc
+    # highlighting
+    hl_num: 5
+
+  facets:
+    en:
+      creator.name:
+        label: Author
+        flags:
+          - search_filter
+      person.name:
+        label: Poets
+        flags:
+          - search_filter
+      topics:
+        label: Decade
+        flags:
+          - search_filter
+      places:
+        label: Location
+        flags:
+          - search_filter
+      spatial.region:
+        label: Region
+        flags:
+          - search_filter
+      publisher:
+        label: Publisher
+        flags:
+          - search_filter
+      keywords:
+        label: Tags
+        flags:
+          - search_filter
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+

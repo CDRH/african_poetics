@@ -1,5 +1,7 @@
 ItemsController.class_eval do
 
+  helper_method :db_to_es_id, :es_to_db_record
+
   # NOTE below method is entirely the same as the default except
   # for "if @browse_facet == 'featured' if / else"
   def browse_facet
@@ -56,6 +58,27 @@ ItemsController.class_eval do
       @title = "#{t "browse.browse_type"} #{@browse_facet_info["label"]}"
       render_overridable("items", "browse_facet", locals: { sort_by: sort_by })
     end
+  end
+
+  private
+
+  def db_to_es_id(category, id)
+    "ap.#{category}.#{id}"
+  end
+
+  def es_to_db_record(model, es_id)
+    db_id = es_id[/ap\.\w*\.(\d*)/,1]
+    model.constantize.find(db_id)
+  end
+
+  def get_es_item(id)
+    item = @items_api.get_item_by_id(id).first
+    if !item
+      @title = t "item.no_item", id: id,
+        default: "No item with identifier #{id} found!"
+      render_overridable("items", "show_not_found", status: 404)
+    end
+    item
   end
 
 end

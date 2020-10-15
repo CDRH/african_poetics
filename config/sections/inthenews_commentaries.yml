@@ -1,0 +1,51 @@
+default: &default
+
+  api_options:
+    # only return section items by default
+    f:
+      - category|In the News
+      - subcategory|commentary
+    # sorting and response number
+    sort:
+      - title|asc
+    num: 50
+    # facet info on search page
+    facet_limit: 20
+    facet_sort: count|desc
+    # facet info on browse page
+    browse_sort: term|asc
+    # highlighting
+    hl_num: 5
+
+  facets:
+    en:
+      creator.name:
+        label: Author
+        flags:
+          - search_filter
+      keywords:
+        label: Event
+        flags:
+          - search_filter
+      person.name:
+        label: Poet
+        flags:
+          - search_filter
+      subjects:
+        label: News Item
+        flags:
+          - search_filter
+      works:
+        label: Work
+        flags:
+          - search_filter
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+

@@ -1,0 +1,58 @@
+<script>
+  var search_path = "<%= inthenews_events_search_path %>";
+</script>
+
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>Events</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <h3>Browse</h3>
+    <div class="browse_categories">
+      <%= link_to "Browse All", inthenews_events_browse_path, 
+        class: "display_callout display_callout_1 browse_all" %>
+      <%= link_to "Decade", inthenews_events_browse_facet_path(facet: "topics"), 
+        class: "display_callout display_callout_2" %>
+      <%= link_to "Type", inthenews_events_browse_facet_path(facet: "type"), 
+        class: "display_callout display_callout_3" %>
+      <%= link_to "Poets", inthenews_events_browse_facet_path(facet: "person.name"), 
+        class: "display_callout display_callout_4" %>
+      <%= link_to "Location", inthenews_events_browse_facet_path(facet: "places"), 
+        class: "display_callout display_callout_1" %>
+      <%= link_to "Region", inthenews_events_browse_facet_path(facet: "spatial.region"), 
+        class: "display_callout display_callout_2" %>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row">
+      <div class="subtle_callout">
+        <%= render partial: "inthenews/search_text_field", locals: {
+          url: inthenews_events_search_path,
+          label: "Search Events"
+        } %>
+
+        <%= link_to "Advanced Search/View All Results", inthenews_events_search_path %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="subtle_callout">
+        <div class="col-xs-8">
+          <div id="regions_map">
+            <%= render "partials/map_africa" %>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+        <h3>Regions</h3>
+        <%= render partial: "inthenews/group_count_table", locals: {
+          facet: "spatial.region",
+          path: "inthenews_events_search_path"
+        } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

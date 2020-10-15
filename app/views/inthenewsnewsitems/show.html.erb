@@ -1,0 +1,106 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2><%= @record.name %></h2>
+
+<h3>Type</h3>
+<%= @record.news_item_type.name %>
+
+<h3>Published</h3>
+<%= @record.date.strftime("%Y-%m-%d") if @record.date %>
+<br>
+<%= @record.publisher.name %>
+
+<h3>Authors (<%= @record.authors.count %>)</h3>
+<% if @record.authors.present? %>
+  <%= @record.authors.map { |r| r.name }.join("; ") %>
+<% else %>
+  No Author
+<% end %>
+
+<h3>Citation</h3>
+<div class="well">
+  <%= sanitize @record.citation %>
+</div>
+
+<% if @record.summary.present? %>
+  <h3>Summary</h3>
+  <p><%= sanitize @record.summary %></p>
+<% end %>
+
+<% if @record.excerpt.present? %>
+  <h3>Excerpt</h3>
+  <div class="well">
+    <p><%= @record.excerpt %></p>
+  </div>
+<% end %>
+
+<% if @record.events.present? %>
+  <h3>Related Events (<%= @record.events.count %>)</h3>
+  <%= render partial: "inthenews/simple_association_list", locals: {
+    item: @record,
+    assoc: "events",
+    path: "inthenews_events_item_path"
+  } %>
+<% end %>
+
+<% if @record.commentaries.present? %>
+  <h3>Commentary (<%= @record.commentaries.count %>)</h3>
+  <%= render partial: "inthenews/simple_association_list", locals: {
+    item: @record,
+    assoc: "commentaries",
+    path: "inthenews_commentaries_item_path"
+  } %>
+<% end %>
+
+<% if @record.news_item_roles.present? %>
+  <h3>Related People (<%= @record.news_item_roles.count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @record.news_item_roles.each do |role| %>
+        <% person = role.person %>
+        <li>
+          <% if person.major_african_poet %>
+            <%= link_to person.name, inthenews_poets_item_path(person) %> | <%= role.role.name %>
+          <% else %>
+            <%= person.name %> | <%= role.role.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% else %>
+  No people associated with this news item
+<% end %>
+
+<% if @record.works.present? %>
+  <h3>Related Works (<%= @record.works.count %>)</h3>
+  <div class="item_data">
+    <%= render partial: "inthenews/simple_association_list", locals: {
+      item: @record,
+      assoc: "works",
+      path: "inthenews_works_item_path"
+    } %>
+  </div><%# / .item-data %>
+<% end %>
+
+<% if @record.tags.present? %>
+  <h3>Tags (<%= @record.tags.count %>)</h3>
+  <div class="item_data">
+    <%= render partial: "inthenews/simple_association_list", locals: {
+      item: @record,
+      assoc: "tags",
+      path: nil
+    } %>
+  </div><%# / .item-data %>
+<% end %>
+
+<% if @record.repositories.present? %>
+  <h3>Repositories (<%= @record.repositories.count %>)</h3>
+  <div class="item_data">
+    <%= render partial: "inthenews/simple_association_list", locals: {
+      item: @record,
+      assoc: "repositories",
+      path: nil
+    } %>
+  </div><%# / .item-data %>
+<% end %>

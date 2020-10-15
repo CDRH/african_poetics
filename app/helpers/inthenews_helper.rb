@@ -42,28 +42,15 @@ module InthenewsHelper
     link_to label, send(path, item)
   end
 
-  def link_simple_li_item(assoc_rec, path)
+  def link_simple_li_item(record, path)
     # check path to see if this should be linked at all
     # and if so, make sure that only poets are linked from Person
     okay_to_link = !@item.respond_to?(:major_african_poet) || @item.major_african_poet.present?
     if path && okay_to_link
-      link_to assoc_rec.name, send(path, assoc_rec)
+      link_to record.name, send(path, { id: record.es_id })
     else
       # just return a string
-      assoc_rec.name
-    end
-  end
-
-  def list_search_filters(label)
-    filters = []
-    params.each do |k, v|
-      next if [ "action", "controller" ].include?(k)
-      v = @person.name if k == "person"
-      filters << "#{v} (#{k.titleize.downcase})"
-    end
-    if filters.present?
-      text = filters.join(", ")
-      "#{label.pluralize} filtered by #{text}"
+      record.name
     end
   end
 

@@ -1,0 +1,49 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2>News</h2>
+
+<div class="row">
+  <div class="col-md-3">
+    <h3>Browse</h3>
+    <div class="browse_categories">
+      <%= link_to "Browse All", inthenews_news_items_browse_path, 
+        class: "display_callout display_callout_1 browse_all" %>
+      <%= link_to "Author", inthenews_news_items_browse_facet_path(facet: "creator.name"), 
+        class: "display_callout display_callout_2" %>
+      <%= link_to "Poets Mentioned", inthenews_news_items_browse_facet_path(facet: "person.name"), 
+        class: "display_callout display_callout_3" %>
+      <%= link_to "Publisher", inthenews_news_items_browse_facet_path(facet: "publisher"), 
+        class: "display_callout display_callout_4" %>
+      <%= link_to "Decade", inthenews_news_items_browse_facet_path(facet: "topics"), 
+        class: "display_callout display_callout_1" %>
+      <%= link_to "Location", inthenews_news_items_browse_facet_path(facet: "places"), 
+        class: "display_callout display_callout_2" %>
+      <%= link_to "Region", inthenews_news_items_browse_facet_path(facet: "spatial.region"), 
+        class: "display_callout display_callout_3" %>
+      <%= link_to "Tags", inthenews_news_items_browse_facet_path(facet: "keywords"), 
+        class: "display_callout display_callout_4" %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+     <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_news_items_search_path,
+      label: "Search News"
+    } %>
+    <p><%= link_to "Advanced Search/View All Results", inthenews_news_items_search_path %></p>
+
+    <br/>
+
+    <div id="regions_map_decorative">
+      <%= render "partials/map_africa" %>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <h3>News Format</h3>
+      <%= render partial: "inthenews/group_count_table", locals: {
+        facet: "type",
+        path: "inthenews_news_items_search_path"
+      } %>
+  </div>
+</div>

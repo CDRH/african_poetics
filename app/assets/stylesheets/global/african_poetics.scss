@@ -3,13 +3,6 @@ $screen-tablet: 720px;
 
 @import "bootstrap-variables";
 
-// temporary, until orchid is changed to not show language link
-
-.language_link {
-  display: none;
-}
-
-
 // ------------
 // HTML
 // ------------
@@ -17,6 +10,19 @@ $screen-tablet: 720px;
 body {
   background-image: image-url("template/funky-lines.png"); 
   height:100%;
+}
+
+// add link underlines back in, then remove from parts of page
+a {
+  text-decoration: underline;
+  &:hover {
+    text-decoration-color: $brand-info;
+    text-decoration-thickness: 2px;
+  }
+}
+
+#header a, #footer a, a.btn, .browse_categories a {
+  text-decoration: none;
 }
 
 h2, .h2 {
@@ -28,17 +34,16 @@ h1, .h1 {
 }
 
 #body-wrapper {
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   height:100%;
   min-height: 100vh;
 }
 
 #content-wrapper, .home_container {
   background-color: rgba(255,255,255,.7);
-  flex-grow:1;
+  flex-grow: 1;
   margin-bottom: 2em;
-
 }
 
 #content-wrapper {
@@ -84,7 +89,7 @@ a .home_callout {
 
 .home_callout_1 {
   background-color: $brand-success;
-  background-image: image-url("home/stripes-light.png");
+  // background-image: image-url("home/stripes-light.png");
   box-shadow: inset 0 0 0 1000px rgba($brand-success,.9);
   &:hover {
     box-shadow: inset 0 0 0 1000px rgba($brand-success,.7);
@@ -96,7 +101,7 @@ a .home_callout {
 
 .home_callout_2 {
   background-color: $brand-primary;
-  background-image: image-url("home/memphis-mini.png");
+  // background-image: image-url("home/memphis-mini.png");
   box-shadow: inset 0 0 0 1000px rgba($brand-primary,.9);
   &:hover {
     box-shadow: inset 0 0 0 1000px rgba($brand-primary,.7);
@@ -108,7 +113,7 @@ a .home_callout {
 
 .home_callout_3 {
   background-color: $brand-warning;
-  background-image: image-url("home/tiny-squares.png");
+  // background-image: image-url("home/tiny-squares.png");
   box-shadow: inset 0 0 0 1000px rgba($brand-warning,.9);
   &:hover {
     box-shadow: inset 0 0 0 1000px rgba($brand-warning,.7);
@@ -120,7 +125,7 @@ a .home_callout {
 
 .home_callout_4 {
   background-color: $nav-accent;
-  background-image: image-url("home/country-quilt.png");
+  // background-image: image-url("home/country-quilt.png");
   box-shadow: inset 0 0 0 1000px rgba($nav-accent,.9);
   &:hover {
     box-shadow: inset 0 0 0 1000px rgba($nav-accent,.7);
@@ -132,7 +137,7 @@ a .home_callout {
 
 .home_callout_5 {
   background-color: $nav-accent;
-  background-image: image-url("home/swirl_pattern.png");
+  // background-image: image-url("home/swirl_pattern.png");
   box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
   &:hover {
     box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
@@ -145,22 +150,37 @@ a .home_callout {
 // Header
 
 #header {
+  // background-image: image-url("home/swirl_pattern.png");
+  background-color: $brand-info;
+  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
   text-align: center; 
 
+  .site-subtitle {
+    display: none;
+  }
+  
   a:hover {
     text-decoration: none;
   }
 }
 
 .site-title-container {
-  background-color: rgba(255,255,255,.6 );
-  box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
+  // background-color: rgba(255,255,255,.6 );
+  // box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
+  background: none;
+  box-shadow: none;
   line-height: 1em;
   padding: 1em;
 
   .h1, .h2 {
     margin: 0;
     padding: 0;
+  }
+
+  .site-title {
+    color: #fff;
+    margin-bottom: 50px;
+    margin-top: 20px;
   }
 
 $site-title-shadow: darken($brand-info, 30%);
@@ -417,21 +437,13 @@ svg path.re {
 
 // Home Page
 
-.site_home {
+.controller_general.action_index { //home page is the combo of these controllers 
 
   .navbar-default {
     border: none;
   }
 
-  #header {
-    background-color: $brand-info;
-    background-image: image-url("home/swirl_pattern.png");
-    box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
-
-    .site-subtitle {
-      display: none;
-    }
-  }
+  
 
   .home_illustration {
     background-image: image-url("home/Portal_Cover_cropped.jpg");
@@ -462,14 +474,160 @@ svg path.re {
     text-align: center;
   }
 
-  .site-title-container {
-    background: none;
-    box-shadow: none;
+  
+}
 
-    .site-title {
-      color: #fff;
-      margin-bottom: 50px;
-      margin-top: 20px;
-    }
+// inthenews potential changes
+
+.browse_categories {
+  display: flex;
+  flex-wrap: wrap;
+
+  .browse_all {
+    width: 100%;
   }
+
+  .display_callout {
+    flex-grow: 1;
+    padding: 1.2em .5em;
+    color: #fff;
+    text-align: center;
+    margin: 1px;
+  }
+}
+
+// Dark boxes
+// $callout-text: white;
+// $callout-hover: black;
+
+// $callout_1_bg: $gray-base;
+// $callout_1_hover: $callout-hover;
+// $callout_1_text: $callout-text;
+
+// $callout_2_bg: $gray-dark;
+// $callout_2_hover: $callout-hover;
+// $callout_2_text: $callout-text;
+
+// $callout_3_bg: $gray-darker;
+// $callout_3_hover: $callout-hover;
+// $callout_3_text: $callout-text;
+
+// $callout_4_bg: lighten($gray-base, 28%);
+// $callout_4_hover: $callout-hover;
+// $callout_4_text: $callout-text;
+
+// $callout_5_bg: $gray;
+// $callout_5_hover: $callout-hover;
+// $callout_5_text: $callout-text;
+
+// $light-base: #d3dbde;
+// $light-lighter: lighten($light-base, 11%);
+// mix(black, $toolbox, 30%)
+
+// Light boxes
+$callout-text: black;
+$callout-hover: white;
+
+$callout_1_bg: $light-base;
+$callout_1_hover: $callout-hover;
+$callout_1_text: $callout-text;
+
+$callout_2_bg: mix($light-base, white, 50%);
+$callout_2_hover: $callout-hover;
+$callout_2_text: $callout-text;
+
+$callout_3_bg: mix($light-base, $gray-base, 90%);
+$callout_3_hover: $callout-hover;
+$callout_3_text: $callout-text;
+
+$callout_4_bg: mix($light-base, white, 80%);
+$callout_4_hover: $callout-hover;
+$callout_4_text: $callout-text;
+
+
+.display_callout_1 {
+  background-color: $callout_1_bg;
+  color: $callout_1_text !important;
+  &:hover {
+    background-color: $callout_1_hover;
+  }
+}
+
+.display_callout_2 {
+  background-color: $callout_2_bg;
+  color: $callout_2_text !important;
+  &:hover {
+    background-color: $callout_2_hover;
+  }
+}
+
+.display_callout_3 {
+  background-color: $callout_3_bg;
+  color: $callout_3_text !important;
+  &:hover {
+    background-color: $callout_3_hover;
+  }
+}
+
+.display_callout_4 {
+  background-color: $callout_4_bg;
+  color: $callout_4_text !important;
+  &:hover {
+    background-color: $callout_4_hover;
+  }  
+}
+
+.subtle_callout {
+    background-color: white;
+  overflow: auto;
+  padding: .3em 1em;
+  border: solid 1px #aaa;
+  margin-bottom: 1em;
+
+}
+
+
+
+.navbar {
+  font-family: $font-family-sans-serif;
+}
+
+
+
+
+
+// showing/hiding
+
+.more_container {
+  background-color: #f2f4f5;
+  text-align: center; 
+  width: 100%;
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  padding: .2em;
+  border-top: solid 2px #d3dbde;
+}
+.show_more {
+  color: black;
+  display: inline-block;
+  background-color: #d3dbde;
+  padding: .1em 1em;
+   border-radius: 25px;
+
+}
+.show_more:hover {
+  color: white;
+  background:black;
+}
+
+.item_data {
+  position: relative;
+  min-height: 50px;
+  padding-bottom: 2em;
+}
+
+.item_data_hide {
+  max-height: 140px; 
+  overflow: hidden;
 }

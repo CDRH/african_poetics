@@ -1,8 +1,0 @@
-<%# NOTE: apparently have to use layout not "partial" if passing a block %>
-<%= render layout: "search_results_list", locals: {
-  label: "Event",
-  link_label_attr: "name",
-  link_path: "inthenews_event_path"
-} do |item| %>
-  <%= item.event_type.name %>
-<% end %>

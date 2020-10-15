@@ -1,0 +1,51 @@
+default: &default
+
+  api_options:
+    # only return section items by default
+    f:
+      - category|In the News
+      - subcategory|person
+    # sorting and response number
+    sort:
+      - date|asc
+    num: 50
+    # facet info on search page
+    facet_limit: 20
+    facet_sort: count|desc
+    # facet info on browse page
+    browse_sort: term|asc
+    # highlighting
+    hl_num: 5
+
+  facets:
+    en:
+      places:
+        label: Nationality
+        flags:
+          - search_filter
+      spatial.region:
+        label: Region
+        flags:
+          - search_filter
+      topics:
+        label: Birth Decade
+        flags:
+          - search_filter
+      alternative:
+        label: Letter of Last Name
+        flags:
+          - search_filter
+      keywords:
+        label: Education
+        flags:
+          - search_filter
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+

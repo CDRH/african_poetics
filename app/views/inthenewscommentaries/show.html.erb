@@ -1,0 +1,51 @@
+<h1 class="sectiontitle"><%= t "inthenews.title" %></h1>
+
+<h2><%= @item.name %></h2>
+
+<div>
+  Authors: <%= @item.author_credit %>
+</div>
+
+<div class="well">
+  <%= sanitize @item.content %>
+</div>
+
+<% if @item.events.present? %>
+  <h3>Events</h3>
+  <ul>
+    <% @item.events.each do |rel| %>
+      <% id = db_to_es_id("event", rel.id) %>
+      <li><%= link_to rel.name, inthenews_events_item_path(id: id) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @item.news_items.present? %>
+  <h3>News Items</h3>
+  <ul>
+    <% @item.news_items.each do |rel| %>
+      <% id = db_to_es_id("news", rel.id) %>
+      <li><%= link_to rel.name, inthenews_news_items_item_path(id: id) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @item.people.present? %>
+  <h3>People</h3>
+  <ul>
+    <% @item.people.each do |rel| %>
+      <% id = db_to_es_id("person", rel.id) %>
+      <li><%= link_to rel.name, inthenews_poets_item_path(id: id) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @item.works.present? %>
+  <h3>Works</h3>
+  <ul>
+    <% @item.works.each do |rel| %>
+      <% id = db_to_es_id("work", rel.id) %>
+      <li><%= link_to rel.name, inthenews_works_item_path(id: id) %></li>
+    <% end %>
+  </ul>
+<% end %>

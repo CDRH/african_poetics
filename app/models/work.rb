@@ -14,6 +14,18 @@ class Work < ApplicationRecord
 
   has_one :region, through: :location
 
+  def authors
+    all_people = Person
+      .joins(work_roles: :role)
+      .where(work_roles: { work_id: id })
+      .where(roles: { name: ["Author", "Poet"]})
+      .distinct
+  end
+
+  def es_id
+    "ap.work.#{id}"
+  end
+
   def name
     "#{title} (#{year})"
   end

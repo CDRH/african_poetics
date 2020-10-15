@@ -2,12 +2,10 @@
   expecting the following variables:
 
   item - single subject of current associations
-  label - header value
   assoc - the active record association
   path - link helper path as symbol or string
 %>
 
-<h3><%= label %></h3>
 <% if item.send(assoc).present? %>
   <ul>
     <% item.send(assoc).each do |assoc_rec| %>
@@ -16,6 +14,4 @@
       </li>
     <% end %>
   </ul>
-<% else %>
-  No <%= label.downcase.pluralize %>
 <% end %>

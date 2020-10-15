@@ -1,0 +1,23 @@
+<% rec = es_to_db_record("NewsItem", item["identifier"]) %>
+
+<% if item["creator"].present? %>
+  <% item["creator"].each do |c| %>
+    <li>Author: <%= c["name"] %></li>
+  <% end %>
+<% end %>
+
+<% if item["date_display"].present? %>
+  <li>Date: <%= item["date_display"] %></li>
+<% end %>
+
+<% if item["places"].present? %>
+  <% item["places"].each do |p| %>
+    <li>Place: <%= p %></li>
+  <% end %>
+<% end %>
+
+<% if item["person"].present? %>
+  <% item["person"].each do |p| %>
+    <li>Poet: <%= p["name"] %></li>
+  <% end %>
+<% end %>

@@ -1,0 +1,23 @@
+<% if item["creator"].present? %>
+  <% item["creator"].each do |c| %>
+    <li>Author: <%= c["name"] %></li>
+  <% end %>
+<% end %>
+
+<% if item["date_display"].present? %>
+  <li>Year: <%= item["date_display"] %></li>
+<% end %>
+
+<% if item["type"].present? %>
+  <li>Type: <%= item["type"] %></li>
+<% end %>
+
+<% if item["publisher"].present? %>
+  <li>Publisher: <%= item["publisher"] %></li>
+<% end %>
+
+<% if item["places"].present? %>
+  <% item["places"].each do |place| %>
+    <li>Location: <%= place %></li>
+  <% end %>
+<% end %>
