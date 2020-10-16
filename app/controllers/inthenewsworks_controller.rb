@@ -5,8 +5,6 @@ class InthenewsworksController < ItemsController
     @facets = @items_api.query({
       "facet" => [
         "spatial.region",
-        "topics",
-        "type"
       ]
     }).facets
   end
