@@ -11,6 +11,8 @@ class InthenewscommentariesController < ItemsController
         "works"
       ]
     }).facets
+
+    set_page_facets
   end
 
   def show

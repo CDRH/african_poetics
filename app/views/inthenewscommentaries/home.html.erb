@@ -3,47 +3,49 @@
 <h2>Commentaries</h2>
 
 <div class="row">
+  <div class="col-md-3">
+    <h3>Browse</h3>
+    <div class="browse_categories">
+      <%= link_to "Browse All", inthenews_commentaries_browse_path, 
+        class: "display_callout browse_all" %>
+        <%= render partial: "inthenews/browse_home_display", locals: {
+        path: "inthenews_commentaries_browse_facet_path"
+      } %>
+    </div>
+  </div>
 
-  <div class="col-md-5">
-  
+  <div class="col-md-6">
     <%= render partial: "inthenews/search_text_field", locals: {
       url: inthenews_commentaries_search_path,
       label: "Search Commentaries"
     } %>
-    <%= link_to "Browse All Commentaries", inthenews_commentaries_search_path %>
+    <p><%= link_to "Advanced Search/View All Results", inthenews_commentaries_search_path %></p>
+
+   <%# <br/>
+
+    <div id="regions_map_decorative">%>
+      <%# render "partials/map_africa" %>
+    <%#  </div> %>
   </div>
-  <div class="col-md-7">
 
-    <h3>Commentary Authors</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "creator.name",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding Events</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "keywords",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding News Items</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "subjects",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding People</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "person.name",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding Works</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "works",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
+  <div class="col-md-3">
+    <h3>Featured Commentary</h3>
+    <div class="panel panel-default panel-featured">
+      <div class="panel-heading">
+        <h3 class="panel-title"><a href="/authors/charlyne-berens">Christopher Okigbo in Three British Newspaper Reports Between 1966 and 1993</a></h3>
+      </div>
+      <div class="panel-body">
+         <p>Christopher Okigbo was born in Ojoto, Nigeria in 1932 and studied Western classics at the University of Ibadan. He joined the Biafran side during the Nigerian Civil War and was killed in 1967 during an offensive by Nigerian forces against Nsukka. He published three poetry collections, <em>Heavensgate</em> (1962), <em>Limits</em> (1964), <em>Silences</em> (1965), and a posthumous collection in 1971 titled, <em>Labyrinths</em>.</p>
+         <p>The legacy of Okigbo the Poet-Soldier is chronicled in three news reports: "A Poet in Arms (Guns, Sub-machine 9mm, 1007)" an <em>Insight</em> story, "Full Analysis of the War Awaited" by Kaye Whiteman "of West Africa," and "The Arrest of Ken Saro-Wiwa" by A.M Daniels. Together, these three reports provide a view of Okigbo's pre-war political ideologies and legacy chronicled in western media. Even in literary discourses, Okigbo is often cited in connection to the circumstances of his death, this helped to create a myth around his poetry and legacy.</p> 
+        <p>The first report, "A Poet in Arms (Guns, Sub-machine 9mm, 1007)" published in the "Insight" column of <em>The Sunday Times</em> of October 30, 1966 refers to Okigbo, W. B Yeats, Patrick Pearse, Garcia Lorca, Geothe, and Byron as "…poets doubling as men of action."</p>
+        <p class="read-more"><a href="/authors/charlyne-berens">Read More</a></p>
+      </div>
+    </div>
   </div>
-  
 </div>
+
+
+
+
+
+
