@@ -50,13 +50,13 @@ class IndexNewsItem < Index
   end
 
   def places
-    if @record.publisher && @record.publisher.location
-      @record.publisher.location.name
+    if @record.publication && @record.publication.location
+      @record.publication.location.name
     end
   end
 
   def publisher
-    @record.publisher.name if @record.publisher
+    @record.publication.name if @record.publication
   end
 
   def source

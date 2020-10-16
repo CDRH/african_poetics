@@ -8,7 +8,7 @@
 <h3>Published</h3>
 <%= @record.date.strftime("%Y-%m-%d") if @record.date %>
 <br>
-<%= @record.publisher.name %>
+<%= @record.publication.name %>
 
 <h3>Authors (<%= @record.authors.count %>)</h3>
 <% if @record.authors.present? %>

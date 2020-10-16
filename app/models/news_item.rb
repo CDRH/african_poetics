@@ -2,7 +2,7 @@ class NewsItem < ApplicationRecord
   include Dates
 
   belongs_to :news_item_type
-  belongs_to :publisher
+  belongs_to :publication
 
   has_and_belongs_to_many :commentaries,
     dependent: :destroy
@@ -37,8 +37,8 @@ class NewsItem < ApplicationRecord
       cit += "\"#{article_title}\", "
     end
 
-    if publisher
-      cit += "#{publisher.name}, "
+    if publication
+      cit += "#{publication.name}, "
     end
 
     if date
@@ -68,7 +68,7 @@ class NewsItem < ApplicationRecord
   end
 
   def name
-    pub = publisher ? publisher.name : ""
+    pub = publication ? publication.name : ""
     "'#{article_title}', #{pub} (#{year})"
   end
 

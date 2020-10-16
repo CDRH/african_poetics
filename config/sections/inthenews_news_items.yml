@@ -40,7 +40,7 @@ default: &default
         flags:
           - search_filter
       publisher:
-        label: Publisher
+        label: Publication
         flags:
           - search_filter
       keywords:
