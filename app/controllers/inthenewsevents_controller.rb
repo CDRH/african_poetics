@@ -5,10 +5,10 @@ class InthenewseventsController < ItemsController
     @facets = @items_api.query({
       "facet" => [
         "spatial.region",
-        "topics",
-        "type",
       ]
     }).facets
+
+    set_page_facets
   end
 
   def show

@@ -545,7 +545,7 @@ $callout_4_hover: $callout-hover;
 $callout_4_text: $callout-text;
 
 
-.display_callout_1 {
+.display_callout_1, .display_callout.browse_all {
   background-color: $callout_1_bg;
   color: $callout_1_text !important;
   &:hover {
