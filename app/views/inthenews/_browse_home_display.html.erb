@@ -1,0 +1,13 @@
+<%# expecting the following:
+  path: the rails path helper for the particular section in question
+%>
+
+<% @page_facets.each_with_index do |(es_field, options), index| %>
+  <%# browse_all essentially starts with display_callout_1 and classes
+  run 1 through 4. Add +1 to current index, mod 4, then add another 1 to get
+  the correct class number %>
+
+  <% class_no = (index+1)%4 + 1 %>
+
+  <%= link_to options["label"], send(path, {facet: es_field}), class: "display_callout display_callout_#{class_no}" %>
+<% end %>

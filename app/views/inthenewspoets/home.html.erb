@@ -11,17 +11,10 @@
     <h3>Browse</h3>
     <div class="browse_categories">
       <%= link_to "Browse All", inthenews_poets_browse_path, 
-        class: "display_callout display_callout_1 browse_all" %>
-      <%= link_to "Country of Nationality", inthenews_poets_browse_facet_path(facet: "places"), 
-        class: "display_callout display_callout_2" %>
-      <%= link_to "Region", inthenews_poets_browse_facet_path(facet: "spatial.region"), 
-        class: "display_callout display_callout_3" %>
-      <%= link_to "Birth Decade", inthenews_poets_browse_facet_path(facet: "topics"), 
-        class: "display_callout display_callout_4" %>
-      <%= link_to "First Letter of Last Name", inthenews_poets_browse_facet_path(facet: "alternative"), 
-        class: "display_callout display_callout_1" %>
-      <%= link_to "Education", inthenews_poets_browse_facet_path(facet: "keywords"), 
-        class: "display_callout display_callout_2" %>
+        class: "display_callout browse_all" %>
+      <%= render partial: "inthenews/browse_home_display", locals: {
+        path: "inthenews_poets_browse_facet_path"
+      } %>
     </div>
   </div>
 

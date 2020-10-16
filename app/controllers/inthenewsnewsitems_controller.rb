@@ -7,6 +7,8 @@ class InthenewsnewsitemsController < ItemsController
         "type"
       ]
     }).facets
+
+    set_page_facets
   end
 
   def show

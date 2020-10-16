@@ -7,6 +7,9 @@ class InthenewsworksController < ItemsController
         "spatial.region",
       ]
     }).facets
+
+    set_page_facets
+
   end
 
   def show
