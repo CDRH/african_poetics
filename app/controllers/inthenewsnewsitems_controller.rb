@@ -4,7 +4,6 @@ class InthenewsnewsitemsController < ItemsController
     @title = "News"
     @facets = @items_api.query({
       "facet" => [
-        "topics", 
         "type"
       ]
     }).facets

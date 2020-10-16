@@ -3,11 +3,11 @@
     <div class="navbar navbar-inverse">
       <div class="container navbar-container">  
         <ul class="nav navbar-nav">
-           <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse/,
+           <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse\/featured/,
             request.path) %>">
             <%= link_to "Featured", contemporarypoets_browse_facet_path(facet: "featured") %>
           </li>
-          <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse/,
+          <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse(?!\/featured)/,
             request.path) %>">
             <%= link_to t("browse.title", default: "Browse"), prefix_path("browse_path") %>
           </li>

@@ -18,14 +18,14 @@
 
 // Interactivity for Region Browse 
 
-.element_hover, .element_hover a {
+.element_hover, #regions_map .element_hover a {
   background-color: $brand-danger;
   color: white !important;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.country_highlight {
+#regions_map .country_highlight {
   fill-opacity: 1;
   fill: $brand-danger !important;
   stroke-opacity: 1;
@@ -33,7 +33,7 @@
   stroke: white !important;
 }
 
-.svg_hover {
+#regions_map .svg_hover {
   cursor: pointer;
   fill: $brand-danger !important;
   stroke: white;
