@@ -24,20 +24,24 @@
     </p>
   </div>
 
-  <div class="col-md-3">
-    <h3>Featured Commentary</h3>
+  <% if @featured %>
+    <div class="col-md-3">
+      <h3>Featured Commentary</h3>
+      <% link = inthenews_commentaries_item_path(id: db_to_es_id("commentary", @featured.id)) %>
 
-    <!-- todo: change this to dynamically pull a random commentary -->
-    <div class="panel panel-default panel-featured">
-      <div class="panel-heading">
-        <h3 class="panel-title"><a href="/authors/charlyne-berens">Christopher Okigbo in Three British Newspaper Reports Between 1966 and 1993</a></h3>
-      </div>
-      <div class="panel-body">
-         <p>Christopher Okigbo was born in Ojoto, Nigeria in 1932 and studied Western classics at the University of Ibadan. He joined the Biafran side during the Nigerian Civil War and was killed in 1967 during an offensive by Nigerian forces against Nsukka. He published three poetry collections, <em>Heavensgate</em> (1962), <em>Limits</em> (1964), <em>Silences</em> (1965), and a posthumous collection in 1971 titled, <em>Labyrinths</em>.</p>
-         <p>The legacy of Okigbo the Poet-Soldier is chronicled in three news reports: "A Poet in Arms (Guns, Sub-machine 9mm, 1007)" an <em>Insight</em> story, "Full Analysis of the War Awaited" by Kaye Whiteman "of West Africa," and "The Arrest of Ken Saro-Wiwa" by A.M Daniels. Together, these three reports provide a view of Okigbo's pre-war political ideologies and legacy chronicled in western media. Even in literary discourses, Okigbo is often cited in connection to the circumstances of his death, this helped to create a myth around his poetry and legacy.</p> 
-        <p>The first report, "A Poet in Arms (Guns, Sub-machine 9mm, 1007)" published in the "Insight" column of <em>The Sunday Times</em> of October 30, 1966 refers to Okigbo, W. B Yeats, Patrick Pearse, Garcia Lorca, Geothe, and Byron as "…poets doubling as men of action."</p>
-        <p class="read-more"><a href="/authors/charlyne-berens">Read More</a></p>
+      <div class="panel panel-default panel-featured">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= link_to @featured.name, link %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= sanitize @featured.content %>
+          <p class="read-more">
+            <%= link_to "Read More", link %>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

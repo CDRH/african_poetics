@@ -13,6 +13,7 @@ class InthenewscommentariesController < ItemsController
     }).facets
 
     set_page_facets
+    @featured = Commentary.all.sample(1).first
   end
 
   def show
