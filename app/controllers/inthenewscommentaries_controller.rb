@@ -11,6 +11,9 @@ class InthenewscommentariesController < ItemsController
         "works"
       ]
     }).facets
+
+    set_page_facets
+    @featured = Commentary.all.sample
   end
 
   def show

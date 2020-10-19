@@ -3,47 +3,45 @@
 <h2>Commentaries</h2>
 
 <div class="row">
+  <div class="col-md-3">
+    <h3>Browse</h3>
+    <div class="browse_categories">
+      <%= link_to "Browse All", inthenews_commentaries_browse_path, 
+        class: "display_callout browse_all" %>
+        <%= render partial: "inthenews/browse_home_display", locals: {
+        path: "inthenews_commentaries_browse_facet_path"
+      } %>
+    </div>
+  </div>
 
-  <div class="col-md-5">
-  
+  <div class="col-md-6">
     <%= render partial: "inthenews/search_text_field", locals: {
       url: inthenews_commentaries_search_path,
       label: "Search Commentaries"
     } %>
-    <%= link_to "Browse All Commentaries", inthenews_commentaries_search_path %>
+    <p>
+      <%= link_to "Advanced Search/View All Results", inthenews_commentaries_search_path %>
+    </p>
   </div>
-  <div class="col-md-7">
 
-    <h3>Commentary Authors</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "creator.name",
-      path: "inthenews_commentaries_search_path"
-    } %>
+  <% if @featured %>
+    <div class="col-md-3">
+      <h3>Featured Commentary</h3>
+      <% link = inthenews_commentaries_item_path(id: db_to_es_id("commentary", @featured.id)) %>
 
-    <h3>Regarding Events</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "keywords",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding News Items</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "subjects",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding People</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "person.name",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
-    <h3>Regarding Works</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "works",
-      path: "inthenews_commentaries_search_path"
-    } %>
-
+      <div class="panel panel-default panel-featured">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= link_to @featured.name, link %>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= sanitize @featured.content %>
+          <p class="read-more">
+            <%= link_to "Read More", link %>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
-  
-</div>
+<% end %>
