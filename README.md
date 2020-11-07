@@ -2,6 +2,14 @@
 
 This is the Rails application powering the African Poetry Digital Portal.
 
+## Precompile Assets
+For production this app runs at the `/admin` sub-uri of the frontend app,
+so assets must be compiled with:
+
+```bash
+RAILS_RELATIVE_URL_ROOT="/admin" RAILS_ENV=production rails assets:precompile
+```
+
 ## In the News Development Notes
 
 ### Elasticsearch
@@ -9,6 +17,8 @@ This is the Rails application powering the African Poetry Digital Portal.
 This app uses a mysql database and Elasticsearch for the In the News portion of the site.
 
 Use rake tasks to manage the Elasticsearch index, which should be updated periodically to add the latest database information.
+
+For production, remember to include `RAILS_ENV=production SECRET_KEY_BASE=inconsequential` before the commands.
 
 Clear "in the news" section (should not affect Contemporary African Poetics):
 
