@@ -3,8 +3,13 @@
     <% if @title.present? %><%= @title %> | <% end %>
     <%= t "general.project_name" %>
   </title>
-  <%= render "layouts/head/meta" %>
-  <%= render "layouts/head/favicon" %>
-  <%= render "layouts/head/stylesheets" %>
-  <%= render "layouts/head/scripts" %>
+
+  <%= render_overridable("layouts/head", "meta") %>
+  <%= render_overridable("layouts/head", "language") %>
+  <%= render_overridable("layouts/head", "analytics") %>
+  <%= render_overridable("layouts/head", "favicon") %>
+  <%= render_overridable("layouts/head", "fonts") %>
+  <%= render_overridable("layouts/head", "stylesheets") %>
+  <%= render_overridable("layouts/head", "scripts") %>
+
 </head>
