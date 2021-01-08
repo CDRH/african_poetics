@@ -1,0 +1,5 @@
+<% if @section.include?("inthenews") %>
+  <%= render_overridable "partials", "inthenews_title" %>
+<% end %>
+
+<h2><%= t "browse.browse_type", default: "Browse by" %> <%= @browse_facet_info["label"] %></h2>

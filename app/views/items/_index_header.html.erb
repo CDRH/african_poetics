@@ -1,0 +1,9 @@
+<% if @section.include?("inthenews") %>
+  <%= render_overridable "partials", "inthenews_title" %>
+<% end %>
+
+<% if params["q"].blank? && params["f"].blank? %>
+  <h1><%= t "search.all_items", default: "All Items" %></h1>
+<% else %>
+  <h1><%= t "search.search_results", default: "Search Results" %></h1>
+<% end %>
