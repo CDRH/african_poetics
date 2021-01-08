@@ -14,23 +14,7 @@ RAILS_RELATIVE_URL_ROOT="/admin" RAILS_ENV=production rails assets:precompile
 
 ### Elasticsearch
 
-This app uses a mysql database and Elasticsearch for the In the News portion of the site.
-
-Use rake tasks to manage the Elasticsearch index, which should be updated periodically to add the latest database information.
-
-For production, remember to include `RAILS_ENV=production SECRET_KEY_BASE=inconsequential` before the commands.
-
-Clear "in the news" section (should not affect Contemporary African Poetics):
-
-```
-rake african_poetics:index_clear
-```
-
-Reindex / update existing entries:
-
-```
-rake african_poetics:index
-```
+This application integrates with Elasticsearch and is populated from the admin rails application. Please see african_poetics_admin for more information.
 
 ### Note about Controllers
 
