@@ -87,13 +87,15 @@
   <div class="item_data">
     <ul>
       <% @item.work_roles.each do |role| %>
-        <li>
-          <% id = db_to_es_id("work", role.work.id) %>
-          <%= link_to inthenews_works_item_path(id: id) do %>
-            <%= role.work.name %>
-          <% end %>
-          (<%= role.role.name %>)
-        </li>
+        <% if role.work.present? %>
+          <li>
+            <% id = db_to_es_id("work", role.work.id) %>
+            <%= link_to inthenews_works_item_path(id: id) do %>
+              <%= role.work.name %>
+            <% end %>
+            (<%= role.role.name %>)
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div><%# /.item_data %>
