@@ -14,34 +14,35 @@
     </div>
   </div>
 
-  <div class="col-md-6">
-    <%= render partial: "inthenews/search_text_field", locals: {
-      url: inthenews_commentaries_search_path,
-      label: "Search Commentaries"
-    } %>
-    <p>
-      <%= link_to "Advanced Search/View All Results", inthenews_commentaries_search_path %>
-    </p>
-  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <%= render partial: "inthenews/search_text_field", locals: {
+        url: inthenews_commentaries_search_path,
+        label: "Search Commentaries"
+      } %>
+      <p>
+        <%= link_to "Advanced Search/View All Results", inthenews_commentaries_search_path %>
+      </p>
+    </div>
+    <div class="row">
+        <% if @featured %>
+          <h3>Featured Commentary</h3>
+          <% link = inthenews_commentaries_item_path(id: db_to_es_id("commentary", @featured.id)) %>
 
-  <% if @featured %>
-    <div class="col-md-3">
-      <h3>Featured Commentary</h3>
-      <% link = inthenews_commentaries_item_path(id: db_to_es_id("commentary", @featured.id)) %>
-
-      <div class="panel panel-default panel-featured">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <%= link_to @featured.name, link %>
-          </h3>
+          <div class="panel panel-default panel-featured">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <%= link_to @featured.name, link %>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <%= sanitize @featured.content %>
+              <p class="read-more">
+                <%= link_to "Read More", link %>
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          <%= sanitize @featured.content %>
-          <p class="read-more">
-            <%= link_to "Read More", link %>
-          </p>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
-<% end %>
