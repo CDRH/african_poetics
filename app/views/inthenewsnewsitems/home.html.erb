@@ -15,13 +15,27 @@
   </div>
 
   <div class="col-md-6">
-     <%= render partial: "inthenews/search_text_field", locals: {
-      url: inthenews_news_items_search_path,
-      label: "Search News"
-    } %>
-    <p>
-      <%= link_to "Advanced Search/View All Results", inthenews_news_items_search_path %>
-    </p>
+    <div class="row">
+       <%= render partial: "inthenews/search_text_field", locals: {
+        url: inthenews_news_items_search_path,
+        label: "Search News"
+      } %>
+      <p>
+        <%= link_to "Advanced Search/View All Results", inthenews_news_items_search_path %>
+      </p>
+    </div>
+    <div class="row">
+      <h3>Browse by Tag</h3>
+      <% @facets["keywords"].each do |tag, count| %>
+        <% cloud_class = word_cloud_count(count) %>
+
+          <span class="btn cloud-item cloud-<%= cloud_class %>">
+            <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]) do %>
+            <%= tag %>
+        <% end %>
+        </span>
+      <% end %>
+    </div>
   </div>
 
   <div class="col-md-3">
