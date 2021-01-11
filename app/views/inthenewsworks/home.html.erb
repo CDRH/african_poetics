@@ -18,25 +18,22 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-9">
     <%= render partial: "inthenews/search_text_field", locals: {
       url: inthenews_works_search_path,
       label: "Search Works"
     } %>
     <p><%= link_to "Advanced Search/View All Results", inthenews_works_search_path %></p>
 
-    <br/>
+    <h3>Browse by Decade</h3>
+    <div class="browse_categories">
+      <% @facets["topics"].each_with_index do |(decade, count), index| %>
 
-    <div id="regions_map">
-      <%= render "partials/map_africa" %>
+        <% class_no = (index+1)%4 + 1 %>
+        <%= link_to inthenews_works_search_path(f: ["topics|#{decade}"]), class: "display_callout display_callout_#{class_no}" do %>
+          <%= decade %> <span class="badge badge-decade"><%= count %></span>
+        <% end %>
+      <% end %>
     </div>
-  </div>
-
-  <div class="col-md-3">
-    <h3>Regions</h3>
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "spatial.region",
-      path: "inthenews_works_search_path"
-    } %>
   </div>
 </div>
