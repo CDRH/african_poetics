@@ -1,0 +1,20 @@
+<%# search_res_item_simple
+  Takes an array and label and creates a div
+  with spans for easy styling.
+  Some items may be people nested fields in which case
+  we will need to display their "name"
+  Expects:
+    - label
+    - list
+%>
+
+<div class="search_result_field">
+  <%= label %>:
+  <% list.each do |item| %>
+    <% if item.class == Hash %>
+      <span><%= item["name"] %></span>
+    <% else %>
+      <span><%= item %></span>
+    <% end %>
+  <% end %>
+</div>

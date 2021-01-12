@@ -1,27 +1,5 @@
-<% if item["creator"].present? %>
-  <li>Author: <%= item["creator"].map { |a| a["name"] }.join("; ") %></li>
-<% end %>
+<%= search_result_item_field(item, "creator", "Author") %>
 
-<% if item["keywords"].present? %>
-  <% item["keywords"].each do |kw| %>
-    <li>Event: <%= kw %></li>
-  <% end %>
-<% end %>
+<%= search_result_item_field(item, "person", "Poet") %>
 
-<% if item["subjects"].present? %>
-  <% item["subjects"].each do |ni| %>
-    <li>News item: <%= ni %></li>
-  <% end %>
-<% end %>
-
-<% if item["person"].present? %>
-  <% item["person"].each do |pers| %>
-    <li>Poet: <%= pers["name"] %></li>
-  <% end %>
-<% end %>
-
-<% if item["works"].present? %>
-  <% item["works"].each do |w| %>
-    <li>Work: <%= w %></li>
-  <% end %>
-<% end %>
+<%= search_result_item_field(item, "keywords", "Event") %>
