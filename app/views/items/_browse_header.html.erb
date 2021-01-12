@@ -1,0 +1,16 @@
+<% if @section.include?("inthenews") %>
+  <%= render_overridable "partials", "inthenews_title" %>
+  <h2>
+    <%= t "browse.title", default: "Browse" %>
+  </h2>
+<% else %>
+  <%# default Orchid behavior below %>
+  <h1>
+    <%= t "browse.title", default: "Browse" %>
+  </h1>
+<% end %>
+
+<p>
+  <%= link_to t("browse.all_link", default: "All Items in the Collection"), prefix_path(route_path),
+        class: "btn btn-lg btn-default", rel: "search" %>
+</p>

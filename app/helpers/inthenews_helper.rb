@@ -62,4 +62,30 @@ module InthenewsHelper
     end
   end
 
+  # provide a back link, either to the main "in the news" landing page
+  # or to the individual section home (poets, events, works, etc)
+  def section_back_link
+    if params[:action] == "home"
+      link_to "← back to African Poets and Poetry in the News home",
+        :inthenews_home,
+        class: "back-link"
+    else
+      link_to "← back to #{section_label} home",
+        send("#{@section}_path"),
+        class: "back-link"
+    end
+  end
+
+  # because inthenews_x is the pattern of all our in the news
+  # sections, we can use that to get a label
+  def section_label
+    type = @section.sub("inthenews_", "")
+    if type == "news_items"
+      type = "news"
+    elsif type == "contemporarypoets"
+      type = "contemporary poets"
+    end
+    type.titleize if type
+  end
+
 end
