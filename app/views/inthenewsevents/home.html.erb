@@ -31,20 +31,18 @@
     </div>
 
     <div class="row">
-      <div class="subtle_callout">
-        <div class="col-xs-8">
-          <div id="regions_map">
-            <%= render "partials/map_africa" %>
-          </div>
+      <div class="col-xs-8">
+        <div id="regions_map">
+          <%= render "partials/map_africa" %>
         </div>
+      </div>
 
-        <div class="col-xs-4">
-        <h3>Regions</h3>
-        <%= render partial: "inthenews/group_count_table", locals: {
-          facet: "spatial.region",
-          path: "inthenews_events_search_path"
-        } %>
-        </div>
+      <div class="col-xs-4">
+      <h3>Regions</h3>
+      <%= render partial: "inthenews/group_count_table", locals: {
+        facet: "spatial.region",
+        path: "inthenews_events_search_path"
+      } %>
       </div>
     </div>
   </div>
