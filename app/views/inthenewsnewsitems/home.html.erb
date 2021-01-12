@@ -29,10 +29,10 @@
       <% @facets["keywords"].each do |tag, count| %>
         <% cloud_class = word_cloud_count(count) %>
 
-          <span class="btn cloud-item cloud-<%= cloud_class %>">
-            <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]) do %>
+        <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]),
+          class: "btn cloud-#{cloud_class}", role: "button" do %>
             <%= tag %>
-        <% end %>
+          <% end %>
         </span>
       <% end %>
     </div>

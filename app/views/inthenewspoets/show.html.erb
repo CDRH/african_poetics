@@ -2,7 +2,7 @@
 
 <h2><%= @item.name %></h2>
 <% if @item.name_alt.present? %>
-  <h2 class="item_subtitle">Alternate names: <%= @item.name_alt %></h2>
+  <h2 class="poet_altname">Alternate names: <%= @item.name_alt %></h2>
 <% end %>
 
 <h3>Biography</h3>
@@ -83,7 +83,7 @@
 <% end %>
 
 <% if @item.work_roles.present? %>
-  <h3>Works (<%= @item.work_roles.count %>)</h3>
+  <h3>Mentioned Works (<%= @item.work_roles.count %>)</h3>
   <div class="item_data">
     <ul>
       <% @item.work_roles.each do |role| %>
@@ -119,7 +119,7 @@
 assuming that all poets are readily available as person.name, etc %>
 
 <% rel_people = all_related_people(@item) %>
-<h3>Relationships Through News Items, Events, Works, and Educations (<%= rel_people.length %></h3>
+<h3>Relationships Through News Items, Events, Works, and Educations (<%= rel_people.length %>)</h3>
 <div class="item_data">
   <ul>
     <% rel_people.each do |person, count| %>

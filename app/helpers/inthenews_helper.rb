@@ -27,6 +27,8 @@ module InthenewsHelper
     end
 
     people.delete(current_person)
+    # remove any where there are <= 2 connections
+    people = people.reject { |k,v| v <= 2 }
     people.sort_by { |k,v| v }.reverse
   end
 

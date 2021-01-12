@@ -457,10 +457,10 @@ svg path.re {
 }
 
 .item_subtitle {
-  text-align: center;
+  font-size: 1.8em;
   margin-top:0;
   padding-top: 0;
-  font-size: 1.8em;
+  text-align: center;
 }
 
 .browse_div .tab-pane {
@@ -474,6 +474,12 @@ svg path.re {
 .metadata {
   margin-top: 40px;
   flex-grow: 1;
+}
+
+.poet_altname {
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 1.8em;
 }
 
 .poet_metadata_contain {

@@ -33,6 +33,15 @@
   </div>
 
   <div class="col-md-3 inthenews_sidebar">
+    <h3>Last Name</h3>
+    <div class="last_letter_browse">
+      <% @facets["alternative"].each do |letter, count| %>
+        <%= link_to inthenews_poets_search_path(f: ["alternative|#{letter}"]), class: "btn", role: "button" do %>
+          <%= letter %>
+        <% end %>
+      <% end %>
+    </div>
+
     <h3>Regions</h3>
 
     <%= render partial: "inthenews/group_count_table", locals: {
