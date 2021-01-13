@@ -19,13 +19,11 @@
   </div>
 
   <div class="col-md-6">
-    <div class="subtle_callout">
-      <%= render partial: "inthenews/search_text_field", locals: {
-      url: inthenews_poets_search_path,
-      label: "Search Poets"
-      } %>
-      <p><%= link_to "Advanced Search/View All Results", inthenews_poets_search_path %></p>
-    </div>
+    <%= render partial: "inthenews/search_text_field", locals: {
+    url: inthenews_poets_search_path,
+    label: "Search Poets"
+    } %>
+    <p><%= link_to "Advanced Search/View All Results", inthenews_poets_search_path %></p>
 
     <div id="regions_map">
       <%= render "partials/map_africa" %>
