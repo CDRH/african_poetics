@@ -56,6 +56,12 @@ module InthenewsHelper
     end
   end
 
+  def search_result_item_field(item, field, label)
+    if item[field].present?
+      list = item[field].class == Array ? item[field] : [item[field]]
+      render partial: "partials/search_res_item_field",
+        locals: { label: label, list: list }
+
   def word_cloud_count(count)
     count = count.to_i
     case count

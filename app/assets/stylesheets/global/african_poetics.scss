@@ -650,6 +650,12 @@ svg path.re {
   padding: 8px 0px;
 }
 
+.search_result_field > span {
+  background-color: lighten($gray-light, 20);
+  border-radius: 4px;
+  padding: 0 7px;
+}
+
 // ------------
 // Home Page
 // ------------
