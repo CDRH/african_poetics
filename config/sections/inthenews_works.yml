@@ -19,29 +19,28 @@ default: &default
 
   facets:
     en:
-      places:
-        label: Location
+      contributor.name:
+        label: African Poet
         flags:
-          - search_filter
-      spatial.region:
-        label: Region
+          _ search_filter
+      creator.name:
+        label: Author
         flags:
           - search_filter
       topics:
         label: Decade
         flags:
           - search_filter
-      creator.name:
-        label: Author
+      date.year:
+        label: Year
         flags:
           - search_filter
-      # TODO poets
       publisher:
         label: Publisher
         flags:
           - search_filter
       type:
-        label: Type
+        label: Publication Type
         flags:
           - search_filter
 

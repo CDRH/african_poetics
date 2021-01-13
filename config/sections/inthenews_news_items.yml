@@ -19,12 +19,12 @@ default: &default
 
   facets:
     en:
-      creator.name:
-        label: Author
+      person.name:
+        label: African Poet
         flags:
           - search_filter
-      person.name:
-        label: Poets
+      creator.name:
+        label: Author
         flags:
           - search_filter
       topics:
@@ -33,10 +33,6 @@ default: &default
           - search_filter
       places:
         label: Location
-        flags:
-          - search_filter
-      spatial.region:
-        label: Region
         flags:
           - search_filter
       publisher:

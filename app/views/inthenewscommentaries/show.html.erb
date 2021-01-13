@@ -1,9 +1,9 @@
 <%= render_overridable "partials", "inthenews_title" %>
 
-<h2><%= @item.name %></h2>
+<h2 class="commentary_title"><%= @item.name %></h2>
 
-<div>
-  Authors: <%= @item.author_credit %>
+<div class="commentary_authors">
+  Author(s): <%= @item.author_credit %>
 </div>
 
 <div class="well">

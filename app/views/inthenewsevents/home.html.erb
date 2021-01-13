@@ -20,31 +20,27 @@
 
   <div class="col-md-9">
     <div class="row">
-      <div class="subtle_callout">
-        <%= render partial: "inthenews/search_text_field", locals: {
-          url: inthenews_events_search_path,
-          label: "Search Events"
-        } %>
+      <%= render partial: "inthenews/search_text_field", locals: {
+        url: inthenews_events_search_path,
+        label: "Search Events"
+      } %>
 
-        <%= link_to "Advanced Search/View All Results", inthenews_events_search_path %>
-      </div>
+      <%= link_to "Advanced Search/View All Results", inthenews_events_search_path %>
     </div>
 
     <div class="row">
-      <div class="subtle_callout">
-        <div class="col-xs-8">
-          <div id="regions_map">
-            <%= render "partials/map_africa" %>
-          </div>
+      <div class="col-xs-8">
+        <div id="regions_map">
+          <%= render "partials/map_africa" %>
         </div>
+      </div>
 
-        <div class="col-xs-4">
-        <h3>Regions</h3>
-        <%= render partial: "inthenews/group_count_table", locals: {
-          facet: "spatial.region",
-          path: "inthenews_events_search_path"
-        } %>
-        </div>
+      <div class="col-xs-4">
+      <h3>Regions</h3>
+      <%= render partial: "inthenews/group_count_table", locals: {
+        facet: "spatial.region",
+        path: "inthenews_events_search_path"
+      } %>
       </div>
     </div>
   </div>

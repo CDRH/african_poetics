@@ -457,10 +457,10 @@ svg path.re {
 }
 
 .item_subtitle {
-  text-align: center;
+  font-size: 1.8em;
   margin-top:0;
   padding-top: 0;
-  font-size: 1.8em;
+  text-align: center;
 }
 
 .browse_div .tab-pane {
@@ -474,6 +474,12 @@ svg path.re {
 .metadata {
   margin-top: 40px;
   flex-grow: 1;
+}
+
+.poet_altname {
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 1.8em;
 }
 
 .poet_metadata_contain {
@@ -505,6 +511,10 @@ svg path.re {
     text-align: center;
     margin: 1px;
   }
+}
+
+.badge-decade {
+  vertical-align: text-bottom;
 }
 
 .timeslider {
@@ -541,6 +551,14 @@ svg path.re {
 
 // Commentaries
 
+ .commentary_authors {
+  font-size: 1.2em;
+ }
+
+ .commentary_title {
+  font-size: 1.5em;
+ }
+
 .panel-featured {
 
   .panel-body {
@@ -559,6 +577,34 @@ svg path.re {
      text-align: center;
      width: 100%;
    }
+ }
+
+ // News Items
+
+ // news items word cloud
+ //   find the size definitions in inthenews_helper.rb
+ .cloud-smallest {
+  background-color: lightgray;
+ }
+
+ .cloud-small {
+  background-color: lightblue;
+  font-size: 1.3em;
+ }
+
+ .cloud-medium {
+  background-color: lavender;
+  font-size: 1.6em;
+ }
+
+ .cloud-large {
+  background-color: lightsalmon;
+  font-size: 1.9em;
+ }
+
+ .cloud-largest {
+  background-color: magenta;
+  font-size: 2.2em;
  }
 
  // Individual pages show more

@@ -19,24 +19,26 @@ default: &default
 
   facets:
     en:
-      places:
-        label: Country of Nationality
+      title:
+        label: Name
+      topics:
+        label: Birth Decade
         flags:
           - search_filter
       spatial.region:
         label: Region
         flags:
           - search_filter
-      topics:
-        label: Birth Decade
-        flags:
-          - search_filter
-      alternative:
-        label: Letter of Last Name
+      places:
+        label: Country of Nationality
         flags:
           - search_filter
       keywords:
         label: Education
+        flags:
+          - search_filter
+      alternative:
+        label: Letter of Last Name
         flags:
           - search_filter
 
