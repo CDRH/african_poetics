@@ -43,7 +43,7 @@
 <% end %>
 
 <% if @item.people.present? %>
-  <h3>People (<%= @item.people.count %>)</h3>
+  <h3>African Poets (<%= @item.people.count %>)</h3>
   <div class="item_data">
     <%= render partial: "inthenews/simple_association_list", locals: {
       item: @item,

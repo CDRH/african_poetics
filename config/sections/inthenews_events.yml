@@ -19,24 +19,24 @@ default: &default
 
   facets:
     en:
-      topics:
-        label: Decade
-        flags:
-          - search_filter
       type:
         label: Type
         flags:
           - search_filter
       person.name:
-        label: Poets
+        label: Poet
+        flags:
+          - search_filter
+      topics:
+        label: Decade
+        flags:
+          - search_filter
+      date.year:
+        label: Year
         flags:
           - search_filter
       places:
         label: Location
-        flags:
-          - search_filter
-      spatial.region:
-        label: Region
         flags:
           - search_filter
 

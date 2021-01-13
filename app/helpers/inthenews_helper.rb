@@ -27,6 +27,8 @@ module InthenewsHelper
     end
 
     people.delete(current_person)
+    # remove any where there are <= 2 connections
+    people = people.reject { |k,v| v <= 2 }
     people.sort_by { |k,v| v }.reverse
   end
 
@@ -59,6 +61,20 @@ module InthenewsHelper
       list = item[field].class == Array ? item[field] : [item[field]]
       render partial: "partials/search_res_item_field",
         locals: { label: label, list: list }
+
+  def word_cloud_count(count)
+    count = count.to_i
+    case count
+    when 1..3
+      "smallest"
+    when 4..8
+      "small"
+    when 9..15
+      "medium"
+    when 16..25
+      "large"
+    else
+      "largest"
     end
   end
 
@@ -87,5 +103,4 @@ module InthenewsHelper
     end
     type.titleize if type
   end
-
 end

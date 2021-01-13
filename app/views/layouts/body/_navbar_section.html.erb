@@ -57,9 +57,6 @@
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/commentaries/, request.path) %>">
             <%= link_to "Commentaries", inthenews_commentaries_path %>
           </li>
-          <li class="<%= active?(inthenews_about_path) %>">
-            <%= link_to "About", inthenews_about_path %>
-          </li>
         </ul>
       </div>
     </div>

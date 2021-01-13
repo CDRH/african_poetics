@@ -19,20 +19,16 @@ default: &default
 
   facets:
     en:
+      person.name:
+        label: African Poet
+        flags:
+          - search_filter
       creator.name:
-        label: Author
+        label: Commentary Author
         flags:
           - search_filter
       keywords:
         label: Event
-        flags:
-          - search_filter
-      person.name:
-        label: Poet
-        flags:
-          - search_filter
-      subjects:
-        label: News Item
         flags:
           - search_filter
       works:

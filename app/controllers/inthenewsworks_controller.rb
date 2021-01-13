@@ -4,8 +4,9 @@ class InthenewsworksController < ItemsController
     @title = "Works"
     @facets = @items_api.query({
       "facet" => [
-        "spatial.region",
-      ]
+        "topics",
+      ],
+      "facet_sort" => "term|asc"
     }).facets
 
     set_page_facets

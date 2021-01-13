@@ -3,7 +3,12 @@ class InthenewspoetsController < ItemsController
   def home
     @title = "Poets"
     @facets = @items_api.query({
-      "facet" => ["spatial.region"]
+      "facet" => [
+        "alternative",
+        "spatial.region"
+      ],
+      "facet_sort" => "term|asc",
+      "facet_num" => 30
     }).facets
 
     set_page_facets
