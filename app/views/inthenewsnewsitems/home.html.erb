@@ -6,8 +6,6 @@
   <div class="col-md-3">
     <h3>Browse</h3>
     <div class="browse_categories">
-      <%= link_to "Browse All", inthenews_news_items_browse_path, 
-        class: "display_callout browse_all" %>
       <%= render partial: "inthenews/browse_home_display", locals: {
         path: "inthenews_news_items_browse_facet_path"
       } %>
@@ -21,7 +19,10 @@
         label: "Search News"
       } %>
       <p>
-        <%= link_to "Advanced Search/View All Results", inthenews_news_items_search_path %>
+        <%= link_to "Advanced Search/View All Results",
+          inthenews_news_items_search_path,
+          class: "btn btn-default btn-block",
+          role: "button" %>
       </p>
     </div>
     <div class="row">

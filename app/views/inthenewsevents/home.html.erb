@@ -10,8 +10,6 @@
   <div class="col-md-3">
     <h3>Browse</h3>
     <div class="browse_categories">
-      <%= link_to "Browse All", inthenews_events_browse_path, 
-        class: "display_callout browse_all" %>
       <%= render partial: "inthenews/browse_home_display", locals: {
         path: "inthenews_events_browse_facet_path"
       } %>
@@ -24,8 +22,12 @@
         url: inthenews_events_search_path,
         label: "Search Events"
       } %>
-
-      <%= link_to "Advanced Search/View All Results", inthenews_events_search_path %>
+      <p>
+        <%= link_to "Advanced Search/View All Results",
+          inthenews_events_search_path,
+          class: "btn btn-default btn-block",
+          role: "button" %>
+      </p>
     </div>
 
     <div class="row">
