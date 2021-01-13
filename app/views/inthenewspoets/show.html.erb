@@ -119,7 +119,21 @@
 assuming that all poets are readily available as person.name, etc %>
 
 <% rel_people = all_related_people(@item) %>
-<h3>Relationships Through News Items, Events, Works, and Educations (<%= rel_people.length %>)</h3>
+<h3>
+  Close Relationships (<%= rel_people.length %>)
+  <button type="button" class="btn btn-default collapsed"
+    data-toggle="collapse" data-target="#relationship_help"
+    aria-expanded="false" aria-controls="relationship_help"
+    aria-label="relationship help">
+    ?
+  </button>
+</h3>
+
+<div class="collapse" id="relationship_help" aria-expanded="false" style="height: 0px;">
+  <div class="well">
+    Relationships are drawn from direct familial relationships and shared events, news items, works, and educations.
+  </div>
+</div>
 <div class="item_data">
   <ul>
     <% rel_people.each do |person, count| %>
