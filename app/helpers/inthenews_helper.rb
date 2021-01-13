@@ -61,6 +61,8 @@ module InthenewsHelper
       list = item[field].class == Array ? item[field] : [item[field]]
       render partial: "partials/search_res_item_field",
         locals: { label: label, list: list }
+    end
+  end
 
   def word_cloud_count(count)
     count = count.to_i
