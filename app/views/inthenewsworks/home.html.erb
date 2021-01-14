@@ -10,9 +10,7 @@
   <div class="col-md-3">
     <h3>Browse</h3>
     <div class="browse_categories">
-      <%= render partial: "inthenews/browse_home_display", locals: {
-        path: "inthenews_works_browse_facet_path"
-      } %>
+      <%= render partial: "inthenews/browse_home_display" %>
     </div>
   </div>
 
@@ -20,7 +18,6 @@
     <div class="row">
       <div class="col-md-12">
         <%= render partial: "inthenews/search_text_field", locals: {
-          url: inthenews_works_search_path,
           label: "Search Works"
         } %>
         <p>
@@ -38,7 +35,7 @@
       </div>
       <div class="col-xs-4">
         <h3>Publication Type</h3>
-        <%= render partial: "inthenews/group_count_table", locals: { facet: "type", path: "inthenews_works_search_path" } %>
+        <%= render partial: "inthenews/group_count_table", locals: { facet: "type" } %>
       </div>
     </div>
   </div>

@@ -1,9 +1,8 @@
 <%# expects
-  url,
   label
 %>
 
-<%= form_with(url: url, method: "get", local: true) do %>
+<%= form_with(url: prefix_path("search_path"), method: "get", local: true) do %>
   <%= label_tag(:q, label) %>
   <div class="input-group">
     <%= text_field_tag(:q, nil, class: "form-control", placeholder: "Search for...") %>

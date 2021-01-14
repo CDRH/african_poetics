@@ -1,7 +1,6 @@
 <%# expects
     facet: the facet and query param in question
       like "topics" or "creator.name"
-    path - link helper path
 %>
 
 <table>
@@ -9,7 +8,7 @@
     <% collection = @facets[facet] %>
     <% collection.each do |label, count| %>
       <% label = "Unknown" if label.nil? %>
-      <% url = send(path, { "f" => ["#{facet}|#{label}"] }) %>
+      <% url = prefix_path("search_path", { "f" => ["#{facet}|#{label}"] }) %>
       <tr>
         <td class="index_name"><%= link_to label, url %></td>
         <td class="index_spacer">

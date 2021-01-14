@@ -10,9 +10,7 @@
   <div class="col-md-3">
     <h3>Browse</h3>
     <div class="browse_categories">
-      <%= render partial: "inthenews/browse_home_display", locals: {
-        path: "inthenews_poets_browse_facet_path"
-      } %>
+      <%= render partial: "inthenews/browse_home_display" %>
     </div>
     <h3>Last Name</h3>
     <div class="last_letter_browse">
@@ -27,7 +25,6 @@
   <div class="col-md-9">
     <div class="row">
       <%= render partial: "inthenews/search_text_field", locals: {
-      url: inthenews_poets_search_path,
       label: "Search Poets"
       } %>
       <p>
@@ -50,9 +47,7 @@
         <h3>Regions</h3>
 
         <%= render partial: "inthenews/group_count_table", locals: {
-          facet: "spatial.region",
-          path: "inthenews_poets_search_path"
-        } %>
+          facet: "spatial.region" } %>
       </div>
     </div> <%# /row %>
   </div> <%# /col-md-9 %>

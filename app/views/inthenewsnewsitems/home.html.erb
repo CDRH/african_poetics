@@ -6,16 +6,13 @@
   <div class="col-md-3">
     <h3>Browse</h3>
     <div class="browse_categories">
-      <%= render partial: "inthenews/browse_home_display", locals: {
-        path: "inthenews_news_items_browse_facet_path"
-      } %>
+      <%= render partial: "inthenews/browse_home_display" %>
     </div>
   </div>
 
   <div class="col-md-9">
     <div class="row">
       <%= render partial: "inthenews/search_text_field", locals: {
-        url: inthenews_news_items_search_path,
         label: "Search News"
       } %>
       <p>
@@ -41,9 +38,7 @@
       <div class="col-xs-4">
         <h3>News Format</h3>
         <%= render partial: "inthenews/group_count_table", locals: {
-          facet: "type",
-          path: "inthenews_news_items_search_path"
-        } %>
+          facet: "type" } %>
       </div>
     </div>
   </div>
