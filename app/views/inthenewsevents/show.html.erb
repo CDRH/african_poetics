@@ -42,15 +42,33 @@
   </div>
 <% end %>
 
-<% if @item.people.present? %>
-  <h3>African Poets (<%= @item.people.count %>)</h3>
+<%# poets and people for events cannot use the simple_association_list
+because of the need to link some and not others %>
+
+<% if @poets.present? %>
+  <h3>African Poets (<%= @poets.count %>)</h3>
   <div class="item_data">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "people",
-      path: "inthenews_poets_item_path"
-    } %>
+    <ul>
+      <% @poets.each do |assoc_rec| %>
+        <li>
+          <%= link_simple_li_item(assoc_rec, "inthenews_poets_item_path") %>
+        </li>
+      <% end %>
+    </ul>
   </div><%# / .item_data %>
+<% end %>
+
+<% if @people.present? %>
+  <h3>People (<%= @people.count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @people.each do |assoc_rec| %>
+        <li>
+          <%= assoc_rec.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <% if @item.commentaries.present? %>
