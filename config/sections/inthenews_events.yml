@@ -31,10 +31,6 @@ default: &default
         label: Decade
         flags:
           - search_filter
-      date.year:
-        label: Year
-        flags:
-          - search_filter
       places:
         label: Location
         flags:

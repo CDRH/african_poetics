@@ -14,26 +14,6 @@
         path: "inthenews_poets_browse_facet_path"
       } %>
     </div>
-  </div>
-
-  <div class="col-md-6">
-    <%= render partial: "inthenews/search_text_field", locals: {
-    url: inthenews_poets_search_path,
-    label: "Search Poets"
-    } %>
-    <p>
-      <%= link_to "Advanced Search/View All Results",
-        inthenews_poets_search_path,
-        class: "btn btn-default btn-block",
-        role: "button" %>
-    </p>
-
-    <div id="regions_map">
-      <%= render "partials/map_africa" %>
-    </div>
-  </div>
-
-  <div class="col-md-3 inthenews_sidebar">
     <h3>Last Name</h3>
     <div class="last_letter_browse">
       <% @facets["alternative"].each do |letter, count| %>
@@ -42,12 +22,39 @@
         <% end %>
       <% end %>
     </div>
-
-    <h3>Regions</h3>
-
-    <%= render partial: "inthenews/group_count_table", locals: {
-      facet: "spatial.region",
-      path: "inthenews_poets_search_path"
-    } %>
   </div>
+
+  <div class="col-md-9">
+    <div class="row">
+      <%= render partial: "inthenews/search_text_field", locals: {
+      url: inthenews_poets_search_path,
+      label: "Search Poets"
+      } %>
+      <p>
+        <%= link_to "Advanced Search/View All Results",
+          inthenews_poets_search_path,
+          class: "btn btn-default btn-block",
+          role: "button" %>
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-8">
+
+        <div id="regions_map">
+          <%= render "partials/map_africa" %>
+        </div>
+      </div>
+
+      <div class="col-xs-4 inthenews_sidebar">
+        <h3>Regions</h3>
+
+        <%= render partial: "inthenews/group_count_table", locals: {
+          facet: "spatial.region",
+          path: "inthenews_poets_search_path"
+        } %>
+      </div>
+    </div> <%# /row %>
+  </div> <%# /col-md-9 %>
+
 </div>

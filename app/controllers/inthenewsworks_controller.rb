@@ -5,12 +5,15 @@ class InthenewsworksController < ItemsController
     @facets = @items_api.query({
       "facet" => [
         "topics",
+        "type",
       ],
       "facet_sort" => "term|asc"
     }).facets
 
     set_page_facets
-
+    # remove decade browse
+    @page_facets.delete("topics")
+    @page_facets.delete("type")
   end
 
   def show

@@ -12,9 +12,9 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-9">
     <div class="row">
-       <%= render partial: "inthenews/search_text_field", locals: {
+      <%= render partial: "inthenews/search_text_field", locals: {
         url: inthenews_news_items_search_path,
         label: "Search News"
       } %>
@@ -26,24 +26,26 @@
       </p>
     </div>
     <div class="row">
-      <h3>Browse by Tag</h3>
-      <% @facets["keywords"].each do |tag, count| %>
-        <% cloud_class = word_cloud_count(count) %>
+      <div class="col-xs-8">
+        <h3>Browse by Tag</h3>
+        <% @facets["keywords"].each do |tag, count| %>
+          <% cloud_class = word_cloud_count(count) %>
 
-        <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]),
-          class: "btn cloud-#{cloud_class}", role: "button" do %>
-            <%= tag %>
-          <% end %>
-        </span>
-      <% end %>
+          <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]),
+            class: "btn cloud-#{cloud_class}", role: "button" do %>
+              <%= tag %>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+      <div class="col-xs-4">
+        <h3>News Format</h3>
+        <%= render partial: "inthenews/group_count_table", locals: {
+          facet: "type",
+          path: "inthenews_news_items_search_path"
+        } %>
+      </div>
     </div>
   </div>
 
-  <div class="col-md-3">
-    <h3>News Format</h3>
-      <%= render partial: "inthenews/group_count_table", locals: {
-        facet: "type",
-        path: "inthenews_news_items_search_path"
-      } %>
-  </div>
 </div>

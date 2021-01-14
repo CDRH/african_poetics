@@ -12,7 +12,8 @@ class InthenewspoetsController < ItemsController
     }).facets
 
     set_page_facets
-
+    # remove "letter of last name" from the browse categories
+    @page_facets.delete("alternative")
   end
 
   def show
