@@ -1,5 +1,7 @@
 class Commentary < ApplicationRecord
 
+  scope :featured, -> { where(featured: true) }
+
   has_and_belongs_to_many :commentary_authors,
     dependent: :destroy
   has_and_belongs_to_many :events,
