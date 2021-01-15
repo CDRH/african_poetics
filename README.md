@@ -3,11 +3,9 @@
 This is the Rails application powering the African Poetry Digital Portal.
 
 ## Precompile Assets
-For production this app runs at the `/admin` sub-uri of the frontend app,
-so assets must be compiled with:
 
 ```bash
-RAILS_RELATIVE_URL_ROOT="/admin" RAILS_ENV=production rails assets:precompile
+RAILS_ENV=production rails assets:precompile SECRET_KEY_BASE=anything
 ```
 
 ## In the News Development Notes
