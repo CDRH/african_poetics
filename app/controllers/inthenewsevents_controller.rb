@@ -12,8 +12,7 @@ class InthenewseventsController < ItemsController
     }).facets
 
     set_page_facets
-    # remove decade browse
-    @page_facets.delete("topics")
+    @skip_fields = ["spatial.region", "topics"]
   end
 
   def show

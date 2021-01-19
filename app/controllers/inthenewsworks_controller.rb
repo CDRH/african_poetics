@@ -11,9 +11,7 @@ class InthenewsworksController < ItemsController
     }).facets
 
     set_page_facets
-    # remove decade browse
-    @page_facets.delete("topics")
-    @page_facets.delete("type")
+    @skip_fields = ["topics", "type"]
   end
 
   def show

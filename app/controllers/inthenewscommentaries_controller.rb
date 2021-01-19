@@ -14,6 +14,7 @@ class InthenewscommentariesController < ItemsController
 
     set_page_facets
     @featured = Commentary.featured.sample
+    @skip_fields = []
   end
 
   def show
