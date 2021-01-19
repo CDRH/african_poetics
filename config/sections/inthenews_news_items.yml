@@ -19,7 +19,7 @@ default: &default
 
   facets:
     en:
-      person.name:
+      contributor.name:
         label: African Poet
         flags:
           - search_filter

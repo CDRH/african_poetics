@@ -15,11 +15,11 @@ class Work < ApplicationRecord
   has_one :region, through: :location
 
   def authors
-    all_people = Person
-      .joins(work_roles: :role)
-      .where(work_roles: { work_id: id })
-      .where(roles: { name: ["Author", "Poet"]})
-      .distinct
+    people.where(work_roles: { author: true })
+  end
+
+  def author_roles
+    work_roles.where(author: true)
   end
 
   def es_id

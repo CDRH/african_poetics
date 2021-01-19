@@ -24,7 +24,13 @@
 
 <% if @item.work_type.present? %>
   <div>
-    Type: <%= @item.work_type.name %>
+    Type: <%= @item.work_type.name.sub("|", ", ") %>
+  </div>
+<% end %>
+
+<% if @item.authors.present? %>
+  <div>
+    <%= "Author".pluralize(@item.authors.count) %>: <%= @item.authors.map { |a| a.name }.join("; ") %>
   </div>
 <% end %>
 
