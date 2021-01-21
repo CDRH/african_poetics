@@ -43,6 +43,10 @@ default: &default
         label: Tags
         flags:
           - search_filter
+      type:
+        label: News Format
+        flags:
+          - search_filter
 
 test:
   <<: *default

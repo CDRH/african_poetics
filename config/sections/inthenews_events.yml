@@ -35,6 +35,10 @@ default: &default
         label: Location
         flags:
           - search_filter
+      spatial.region:
+        label: Region
+        flags:
+          - search_filter
 
 test:
   <<: *default

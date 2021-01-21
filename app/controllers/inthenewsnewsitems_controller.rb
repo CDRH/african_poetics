@@ -12,6 +12,7 @@ class InthenewsnewsitemsController < ItemsController
     }).facets
 
     set_page_facets
+    @skip_fields = ["keywords", "type"]
   end
 
   def show
