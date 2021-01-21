@@ -19,7 +19,11 @@ class NewsItem < ApplicationRecord
   has_many :people, through: :news_item_roles
 
   def authors
-    news_item_roles.joins(:role).where(roles: { name: "Critic" })
+    people.where(news_item_roles: { author: true })
+  end
+
+  def author_roles
+    news_item_roles.where(author: true)
   end
 
   def citation
@@ -27,7 +31,7 @@ class NewsItem < ApplicationRecord
     # something displaying on many pages, here's a sample citation format
     cit = ""
 
-    a = authors.map { |role| role.person.name }.join("; ")
+    a = authors.map { |p| p.name }.join("; ")
     # formatting if there are authors
     if a.present?
       cit = "#{a}. "

@@ -10,9 +10,9 @@
 <br>
 <%= @record.publication.name %>
 
-<h3>Authors (<%= @record.authors.count %>)</h3>
-<% if @record.authors.present? %>
-  <%= @record.authors.map { |r| r.name }.join("; ") %>
+<h3>Authors (<%= @record.author_roles.count %>)</h3>
+<% if @record.author_roles.present? %>
+  <%= @record.author_roles.map { |r| r.name }.join("; ") %>
 <% else %>
   No Author
 <% end %>
