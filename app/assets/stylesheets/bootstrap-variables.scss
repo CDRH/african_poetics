@@ -1,6 +1,6 @@
 $bootstrap-sass-asset-helper: false !default;
 //
-// Variables
+// Variables  
 // --------------------------------------------------
 
 // @import url('https://fonts.googleapis.com/css?family=Catamaran:300,900|Hepta+Slab:300,900|Josefin+Sans:300,700|Noto+Serif+JP:200,900|Podkova:400,800|Rokkitt:300,900|Zilla+Slab:300,700&display=swap');
@@ -21,9 +21,9 @@ $light-base: #d3dbde;
 $light-lighter: lighten($light-base, 11%);
 
 
-$brand-primary:         #F2713D !default; //orange old: #F06A16
-$brand-success:         #E54C10 !default; //old: red #8E0917 now: darker orange
-$brand-info:            #7F519F !default; //purple old: #40247E
+$brand-primary:         #357fa0 !default; //orange old: #F06A16
+$brand-success:         #357fa0 !default; //old: red #8E0917 now: darker orange
+$brand-info:            #357fa0  !default; // #7F519F //purple old: #40247E
 $brand-warning:         #8dc63f !default; //lightish green old: #559927
 $brand-danger:          #613E7A !default; //old: blue #164889 now: darker purple
 $nav-accent:            #ffc425 !default; //yellow old: #F5CF0A
