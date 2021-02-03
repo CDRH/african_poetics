@@ -18,22 +18,24 @@
       <p>
         <%= link_to "Advanced Search/View All Results",
           inthenews_news_items_search_path,
-          class: "btn btn-default btn-block",
+          class: "btn btn-info btn-block",
           role: "button" %>
       </p>
     </div>
     <div class="row">
       <div class="col-xs-8">
-        <h3>Browse by Tag</h3>
-        <% @facets["keywords"].each do |tag, count| %>
-          <% cloud_class = word_cloud_count(count) %>
+        <div class="word_cloud">
+          <h3>Browse by Tag</h3>
+          <% @facets["keywords"].each do |tag, count| %>
+            <% cloud_class = word_cloud_count(count) %>
 
-          <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]),
-            class: "btn cloud-#{cloud_class}", role: "button" do %>
-              <%= tag %>
-            <% end %>
-          </span>
-        <% end %>
+            <%= link_to inthenews_news_items_search_path(f: ["keywords|#{tag}"]),
+              class: "btn cloud-#{cloud_class}", role: "button" do %>
+                <%= tag %>
+              <% end %>
+            </span>
+          <% end %>
+        </div><%# /word_cloud %>
       </div>
       <div class="col-xs-4">
         <h3>News Format</h3>

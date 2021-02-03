@@ -1,6 +1,6 @@
 <% if @section.present? %>
   <% if @section == "contemporarypoets" %>
-    <div class="navbar navbar-inverse navbar-section">
+    <div class="navbar navbar-default navbar-section">
       <div class="container navbar-container">  
         <ul class="nav navbar-nav">
            <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse\/featured/,
@@ -22,7 +22,7 @@
     </div><!-- /navbar -->
   <% end %>
   <% if @section == "about" %>
-    <div class="navbar navbar-inverse navbar-section">
+    <div class="navbar navbar-default navbar-section">
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
           <li class="<%= active?(about_homeabout_path) %>">
@@ -39,7 +39,7 @@
     </div>
   <% end %>
   <% if @section.include?("inthenews") %>
-    <div class="navbar navbar-inverse navbar-section">
+    <div class="navbar navbar-default navbar-section">
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/news/, request.path) %>">

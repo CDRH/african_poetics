@@ -3,12 +3,16 @@
 $gray-lightish: #aaa;
 $screen-tablet: 720px;
 
+$headerfont: 'PT Sans Narrow', sans-serif;
+$buttonfont: $font-family-sans-serif;
+
 // ------------
 // HTML
 // ------------
 
 body {
-  background-image: image-url("template/funky-lines.png"); 
+  //background-image: image-url("template/funky-lines.png");
+  background-color: #fff; 
   height:100%;
 }
 
@@ -21,22 +25,28 @@ a {
   }
 }
 
-#header a, #footer a, a.btn, .browse_categories a, .panel a {
+#header a, #footer a, a.btn, .browse_categories a, .panel a,
+.home_callout_links a, .callouts a {
   text-decoration: none;
 }
 
-h2, .h2 {
-  font-weight: 100;
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
+label {
+  font-family: $headerfont;
 }
 
-h1, .h1 {
-  font-weight: 900;
+ul {
+  list-style-type: square;
+}
+
+a.btn, .btn, input {
+  font-family: $buttonfont;
 }
 
 #body-wrapper {
   display: flex;
   flex-direction: column;
-  height:100%;
+  height: 100%;
   min-height: 100vh;
 }
 
@@ -51,7 +61,7 @@ h1, .h1 {
 }
 
 #content-wrapper > .container {
-  padding-bottom: 5em;
+  
 }
 
 //overwriting bootstrap default
@@ -65,7 +75,6 @@ h1, .h1 {
 
 #header {
   background-color: $brand-info;
-  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
   text-align: center; 
 
   .site-subtitle {
@@ -77,34 +86,74 @@ h1, .h1 {
   }
 }
 
+// --------
+// Header
+// --------
+
 .site-title-container {
-  background: none;
-  box-shadow: none;
-  line-height: 1em;
-  padding: 1em;
-
-  .h1, .h2 {
-    margin: 0;
-    padding: 0;
-  }
+  display: flex;
+  padding: 0;
+  text-align: right;
+  width: 100%; 
 
   .site-title {
-    color: #fff;
-    margin-bottom: 50px;
-    margin-top: 20px;
-  }
-
-$site-title-shadow: darken($brand-info, 30%);
-  .site-title {
-    font-size: 1.5em;
-    text-shadow:
-      -4px 4px 0 rgba($site-title-shadow, .2);
-  }
-
-  .site-subtitle {
-    color: mix($brand-primary, $gray-base, 80%);
+    color: black;
     display: block;
-    font-size: 1em;
+    float: right;
+    font-family: "PT Sans Narrow";
+    font-size: 1.8em;
+    font-weight: 400;
+    line-height: 1em;
+    margin: 0 -170px 0 0;
+    padding: .3em .5em 0 0;
+    text-align:  right;
+    text-shadow: 0px 0px 4px #FFFFFF, 0px 0px 8px #FFFFFF;
+    width: 2.9em;
+    z-index: 400;
+  }
+}
+
+.site-title-container01 { //left box, background transparent to show blue
+  flex-grow: 2;
+  min-width: 1em;
+}
+
+.site-title-container02 { // Where actual site title is
+  align-items: center;
+  display: flex;
+  flex-grow: 0;
+  z-index: 400;
+  h1, .h1 {
+    font-size: inherit;
+  }
+}
+
+.site-title-container03 {
+  flex-grow: 0;
+  z-index: 300;
+}
+
+.site-title-container04 { //right box, background white
+  background-color: white;
+  display: block;
+  flex-grow: 2;
+}
+
+.apdp_logo img {
+  max-height: 10em;
+}
+
+// logo more like their mockup when small, white bigger text when large
+@media (min-width: 768px) { 
+  .site-title-container .site-title {
+    color: white;
+    display: block;
+    font-size: 3.5em;
+    margin: 0 .5em 0 0;
+    padding: 0;
+    text-align: center;
+    text-shadow: none;
+    width: auto;
   }
 }
 
@@ -119,11 +168,10 @@ $site-title-shadow: darken($brand-info, 30%);
 }
 
 .navbar-main {
-  border-top: solid 1px $gray-base;
+  background-color: $gray-light;
 }
 
 .navbar-section.navbar {
-  background-color: $gray-darker;
   min-height: 25px;
 
   a {
@@ -138,20 +186,13 @@ $site-title-shadow: darken($brand-info, 30%);
   width: 100%;
 }
 
-// overwriting main bootstrap for subnav
-.navbar-section.navbar-inverse .navbar-nav > .active {
-  a, a:hover, a:focus {
-    background-color: $gray-lighter;
-    color: black;
-  }
-}
-
 // Footer 
 
 #footer {
   background-color: $gray-base;
   color: white;
   margin-bottom:0;
+  margin-top: 3em;
   padding-bottom: 2em;
   text-align: center;
   
@@ -167,13 +208,13 @@ $site-title-shadow: darken($brand-info, 30%);
 
 .footer_logo {
   text-align: center;
-   img {
+  img {
     max-width: 50%;
   }
 }
 
 .footer_logo_ford {
- margin: 1em 0;
+  margin: 1em 0;
 }
 
 // ------------
@@ -188,71 +229,43 @@ a .home_callout {
   text-align: center;
 }
 
+.col-sm-6.home_callout {
+  padding: 0;
+}
+
 .home_callout {
-  min-height: 8em;
-  background-color: $brand-success;
+  
   p {
-    background-color: rgba(255,255,255,.8);
-    margin: 1em;
-    padding: .5em;
-    z-index: 2;
-  }
-}
+    align-items: center;
+    background-color: $brand-success;
+    color: white;
+    display: flex;
+    font-family: $buttonfont;
+    font-size: .9em;
+    font-weight: 100;
+    justify-content: center;
+    line-height: 1.1em;
+    margin: .1em .1em .1em .1em;
+    min-height: 4em;
+    padding: .3em .3em .3em .3em;
+    vertical-align: middle;
 
-.home_callout_1 {
-  background-color: $brand-success;
-  box-shadow: inset 0 0 0 1000px rgba($brand-success,.9);
-  &:hover {
-    box-shadow: inset 0 0 0 1000px rgba($brand-success,.7);
-    p {
-      border-bottom: solid 20px $brand-success;
+    &:hover {
+      background-color: darken($brand-success, 15%);
     }
   }
 }
 
-.home_callout_2 {
-  background-color: $brand-primary;
-  box-shadow: inset 0 0 0 1000px rgba($brand-primary,.9);
-  &:hover {
-    box-shadow: inset 0 0 0 1000px rgba($brand-primary,.7);
-    p {
-      border-bottom: solid 20px $brand-primary;
-    }
-  }
-}
+// Changing to be flex base, currently only used on CAP "featured"
+.callouts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-.home_callout_3 {
-  background-color: $brand-warning;
-  box-shadow: inset 0 0 0 1000px rgba($brand-warning,.9);
-  &:hover {
-    box-shadow: inset 0 0 0 1000px rgba($brand-warning,.7);
-    p {
-      border-bottom: solid 20px $brand-warning;
-    }
+  a {
+    width: 33%;
   }
-}
-
-.home_callout_4 {
-  background-color: $nav-accent;
-  box-shadow: inset 0 0 0 1000px rgba($nav-accent,.9);
-  &:hover {
-    box-shadow: inset 0 0 0 1000px rgba($nav-accent,.7);
-    p {
-      border-bottom: solid 20px $nav-accent;
-    }
-  }  
-}
-
-.home_callout_5 {
-  background-color: $nav-accent;
-  box-shadow: inset 0 0 0 1000px rgba($brand-info,.9);
-  &:hover {
-    box-shadow: inset 0 0 0 1000px rgba($brand-info,.7);
-    p {
-      border-bottom: solid 20px $brand-info;
-    }
-  }
-}
+} 
 
 // Generic Callouts (In the news browse, for instance)
 
@@ -309,15 +322,25 @@ $callout_4_text: $callout-text;
 }
 
 .subtle_callout {
-    background-color: white;
-  overflow: auto;
-  padding: .3em 1em;
+  background-color: white;
   border: solid 1px #aaa;
   margin-bottom: 1em;
-
+  overflow: auto;
+  padding: .3em 1em;
 }
 
+.last_letter_browse .btn {
+  border-color: transparent;
+  width: 2.4em;
+}
+
+.decade_browse .display_callout {
+  width: 6em;
+}
+
+// ---------
 // Map
+// ---------
 
 // Region/Country map
 
@@ -452,7 +475,6 @@ svg path.re {
 // Item page (currently CAP only)
 
 .item_title {
-  text-align: center;
   padding-bottom: 0;
 }
 
@@ -472,14 +494,14 @@ svg path.re {
 }
 
 .metadata {
-  margin-top: 40px;
   flex-grow: 1;
+  margin-top: 40px;
 }
 
 .poet_altname {
+  font-size: 1.8em;
   margin-top: 0;
   padding-top: 0;
-  font-size: 1.8em;
 }
 
 .poet_metadata_contain {
@@ -495,7 +517,35 @@ svg path.re {
 // In The News
 // ------------
 
+// Home Page
+
+.inthenews_background {
+  background-color: $brand-primary;
+  background-size: cover;
+  background: image-url("template/APDP_inthenewsbanner.jpg");
+  height: 300px;
+  p {
+    background-color: rgba(255,255,255,.5);
+    float: right;
+    padding: 1em;
+  }
+
+}
+
+@media (min-width: $screen-desktop) {
+  .inthenews_background {
+    p {
+      width: 50%;
+    }
+  }
+}
+
+.inthenews_container {
+  margin: 2em 0;
+}
+
 //Browse
+
 .browse_categories {
   display: flex;
   flex-wrap: wrap;
@@ -505,11 +555,12 @@ svg path.re {
   }
 
   .display_callout {
-    flex-grow: 1;
-    padding: 1.2em .5em;
     color: #fff;
-    text-align: center;
+    flex-grow: 1;
     margin: 1px;
+    padding: 1.2em .5em;
+    text-align: center;
+    font-family: $buttonfont;
   }
 }
 
@@ -535,11 +586,10 @@ svg path.re {
 
 .inthenews_sidebar {
   ul {
+    font-size: .9em;
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
-    font-size: .9em;
-
   }
 }
 
@@ -551,13 +601,13 @@ svg path.re {
 
 // Commentaries
 
- .commentary_authors {
+.commentary_authors {
   font-size: 1.2em;
- }
+}
 
- .commentary_title {
+.commentary_title {
   font-size: 1.5em;
- }
+}
 
 .panel-featured {
 
@@ -583,33 +633,69 @@ svg path.re {
 
  // news items word cloud
  //   find the size definitions in inthenews_helper.rb
- .cloud-smallest {
-  background-color: lightgray;
- }
 
- .cloud-small {
-  background-color: lightblue;
-  font-size: 1.3em;
- }
+ // Word cloud colors
+// https://coolors.co/2fa356-24908c-1e7d9a-1b6d91-155c89
 
- .cloud-medium {
-  background-color: lavender;
-  font-size: 1.6em;
- }
+$wcsmallest: #155c89;
+$wcsmall: #1b6d91;
+$wcmedium: #1e7d9a;
+$wclarge: #24908c;
+$wclargest: #2fa356;
 
- .cloud-large {
-  background-color: lightsalmon;
-  font-size: 1.9em;
- }
+ .word_cloud {
+  font-family: 'Nunito Sans';
+  font-size: .8em;
+  line-height: 1em;
+  text-align: center;
 
- .cloud-largest {
-  background-color: magenta;
-  font-size: 2.2em;
- }
+  a.btn {
+    background:transparent;
+    border: none;
+    color: #000;
+    line-height: 1em;
+    margin: 0 .2em;
+    padding: 0;
+    text-transform: lowercase; 
+
+    &.cloud-smallest {
+      color: $wcsmallest;
+      display: none;
+    }
+
+    &.cloud-small {
+      color: $wcsmall;
+      font-size: 1.5em;
+    }
+
+    &.cloud-medium {
+      color: $wcmedium;
+      font-size: 2em;
+      line-height: .9em;
+    }
+
+    &.cloud-large {
+      color: $wclarge;
+      font-size: 2.4em;
+      line-height: .7em;
+    }
+
+    &.cloud-largest {
+      color: $wclargest;
+      font-size: 3.2em;
+      line-height: .6em;
+      background-color: transparent;
+    }
+  }
+
+  a.btn:hover, a.btn:focus {
+    color: black;
+  }
+}
 
  // Individual pages show more
 
- .more_container {
+.more_container {
   background-color: #f2f4f5;
   border-top: solid 2px #d3dbde;
   bottom: 0; 
@@ -619,13 +705,13 @@ svg path.re {
   text-align: center; 
   width: 100%;
 }
+
 .show_more {
   background-color: #d3dbde;
   border-radius: 25px;
   color: black;
   display: inline-block;
   padding: .1em 1em;
-
 }
 .show_more:hover {
   background: black;
@@ -643,18 +729,31 @@ svg path.re {
   overflow: hidden;
 }
 
-/* TODO this and others like it should only
-   be applied to the inthenews section */
-.search-results-item {
+html[class*="inthenews"] .search-results-item {
   border-top: $brand-info solid 2px;
   padding: 8px 0px;
 }
 
-.search_result_field > span {
-  background-color: lighten($gray-light, 20);
-  border-radius: 4px;
+html[class*="inthenews"] .search_result_field > span {
+  border-radius: 0;
+  border-right: solid 1px #aaa;
+  padding-right: .6em;
   padding: 0 7px;
 }
+
+html[class*="inthenews"] .search_result_field span:last-of-type {
+  border-right: none;
+}
+
+.sectiontitle {
+  border-bottom: solid 3px #479BC2;
+  padding-bottom: .5em
+}
+
+.section_inthenews .sectiontitle {
+  border-bottom: none;
+}
+
 
 // ------------
 // Home Page
@@ -663,7 +762,7 @@ svg path.re {
 .controller_general.action_index { //home page is the combo of these controllers 
 
   .home_illustration {
-    background-image: image-url("home/Portal_Cover_cropped.jpg");
+    background-image: image-url("home/APDP_homebanner.jpg");
     background-position: top;
     background-size: cover;
     border-left: none;
@@ -674,7 +773,6 @@ svg path.re {
   }
 
   .home_callout_links {
-    box-shadow: 0px 0px 14px 0px rgba(0,0,0,1);
     margin-bottom: 20px;
     margin-top: -50px;
   }
@@ -691,33 +789,3 @@ svg path.re {
     text-align: center;
   }
 }
-
-
-// organize this later
-
-.inthenews_background {
-  background-color: magenta;
-  height: 300px;
-  background: image-url("template/APDP_inthenewsbanner.jpg");
-  background-size: cover;
-  p {
-    background-color: rgba(255,255,255,.5);
-    float: right;
-    padding: 1em;
-  }
-
-}
-
-@media (min-width: $screen-desktop) {
-  .inthenews_background {
-    p {
-      width: 50%;
-    }
-  }
-}
-
-
-h1, .h1, h2, .h2, h3, .h3 {
-  font-family: 'PT Sans Narrow', sans-serif;
-}
-
