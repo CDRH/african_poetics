@@ -3,30 +3,27 @@ $bootstrap-sass-asset-helper: false !default;
 // Variables
 // --------------------------------------------------
 
-// @import url('https://fonts.googleapis.com/css?family=Catamaran:300,900|Hepta+Slab:300,900|Josefin+Sans:300,700|Noto+Serif+JP:200,900|Podkova:400,800|Rokkitt:300,900|Zilla+Slab:300,700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Nunito+Sans:wght@400&display=swap');
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #292929 !default; //bluegray
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 66.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 75.5%) !default; // #eee
+$gray-base:              #292929 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default;
+$gray-dark:              lighten($gray-base, 20%) !default;
+$gray:                   lighten($gray-base, 33.5%) !default;
+$gray-light:             lighten($gray-base, 66.7%) !default;
+$gray-lighter:           lighten($gray-base, 75.5%) !default;
 
 $light-base: #d3dbde;
 $light-lighter: lighten($light-base, 11%);
 
 
-$brand-primary:         #479BC2 !default; //orange old: #F06A16
-$brand-success:         #2E6D8A !default; //old: red #8E0917 now: darker orange
-$brand-info:            #357fa0  !default; // #7F519F //purple old: #40247E
-$brand-warning:         #8dc63f !default; //lightish green old: #559927
-$brand-danger:          #613E7A !default; //old: blue #164889 now: darker purple
-$nav-accent:            #ffc425 !default; //yellow old: #F5CF0A
+$brand-primary:         #479BC2 !default; // variant blue - lighter
+$brand-success:         #2E6D8A !default; // variant blue - darker
+$brand-info:            #357fa0  !default; // provided blue
+$brand-warning:         #8dc63f !default; // yellow green
+$brand-danger:          #613E7A !default; // purple
+$nav-accent:            #ffc425 !default; // yellow
 
 
 //== Scaffolding
