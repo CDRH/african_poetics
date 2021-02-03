@@ -593,11 +593,7 @@ svg path.re {
   }
 }
 
-.inthenews_subtitle {
-  display: block;
-  font-size: 34px;
-  font-weight: 100;
-}
+
 
 // Commentaries
 
@@ -747,7 +743,10 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
 
 .sectiontitle {
   border-bottom: solid 3px #479BC2;
-  padding-bottom: .5em
+  padding-bottom: .5em;
+  display: block;
+  font-size: 34px;
+  font-weight: 100;
 }
 
 .section_inthenews .sectiontitle {

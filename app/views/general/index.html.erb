@@ -13,14 +13,12 @@
 <div class="row home_callout_links">
   <%= link_to contemporarypoets_home_path do %>
     <div class="col-sm-6 home_callout home_callout_1">
-      <p>Index of Contemporary African Poets</p>
+      <p><%= t "contemporaryafricanpoets.title" %></p>
     </div>
   <% end %>
   <%= link_to inthenews_home_path do %>
     <div class="col-sm-6 home_callout home_callout_2">
-      <p><span>A survey of African Poetry in the <em>London Times</em>,
-<em>Sunday Times</em>, <em>Financial Times</em>, the <em>Times Literary Supplement</em>
-1865-1985</span></p>
+      <p><span><%= t "inthenews.title_html" %></span><%# span is there to aid in flex centering %></p>
     </div>
   <% end %>
 </div>
