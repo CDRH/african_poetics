@@ -7,48 +7,35 @@
   </div>
 </div>
 <div class="container">
-
-<div class="container-fluid home_container inthenews_container">
-
-<div class="row">
-  <div class="col-md-6">
-
-    
-
-    <p>This first installment “African Poetry and Poetics in the Mother Country: A survey of African Poetry in the London Times, Sunday Times, Financial Times and the Times Literary Supplement 1865-1985” contains commentary, critical articles, interviews, images, reviews and any references to African poetics in three British (colonial) newspapers; The London Times, The Financial Times and the Sunday Times Newspapers from 1864-1978.</p>
-
-
-
-   
-
-  </div>
-
-  <div class="col-md-6">
-
-     <div class="row">
-      <%= link_to inthenews_news_items_path do %>
-        <div class="col-sm-6 home_callout home_callout_3">
-          <p>Browse News</p>
-        </div>
-      <% end %>
-      <%= link_to inthenews_poets_path do %>
-        <div class="col-sm-6 home_callout home_callout_1">
-          <p>Browse Poets</p>
-        </div>
-      <% end %>
-    </div>
+  <div class="container-fluid home_container inthenews_container">
     <div class="row">
-      <%= link_to inthenews_events_path do %>
-        <div class="col-sm-6 home_callout home_callout_2">
-          <p>Browse Events</p>
+      <div class="col-md-6">
+        <p>This first installment “African Poetry and Poetics in the Mother Country: A survey of African Poetry in the London Times, Sunday Times, Financial Times and the Times Literary Supplement 1865-1985” contains commentary, critical articles, interviews, images, reviews and any references to African poetics in three British (colonial) newspapers; The London Times, The Financial Times and the Sunday Times Newspapers from 1864-1978.</p>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <%= link_to inthenews_news_items_path do %>
+            <div class="col-sm-6 home_callout home_callout_3">
+              <p>Browse News</p>
+            </div>
+          <% end %>
+          <%= link_to inthenews_poets_path do %>
+            <div class="col-sm-6 home_callout home_callout_1">
+              <p>Browse Poets</p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-      <%= link_to inthenews_works_path do %>
-        <div class="col-sm-6 home_callout home_callout_4">
-          <p>Browse Works</p>
+        <div class="row">
+          <%= link_to inthenews_events_path do %>
+            <div class="col-sm-6 home_callout home_callout_2">
+              <p>Browse Events</p>
+            </div>
+          <% end %>
+          <%= link_to inthenews_works_path do %>
+            <div class="col-sm-6 home_callout home_callout_4">
+              <p>Browse Works</p>
+            </div>
+          <% end %>
         </div>
-      <% end %>
     </div>
-    <%# render "partials/map_africa" %>
   </div>
-</div>
