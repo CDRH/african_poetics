@@ -58,9 +58,10 @@
     <ul>
       <% @record.news_item_roles.each do |role| %>
         <% person = role.person %>
+        <% pers_id = db_to_es_id("person", person.id) %>
         <li>
           <% if person.major_african_poet %>
-            <%= link_to person.name, inthenews_poets_item_path(person) %> | <%= role.role.name %>
+            <%= link_to person.name, inthenews_poets_item_path(pers_id) %> | <%= role.role.name %>
           <% else %>
             <%= person.name %> | <%= role.role.name %>
           <% end %>
