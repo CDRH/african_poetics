@@ -83,7 +83,10 @@ module InthenewsHelper
   # provide a back link, either to the main "in the news" landing page
   # or to the individual section home (poets, events, works, etc)
   def section_back_link
-    if params[:action] == "home"
+    # the main landing page for inthenews does not need a back link
+    if @section == "inthenews" && params[:action] == "home"
+      ""
+    elsif ["home", "about"].include?(params[:action])
       link_to "← back to African Poets and Poetry in the News home",
         :inthenews_home,
         class: "back-link"

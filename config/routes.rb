@@ -21,8 +21,9 @@ Rails.application.routes.draw do
 
   scope "/inthenews" do
 
-
     get "/", to: "inthenews#home", as: :inthenews_home,
+      defaults: { section: "inthenews" }
+    get "/about", to: "inthenews#about", as: :inthenews_about,
       defaults: { section: "inthenews" }
 
     # commentaries

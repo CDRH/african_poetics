@@ -4,4 +4,8 @@ class InthenewsController < ApplicationController
     @title = "African Poets in the News"
   end
 
+  def about
+    @title = "About"
+  end
+
 end
