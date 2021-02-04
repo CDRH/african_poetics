@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get "/about/consultedsources", to: "contemporarypoets#about_consultedsources",
       as: "contemporarypoets_about_consultedsources", defaults: { section: "contemporarypoets" }
 
+    get "/about/criteria", to: "contemporarypoets#about_criteria",
+      as: "contemporarypoets_about_criteria", defaults: { section: "contemporarypoets" }
+
     Orchid::Routing.draw(section: "contemporarypoets",
       routes: ["browse", "browse_facet", "search", "item"], scope: "/contemporarypoets")
   end
