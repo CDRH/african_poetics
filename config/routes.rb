@@ -15,14 +15,18 @@ Rails.application.routes.draw do
     get "/about/consultedsources", to: "contemporarypoets#about_consultedsources",
       as: "contemporarypoets_about_consultedsources", defaults: { section: "contemporarypoets" }
 
+    get "/about/criteria", to: "contemporarypoets#about_criteria",
+      as: "contemporarypoets_about_criteria", defaults: { section: "contemporarypoets" }
+
     Orchid::Routing.draw(section: "contemporarypoets",
       routes: ["browse", "browse_facet", "search", "item"], scope: "/contemporarypoets")
   end
 
   scope "/inthenews" do
 
-
     get "/", to: "inthenews#home", as: :inthenews_home,
+      defaults: { section: "inthenews" }
+    get "/about", to: "inthenews#about", as: :inthenews_about,
       defaults: { section: "inthenews" }
 
     # commentaries
@@ -72,8 +76,10 @@ Rails.application.routes.draw do
   end
 
   scope "/about" do
-    get "/", to: "about#homeabout",
-      as: "about_homeabout", defaults: { section: "about" }
+    get "/", to: "about#home",
+      as: "about_home", defaults: { section: "about" }
+    get "/credits", to: "about#credits",
+      as: "about_credits", defaults: { section: "about" }
     get "/africanpoetrybookfund", to: "about#africanpoetrybookfund",
       as:  "about_africanpoetrybookfund", defaults: { section: "about" }
     get "/technicaldetails", to: "about#technicaldetails",

@@ -25,8 +25,11 @@
     <div class="navbar navbar-default navbar-section">
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
-          <li class="<%= active?(about_homeabout_path) %>">
-            <%= link_to "Credits", about_homeabout_path %>
+          <li class="<%= active?(about_home_path) %>">
+            <%= link_to "About the Project", about_home_path %>
+          </li>
+          <li class="<%= active?(about_credits_path) %>">
+            <%= link_to "Credits", about_credits_path %>
           </li>
           <li class="<%= active?(about_africanpoetrybookfund_path) %>">
             <%= link_to "African Poetry Book Fund", about_africanpoetrybookfund_path %>
@@ -56,6 +59,10 @@
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/commentaries/, request.path) %>">
             <%= link_to "Commentaries", inthenews_commentaries_path %>
+          </li>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/about/, request.path) %>">
+            <%= link_to "About",
+              inthenews_about_path %>
           </li>
         </ul>
       </div>

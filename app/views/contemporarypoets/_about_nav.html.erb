@@ -1,0 +1,15 @@
+<ul class="cap-about nav">
+  <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/about\/?$/,
+    request.path) %>">
+    <%= link_to "About the Project", contemporarypoets_about_path %>
+  </li>
+  <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/about\/consultedsources/,
+    request.path) %>">
+    <%= link_to "Consulted Sources", contemporarypoets_about_consultedsources_path %>
+  </li>
+  <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/about\/criteria/,
+    request.path) %>">
+    <%= link_to "Selection Criteria", contemporarypoets_about_criteria_path %>
+  </li>
+</ul>
+

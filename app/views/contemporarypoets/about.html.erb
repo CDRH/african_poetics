@@ -1,12 +1,8 @@
 <h1 class="sectiontitle"><%= t "contemporaryafricanpoets.title" %></h1>
 
-<h2>About the Project</h2>
+<h2><%= @title %></h2>
 
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-primary">About the Project</button>
-  <%= link_to "Consulted Sources", contemporarypoets_about_consultedsources_path, type: "button", class: "btn btn-default" %>
-</div>
-<br/><br/>
+<%= render "contemporarypoets/about_nav" %>
 
 <p>THE INDEX OF CONTEMPORARY AFRICAN POETS is the first phrase of a project to create an enhanced index of African Poetry. This first phase focuses on African poets who have remained alive after 2000. Poets who were no longer living as of the year 2000 are not included in this iteration of the Index. This project limits entries in the index to poets who have published at least one book of poetry (including chapbooks). Self-published publications will be considered as long as they are fairly widely available in libraries, and for sale on digital platforms.</p>
 

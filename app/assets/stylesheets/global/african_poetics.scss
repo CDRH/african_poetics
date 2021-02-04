@@ -447,6 +447,27 @@ svg path.re {
 // Contemporary African Poetry
 // ------------
 
+// About pages
+
+.cap-about {
+  display: block;
+  font-family: $font-family-sans-serif;
+  margin-bottom: 15px;
+
+  li {
+    color: #fff;
+    border: 1px solid;
+    border-color: #ccc;
+    a {
+      text-decoration: none;
+    }
+    &.active a {
+      background-color: $brand-primary;
+      color: white;
+    }
+  }
+}
+
 // Author pages
 
 .author_data {

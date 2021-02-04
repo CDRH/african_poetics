@@ -1,12 +1,8 @@
 <h1 class="sectiontitle"><%= t "contemporaryafricanpoets.title" %></h1>
 
-<h2>Consulted Sources</h2>
+<h2><%= @title %></h2>
 
-<div class="btn-group" role="group" aria-label="...">
-  <%= link_to "About the Project", contemporarypoets_about_path, type: "button", class: "btn btn-default" %>
-  <button type="button" class="btn btn-primary">Consulted Sources</button>
-</div>
-<br/><br/>
+<%= render "contemporarypoets/about_nav" %>
 
 <h3>Web Portals</h3>
 <h4>Badilisha Poetry Exchange</h4>
