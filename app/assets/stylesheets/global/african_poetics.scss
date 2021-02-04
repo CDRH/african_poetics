@@ -451,7 +451,7 @@ svg path.re {
 
 .cap-about {
   display: block;
-  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font-family-sans-serif;
   margin-bottom: 15px;
 
   li {
@@ -462,7 +462,7 @@ svg path.re {
       text-decoration: none;
     }
     &.active a {
-      background-color: #479BC2;
+      background-color: $brand-primary;
       color: white;
     }
   }
