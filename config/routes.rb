@@ -72,8 +72,10 @@ Rails.application.routes.draw do
   end
 
   scope "/about" do
-    get "/", to: "about#homeabout",
-      as: "about_homeabout", defaults: { section: "about" }
+    get "/", to: "about#home",
+      as: "about_home", defaults: { section: "about" }
+    get "/credits", to: "about#credits",
+      as: "about_credits", defaults: { section: "about" }
     get "/africanpoetrybookfund", to: "about#africanpoetrybookfund",
       as:  "about_africanpoetrybookfund", defaults: { section: "about" }
     get "/technicaldetails", to: "about#technicaldetails",
