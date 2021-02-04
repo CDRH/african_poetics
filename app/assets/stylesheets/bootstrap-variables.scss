@@ -3,30 +3,27 @@ $bootstrap-sass-asset-helper: false !default;
 // Variables
 // --------------------------------------------------
 
-// @import url('https://fonts.googleapis.com/css?family=Catamaran:300,900|Hepta+Slab:300,900|Josefin+Sans:300,700|Noto+Serif+JP:200,900|Podkova:400,800|Rokkitt:300,900|Zilla+Slab:300,700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Nunito+Sans:wght@400&display=swap');
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #292929 !default; //bluegray
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-base:              #292929 !default;
+$gray-darker:            lighten($gray-base, 13.5%) !default;
+$gray-dark:              lighten($gray-base, 20%) !default;
+$gray:                   lighten($gray-base, 33.5%) !default;
+$gray-light:             lighten($gray-base, 66.7%) !default;
+$gray-lighter:           lighten($gray-base, 75.5%) !default;
 
 $light-base: #d3dbde;
 $light-lighter: lighten($light-base, 11%);
 
 
-$brand-primary:         #F2713D !default; //orange old: #F06A16
-$brand-success:         #E54C10 !default; //old: red #8E0917 now: darker orange
-$brand-info:            #7F519F !default; //purple old: #40247E
-$brand-warning:         #8dc63f !default; //lightish green old: #559927
-$brand-danger:          #613E7A !default; //old: blue #164889 now: darker purple
-$nav-accent:            #ffc425 !default; //yellow old: #F5CF0A
+$brand-primary:         #479BC2 !default; // variant blue - lighter
+$brand-success:         #2E6D8A !default; // variant blue - darker
+$brand-info:            #357fa0  !default; // provided blue
+$brand-warning:         #8dc63f !default; // yellow green
+$brand-danger:          #613E7A !default; // purple
+$nav-accent:            #ffc425 !default; // yellow
 
 
 //== Scaffolding
@@ -61,10 +58,10 @@ $font-size-base:          16px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
-$font-size-h1:            floor(($font-size-base * 2.6)) !default; // ~36px
-$font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
-$font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
-$font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~18px
+$font-size-h1:            floor(($font-size-base * 2.8)) !default; // ~36px
+$font-size-h2:            floor(($font-size-base * 1.8)) !default; // ~30px
+$font-size-h3:            ceil(($font-size-base * 1.4)) !default; // ~24px
+$font-size-h4:            ceil(($font-size-base * 1.2)) !default; // ~18px
 $font-size-h5:            $font-size-base !default;
 $font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -116,9 +113,9 @@ $padding-xs-horizontal:     5px !default;
 $line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
 $line-height-small:         1.5 !default;
 
-$border-radius-base:        4px !default;
-$border-radius-large:       6px !default;
-$border-radius-small:       3px !default;
+$border-radius-base:        0px !default;
+$border-radius-large:       0px !default;
+$border-radius-small:       0px !default;
 
 //** Global color for active items (e.g., navs or dropdowns).
 $component-active-color:    #fff !default;
@@ -158,7 +155,7 @@ $table-border-color:            #ddd !default;
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #333 !default;
+$btn-default-color:              $brand-info !default;
 $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
 
@@ -379,15 +376,15 @@ $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2
 $navbar-collapse-max-height:       340px !default;
 
 $navbar-default-color:             #ffffff !default;
-$navbar-default-bg:                $brand-info !default;
+$navbar-default-bg:                $gray-lighter !default;
 $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
-$navbar-default-link-color:                #ffffff !default;
-$navbar-default-link-hover-color:          $nav-accent !default;
+$navbar-default-link-color:                #000 !default;
+$navbar-default-link-hover-color:          $brand-success !default;
 $navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         #fff !default;
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
+$navbar-default-link-active-color:         #000 !default;
+$navbar-default-link-active-bg:            #fff !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 

@@ -1,0 +1,23 @@
+<div class="container site-title-container">
+  <span class="site-title-container01"></span>
+  <%= link_to home_path, class: "site-title-container02" do %>
+    <div class="h1">
+      <% if I18n.exists?("general.project_name", locale) %>
+        <span class="site-title">
+          <%= t "general.project_name", default: "Add project name to locale file" %>
+        </span>
+      <% end %>
+      <% if I18n.exists?("general.project_subtitle", locale) %>
+        <small class="site-subtitle">
+          <%= t "general.project_subtitle", default: "Add project subtitle to locale file" %>
+        </small>
+      <% end %>
+    </div>
+  <% end %>
+  <span class="apdp_logo site-title-container03">
+    <%= image_tag("template/APDP_Logo.jpg", :alt => "APDP Logo") %>
+  </span>
+  <span class="site-title-container04"></span>
+</div>
+
+
