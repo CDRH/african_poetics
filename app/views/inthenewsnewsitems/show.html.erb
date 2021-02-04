@@ -86,11 +86,13 @@
 <% if @record.tags.present? %>
   <h3>Tags (<%= @record.tags.count %>)</h3>
   <div class="item_data">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @record,
-      assoc: "tags",
-      path: nil
-    } %>
+    <ul>
+      <% @record.tags.each do |tag| %>
+        <li>
+          <%= link_to tag.name, inthenews_news_items_search_path(f: ["keywords|#{tag.name}"]) %>
+        </li>
+      <% end %>
+    </ul>
   </div><%# / .item-data %>
 <% end %>
 
