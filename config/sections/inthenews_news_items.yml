@@ -31,10 +31,10 @@ default: &default
         label: Decade
         flags:
           - search_filter
-      places:
-        label: Location
-        flags:
-          - search_filter
+#      places:
+#        label: Location
+#        flags:
+#          - search_filter
       publisher:
         label: Publication
         flags:
