@@ -40,9 +40,10 @@
     <ul>
       <% @item.work_roles.each do |role| %>
         <% person = role.person %>
+        <% id = db_to_es_id("person", person.id) %>
         <li>
           <% if person.major_african_poet %>
-            <%= link_to role.name, inthenews_poets_item_path(person) %>
+            <%= link_to role.name, inthenews_poets_item_path(id: id) %>
           <% else %>
             <%= role.name %>
           <% end %>
