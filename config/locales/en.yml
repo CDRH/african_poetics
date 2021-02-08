@@ -112,6 +112,9 @@ en:
     # title for error when item not found
     not_found: Not Found
 
+    # AP overrides
+    unknown_role: Unknown role
+
   ########################
   # SEARCH AND FILTERING #
   ########################

@@ -56,6 +56,14 @@ module InthenewsHelper
     end
   end
 
+  def news_item_role(ni_role)
+    if ni_role && ni_role.role.present?
+      ni_role.role.name
+    else
+      t "item.unknown_role"
+    end
+  end
+
   def search_result_item_field(item, field, label)
     if item[field].present?
       list = item[field].class == Array ? item[field] : [item[field]]
