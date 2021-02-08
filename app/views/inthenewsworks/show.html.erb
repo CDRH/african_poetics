@@ -40,6 +40,7 @@
     <ul>
       <% @item.work_roles.each do |role| %>
         <% person = role.person %>
+        <% next if person.blank? %>
         <% id = db_to_es_id("person", person.id) %>
         <li>
           <% if person.major_african_poet %>
