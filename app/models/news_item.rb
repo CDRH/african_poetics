@@ -58,7 +58,8 @@ class NewsItem < ApplicationRecord
     end
 
     if source_link
-      cit += "<a href=\"#{source_link}\">#{source_link}</a>. "
+      best_link = sanitize_source_link
+      cit += "<a href=\"#{best_link}\">#{best_link}</a>. "
     end
 
     if source_access_date
@@ -74,6 +75,18 @@ class NewsItem < ApplicationRecord
   def name
     pub = publication ? publication.name : ""
     "'#{article_title}', #{pub} (#{year})"
+  end
+
+  private
+
+  def sanitize_source_link
+    # many of the Gale links have return characters / new lines / spaces in them
+    # which means they are not valid links, so attempt to patch that up here
+    URI.parse(source_link)
+    source_link
+  rescue => e
+    no_space = source_link.strip
+    no_space.gsub(/[\n\r]/, "")
   end
 
 end
