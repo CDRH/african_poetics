@@ -16,11 +16,11 @@ class InthenewseventsController < ItemsController
   end
 
   def show
-    @item = es_to_db_record("Event", params[:id])
-    @title = @item.name
+    # @item = es_to_db_record("Event", params[:id])
+    # @title = @item.name
 
-    @poets = @item.people.where(people: { major_african_poet: true })
-    @people = @item.people.where(people: { major_african_poet: false })
+    # @poets = @item.people.where(people: { major_african_poet: true })
+    # @people = @item.people.where(people: { major_african_poet: false })
   end
 
 end

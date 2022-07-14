@@ -18,8 +18,8 @@ class InthenewscommentariesController < ItemsController
   end
 
   def show
-    @item = es_to_db_record("Commentary", params[:id])
-    @title = @item.name
+    # @item = es_to_db_record("Commentary", params[:id])
+    # @title = @item.name
   end
 
 end
