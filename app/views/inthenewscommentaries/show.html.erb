@@ -1,51 +1,51 @@
 <%= render_overridable "partials", "inthenews_title" %>
 
-<h2 class="commentary_title"><%= @item.name %></h2>
+<h2 class="commentary_title"><%#= @item.name %></h2>
 
 <div class="commentary_authors">
-  Author(s): <%= @item.author_credit %>
+  Author(s): <%#= @item.author_credit %>
 </div>
 
 <div class="well">
-  <%= sanitize @item.content %>
+  <%#= sanitize @item.content %>
 </div>
 
-<% if @item.events.present? %>
+<%# if @item.events.present? %>
   <h3>Events</h3>
   <ul>
-    <% @item.events.each do |rel| %>
-      <% id = db_to_es_id("event", rel.id) %>
-      <li><%= link_to rel.name, inthenews_events_item_path(id: id) %></li>
-    <% end %>
+    <%# @item.events.each do |rel| %>
+      <%# id = db_to_es_id("event", rel.id) %>
+      <li><%#= link_to rel.name, inthenews_events_item_path(id: id) %></li>
+    <%# end %>
   </ul>
-<% end %>
+<%# end %>
 
-<% if @item.news_items.present? %>
+<%# if @item.news_items.present? %>
   <h3>News Items</h3>
   <ul>
-    <% @item.news_items.each do |rel| %>
-      <% id = db_to_es_id("news", rel.id) %>
-      <li><%= link_to rel.name, inthenews_news_items_item_path(id: id) %></li>
-    <% end %>
+    <%# @item.news_items.each do |rel| %>
+      <%# id = db_to_es_id("news", rel.id) %>
+      <li><%#= link_to rel.name, inthenews_news_items_item_path(id: id) %></li>
+    <%# end %>
   </ul>
-<% end %>
+<%# end %>
 
-<% if @item.people.present? %>
+<%# if @item.people.present? %>
   <h3>People</h3>
   <ul>
-    <% @item.people.each do |rel| %>
-      <% id = db_to_es_id("person", rel.id) %>
-      <li><%= link_to rel.name, inthenews_poets_item_path(id: id) %></li>
-    <% end %>
+    <%# @item.people.each do |rel| %>
+      <%# id = db_to_es_id("person", rel.id) %>
+      <li><%#= link_to rel.name, inthenews_poets_item_path(id: id) %></li>
+    <%# end %>
   </ul>
-<% end %>
+<%# end %>
 
-<% if @item.works.present? %>
+<%# if @item.works.present? %>
   <h3>Works</h3>
   <ul>
-    <% @item.works.each do |rel| %>
-      <% id = db_to_es_id("work", rel.id) %>
-      <li><%= link_to rel.name, inthenews_works_item_path(id: id) %></li>
-    <% end %>
+    <%# @item.works.each do |rel| %>
+      <%# id = db_to_es_id("work", rel.id) %>
+      <li><%#= link_to rel.name, inthenews_works_item_path(id: id) %></li>
+    <%# end %>
   </ul>
-<% end %>
+<%# end %>

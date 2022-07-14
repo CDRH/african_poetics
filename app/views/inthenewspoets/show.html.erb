@@ -1,127 +1,127 @@
 <%= render_overridable "partials", "inthenews_title" %>
 
-<h2><%= @item.name %></h2>
-<% if @item.name_alt.present? %>
-  <h2 class="poet_altname">Alternate names: <%= @item.name_alt %></h2>
-<% end %>
+<h2><%#= @item.name %></h2>
+<%# if @item.name_alt.present? %>
+  <h2 class="poet_altname">Alternate names: <%#= @item.name_alt %></h2>
+<%# end %>
 
 <h3>Biography</h3>
 
-<% if @item.nationalities.present? %>
+<%# if @item.nationalities.present? %>
   <div>
-    <%= @item.nationalities.join(", ") %>
+    <%#= @item.nationalities.join(", ") %>
   </div>
-<% end %>
+<%# end %>
 
-<% if @item.date_birth.present? %>
+<%# if @item.date_birth.present? %>
   <div>
-    Birth date: <%= @item.date_birth %>
+    Birth date: <%#= @item.date_birth %>
   </div>
-<% end %>
+<%# end %>
 
-<% if @item.place_of_birth.present? %>
+<%# if @item.place_of_birth.present? %>
   <div>
-    Birth location: <%= @item.place_of_birth.name %>
+    Birth location: <%#= @item.place_of_birth.name %>
   </div>
-<% end %>
+<%# end %>
 
-<% if @item.date_death.present? %>
+<%# if @item.date_death.present? %>
   <div>
-    <% if @item.date_death == "Present" %>
+    <%# if @item.date_death == "Present" %>
       Currently Living
-    <% else %>
-      Death date: <%= @item.date_death %>
-    <% end %>
+    <%# else %>
+      Death date: <%#= @item.date_death %>
+    <%# end %>
   </div>
-<% end %>
+<%# end %>
 
 <div class="well">
-  <%= @item.short_biography %>
+  <%#= @item.short_biography %>
 </div>
 
-<% if @item.educations.present? %>
+<%# if @item.educations.present? %>
   <h3>Education</h3>
   <div class="item_data">
-    <%= render partial: "inthenews/simple_association_list", locals: {
+    <%#= render partial: "inthenews/simple_association_list", locals: {
       item: @item,
       assoc: "educations",
       path: nil
     } %>
   </div><%# /.item_data %>
-<% end %>
+<%# end %>
 
-<% if @item.news_item_roles.present? %>
-  <h3>News Items (<%= @item.news_item_roles.count %>)</h3>
+<%# if @item.news_item_roles.present? %>
+  <h3>News Items (<%#= @item.news_item_roles.count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @item.news_item_roles.each do |role| %>
-        <% ni = role.news_item %>
-        <% next if ni.blank? %>
+      <%# @item.news_item_roles.each do |role| %>
+        <%# ni = role.news_item %>
+        <%# next if ni.blank? %>
         <li>
-          <% id = db_to_es_id("news", ni.id) %>
-          [<%= ni.news_item_type.name %>]
-          <%= link_to inthenews_news_items_item_path(id: id) do %>
-            <%= ni.name %>
-          <% end %>
-          (<%= role.role.name %>)
+          <%# id = db_to_es_id("news", ni.id) %>
+          [<%#= ni.news_item_type.name %>]
+          <%#= link_to inthenews_news_items_item_path(id: id) do %>
+            <%#= ni.name %>
+          <%# end %>
+          (<%#= role.role.name %>)
         </li>
-      <% end %>
+      <%# end %>
     </ul>
   </div><%# /.item_data %>
-<% end %>
+<%# end %>
 
-<% if @item.events.present? %>
-  <h3>Events (<%= @item.events.count %>)</h3>
+<%# if @item.events.present? %>
+  <h3>Events (<%#= @item.events.count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @item.events.each do |event| %>
+      <%# @item.events.each do |event| %>
         <li>
-          <% id = db_to_es_id("event", event.id) %>
-          <%= link_to event.name, inthenews_events_item_path(id: id) %>
+          <%# id = db_to_es_id("event", event.id) %>
+          <%#= link_to event.name, inthenews_events_item_path(id: id) %>
         </li>
-      <% end %>
+      <%# end %>
     </ul>
   </div><%# /.item_data %>
-<% end %>
+<%# end %>
 
-<% if @item.work_roles.present? %>
-  <h3>Mentioned Works (<%= @item.work_roles.count %>)</h3>
+<%# if @item.work_roles.present? %>
+  <h3>Mentioned Works (<%#= @item.work_roles.count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @item.work_roles.each do |role| %>
-        <% next if role.work.blank? %>
+      <%# @item.work_roles.each do |role| %>
+        <%# next if role.work.blank? %>
         <li>
-          <% id = db_to_es_id("work", role.work.id) %>
-          <%= link_to inthenews_works_item_path(id: id) do %>
-            <%= role.work.name %>
-          <% end %>
-          (<%= role.role.name %>)
+          <%# id = db_to_es_id("work", role.work.id) %>
+          <%#= link_to inthenews_works_item_path(id: id) do %>
+            <%#= role.work.name %>
+          <%# end %>
+          (<%#= role.role.name %>)
         </li>
-      <% end %>
+      <%# end %>
     </ul>
   </div><%# /.item_data %>
-<% end %>
+<%# end %>
 
-<% if @item.commentaries.present? %>
-  <h3>Commentaries (<%= @item.commentaries.count %>)</h3>
+<%# if @item.commentaries.present? %>
+  <h3>Commentaries (<%#= @item.commentaries.count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @item.commentaries.each do |comm| %>
+      <%# @item.commentaries.each do |comm| %>
         <li>
-          <% id = db_to_es_id("commentary", comm.id) %>
-          <%= link_to comm.name, inthenews_commentaries_item_path(id: id) %>
+          <%# id = db_to_es_id("commentary", comm.id) %>
+          <%#= link_to comm.name, inthenews_commentaries_item_path(id: id) %>
         </li>
-      <% end %>
+      <%# end %>
     </ul>
   </div><%# /.item_data %>
-<% end %>
+<%# end %>
 
 <%# TODO could possibly construct this more easily with elasticsearch,
 assuming that all poets are readily available as person.name, etc %>
 
-<% rel_people = all_related_people(@item) %>
+<%# rel_people = all_related_people(@item) %>
 <h3>
-  Close Relationships (<%= rel_people.length %>)
+  Close Relationships (<%#= rel_people.length %>)
   <button type="button" class="btn btn-default collapsed"
     data-toggle="collapse" data-target="#relationship_help"
     aria-expanded="false" aria-controls="relationship_help"
@@ -137,17 +137,17 @@ assuming that all poets are readily available as person.name, etc %>
 </div>
 <div class="item_data">
   <ul>
-    <% rel_people.each do |person, count| %>
-      <% next if person.blank? %>
+    <%# rel_people.each do |person, count| %>
+      <%# next if person.blank? %>
       <li>
-        <% if person.major_african_poet %>
-          <% id = db_to_es_id("person", person.id) %>
-          <%= link_to person.name, inthenews_poets_item_path(id: id) %>
-        <% else %>
-          <%= person.name %>
-        <% end %>
-        (<%= count %>)
+        <%# if person.major_african_poet %>
+          <%# id = db_to_es_id("person", person.id) %>
+          <%#= link_to person.name, inthenews_poets_item_path(id: id) %>
+        <%# else %>
+          <%#= person.name %>
+        <%# end %>
+        (<%#= count %>)
       </li>
-    <% end %>
+    <%# end %>
   </ul>
 </div><%# /.item_data %>
