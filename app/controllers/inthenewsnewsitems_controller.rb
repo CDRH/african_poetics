@@ -10,14 +10,25 @@ class InthenewsnewsitemsController < ItemsController
       "facet_sort" => "term|asc",
       "facet_num" => 600
     }).facets
-
     set_page_facets
     @skip_fields = ["keywords", "type"]
   end
 
   def show
-    # @record = es_to_db_record("NewsItem", params[:id])
-    # @title = @record.name
+    id = params["id"]
+    @res = @items_api.get_item_by_id(id)
+    @res = @res.first
+    if @res
+      url = @res["uri_html"]
+      @html = Net::HTTP.get(URI.parse(url)) if url
+      @title = item_title
+
+      render_overridable("inthenewsnewsitems", "show")
+    else
+      @title = t "item.no_item", id: id,
+        default: "No item with identifier #{id} found!"
+      render_overridable("items", "show_not_found", status: 404)
+    end
   end
 
 end
