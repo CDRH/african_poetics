@@ -3,8 +3,7 @@ default: &default
   api_options:
     # only return section items by default
     f:
-      - category|In the News
-      - subcategory|news
+      - category|News Items
     # sorting and response number
     sort:
       - date|asc
