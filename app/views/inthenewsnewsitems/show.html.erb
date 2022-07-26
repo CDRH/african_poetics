@@ -2,17 +2,17 @@
 <h2><%= @res["title"] %></h2>
 
 <h3>Type</h3>
-<%= @res["format"] %>
+<%= @res["type"] %>
 
 <h3>Published</h3>
 <%= @res["date"] if @res["date_display"]%>
 <br>
-<%= @res["source"].join(" | ") %>
+<%= @res["publisher"].join(" | ") %>
 
 <% authors = @res["person"].select { |person| person["role"] == "Article Author"} %>
 <% if authors.present? %>
   <h3>Authors (<%= authors.count %>)</h3>
-  <%= authors.map { |author| author["name"]  }.join("; ") %>
+  <%= authors.map { |author| author["name"] }.join("; ") %>
 <% else %>
   <h3>Authors (0)</h3>
   No Author
@@ -20,7 +20,7 @@
 
 <h3>Citation</h3>
 <div class="well">
-  "<%= @res["alternative"] %>", <%= @res["source"][0] %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") %>,
+  "<%= @res["alternative"] %>", <%= @res["publisher"][0] %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") %>,
   <%= @res["page_k"] %> <%= @res["rights_holder"][0] %>, <%= link_to @res["rights_uri"], @res["rights_uri"] %>.
   Accessed <%= @res["date_not_after"].to_datetime.strftime("%d %b %Y") %>
 </div>
@@ -33,10 +33,10 @@
   </div>
 <% end %>
 
-<% if @res["topics"].present? %>
-  <h3>Related Events (<%= @res["topics"].count %>)</h3>
+<% if @res["subjects"].present? %>
+  <h3>Related Events (<%= @res["subjects"].count %>)</h3>
   <ul>
-    <% @res["topics"].each do |topic| %>
+    <% @res["subjects"].each do |topic| %>
       <% name = /\[(.*)\]/.match(topic)[1] %>
       <% id = /\]\((.*)\)/.match(topic)[1] %>
       <li><%= link_to name, inthenews_events_item_path(id)  %></li>
@@ -92,12 +92,12 @@
   </div><%# / .item-data %>
 <% end %>
 
-<% if @res["source"].present? %>
-  <h3>Repositories (<%= @res["source"].count %>)</h3>
+<% if @res["publisher"].present? %>
+  <h3>Repositories (<%= @res["publisher"].count %>)</h3>
   <div class="item_data">
-    <% @res["source"].each do |source| %>
+    <% @res["publisher"].each do |publisher| %>
       <li>
-        <%= source %>
+        <%= publisher %>
       </li>
     <% end %>
   </div><%# / .item-data %>
