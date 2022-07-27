@@ -1,83 +1,107 @@
 <%= render_overridable "partials", "inthenews_title" %>
 
-<h2><%#= @item.name %></h2>
+<h2><%= @res["title"] %></h2>
 
 <h3>Summary</h3>
 
-<%# if @item.location.present? %>
+<% if @res["spatial"].present? %>
   <div>
-    Location: <%#= @item.location.name %>
+    Location:
+    <%= @res["spatial"]["country"] %>, <%= @res["spatial"]["city"] %>
   </div>
-<%# end %>
+<% end %>
 
-<%# if @item.date.present? %>
+<% if @res["date"].present? %>
   <div>
-    Date: <%#= @item.date %>
+    Date: <%= @res["date"] %>
   </div>
-<%# end %>
+<% end %>
 
-<%# if @item.event_type.present? %>
+<% if @res["type"].present? %>
   <div>
-    Type: <%#= @item.event_type.name %>
+    Type: <%= @res["type"] %>
   </div>
-<%# end %>
+<% end %>
 
-<%# if @item.summary.present? %>
+<% if @res["description"].present? %>
   <div class="well">
-    <%#= sanitize @item.summary %>
+    <%= @res["description"] %>
   </div>
-<%# end %>
-
-<%# if @item.news_items.present? %>
-  <h3>News Items (<%#= @item.news_items.count %>)</h3>
-  <div class="item_data">
-    <ul>
-      <%# @item.news_items.each do |ni| %>
-        <%# id = db_to_es_id("news", ni.id) %>
-        <li>
-          <%#= link_to ni.name, inthenews_news_items_item_path(id: id) %>
-        </li>
-      <%# end %>
-    </ul>
-  </div>
-<%# end %>
-
-<%# poets and people for events cannot use the simple_association_list
-because of the need to link some and not others %>
-
-<% if @poets.present? %>
-  <h3>African Poets (<%= @poets.count %>)</h3>
-  <div class="item_data">
-    <ul>
-      <% @poets.each do |assoc_rec| %>
-        <li>
-          <%= link_simple_li_item(assoc_rec, "inthenews_poets_item_path") %>
-        </li>
-      <% end %>
-    </ul>
-  </div><%# / .item_data %>
 <% end %>
 
-<% if @people.present? %>
-  <h3>People (<%= @people.count %>)</h3>
+<% if @res["medium"].present? %>
+  <h3>News Items (<%= @res["medium"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @people.each do |assoc_rec| %>
-        <li>
-          <%= assoc_rec.name %>
-        </li>
+      <% @res["medium"].each do |item| %>
+        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% if name %>
+          <% if id %>
+            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+          <% else %>
+            <li><%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% end %>
+
+<% african_poets = @res["person"].select { |person| person["role"] == "African Poet"} %>
+<% if african_poets.present? %>
+  <h3>African Poets (<%= african_poets.count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% african_poets.each do |poet| %>
+        <% if poet["id"].present?  %>
+          <li><%= link_to poet["name"], inthenews_poets_item_path(poet["id"]) %></li>
+        <% else %>
+          <li><%= poet["name"] %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
 <% end %>
 
-<%# if @item.commentaries.present? %>
-  <h3>Commentaries (<%#= @item.commentaries.count %>)</h3>
+<% if @res["relation"].present? %>
+  <h3>Commentaries (<%= @res["relation"].count %>)</h3>
   <div class="item_data">
-    <%#= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "commentaries",
-      path: "inthenews_commentaries_item_path"
-    } %>
+    <ul>
+      <% @res["relation"].each do |item| %>
+        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% if name %>
+          <% if id %>
+            <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+          <% else %>
+            <li><%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% end %>
+
+<% if @res["person"].present? %>
+  <% people = @res["person"].select { |person| person["role"] != "African Poet"} %>
+  <h3>Related People (<%= people.count %>)</h3>
   <div class="item_data">
-<%# end %>
+    <ul>
+      <% with_id = people.select{|person| person["id"].present? } %>
+      <% no_id = people.select{|person| !person["id"].present? } %>
+      <% with_id.each do |person| %>
+        <li>
+          <%= link_to "#{person["name"]} (#{person["role"]})", inthenews_poets_item_path(person["id"]) %>
+        </li>
+      <% end %>
+      <% no_id.each do |person| %>
+        <li>
+          <%= "#{person["name"]} (#{person["role"]})" %>
+        </li>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% else %>
+  No people associated with this news item
+<% end %>
