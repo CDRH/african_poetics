@@ -68,13 +68,13 @@
   No people associated with this news item
 <% end %>
 
-<% if @res["topics"].present? %>
-  <h3>News Items (<%= @res["topics"].count %>)</h3>
+<% if @res["medium"].present? %>
+  <h3>News Items (<%= @res["medium"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["topics"].each do |topic| %>
-        <% name = /\[(.*)\]/.match(topic)[1] if /\[(.*)\]/.match(topic) %>
-        <% id = /\]\((.*)\)/.match(topic)[1] if /\]\((.*)\)/.match(topic) %>
+      <% @res["medium"].each do |item| %>
+        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
             <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
