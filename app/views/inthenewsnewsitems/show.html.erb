@@ -20,9 +20,9 @@
 
 <h3>Citation</h3>
 <div class="well">
-  "<%= @res["alternative"] %>", <%= @res["publisher"][0] %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") %>,
-  <%= @res["page_k"] %> <%= @res["rights_holder"][0] %>, <%= link_to @res["rights_uri"], @res["rights_uri"] %>.
-  Accessed <%= @res["date_not_after"].to_datetime.strftime("%d %b %Y") %>
+  "<%= @res["alternative"] %>", <%= @res["publisher"][0] if @res["publisher"] %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") if @res["date"] %>,
+  <%= @res["page_k"] %> <%= @res["rights_holder"][0] if @res["rights_holder"] %>, <%= link_to @res["rights_uri"], @res["rights_uri"] %>.
+  Accessed <%= @res["date_not_after"].to_datetime.strftime("%d %b %Y") if @res["date_not_after"] %>
 </div>
 
 
