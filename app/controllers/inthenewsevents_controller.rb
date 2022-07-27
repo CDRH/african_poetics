@@ -16,11 +16,20 @@ class InthenewseventsController < ItemsController
   end
 
   def show
-    # @item = es_to_db_record("Event", params[:id])
-    # @title = @item.name
+    id = params["id"]
+    @res = @items_api.get_item_by_id(id)
+    @res = @res.first
+    if @res
+      url = @res["uri_html"]
+      @html = Net::HTTP.get(URI.parse(url)) if url
+      @title = item_title
 
-    # @poets = @item.people.where(people: { major_african_poet: true })
-    # @people = @item.people.where(people: { major_african_poet: false })
+      render_overridable("inthenewsevents", "show")
+    else
+      @title = t "item.no_item", id: id,
+        default: "No item with identifier #{id} found!"
+      render_overridable("items", "show_not_found", status: 404)
+    end
   end
 
 end
