@@ -24,7 +24,7 @@ class InthenewspoetsController < ItemsController
       @html = Net::HTTP.get(URI.parse(url)) if url
       @title = item_title
 
-      render_overridable("inthenewsnews_items", "show")
+      render_overridable("inthenewspoets", "show")
     else
       @title = t "item.no_item", id: id,
         default: "No item with identifier #{id} found!"
