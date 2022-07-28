@@ -1,32 +1,4 @@
-<%# NOTE: grabbing information from database instead of API,
-therefore imitating the search_result_field structure %>
-
-<% rec = es_to_db_record("Person", item["identifier"]) %>
-
-<% if rec.place_of_birth %>
-  <div class="search_result_field">
-    Birth place:
-    <span><%= rec.place_of_birth.name %></span>
-  </div>
-<% end %>
-
-<% if rec.date_birth %>
-  <div class="search_result_field">
-    Birth date:
-    <span><%= rec.date_birth %></span>
-  </div>
-<% end %>
-
-<% if rec.date_death %>
-  <div class="search_result_field">
-    Death date:
-    <span><%= rec.date_death %></span>
-  </div>
-<% end %>
-
 <%= search_result_item_field(item, "keywords", "Education") %>
+<%# note: below field needs to be parsed further %>
+<%= search_result_item_field(item, "subjects", "News Items") %>
 
-<div class="search_result_field">
-  News Items:
-  <span><%= rec.news_items.count %></span>
-</div>
