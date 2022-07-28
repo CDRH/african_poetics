@@ -1,106 +1,110 @@
 <%= render_overridable "partials", "inthenews_title" %>
 
-<h2><%#= @item.name %></h2>
-<%# if @item.name_alt.present? %>
-  <h2 class="poet_altname">Alternate names: <%#= @item.name_alt %></h2>
-<%# end %>
+<h2><%= @res["title"] %></h2>
 
 <h3>Biography</h3>
 
-<%# if @item.nationalities.present? %>
+<% if @res["places"].present? %>
   <div>
-    <%#= @item.nationalities.join(", ") %>
+    <%= @res["places"].join(", ") %>
   </div>
-<%# end %>
+<% end %>
 
-<%# if @item.date_birth.present? %>
+<% if @res["date_not_before"].present? %>
   <div>
-    Birth date: <%#= @item.date_birth %>
+    Birth date: <%= @res["date_not_before"] %>
+    <% if @res["date_not_after"].present? %>
+      <div>
+        <% if @res["date_not_after"] == "Present" %>
+          Currently Living
+        <% else %>
+          Death date: <%= @res["date_not_after"] %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-<%# end %>
+<% end %>
+<% if @res["spatial"].present? %>
+  <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
+  <% if birthplace %>
+    <div>
+      Birth location: <%= birthplace[0]["country"] %>
+      <% if birthplace[0]["city"] %>
+        , <%= birthplace[0]["city"]  %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
 
-<%# if @item.place_of_birth.present? %>
+<% if @res["date_not_after"].present? %>
   <div>
-    Birth location: <%#= @item.place_of_birth.name %>
-  </div>
-<%# end %>
-
-<%# if @item.date_death.present? %>
-  <div>
-    <%# if @item.date_death == "Present" %>
+    <% if @res["date_not_after"] == "Present" %>
       Currently Living
-    <%# else %>
-      Death date: <%#= @item.date_death %>
-    <%# end %>
+    <% else %>
+      Death date: <%= @res["date_not_after"] %>
+    <% end %>
   </div>
-<%# end %>
+<% end %>
 
 <div class="well">
-  <%#= @item.short_biography %>
+  <%= @res["description"] %>
 </div>
 
-<%# if @item.educations.present? %>
+<% if @res["keywords"].present? %>
   <h3>Education</h3>
   <div class="item_data">
-    <%#= render partial: "inthenews/simple_association_list", locals: {
-      item: @item,
-      assoc: "educations",
-      path: nil
-    } %>
-  </div><%# /.item_data %>
-<%# end %>
-
-<%# if @item.news_item_roles.present? %>
-  <h3>News Items (<%#= @item.news_item_roles.count %>)</h3>
-  <div class="item_data">
     <ul>
-      <%# @item.news_item_roles.each do |role| %>
-        <%# ni = role.news_item %>
-        <%# next if ni.blank? %>
-        <li>
-          <%# id = db_to_es_id("news", ni.id) %>
-          [<%#= ni.news_item_type.name %>]
-          <%#= link_to inthenews_news_items_item_path(id: id) do %>
-            <%#= ni.name %>
-          <%# end %>
-          (<%#= role.role.name %>)
-        </li>
-      <%# end %>
+    <% @res["keywords"].each do |education| %>
+      <li>
+        <%= education %>
+      </li>
+    <% end %>
     </ul>
   </div><%# /.item_data %>
-<%# end %>
+<% end %>
 
-<%# if @item.events.present? %>
-  <h3>Events (<%#= @item.events.count %>)</h3>
+<% if @res["medium"].present? %>
+  <h3>News Items (<%= @res["medium"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <%# @item.events.each do |event| %>
-        <li>
-          <%# id = db_to_es_id("event", event.id) %>
-          <%#= link_to event.name, inthenews_events_item_path(id: id) %>
-        </li>
-      <%# end %>
+      <% @res["medium"].each do |item| %>
+        <% title = item.split("|")[0] %>
+        <% role = item.split("|")[1] %>
+        <% if title %>
+          <li><%= title %> (<%= role %>)</li>
+        <% end %>
+      <% end %>
     </ul>
-  </div><%# /.item_data %>
-<%# end %>
+  </div><%# / .item-data %>
+<% end %>
 
-<%# if @item.work_roles.present? %>
-  <h3>Mentioned Works (<%#= @item.work_roles.count %>)</h3>
+<% if @res["subjects"].present? %>
+  <h3>Events (<%= @res["subjects"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <%# @item.work_roles.each do |role| %>
-        <%# next if role.work.blank? %>
-        <li>
-          <%# id = db_to_es_id("work", role.work.id) %>
-          <%#= link_to inthenews_works_item_path(id: id) do %>
-            <%#= role.work.name %>
-          <%# end %>
-          (<%#= role.role.name %>)
-        </li>
-      <%# end %>
+      <% @res["subjects"].each do |subject| %>
+        <li><%= subject %></li>
+      <% end %>
     </ul>
-  </div><%# /.item_data %>
-<%# end %>
+  </div>
+<% end %>
+
+<% if @res["works"].present? %>
+  <h3>Related Works (<%= @res["works"].count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["works"].each do |work| %>
+        <% work_data = work.split("|")[0] %>
+        <% if work_data.present? %>
+          <% role = work.split("|")[1] %>
+          <% title = /\[(.*)\]/.match(work_data)[1] if /\[(.*)\]/.match(work_data) %>
+          <% id = /\]\((.*)\)/.match(work_data)[1] if /\]\((.*)\)/.match(work_data) %>
+          <li><%= link_to title, inthenews_works_item_path(id) %> (<%= role %>)</li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% end %>
 
 <%# if @item.commentaries.present? %>
   <h3>Commentaries (<%#= @item.commentaries.count %>)</h3>
