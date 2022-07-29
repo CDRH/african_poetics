@@ -13,15 +13,6 @@
 <% if @res["date_not_before"].present? %>
   <div>
     Birth date: <%= @res["date_not_before"] %>
-    <% if @res["date_not_after"].present? %>
-      <div>
-        <% if @res["date_not_after"] == "Present" %>
-          Currently Living
-        <% else %>
-          Death date: <%= @res["date_not_after"] %>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 <% end %>
 <% if @res["spatial"].present? %>
@@ -122,35 +113,36 @@
 
 <%# TODO could possibly construct this more easily with elasticsearch,
 assuming that all poets are readily available as person.name, etc %>
+<% if @res["person"].present? %>
+  <% rel_people = @res["person"] %>
+  <h3>
+    Close Relationships (<%= rel_people.count %>)
+    <button type="button" class="btn btn-default collapsed"
+      data-toggle="collapse" data-target="#relationship_help"
+      aria-expanded="false" aria-controls="relationship_help"
+      aria-label="relationship help">
+      ?
+    </button>
+  </h3>
 
-<% rel_people = @res["person"] %>
-<h3>
-  Close Relationships (<%= rel_people.count %>)
-  <button type="button" class="btn btn-default collapsed"
-    data-toggle="collapse" data-target="#relationship_help"
-    aria-expanded="false" aria-controls="relationship_help"
-    aria-label="relationship help">
-    ?
-  </button>
-</h3>
-
-<div class="collapse" id="relationship_help" aria-expanded="false" style="height: 0px;">
-  <div class="well">
-    Relationships are drawn from direct familial relationships and shared events, news items, works, and educations.
+  <div class="collapse" id="relationship_help" aria-expanded="false" style="height: 0px;">
+    <div class="well">
+      Relationships are drawn from direct familial relationships and shared events, news items, works, and educations.
+    </div>
   </div>
-</div>
-<div class="item_data">
-  <ul>
-    <% rel_people.each do |person| %>
-      <%# next if person.blank? %>
-      <li>
-        <% if person["id"].present? %>
-          <%= link_to person["name"], inthenews_poets_item_path(person["id"]) %>
-        <% else %>
-          <%= person["name"] %>
-        <% end %>
-        (<%# count %><%= person["role"] %>)
-      </li>
-    <% end %>
-  </ul>
-</div><%# /.item_data %>
+  <div class="item_data">
+    <ul>
+      <% rel_people.each do |person| %>
+        <%# next if person.blank? %>
+        <li>
+          <% if person["id"].present? %>
+            <%= link_to person["name"], inthenews_poets_item_path(person["id"]) %>
+          <% else %>
+            <%= person["name"] %>
+          <% end %>
+          (<%# count %><%= person["role"] %>)
+        </li>
+      <% end %>
+    </ul>
+  </div><%# /.item_data %>
+<% end %>
