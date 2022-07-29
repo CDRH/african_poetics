@@ -123,9 +123,9 @@
 <%# TODO could possibly construct this more easily with elasticsearch,
 assuming that all poets are readily available as person.name, etc %>
 
-<%# rel_people = all_related_people(@item) %>
+<% rel_people = @res["person"] %>
 <h3>
-  Close Relationships (<%#= rel_people.length %>)
+  Close Relationships (<%= rel_people.count %>)
   <button type="button" class="btn btn-default collapsed"
     data-toggle="collapse" data-target="#relationship_help"
     aria-expanded="false" aria-controls="relationship_help"
@@ -141,17 +141,16 @@ assuming that all poets are readily available as person.name, etc %>
 </div>
 <div class="item_data">
   <ul>
-    <%# rel_people.each do |person, count| %>
+    <% rel_people.each do |person| %>
       <%# next if person.blank? %>
       <li>
-        <%# if person.major_african_poet %>
-          <%# id = db_to_es_id("person", person.id) %>
-          <%#= link_to person.name, inthenews_poets_item_path(id: id) %>
-        <%# else %>
-          <%#= person.name %>
-        <%# end %>
-        (<%#= count %>)
+        <% if person["id"].present? %>
+          <%= link_to person["name"], inthenews_poets_item_path(person["id"]) %>
+        <% else %>
+          <%= person["name"] %>
+        <% end %>
+        (<%# count %><%= person["role"] %>)
       </li>
-    <%# end %>
+    <% end %>
   </ul>
 </div><%# /.item_data %>
