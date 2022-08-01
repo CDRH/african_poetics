@@ -86,3 +86,22 @@
     </ul>
   </div><%# / .item-data %>
 <% end %>
+
+<% if @res["relation"].present? %>
+  <h3>Commentaries (<%= @res["relation"].count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["relation"].each do |item| %>
+        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% if name %>
+          <% if id %>
+            <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+          <% else %>
+            <li><%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% end %>

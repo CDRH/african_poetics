@@ -102,3 +102,20 @@
     <% end %>
   </div><%# / .item-data %>
 <% end %>
+
+<% if @res["relation"].present? %>
+  <h3>Commentaries (1)</h3>
+  <div class="item_data">
+    <ul>
+      <% name = /\[(.*)\]/.match(@res["relation"])[1] if /\[(.*)\]/.match(@res["relation"]) %>
+      <% id = /\]\((.*)\)/.match(@res["relation"])[1] if /\]\((.*)\)/.match(@res["relation"]) %>
+      <% if name %>
+        <% if id %>
+          <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+        <% else %>
+          <li><%= name %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% end %>

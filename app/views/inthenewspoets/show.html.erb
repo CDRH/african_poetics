@@ -97,19 +97,24 @@
   </div><%# / .item-data %>
 <% end %>
 
-<%# if @item.commentaries.present? %>
-  <h3>Commentaries (<%#= @item.commentaries.count %>)</h3>
+<% if @res["relation"].present? %>
+  <h3>Commentaries (<%= @res["relation"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <%# @item.commentaries.each do |comm| %>
-        <li>
-          <%# id = db_to_es_id("commentary", comm.id) %>
-          <%#= link_to comm.name, inthenews_commentaries_item_path(id: id) %>
-        </li>
-      <%# end %>
+      <% @res["relation"].each do |item| %>
+        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% if name %>
+          <% if id %>
+            <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+          <% else %>
+            <li><%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
     </ul>
-  </div><%# /.item_data %>
-<%# end %>
+  </div><%# / .item-data %>
+<% end %>
 
 <%# TODO could possibly construct this more easily with elasticsearch,
 assuming that all poets are readily available as person.name, etc %>
