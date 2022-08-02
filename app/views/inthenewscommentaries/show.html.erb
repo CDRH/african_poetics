@@ -16,6 +16,7 @@
   <div class="item_data">
     <ul>
       <% @res["subjects"].each do |subject| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
         <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
         <li><%= link_to name, inthenews_events_item_path(id) %></li>
@@ -29,6 +30,7 @@
   <div class="item_data">
     <ul>
       <% @res["medium"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
@@ -67,6 +69,7 @@
   <div class="item_data">
     <ul>
       <% @res["works"].each do |work| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(work)[1] %>
         <% id = /\]\((.*)\)/.match(work)[1] %>
         <li><%= link_to name, inthenews_poets_item_path(id) %></li>

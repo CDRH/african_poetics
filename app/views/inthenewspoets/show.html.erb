@@ -61,6 +61,7 @@
       <% @res["medium"].each do |item| %>
         <% name_and_id = item.split("|")[0] %>
         <% role = item.split("|")[1] %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(name_and_id)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(name_and_id)[1] if /\]\((.*)\)/.match(item) %>
         <% if id %>
@@ -78,6 +79,7 @@
   <div class="item_data">
     <ul>
       <% @res["subjects"].each do |subject| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
         <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
         <li><%= link_to name, inthenews_events_item_path(id) %></li>
@@ -94,6 +96,7 @@
         <% work_data = work.split("|")[0] %>
         <% if work_data.present? %>
           <% role = work.split("|")[1] %>
+          <%# markdown parsing %>
           <% title = /\[(.*)\]/.match(work_data)[1] if /\[(.*)\]/.match(work_data) %>
           <% id = /\]\((.*)\)/.match(work_data)[1] if /\]\((.*)\)/.match(work_data) %>
           <li><%= link_to title, inthenews_works_item_path(id) %> (<%= role %>)</li>
@@ -108,6 +111,7 @@
   <div class="item_data">
     <ul>
       <% @res["relation"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>

@@ -34,6 +34,7 @@
   <div class="item_data">
     <ul>
       <% @res["medium"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
@@ -69,6 +70,7 @@
   <div class="item_data">
     <ul>
       <% @res["relation"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
@@ -84,10 +86,12 @@
 <% end %>
 
 <% if @res["person"].present? %>
+  <%# all people except African Poets%>
   <% people = @res["person"].select { |person| person["role"] != "African Poet"} %>
   <h3>Related People (<%= people.count %>)</h3>
   <div class="item_data">
     <ul>
+      <%# sort so that  people with linked id's are at the top %>
       <% with_id = people.select{|person| person["id"].present? } %>
       <% no_id = people.select{|person| !person["id"].present? } %>
       <% with_id.each do |person| %>

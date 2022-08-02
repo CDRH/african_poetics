@@ -73,6 +73,7 @@
   <div class="item_data">
     <ul>
       <% @res["medium"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
@@ -92,6 +93,7 @@
   <div class="item_data">
     <ul>
       <% @res["relation"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
