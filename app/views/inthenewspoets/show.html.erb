@@ -59,10 +59,14 @@
   <div class="item_data">
     <ul>
       <% @res["medium"].each do |item| %>
-        <% title = item.split("|")[0] %>
+        <% name_and_id = item.split("|")[0] %>
         <% role = item.split("|")[1] %>
-        <% if title %>
-          <li><%= title %> (<%= role %>)</li>
+        <% name = /\[(.*)\]/.match(name_and_id)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(name_and_id)[1] if /\]\((.*)\)/.match(item) %>
+        <% if id %>
+          <li><%= link_to name, inthenews_news_items_item_path(id) %> | <%= role %></li>
+        <% else %>
+          <li><%= name %> | <%= role %></li>
         <% end %>
       <% end %>
     </ul>
@@ -74,7 +78,9 @@
   <div class="item_data">
     <ul>
       <% @res["subjects"].each do |subject| %>
-        <li><%= subject %></li>
+        <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
+        <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
+        <li><%= link_to name, inthenews_events_item_path(id) %></li>
       <% end %>
     </ul>
   </div>
