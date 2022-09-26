@@ -3,8 +3,7 @@ default: &default
   api_options:
     # only return section items by default
     f:
-      - category|In the News
-      - subcategory|commentary
+      - category|Commentaries
     # sorting and response number
     sort:
       - title|asc

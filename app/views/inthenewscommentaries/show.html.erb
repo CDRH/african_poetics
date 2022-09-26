@@ -1,51 +1,76 @@
 <%= render_overridable "partials", "inthenews_title" %>
+<h2 class="commentary_title"><%= @res["title"] %></h2>
 
-<h2 class="commentary_title"><%= @item.name %></h2>
+<% authors = @res["creator"].collect {|person| person["name"]} %>
 
 <div class="commentary_authors">
-  Author(s): <%= @item.author_credit %>
+  Author(s): <%= authors.join(", ") %>
 </div>
 
 <div class="well">
-  <%= sanitize @item.content %>
+  <%= sanitize @res["html_k"] %>
 </div>
 
-<% if @item.events.present? %>
-  <h3>Events</h3>
-  <ul>
-    <% @item.events.each do |rel| %>
-      <% id = db_to_es_id("event", rel.id) %>
-      <li><%= link_to rel.name, inthenews_events_item_path(id: id) %></li>
-    <% end %>
-  </ul>
+<% if @res["subjects"].present? %>
+  <h3>Events (<%= @res["subjects"].count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["subjects"].each do |subject| %>
+        <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
+        <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
+        <li><%= link_to name, inthenews_events_item_path(id) %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
-<% if @item.news_items.present? %>
-  <h3>News Items</h3>
-  <ul>
-    <% @item.news_items.each do |rel| %>
-      <% id = db_to_es_id("news", rel.id) %>
-      <li><%= link_to rel.name, inthenews_news_items_item_path(id: id) %></li>
-    <% end %>
-  </ul>
+<% if @res["medium"].present? %>
+  <h3>News Items (<%= @res["medium"].count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["medium"].each do |item| %>
+        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
+        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% if name %>
+          <% if id %>
+            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+          <% else %>
+            <li><%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
 <% end %>
 
-<% if @item.people.present? %>
-  <h3>People</h3>
-  <ul>
-    <% @item.people.each do |rel| %>
-      <% id = db_to_es_id("person", rel.id) %>
-      <li><%= link_to rel.name, inthenews_poets_item_path(id: id) %></li>
-    <% end %>
-  </ul>
+<% if @res["person"].present? %>
+  <h3>People (<%= @res["person"].count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["person"].each do |person| %>
+        <% name = person["name"] %>
+        <% id = person["id"]  %>
+        <% if name %>
+          <% if id %>
+            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+          <% else %>
+            <li><%= name %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
 <% end %>
 
-<% if @item.works.present? %>
-  <h3>Works</h3>
-  <ul>
-    <% @item.works.each do |rel| %>
-      <% id = db_to_es_id("work", rel.id) %>
-      <li><%= link_to rel.name, inthenews_works_item_path(id: id) %></li>
-    <% end %>
-  </ul>
+<% if @res["works"].present? %>
+  <h3>Related Works (<%= @res["works"].count %>)</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["works"].each do |work| %>
+        <% name = /\[(.*)\]/.match(work)[1] %>
+        <% id = /\]\((.*)\)/.match(work)[1] %>
+        <li><%= link_to name, inthenews_poets_item_path(id) %></li>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
 <% end %>

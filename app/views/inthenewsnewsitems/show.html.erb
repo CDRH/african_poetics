@@ -1,71 +1,63 @@
 <%= render_overridable "partials", "inthenews_title" %>
-
-<h2><%= @record.name %></h2>
+<h2><%= @res["title"] %></h2>
 
 <h3>Type</h3>
-<%= @record.news_item_type.name %>
+<%= @res["type"] %>
 
 <h3>Published</h3>
-<%= @record.date.strftime("%Y-%m-%d") if @record.date %>
+<%= @res["date"] if @res["date_display"]%>
 <br>
-<%= @record.publication.name %>
+<%= @res["publisher"].join(" | ") %>
 
-<h3>Authors (<%= @record.author_roles.count %>)</h3>
-<% if @record.author_roles.present? %>
-  <%= @record.author_roles.map { |r| r.name }.join("; ") %>
+<% authors = @res["person"].select { |person| person["role"] == "Article Author"} %>
+<% if authors.present? %>
+  <h3>Authors (<%= authors.count %>)</h3>
+  <%= authors.map { |author| author["name"] }.join("; ") %>
 <% else %>
+  <h3>Authors (0)</h3>
   No Author
 <% end %>
 
 <h3>Citation</h3>
 <div class="well">
-  <%= sanitize @record.citation %>
+  "<%= @res["alternative"] %>", <%= @res["publisher"][0] if @res["publisher"] %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") if @res["date"] %>,
+  <%= @res["page_k"] %> <%= @res["rights_holder"][0] if @res["rights_holder"] %>, <%= link_to @res["rights_uri"], @res["rights_uri"] %>.
+  Accessed <%= @res["date_not_after"].to_datetime.strftime("%d %b %Y") if @res["date_not_after"] %>
 </div>
 
-<% if @record.summary.present? %>
-  <h3>Summary</h3>
-  <p><%= sanitize @record.summary %></p>
-<% end %>
 
-<% if @record.excerpt.present? %>
+<% if @res["description"].present? %>
   <h3>Excerpt</h3>
   <div class="well">
-    <p><%= @record.excerpt %></p>
+    <p><%= @res["description"] %></p>
   </div>
 <% end %>
 
-<% if @record.events.present? %>
-  <h3>Related Events (<%= @record.events.count %>)</h3>
-  <%= render partial: "inthenews/simple_association_list", locals: {
-    item: @record,
-    assoc: "events",
-    path: "inthenews_events_item_path"
-  } %>
+<% if @res["subjects"].present? %>
+  <h3>Related Events (<%= @res["subjects"].count %>)</h3>
+  <ul>
+    <% @res["subjects"].each do |topic| %>
+      <% name = /\[(.*)\]/.match(topic)[1] %>
+      <% id = /\]\((.*)\)/.match(topic)[1] %>
+      <li><%= link_to name, inthenews_events_item_path(id)  %></li>
+    <% end %>
+  </ul>
 <% end %>
 
-<% if @record.commentaries.present? %>
-  <h3>Commentary (<%= @record.commentaries.count %>)</h3>
-  <%= render partial: "inthenews/simple_association_list", locals: {
-    item: @record,
-    assoc: "commentaries",
-    path: "inthenews_commentaries_item_path"
-  } %>
-<% end %>
-
-<% if @record.news_item_roles.present? %>
-  <h3>Related People (<%= @record.news_item_roles.count %>)</h3>
+<% if @res["person"].present? %>
+  <h3>Related People (<%= @res["person"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @record.news_item_roles.each do |role| %>
-        <% person = role.person %>
-        <% next if person.blank? %>
-        <% pers_id = db_to_es_id("person", person.id) %>
+      <% with_id = @res["person"].select{|person| person["id"].present? } %>
+      <% no_id = @res["person"].select{|person| !person["id"].present? } %>
+      <% with_id.each do |person| %>
         <li>
-          <% if person.major_african_poet %>
-            <%= link_to person.name, inthenews_poets_item_path(pers_id) %> | <%= news_item_role(role) %>
-          <% else %>
-            <%= person.name %> | <%= news_item_role(role) %>
-          <% end %>
+          <%= link_to person["name"], inthenews_poets_item_path(person["id"]) %> | <%= person["role"] %>
+        </li>
+      <% end %>
+      <% no_id.each do |person| %>
+        <li>
+          <%= person["name"] %> | <%= person["role"] %>
         </li>
       <% end %>
     </ul>
@@ -74,37 +66,56 @@
   No people associated with this news item
 <% end %>
 
-<% if @record.works.present? %>
-  <h3>Related Works (<%= @record.works.count %>)</h3>
+<% if @res["works"].present? %>
+  <h3>Related Works (<%= @res["works"].count %>)</h3>
   <div class="item_data">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @record,
-      assoc: "works",
-      path: "inthenews_works_item_path"
-    } %>
+    <ul>
+      <% @res["works"].each do |work| %>
+        <% name = /\[(.*)\]/.match(work)[1] %>
+        <% id = /\]\((.*)\)/.match(work)[1] %>
+        <li><%= link_to name, inthenews_poets_item_path(id) %></li>
+      <% end %>
+    </ul>
   </div><%# / .item-data %>
 <% end %>
 
-<% if @record.tags.present? %>
-  <h3>Tags (<%= @record.tags.count %>)</h3>
+<% if @res["keywords"].present? %>
+  <h3>Tags (<%= @res["keywords"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @record.tags.each do |tag| %>
+      <% @res["keywords"].each do |tag| %>
         <li>
-          <%= link_to tag.name, inthenews_news_items_search_path(f: ["keywords|#{tag.name}"]) %>
+          <%= link_to tag, inthenews_news_items_search_path(f: ["keywords|#{tag}"]) %>
         </li>
       <% end %>
     </ul>
   </div><%# / .item-data %>
 <% end %>
 
-<% if @record.repositories.present? %>
-  <h3>Repositories (<%= @record.repositories.count %>)</h3>
+<% if @res["publisher"].present? %>
+  <h3>Repositories (<%= @res["publisher"].count %>)</h3>
   <div class="item_data">
-    <%= render partial: "inthenews/simple_association_list", locals: {
-      item: @record,
-      assoc: "repositories",
-      path: nil
-    } %>
+    <% @res["publisher"].each do |publisher| %>
+      <li>
+        <%= publisher %>
+      </li>
+    <% end %>
+  </div><%# / .item-data %>
+<% end %>
+
+<% if @res["relation"].present? %>
+  <h3>Commentaries (1)</h3>
+  <div class="item_data">
+    <ul>
+      <% name = /\[(.*)\]/.match(@res["relation"])[1] if /\[(.*)\]/.match(@res["relation"]) %>
+      <% id = /\]\((.*)\)/.match(@res["relation"])[1] if /\]\((.*)\)/.match(@res["relation"]) %>
+      <% if name %>
+        <% if id %>
+          <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+        <% else %>
+          <li><%= name %></li>
+        <% end %>
+      <% end %>
+    </ul>
   </div><%# / .item-data %>
 <% end %>
