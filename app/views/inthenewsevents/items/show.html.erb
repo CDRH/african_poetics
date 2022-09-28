@@ -39,7 +39,7 @@
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+            <li><%= link_to name, inthenewsnewsitems_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
@@ -56,7 +56,7 @@
     <ul>
       <% african_poets.each do |poet| %>
         <% if poet["id"].present?  %>
-          <li><%= link_to poet["name"], inthenews_poets_item_path(poet["id"]) %></li>
+          <li><%= link_to poet["name"], inthenewspoets_item_path(poet["id"]) %></li>
         <% else %>
           <li><%= poet["name"] %></li>
         <% end %>
@@ -75,7 +75,7 @@
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+            <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
@@ -96,7 +96,7 @@
       <% no_id = people.select{|person| !person["id"].present? } %>
       <% with_id.each do |person| %>
         <li>
-          <%= link_to "#{person["name"]} (#{person["role"]})", inthenews_poets_item_path(person["id"]) %>
+          <%= link_to "#{person["name"]} (#{person["role"]})", inthenewspoets_item_path(person["id"]) %>
         </li>
       <% end %>
       <% no_id.each do |person| %>

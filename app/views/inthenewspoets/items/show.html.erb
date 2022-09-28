@@ -65,7 +65,7 @@
         <% name = /\[(.*)\]/.match(name_and_id)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(name_and_id)[1] if /\]\((.*)\)/.match(item) %>
         <% if id %>
-          <li><%= link_to name, inthenews_news_items_item_path(id) %> | <%= role %></li>
+          <li><%= link_to name, inthenewsnewsitems_item_path(id) %> | <%= role %></li>
         <% else %>
           <li><%= name %> | <%= role %></li>
         <% end %>
@@ -82,7 +82,7 @@
         <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
         <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
-        <li><%= link_to name, inthenews_events_item_path(id) %></li>
+        <li><%= link_to name, inthenewsevents_item_path(id) %></li>
       <% end %>
     </ul>
   </div>
@@ -99,7 +99,7 @@
           <%# markdown parsing %>
           <% title = /\[(.*)\]/.match(work_data)[1] if /\[(.*)\]/.match(work_data) %>
           <% id = /\]\((.*)\)/.match(work_data)[1] if /\]\((.*)\)/.match(work_data) %>
-          <li><%= link_to title, inthenews_works_item_path(id) %> (<%= role %>)</li>
+          <li><%= link_to title, inthenewsworks_item_path(id) %> (<%= role %>)</li>
         <% end %>
       <% end %>
     </ul>
@@ -116,7 +116,7 @@
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+            <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
@@ -150,7 +150,7 @@ assuming that all poets are readily available as person.name, etc %>
       <% rel_people.each do |person| %>
         <li>
           <% if person["id"].present? %>
-            <%= link_to person["name"], inthenews_poets_item_path(person["id"]) %>
+            <%= link_to person["name"], inthenewspoets_item_path(person["id"]) %>
           <% else %>
             <%= person["name"] %>
           <% end %>

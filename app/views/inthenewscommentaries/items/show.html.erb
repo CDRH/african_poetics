@@ -19,7 +19,7 @@
         <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
         <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
-        <li><%= link_to name, inthenews_events_item_path(id) %></li>
+        <li><%= link_to name, inthenewsevents_item_path(id) %></li>
       <% end %>
     </ul>
   </div>
@@ -35,7 +35,7 @@
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+            <li><%= link_to name, inthenewsnewsitems_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
@@ -54,7 +54,7 @@
         <% id = person["id"]  %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+            <li><%= link_to name, inthenewsnewsitems_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
@@ -72,7 +72,7 @@
         <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(work)[1] %>
         <% id = /\]\((.*)\)/.match(work)[1] %>
-        <li><%= link_to name, inthenews_poets_item_path(id) %></li>
+        <li><%= link_to name, inthenewspoets_item_path(id) %></li>
       <% end %>
     </ul>
   </div><%# / .item-data %>
