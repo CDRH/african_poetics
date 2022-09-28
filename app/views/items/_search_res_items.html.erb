@@ -9,22 +9,22 @@ information which is needs to display %>
         <div class="<%= item["highlight"].present? ? "col-md-4" : "col-md-12" %> search_results_info">
           <ul>
 
-            <% if @section == "inthenews_commentaries" %>
+            <% if @section == "inthenewscommentaries" %>
 
               <%= render partial: "inthenewscommentaries/search_res_item", locals: { item: item } %>
 
-            <% elsif @section == "inthenews_events" %>
+            <% elsif @section == "inthenewsevents" %>
               <%= render partial: "inthenewsevents/search_res_item", locals: { item: item } %>
 
-            <% elsif @section == "inthenews_news_items" %>
+            <% elsif @section == "inthenewsnewsitems" %>
               <%= render partial: "inthenewsnewsitems/search_res_item", locals: {
                 item: item
               } %>
 
-            <% elsif @section == "inthenews_poets" %>
+            <% elsif @section == "inthenewspoets" %>
               <%= render partial: "inthenewspoets/search_res_item", locals: { item: item } %>
 
-            <% elsif @section == "inthenews_works" %>
+            <% elsif @section == "inthenewsworks" %>
               <%= render partial: "inthenewsworks/search_res_item", locals: { item: item } %>
 
 
