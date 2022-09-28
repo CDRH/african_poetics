@@ -13,7 +13,6 @@ class InthenewscommentariesController < ItemsController
     }).facets
 
     set_page_facets
-    # @featured = Commentary.featured.sample
     @skip_fields = []
   end
 
