@@ -32,44 +32,34 @@ Rails.application.routes.draw do
       as: "inthenews_about_credits", defaults: { section: "inthenews" }
 
     # commentaries
-    Orchid::Routing.draw(section: "inthenews_commentaries",
-      routes: ["browse", "browse_facet", "search"], scope: "/inthenews/commentaries")
-    get "/commentaries", to: "inthenewscommentaries#home", as: :inthenews_commentaries,
-      defaults: { section: "inthenews_commentaries" }
-    get "/commentaries/:id", to: "inthenewscommentaries#show", as: :inthenews_commentaries_item,
-      defaults: { section: "inthenews_commentaries" }, constraints: { id: with_period }
+    Orchid::Routing.draw(section: "inthenewscommentaries",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/inthenews/commentaries")
+    get "/commentaries", to: "inthenewscommentaries#home", as: :inthenewscommentaries,
+      defaults: { section: "inthenewscommentaries" }
 
     # events
-    Orchid::Routing.draw(section: "inthenews_events",
-      routes: ["browse", "browse_facet", "search"], scope: "/inthenews/events")
-    get "/events", to: "inthenewsevents#home", as: :inthenews_events,
-      defaults: { section: "inthenews_events" }
-    get "/events/:id", to: "inthenewsevents#show", as: :inthenews_events_item,
-      defaults: { section: "inthenews_events" }, constraints: { id: with_period }
+    Orchid::Routing.draw(section: "inthenewsevents",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/inthenews/events")
+    get "/events", to: "inthenewsevents#home", as: :inthenewsevents,
+      defaults: { section: "inthenewsevents" }
 
     # news items
-    Orchid::Routing.draw(section: "inthenews_news_items",
-      routes: ["browse", "browse_facet", "search"], scope: "/inthenews/news")
-    get "/news", to: "inthenewsnewsitems#home", as: :inthenews_news_items,
-      defaults: { section: "inthenews_news_items" }
-    get "/news/:id", to: "inthenewsnewsitems#show", as: :inthenews_news_items_item,
-      defaults: { section: "inthenews_news_items" }, constraints: { id: with_period }
+    Orchid::Routing.draw(section: "inthenewsnewsitems",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/inthenews/news")
+    get "/news", to: "inthenewsnewsitems#home", as: :inthenewsnewsitems,
+      defaults: { section: "inthenewsnewsitems" }
 
     # poets
-    Orchid::Routing.draw(section: "inthenews_poets",
-      routes: ["browse", "browse_facet", "search"], scope: "/inthenews/poets")
-    get "/poets", to: "inthenewspoets#home", as: :inthenews_poets,
-      defaults: { section: "inthenews_poets" }
-    get "/poets/:id", to: "inthenewspoets#show", as: :inthenews_poets_item,
-      defaults: { section: "inthenews_poets" }, constraints: { id: with_period }
+    Orchid::Routing.draw(section: "inthenewspoets",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/inthenews/poets")
+    get "/poets", to: "inthenewspoets#home", as: :inthenewspoets,
+      defaults: { section: "inthenewspoets" }
 
     # works
-    Orchid::Routing.draw(section: "inthenews_works",
-      routes: ["browse", "browse_facet", "search"], scope: "/inthenews/works")
-    get "/works", to: "inthenewsworks#home", as: :inthenews_works,
-      defaults: { section: "inthenews_works" }
-    get "/works/:id", to: "inthenewsworks#show", as: :inthenews_works_item,
-      defaults: { section: "inthenews_works" }, constraints: { id: with_period }
+    Orchid::Routing.draw(section: "inthenewsworks",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/inthenews/works")
+    get "/works", to: "inthenewsworks#home", as: :inthenewsworks,
+      defaults: { section: "inthenewsworks" }
 
     # leftover from the wireframes but not actually used
     get "/relationships", to: "inthenews#relationships", as: :inthenews_relationships,

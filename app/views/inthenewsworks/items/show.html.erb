@@ -34,7 +34,7 @@
   <ul>
   <% authors.each do |author| %>
     <% if author["id"].present?  %>
-      <li><%= link_to author["name"], inthenews_poets_item_path(author["id"]) %></li>
+      <li><%= link_to author["name"], inthenewspoets_item_path(author["id"]) %></li>
     <% else %>
       <li><%= author["name"] %></li>
     <% end %>
@@ -54,7 +54,7 @@
       <% no_id = people.select{|person| !person["id"].present? } %>
       <% with_id.each do |person| %>
         <li>
-          <%= link_to "#{person["name"]} (#{person["role"]})", inthenews_poets_item_path(person["id"]) %>
+          <%= link_to "#{person["name"]} (#{person["role"]})", inthenewspoets_item_path(person["id"]) %>
         </li>
       <% end %>
       <% no_id.each do |person| %>
@@ -73,11 +73,12 @@
   <div class="item_data">
     <ul>
       <% @res["medium"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_news_items_item_path(id) %></li>
+            <li><%= link_to name, inthenewsnewsitems_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
@@ -92,11 +93,12 @@
   <div class="item_data">
     <ul>
       <% @res["relation"].each do |item| %>
+        <%# markdown parsing %>
         <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
         <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
         <% if name %>
           <% if id %>
-            <li><%= link_to name, inthenews_commentaries_item_path(id) %></li>
+            <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>
           <% end %>
