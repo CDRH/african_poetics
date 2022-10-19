@@ -90,5 +90,86 @@
       </div>
     <% end %>
 
+    <% if @res["spatial_name_birth_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Birth Place</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["spatial_name_birth_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+        <% if @res["person_death_date_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Death Date</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["person_death_date_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+         <% if @res["spatial_name_death_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Death Place</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["spatial_name_death_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+         <% if @res["person_trait1_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Education</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["person_trait1_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+      <% if @res["citation_title_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Selected Works</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["citation_title_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["language"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Languages</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["language"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["citation_role_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Publisher Type</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["citation_role_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["description"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Description</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["description"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["contributor_name_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Contributors</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["contributor_name_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
   </div><%# /metadata %>
 </div><%# /poet_metadata_contain %>
