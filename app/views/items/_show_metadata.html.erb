@@ -72,5 +72,23 @@
       </div>
     <% end %>
 
+    <% if @res["person_nationality_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Ethnic Nationality</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["person_nationality_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @res["person_birth_date_k"].present? %>
+      <div class="author_data row">
+        <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Birth Date</h4></div>
+        <div class="author_catdata col-sm-7">
+          <p><%= @res["person_birth_date_k"] %></p>
+        </div>
+      </div>
+    <% end %>
+
   </div><%# /metadata %>
 </div><%# /poet_metadata_contain %>
