@@ -105,11 +105,11 @@ module InthenewsHelper
     end
   end
 
-  # because inthenews_x is the pattern of all our in the news
+  # because inthenewsx is the pattern of all our in the news
   # sections, we can use that to get a label
   def section_label
-    type = @section.sub("inthenews_", "")
-    if type == "news_items"
+    type = @section.sub("inthenews", "")
+    if type == "newsitems"
       type = "news"
     elsif type == "contemporarypoets"
       type = "contemporary poets"

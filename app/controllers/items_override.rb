@@ -66,19 +66,4 @@ ItemsController.class_eval do
     "ap.#{category}.#{id}"
   end
 
-  def es_to_db_record(model, es_id)
-    db_id = es_id[/ap\.\w*\.(\d*)/,1]
-    model.constantize.find(db_id)
-  end
-
-  def get_es_item(id)
-    item = @items_api.get_item_by_id(id).first
-    if !item
-      @title = t "item.no_item", id: id,
-        default: "No item with identifier #{id} found!"
-      render_overridable("items", "show_not_found", status: 404)
-    end
-    item
-  end
-
 end

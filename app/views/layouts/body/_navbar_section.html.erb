@@ -26,19 +26,19 @@
       <div class="container navbar-container">
         <ul class="nav navbar-nav">
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/news/, request.path) %>">
-            <%= link_to "News", inthenews_news_items_path %>
+            <%= link_to "News", inthenewsnewsitems_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/poets/, request.path) %>">
-            <%= link_to "Poets", inthenews_poets_path %>
+            <%= link_to "Poets", inthenewspoets_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/events/, request.path) %>">
-            <%= link_to "Events", inthenews_events_path %>
+            <%= link_to "Events", inthenewsevents_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/works/, request.path) %>">
-            <%= link_to "Works", inthenews_works_path %>
+            <%= link_to "Works", inthenewsworks_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/commentaries/, request.path) %>">
-            <%= link_to "Commentaries", inthenews_commentaries_path %>
+            <%= link_to "Commentaries", inthenewscommentaries_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/about/, request.path) %>">
             <%= link_to "About",
