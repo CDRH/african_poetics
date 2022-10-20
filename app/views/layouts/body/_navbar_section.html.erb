@@ -40,6 +40,9 @@
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/commentaries/, request.path) %>">
             <%= link_to "Commentaries", inthenewscommentaries_path %>
           </li>
+          <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/visualizations/, request.path) %>">
+            <%= link_to "Visualizations", inthenews_visualizations_path %>
+          </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/about/, request.path) %>">
             <%= link_to "About",
               inthenews_about_path %>

@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       defaults: { section: "inthenews" }
     get "/about/credits", to: "inthenews#about_credits",
       as: "inthenews_about_credits", defaults: { section: "inthenews" }
+    get "/visualizations", to: "inthenews#visualizations",
+      as: "inthenews_visualizations", defaults: { section: "inthenews" }
 
     # commentaries
     Orchid::Routing.draw(section: "inthenewscommentaries",
