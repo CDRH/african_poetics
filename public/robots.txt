@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
 
 # when we change this also remove no index 
 # metatag from views/layout/head/meta

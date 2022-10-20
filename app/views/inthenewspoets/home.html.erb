@@ -1,5 +1,5 @@
 <script>
-  var search_path = "<%= inthenews_poets_search_path %>";
+  var search_path = "<%= inthenewspoets_search_path %>";
 </script>
 
 <%= render_overridable "partials", "inthenews_title" %>
@@ -15,7 +15,7 @@
     <h3>Last Name</h3>
     <div class="last_letter_browse">
       <% @facets["alternative"].each do |letter, count| %>
-        <%= link_to inthenews_poets_search_path(f: ["alternative|#{letter}"]), class: "btn btn-default", role: "button" do %>
+        <%= link_to inthenewspoets_search_path(f: ["alternative|#{letter}"]), class: "btn btn-default", role: "button" do %>
           <%= letter %>
         <% end %>
       <% end %>
@@ -29,7 +29,7 @@
       } %>
       <p>
         <%= link_to "Advanced Search/View All Results",
-          inthenews_poets_search_path,
+          inthenewspoets_search_path,
           class: "btn btn-info btn-block",
           role: "button" %>
       </p>
