@@ -80,8 +80,8 @@
     <ul>
       <% @res["subjects"].each do |subject| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
-        <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
+        <% name = parse_md_brackets(subject) %>
+        <% id = parse_md_parentheses(subject) %>
         <li><%= link_to name, inthenewsevents_item_path(id) %></li>
       <% end %>
     </ul>
@@ -97,8 +97,8 @@
         <% if work_data.present? %>
           <% role = work.split("|")[1] %>
           <%# markdown parsing %>
-          <% title = /\[(.*)\]/.match(work_data)[1] if /\[(.*)\]/.match(work_data) %>
-          <% id = /\]\((.*)\)/.match(work_data)[1] if /\]\((.*)\)/.match(work_data) %>
+          <% title = parse_md_brackets(work_data) %>
+          <% id = parse_md_parentheses(work_data) %>
           <li><%= link_to title, inthenewsworks_item_path(id) %> (<%= role %>)</li>
         <% end %>
       <% end %>
@@ -112,8 +112,8 @@
     <ul>
       <% @res["relation"].each do |item| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
-        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% name = parse_md_brackets(item) %>
+        <% id = parse_md_parentheses(item) %>
         <% if name %>
           <% if id %>
             <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
