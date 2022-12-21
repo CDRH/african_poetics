@@ -19,10 +19,11 @@
   <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
   <% if birthplace %>
     <div>
-      Birth location: <%= birthplace[0]["country"] %>
+      Birth location: 
       <% if birthplace[0]["city"] %>
-        , <%= birthplace[0]["city"]  %>
+        <%= birthplace[0]["city"]  %>, 
       <% end %>
+      <%= birthplace[0]["country"] %>
     </div>
   <% end %>
 <% end %>
