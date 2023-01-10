@@ -17,8 +17,8 @@
     <ul>
       <% @res["subjects"].each do |subject| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(subject)[1] if /\[(.*)\]/.match(subject) %>
-        <% id = /\]\((.*)\)/.match(subject)[1] if /\]\((.*)\)/.match(subject) %>
+        <% name = parse_md_brackets(subject) %>
+        <% id = parse_md_parentheses(subject) %>
         <li><%= link_to name, inthenewsevents_item_path(id) %></li>
       <% end %>
     </ul>
@@ -31,8 +31,8 @@
     <ul>
       <% @res["medium"].each do |item| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
-        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% name = parse_md_brackets(item) %>
+        <% id = parse_md_parentheses(item) %>
         <% if name %>
           <% if id %>
             <li><%= link_to name, inthenewsnewsitems_item_path(id) %></li>
@@ -70,8 +70,8 @@
     <ul>
       <% @res["works"].each do |work| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(work)[1] %>
-        <% id = /\]\((.*)\)/.match(work)[1] %>
+        <% name = parse_md_brackets(work) %>
+        <% id = parse_md_parentheses(work) %>
         <li><%= link_to name, inthenewspoets_item_path(id) %></li>
       <% end %>
     </ul>

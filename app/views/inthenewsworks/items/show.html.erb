@@ -74,8 +74,8 @@
     <ul>
       <% @res["medium"].each do |item| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
-        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% name = parse_md_brackets(item) %>
+        <% id = parse_md_parentheses(item) %>
         <% if name %>
           <% if id %>
             <li><%= link_to name, inthenewsnewsitems_item_path(id) %></li>
@@ -94,8 +94,8 @@
     <ul>
       <% @res["relation"].each do |item| %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(item)[1] if /\[(.*)\]/.match(item) %>
-        <% id = /\]\((.*)\)/.match(item)[1] if /\]\((.*)\)/.match(item) %>
+        <% name = parse_md_brackets(item) %>
+        <% id = parse_md_parentheses(item) %>
         <% if name %>
           <% if id %>
             <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
