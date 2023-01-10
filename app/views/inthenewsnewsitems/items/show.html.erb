@@ -1,6 +1,14 @@
 <%= render_overridable "partials", "inthenews_title" %>
 <h2><%= @res["title"] %></h2>
 
+
+<% if @res["has_part_image_k"] %>
+  <h3>Thumbnails</h3>
+  <% @res["has_part_image_k"].split("; ").each do |image| %>
+    <%= image_tag image %>
+  <% end %>
+<% end %>
+
 <h3>Type</h3>
 <%= @res["type"] %>
 
