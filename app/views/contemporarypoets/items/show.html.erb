@@ -1,0 +1,20 @@
+<% if @res %>
+  <h1 class="item_title"><%= @res["alternative"] %></h1>
+  <h2 class="item_subtitle">
+    <% if @res["people"].present? %>
+      Alternate names: <%= @res["people"] %>
+    <% end %>
+  </h2>
+
+  <%= render "show_metadata" %>
+
+  <%# if @res["type"] == "Featured" %>
+    <%# render "show_content" %>
+  <%# end %>
+
+<%# else %>
+
+  <!-- <h2><%# t("item.not_found", default: "Not Found") %></h2>
+  <%# t "item.no_item", id: params["id"], default: "No item with identifier #{params["id"]} found!" %> -->
+
+<% end %>

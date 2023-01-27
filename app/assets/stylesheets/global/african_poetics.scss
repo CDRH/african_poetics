@@ -523,12 +523,18 @@ svg path.re {
 }
 
 .poet_metadata_contain {
-  display: flex;
+  // display: flex;
+  display: block;
 }
 
-.poet_image img {
-  border: 2px solid #aaa;
-  max-height: 400px;
+.poet_image { 
+  text-align: center;
+  
+  img {
+    border: 2px solid #aaa;
+    max-height: 400px;
+    max-width: 100%;
+  }
 }
 
 // ------------
