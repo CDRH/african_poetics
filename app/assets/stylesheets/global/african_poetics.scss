@@ -479,10 +479,10 @@ svg path.re {
 }
 
 @media (min-width: $screen-tablet) {
-  .author_cathead {
-    text-align: right;
-  }
-}
+  .author_cathead {    
+  text-align: right;
+ }
+ }
 
 @media (min-width: $screen-tablet) {
   .author_catdata {
@@ -525,10 +525,11 @@ svg path.re {
 .poet_metadata_contain {
   // display: flex;
   display: block;
+
 }
 
 .poet_image { 
-  text-align: center;
+  text-align: left;
   
   img {
     border: 2px solid #aaa;
