@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   #get "/country", to: "general#country", as: "country"
 
+  get "/criticalbibliographies", to: "general#criticalbibliographies", as: "criticalbibliographies"
+
   scope "/contemporarypoets" do
     get "/", to: "contemporarypoets#home", as: :contemporarypoets_home,
       defaults: { section: "contemporarypoets" }
@@ -32,6 +34,8 @@ Rails.application.routes.draw do
       as: "inthenews_about_credits", defaults: { section: "inthenews" }
     get "/visualizations", to: "inthenews#visualizations",
       as: "inthenews_visualizations", defaults: { section: "inthenews" }
+    get "/criticalbibliographies", to: "inthenews#criticalbibliographies",
+      as: "inthenews_criticalbibliographies", defaults: { section: "inthenews" }
 
     # commentaries
     Orchid::Routing.draw(section: "inthenewscommentaries",

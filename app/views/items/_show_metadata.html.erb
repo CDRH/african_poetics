@@ -12,37 +12,28 @@
     
   <% if @res["places"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Country</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Country</h4>
         <p><%= @res["places"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["keywords"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Region</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Region</h4>
         <p><%= @res["keywords"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["person"]["role"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Gender</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Gender</h4>
         <p><%= @res["person"]["role"]%></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["works"].present? %>
     <div class="author_data row">
-    <div class="author_cathead col-sm-3 col-sm-offset-1">
       <h4>Bibliography</h4>
-      </div>
-        <div class="author_catdata col-sm-7 bibliography">
           <ul>
             <% @res["works"].each do |work| %>
               <li>
@@ -50,124 +41,97 @@
               </li>
             <% end %>
           </ul>
-        </div>
     </div>
   <% end %>
 
   <% if @res["source"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Source</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Source</h4>
         <p><%= @res["source"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["person"]["id"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Authority File</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Authority File</h4>
         <p><a href="<%= @res["person"]["id"] %>"><%= @res["person"]["id"] %></a></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["person_nationality_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Ethnic Nationality</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Ethnic Nationality</h4>
         <p><%= @res["person_nationality_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["person_birth_date_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Birth Date</h4></div>
-      <div class="author_catdata col-sm-7">
+     <h4>Birth Date</h4>
         <p><%= @res["person_birth_date_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["spatial_name_birth_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Birth Place</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Birth Place</h4>
         <p><%= @res["spatial_name_birth_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["person_death_date_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Death Date</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Death Date</h4>
         <p><%= @res["person_death_date_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["spatial_name_death_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Death Place</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Death Place</h4>
         <p><%= @res["spatial_name_death_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["person_trait1_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Education</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Education</h4>
         <p><%= @res["person_trait1_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["citation_title_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Selected Works</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Selected Works</h4>
         <p><%= @res["citation_title_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["language"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Languages</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Languages</h4>
         <p><%= @res["language"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["citation_role_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Publisher Type</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Publisher Type</h4>
         <p><%= @res["citation_role_k"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["description"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Description</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Biography</h4>
         <p><%= @res["description"] %></p>
-      </div>
     </div>
   <% end %>
 
   <% if @res["contributor_name_k"].present? %>
     <div class="author_data row">
-      <div class="author_cathead col-sm-3 col-sm-offset-1"><h4>Contributors</h4></div>
-      <div class="author_catdata col-sm-7">
+      <h4>Contributors</h4>
         <p><%= @res["contributor_name_k"] %></p>
-      </div>
     </div>
   <% end %>
 

@@ -48,6 +48,13 @@ en:
       Ensign Babyface! Did you come here for something in particular or just general Riker-bashing? Fear is the true enemy, the only enemy.
       I will obey your orders. I will serve this ship as First Officer. And in an attack against the Enterprise, I will die with this crew. But I will not break my oath of loyalty to Starfleet.</p>
 
+  ##########################
+  # CRITICAL BIBLIOGRAPHIES #
+  ##########################
+
+  criticalbibliographies:
+    title: Critical Bibliographies
+
   ##########
   # BROWSE #
   ##########
