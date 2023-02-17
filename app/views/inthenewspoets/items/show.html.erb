@@ -63,8 +63,8 @@
         <% name_and_id = item.split("|")[0] %>
         <% role = item.split("|")[1] %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(name_and_id)[1] if /\[(.*)\]/.match(item) %>
-        <% id = /\]\((.*)\)/.match(name_and_id)[1] if /\]\((.*)\)/.match(item) %>
+        <% name = parse_md_brackets(name_and_id) %>
+        <% id = parse_md_parentheses(name_and_id) %>
         <% if id %>
           <li><%= link_to name, inthenewsnewsitems_item_path(id) %> | <%= role %></li>
         <% else %>
