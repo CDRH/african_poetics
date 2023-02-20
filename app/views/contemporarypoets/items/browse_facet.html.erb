@@ -35,18 +35,20 @@
             <% @res[facet_name].each do |list| %>
               <tr>
                   <% text = list[0].blank? ? t("browse.no_label", default: "No label") : value_label(facet_name, list[0]) %>
-                  <td class="index_num">
-                    <%= link_to prefix_path("search_path",
-                      f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
-                      <%= list[1] %>
-                    <% end %>
-                  </td>
-                  <td class="index_spacer">
-                    <%= link_to prefix_path("search_path",
-                      f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
-                      <span></span>
-                    <% end %>
-                  </td>
+                  <% if facet_name != "person.name" %>
+                    <td class="index_num">
+                      <%= link_to prefix_path("search_path",
+                        f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
+                        <%= list[1] %>
+                      <% end %>
+                    </td>
+                    <td class="index_spacer">
+                      <%= link_to prefix_path("search_path",
+                        f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
+                        <span></span>
+                      <% end %>
+                    </td>
+                  <% end %>
                   <td class="index_name">
                     <%= link_to prefix_path("search_path",
                       f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
