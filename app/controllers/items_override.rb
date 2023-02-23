@@ -17,6 +17,9 @@ ItemsController.class_eval do
     end
 
     # Get selected facet's info
+    if @section == "contemporarypoets" && @browse_facet.include?("person.name_")
+      @browse_facet = "person.name"
+    end
     @browse_facet_info = @page_facets[@browse_facet]
     if @browse_facet_info.blank?
       redirect_to browse_path, notice: t("errors.browse",
@@ -33,15 +36,12 @@ ItemsController.class_eval do
       facet_sort: sort_by,
       num: 0
     }
-
     if @browse_facet == "featured"
       @title = "#{t "browse.browse_type"} #{@browse_facet_info["label"]}"
       render "contemporarypoets/featured"
     else
-
       # Get facet results
       @res = @items_api.query(options).facets
-
       # Warn when approaching facet result limit
       result_size = @res.length
       if result_size == 10000

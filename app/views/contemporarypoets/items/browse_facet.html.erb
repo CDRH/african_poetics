@@ -8,21 +8,22 @@
 <%# deviation from orchid default: moving the tabs to a partial for
     inclusion from other templates %>
 <%= render "contemporarypoets/browse_tabs" %>
+<% if @browse_facet != "person.name" %>
+  <div class="btn-group buffer-bottom-sm">
+    <button type="button" class="btn btn-default dropdown-toggle"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= t "browse.sort_by", default: "Sort by" %>: <%= sort_selected_label("facets", sort_by) %>
+      <span class="caret"></span>
+    </button>
 
-<div class="btn-group buffer-bottom-sm">
-  <button type="button" class="btn btn-default dropdown-toggle"
-    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <%= t "browse.sort_by", default: "Sort by" %>: <%= sort_selected_label("facets", sort_by) %>
-    <span class="caret"></span>
-  </button>
-
-  <ul class="dropdown-menu">
-    <% sort_fields_facets.each do |sort_field, label| %>
-      <%= render_overridable("sort_dropdown_item", label: label,
-        sort_url: prefix_path("browse_facet_path", facet_sort: sort_field)) %>
-    <% end %>
-  </ul>
-</div>
+    <ul class="dropdown-menu">
+      <% sort_fields_facets.each do |sort_field, label| %>
+        <%= render_overridable("sort_dropdown_item", label: label,
+          sort_url: prefix_path("browse_facet_path", facet_sort: sort_field)) %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <div class="tab-content">
   <% @page_facets.each_with_index do |(facet_name, facet_info), index| %>
@@ -30,6 +31,23 @@
     <div role="tabpanel"
       class="tab-pane <%= active?(facet_name, @browse_facet) %>" id="<%= id %>">
       <% if @res.key?(facet_name) %>
+        <%# switch for person.name? %>
+        <% if @browse_facet.include?"person.name" %>
+          <%= button_to "A-G", contemporarypoets_browse_facet_path("person.name_ag"), method: :get %>
+          <%= button_to "H-M", contemporarypoets_browse_facet_path("person.name_hm"), method: :get %>
+          <%= button_to "N-Z", contemporarypoets_browse_facet_path("person.name_nz"), method: :get %>
+        <% end %>
+        <% if params[:facet].include?"person.name" %>
+          <% letters = params[:facet].split("_")[1] %>
+          <% case letters %>
+          <% when "ag", nil %>
+            <% @res = POETS_AG %>
+          <% when "hm"%>
+            <% @res = POETS_HM %>
+          <% when "nz"%>
+            <% @res = POETS_NZ %>
+          <% end %>
+        <% end %>
         <table class="index_table">
           <tbody>
             <% @res[facet_name].each do |list| %>
