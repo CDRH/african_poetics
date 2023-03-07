@@ -124,7 +124,7 @@
   <% if @res["description"].present? %>
     <div class="author_data row">
       <h4>Biography</h4>
-        <p><%= @res["description"] %></p>
+        <p><%= simple_format(@res["description"]) %></p>
     </div>
   <% end %>
 
