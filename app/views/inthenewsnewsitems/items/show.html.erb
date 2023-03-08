@@ -121,8 +121,8 @@
       <%# markdown parsing %>
       <% name = parse_md_brackets(@res["relation"]) %>
       <% id = parse_md_parentheses(@res["relation"]) %>
-      <% if name %>
-        <% if id %>
+      <% if name.present? %>
+        <% if id.present? %>
           <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
         <% else %>
           <li><%= name %></li>
