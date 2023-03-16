@@ -13,7 +13,7 @@
   <% if @res["places"].present? %>
     <div class="author_data row">
       <h4>Country</h4>
-        <p><%= @res["places"] %></p>
+        <p><%= @res["places"].join(", ") %></p>
     </div>
   <% end %>
 
@@ -124,7 +124,7 @@
   <% if @res["description"].present? %>
     <div class="author_data row">
       <h4>Biography</h4>
-        <p><%= @res["description"] %></p>
+        <p><%= simple_format(@res["description"]) %></p>
     </div>
   <% end %>
 
