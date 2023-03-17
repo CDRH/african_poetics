@@ -15,7 +15,7 @@
 <h3>Published</h3>
 <%= @res["date"] if @res["date_display"]%>
 <br>
-<%= @res["publisher"].join(" | ") %>
+<%= @res["publisher"].join(" | ") if @res["publisher"] %>
 
 <% authors = @res["person"].select { |person| person["role"] == "Article Author"} %>
 <% if authors.present? %>
