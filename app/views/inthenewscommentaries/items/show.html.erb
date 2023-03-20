@@ -72,7 +72,7 @@
         <%# markdown parsing %>
         <% name = parse_md_brackets(work) %>
         <% id = parse_md_parentheses(work) %>
-        <li><%= link_to name, inthenewspoets_item_path(id) %></li>
+        <li><%= link_to name, inthenewsworks_item_path(id) %></li>
       <% end %>
     </ul>
   </div><%# / .item-data %>
