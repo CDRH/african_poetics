@@ -60,7 +60,51 @@ ItemsController.class_eval do
     end
   end
 
+  def item_retrieve(id)
+    if @section
+      type = @section.gsub("inthenews", "")
+      if type == "poets"
+        type = "person"
+      elsif type == "newsitems"
+        type = "news"
+      elsif type == "events"
+        type = "event"
+      elsif type == "works"
+        type = "work"
+      elsif type == "commentaries"
+        type = "commentary"
+      end
+      if !(id.include?(type))
+        @title = t "item.no_item", id: id,
+          default: "No item with identifier #{id} found!"
+        render_overridable("items", "show_not_found", status: 404)
+        return
+      end
+    end
+    @res = @items_api.get_item_by_id(id)
+    # check_response #note: does not work here
+    @res = @res.first
+    if @res
+      url = @res["uri_html"]
+      @html = Net::HTTP.get(URI.parse(url)) if url
+      @title = item_title
+
+      render_overridable("items", "show")
+    else
+      @title = t "item.no_item", id: id,
+        default: "No item with identifier #{id} found!"
+      render_overridable("items", "show_not_found", status: 404)
+    end
+  end
+
+
   private
+
+  def check_response
+    if @res.blank? || @res.error
+      flash[:error] = t "errors.api"
+    end
+  end
 
   def db_to_es_id(category, id)
     "ap.#{category}.#{id}"
