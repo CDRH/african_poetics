@@ -17,7 +17,7 @@
 <% end %>
 <% if @res["spatial"].present? %>
   <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
-  <% if birthplace %>
+  <% if birthplace.present? %>
     <div>
       Birth location: 
       <% if birthplace[0]["city"] %>
@@ -63,9 +63,9 @@
         <% name_and_id = item.split("|")[0] %>
         <% role = item.split("|")[1] %>
         <%# markdown parsing %>
-        <% name = /\[(.*)\]/.match(name_and_id)[1] if /\[(.*)\]/.match(item) %>
-        <% id = /\]\((.*)\)/.match(name_and_id)[1] if /\]\((.*)\)/.match(item) %>
-        <% if id %>
+        <% name = parse_md_brackets(name_and_id) %>
+        <% id = parse_md_parentheses(name_and_id) %>
+        <% if id.present? %>
           <li><%= link_to name, inthenewsnewsitems_item_path(id) %> | <%= role %></li>
         <% else %>
           <li><%= name %> | <%= role %></li>
@@ -115,8 +115,8 @@
         <%# markdown parsing %>
         <% name = parse_md_brackets(item) %>
         <% id = parse_md_parentheses(item) %>
-        <% if name %>
-          <% if id %>
+        <% if name.present? %>
+          <% if id.present? %>
             <li><%= link_to name, inthenewscommentaries_item_path(id) %></li>
           <% else %>
             <li><%= name %></li>

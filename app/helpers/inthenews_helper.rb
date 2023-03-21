@@ -94,7 +94,7 @@ module InthenewsHelper
     # the main landing page for inthenews does not need a back link
     if @section == "inthenews" && params[:action] == "home"
       ""
-    elsif ["home", "about", "about_credits", "visualizations" "criticalbibliographies"].include?(params[:action])
+    elsif ["home", "about", "about_credits", "visualizations", "criticalbibliographies"].include?(params[:action])
       link_to "← back to African Poets and Poetry in the News home",
         :inthenews_home,
         class: "back-link"
