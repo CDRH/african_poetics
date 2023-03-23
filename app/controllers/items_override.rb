@@ -73,6 +73,8 @@ ItemsController.class_eval do
         type = "work"
       elsif type == "commentaries"
         type = "commentary"
+      elsif type == "contemporarypoets"
+        type = "cap"
       end
       if !(id.include?(type))
         @title = t "item.no_item", id: id,
