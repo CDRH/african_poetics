@@ -1,15 +1,11 @@
 <% if @section.present? %>
-  <% if @section == "contemporarypoets" %>
+  <% if @section == "contemporarypoets" && !request.path.include?("browse") %>
     <div class="navbar navbar-default navbar-section">
       <div class="container navbar-container">  
         <ul class="nav navbar-nav">
            <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse\/featured/,
             request.path) %>">
             <%= link_to "Featured", contemporarypoets_browse_facet_path(facet: "featured") %>
-          </li>
-          <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse(?!\/featured)/,
-            request.path) %>">
-            <%= link_to t("browse.title", default: "Browse"), prefix_path("browse_path") %>
           </li>
           <li class="<%= active?(contemporarypoets_search_path) %>">
             <%= link_to t("search.title", default: "Search"), prefix_path("search_path"), rel: "search" %>
