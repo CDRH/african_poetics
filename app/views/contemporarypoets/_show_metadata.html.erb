@@ -9,6 +9,13 @@
 
   <%# pulling entirely from elasticsearch currently %>
   <div class="metadata">
+
+  <% if @res["description"].present? %>
+    <div class="author_data row">
+      <h4>Additional Information</h4>
+        <p><%= simple_format(@res["description"]) %></p>
+    </div>
+  <% end %>
     
   <% if @res["places"].present? %>
     <div class="author_data row">
@@ -118,13 +125,6 @@
     <div class="author_data row">
       <h4>Publisher Type</h4>
         <p><%= @res["citation_role_k"] %></p>
-    </div>
-  <% end %>
-
-  <% if @res["description"].present? %>
-    <div class="author_data row">
-      <h4>Additional Information</h4>
-        <p><%= simple_format(@res["description"]) %></p>
     </div>
   <% end %>
 
