@@ -1,0 +1,139 @@
+<%# poet_metadata_contain exists so I can include image using the flex layout %>
+<div class="poet_metadata_contain">
+
+  <% if @res["type"] == "Featured" %>
+    <div class="poet_image">
+      <%= image_tag iiif("poet_images%2F#{@res["identifier"]}.jpg", size: "!800,800") %>
+    </div>
+  <% end %>
+
+  <%# pulling entirely from elasticsearch currently %>
+  <div class="metadata">
+
+  <% if @res["description"].present? %>
+    <div class="author_data row">
+      <h4>Biography</h4>
+        <p><%= simple_format(@res["description"]) %></p>
+    </div>
+  <% end %>
+    
+  <% if @res["places"].present? %>
+    <div class="author_data row">
+      <h4>Country</h4>
+        <p><%= @res["places"].join(", ") %></p>
+    </div>
+  <% end %>
+
+  <% if @res["keywords"].present? %>
+    <div class="author_data row">
+      <h4>Region</h4>
+        <p><%= @res["keywords"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["person"]["role"].present? %>
+    <div class="author_data row">
+      <h4>Gender</h4>
+        <p><%= @res["person"]["role"]%></p>
+    </div>
+  <% end %>
+
+  <% if @res["works"].present? %>
+    <div class="author_data row">
+      <h4>Bibliography</h4>
+          <ul>
+            <% @res["works"].each do |work| %>
+              <li>
+                <%= work %>
+              </li>
+            <% end %>
+          </ul>
+    </div>
+  <% end %>
+
+  <% if @res["source"].present? %>
+    <div class="author_data row">
+      <h4>Source</h4>
+        <p><%= @res["source"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["person"]["id"].present? %>
+    <div class="author_data row">
+      <h4>Authority File</h4>
+        <p><a href="<%= @res["person"]["id"] %>"><%= @res["person"]["id"] %></a></p>
+    </div>
+  <% end %>
+
+  <% if @res["person_nationality_k"].present? %>
+    <div class="author_data row">
+      <h4>Ethnic Nationality</h4>
+        <p><%= @res["person_nationality_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["person_birth_date_k"].present? %>
+    <div class="author_data row">
+     <h4>Birth Date</h4>
+        <p><%= @res["person_birth_date_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["spatial_name_birth_k"].present? %>
+    <div class="author_data row">
+      <h4>Birth Place</h4>
+        <p><%= @res["spatial_name_birth_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["person_death_date_k"].present? %>
+    <div class="author_data row">
+      <h4>Death Date</h4>
+        <p><%= @res["person_death_date_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["spatial_name_death_k"].present? %>
+    <div class="author_data row">
+      <h4>Death Place</h4>
+        <p><%= @res["spatial_name_death_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["person_trait1_k"].present? %>
+    <div class="author_data row">
+      <h4>Education</h4>
+        <p><%= @res["person_trait1_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["citation_title_k"].present? %>
+    <div class="author_data row">
+      <h4>Selected Works</h4>
+        <p><%= @res["citation_title_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["language"].present? %>
+    <div class="author_data row">
+      <h4>Languages</h4>
+        <p><%= @res["language"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["citation_role_k"].present? %>
+    <div class="author_data row">
+      <h4>Publisher Type</h4>
+        <p><%= @res["citation_role_k"] %></p>
+    </div>
+  <% end %>
+
+  <% if @res["contributor_name_k"].present? %>
+    <div class="author_data row">
+      <h4>Contributors</h4>
+        <p><%= @res["contributor_name_k"] %></p>
+    </div>
+  <% end %>
+
+  </div><%# /metadata %>
+</div><%# /poet_metadata_contain %>

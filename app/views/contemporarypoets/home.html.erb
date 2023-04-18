@@ -23,9 +23,16 @@
           <p>Browse by Country</p>
         </div>
       <% end %>
-      <%= link_to contemporarypoets_browse_facet_path(facet: "keywords") do %>
+      <%= link_to contemporarypoets_browse_facet_path(facet: "person.role") do %>
         <div class="col-sm-6 home_callout home_callout_4">
-          <p>Browse by Region Map</p>
+          <p>Browse by Gender</p>
+        </div>
+      <% end %>
+      </div>
+      <div class="row">
+        <%= link_to contemporarypoets_browse_facet_path(facet: "keywords") do %>
+          <div class="col-sm-12 home_callout home_callout_5_span">
+            <p>Browse by Region Map</p>
         </div>
       <% end %>
     </div>

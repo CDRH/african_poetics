@@ -253,6 +253,12 @@ a .home_callout {
   }
 }
 
+// Used on CAP page for full width browse option
+.home_callout_5_span {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 // Changing to be flex base, currently only used on CAP "featured"
 .callouts {
   display: flex;
@@ -470,6 +476,10 @@ svg path.re {
 
 // Author pages
 
+.author_data.row {
+  margin: 0;
+}
+
 .author_data {
     margin-bottom: 1.8em;
     margin-top: .5em;
@@ -500,7 +510,6 @@ svg path.re {
   font-size: 1.8em;
   margin-top:0;
   padding-top: 0;
-  text-align: center;
 }
 
 .browse_div .tab-pane {
@@ -529,7 +538,9 @@ svg path.re {
 }
 
 .poet_image { 
-  text-align: left;
+  display: block;
+  float: right;
+  margin: 0 0 15px 15px;
   
   img {
     border: 2px solid #aaa;
@@ -769,6 +780,26 @@ html[class*="inthenews"] .search_result_field > span {
 
 html[class*="inthenews"] .search_result_field span:last-of-type {
   border-right: none;
+}
+
+// Change look of headlines for In the News section, per Lorna request April 2023
+.section_inthenewscommentaries,
+.section_inthenewsworks,
+.section_inthenewsnewsitems,
+.section_inthenewspoets,
+.section_inthenewsevents,
+.section_inthenews {
+  .sectiontitle {
+    font-size: 26px;
+  }
+  
+  .inthenews_head,
+  .sectiontitle + h1 {
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 1em;
+    margin-top: 0;
+  }
 }
 
 .sectiontitle {
