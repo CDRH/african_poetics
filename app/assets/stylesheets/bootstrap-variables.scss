@@ -779,9 +779,9 @@ $well-border:                 darken($well-bg, 7%) !default;
 //
 //##
 
-$badge-color:                 #fff !default;
+$badge-color:                 $brand-success !default;
 //** Linked badge text color on hover
-$badge-link-hover-color:      #fff !default;
+$badge-link-hover-color:      $brand-success !default;
 $badge-bg:                    $gray-light !default;
 
 //** Badge text color in active nav link
@@ -789,8 +789,8 @@ $badge-active-color:          $link-color !default;
 //** Badge background color in active nav link
 $badge-active-bg:             #fff !default;
 
-$badge-font-weight:           bold !default;
-$badge-line-height:           1 !default;
+$badge-font-weight:           normal !default;
+$badge-line-height:           1.2 !default;
 $badge-border-radius:         10px !default;
 
 
