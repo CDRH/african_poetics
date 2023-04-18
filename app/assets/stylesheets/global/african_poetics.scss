@@ -253,6 +253,12 @@ a .home_callout {
   }
 }
 
+// Used on CAP page for full width browse option
+.home_callout_5_span {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 // Changing to be flex base, currently only used on CAP "featured"
 .callouts {
   display: flex;
