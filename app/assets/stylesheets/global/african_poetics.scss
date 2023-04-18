@@ -771,6 +771,24 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   border-right: none;
 }
 
+// Change look of headlines for In the News section, per Lorna request April 2023
+.section_inthenewscommentaries,
+.section_inthenewsworks,
+.section_inthenewsnewsitems,
+.section_inthenewspoets,
+.section_inthenewsevents,
+.section_inthenews {
+  .sectiontitle {
+    font-size: 26px;
+  }
+  .inthenews_head {
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 1em;
+    margin-top: 0;
+  }
+}
+
 .sectiontitle {
   border-bottom: solid 3px #479BC2;
   padding-bottom: .5em;
