@@ -22,16 +22,16 @@ default: &default
         label: African Poet
         flags:
           - search_filter
-      creator.name:
-        label: Commentary Author
-        flags:
-          - search_filter
-      keywords:
+      subjects:
         label: Event
         flags:
           - search_filter
       works:
         label: Work
+        flags:
+          - search_filter
+      creator.name:
+        label: Commentary Author
         flags:
           - search_filter
 
