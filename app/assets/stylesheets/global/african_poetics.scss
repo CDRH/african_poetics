@@ -792,7 +792,9 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   .sectiontitle {
     font-size: 26px;
   }
-  .inthenews_head {
+  
+  .inthenews_head,
+  .sectiontitle + h1 {
     font-size: 34px;
     font-weight: 500;
     margin-bottom: 1em;
