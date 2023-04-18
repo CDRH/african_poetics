@@ -1,15 +1,11 @@
 <% if @section.present? %>
-  <% if @section == "contemporarypoets" %>
+  <% if @section == "contemporarypoets"  %>
     <div class="navbar navbar-default navbar-section">
       <div class="container navbar-container">  
         <ul class="nav navbar-nav">
            <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse\/featured/,
             request.path) %>">
             <%= link_to "Featured", contemporarypoets_browse_facet_path(facet: "featured") %>
-          </li>
-          <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets\/browse(?!\/featured)/,
-            request.path) %>">
-            <%= link_to t("browse.title", default: "Browse"), prefix_path("browse_path") %>
           </li>
           <li class="<%= active?(contemporarypoets_search_path) %>">
             <%= link_to t("search.title", default: "Search"), prefix_path("search_path"), rel: "search" %>
@@ -38,7 +34,7 @@
             <%= link_to "Works", inthenewsworks_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/commentaries/, request.path) %>">
-            <%= link_to "Commentaries", inthenewscommentaries_path %>
+            <%= link_to "Commentaries", inthenewscommentaries_search_path %>
           </li>
           <li class="<%= active?(/^#{config.relative_url_root}\/inthenews\/visualizations/, request.path) %>">
             <%= link_to "Visualizations", inthenews_visualizations_path %>
