@@ -60,6 +60,9 @@
   <div class="item_data">
     <ul>
       <% @res["medium"].each do |item| %>
+        <% if item[0] == "|" %>
+          <% next %>
+        <% end %>
         <% name_and_id = item.split("|")[0] %>
         <% role = item.split("|")[1] %>
         <%# markdown parsing %>
