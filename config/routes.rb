@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get "/country", to: "general#country", as: "country"
 
   get "/criticalbibliographies", to: "general#criticalbibliographies", as: "criticalbibliographies"
+  get "/dhgrant", to: "general#dhgrant"
 
   scope "/contemporarypoets" do
     get "/", to: "contemporarypoets#home", as: :contemporarypoets_home,
