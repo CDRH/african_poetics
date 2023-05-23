@@ -20,6 +20,11 @@
         <p><span><%= t "inthenews.title_html" %></span><%# span is there to aid in flex centering %></p>
       </div>
     <% end %>
+    <%= link_to dhgrant_path do %>
+      <div class="col-sm-12 home_callout home_callout_3">
+        <p><span><%= t "dhgrant.title" %></span><%# span is there to aid in flex centering %></p>
+      </div>
+    <% end %>
   </div>
 
   <p class="lead home_para">The first two sections of the portal—<%= link_to "Contemporary African Poets", contemporarypoets_home_path %> and <%= link_to "African Poets and Poetry in the News", inthenews_home_path %> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
