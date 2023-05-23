@@ -35,6 +35,10 @@ label {
   font-family: $headerfont;
 }
 
+img {
+  max-width: 100%;
+}
+
 ul {
   list-style-type: square;
 }
@@ -218,6 +222,16 @@ a.btn, .btn, input {
 // Site Wide code
 // ------------
 
+// About and DH grant
+
+@media (min-width: $screen-tablet) {
+.dhgrant_image {
+  max-width: 40%;
+  float: right;
+  margin: 10px 0 20px 20px;
+}
+}
+
 // Callouts
 
 a .home_callout {
@@ -253,8 +267,8 @@ a .home_callout {
   }
 }
 
-// Used on CAP page for full width browse option
-.home_callout_5_span {
+// Used on Index and CAP page for full width browse option
+.home_callout_5_span, .home_callout.home_callout_3 {
   padding-right: 0;
   padding-left: 0;
 }
