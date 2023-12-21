@@ -8,21 +8,21 @@ Rails.application.routes.draw do
   get "/criticalbibliographies", to: "general#criticalbibliographies", as: "criticalbibliographies"
   get "/dhgrant", to: "general#dhgrant"
 
-  scope "/contemporarypoets" do
-    get "/", to: "contemporarypoets#home", as: :contemporarypoets_home,
-      defaults: { section: "contemporarypoets" }
+  scope "/index-of-poets" do
+    get "/", to: "index_of_poets#home", as: :index_of_poets_home,
+      defaults: { section: "index_of_poets" }
 
-    get "/about", to: "contemporarypoets#about",
-      as: "contemporarypoets_about", defaults: { section: "contemporarypoets" }
+    get "/about", to: "index_of_poets#about",
+      as: "index_of_poets_about", defaults: { section: "index_of_poets" }
 
-    get "/about/consultedsources", to: "contemporarypoets#about_consultedsources",
-      as: "contemporarypoets_about_consultedsources", defaults: { section: "contemporarypoets" }
+    get "/about/consultedsources", to: "index_of_poets#about_consultedsources",
+      as: "index_of_poets_about_consultedsources", defaults: { section: "index_of_poets" }
 
-    get "/about/criteria", to: "contemporarypoets#about_criteria",
-      as: "contemporarypoets_about_criteria", defaults: { section: "contemporarypoets" }
+    get "/about/criteria", to: "index_of_poets#about_criteria",
+      as: "index_of_poets_about_criteria", defaults: { section: "index_of_poets" }
 
-    Orchid::Routing.draw(section: "contemporarypoets",
-      routes: ["browse", "browse_facet", "search", "item"], scope: "/contemporarypoets")
+    Orchid::Routing.draw(section: "index_of_poets",
+      routes: ["browse", "browse_facet", "search", "item"], scope: "/index-of-poets")
   end
 
   scope "/inthenews" do

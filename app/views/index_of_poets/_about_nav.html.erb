@@ -1,0 +1,15 @@
+<ul class="internal_nav_tabs nav">
+  <li class="<%= active?(/^#{config.relative_url_root}\/index-of-poets\/about\/?$/,
+    request.path) %>">
+    <%= link_to "About the Project", index_of_poets_about_path %>
+  </li>
+  <li class="<%= active?(/^#{config.relative_url_root}\/cindex-of-poets\/about\/consultedsources/,
+    request.path) %>">
+    <%= link_to "Consulted Sources", index_of_poets_about_consultedsources_path %>
+  </li>
+  <li class="<%= active?(/^#{config.relative_url_root}\/index-of-poets\/about\/criteria/,
+    request.path) %>">
+    <%= link_to "Selection Criteria", index_of_poets_about_criteria_path %>
+  </li>
+</ul>
+

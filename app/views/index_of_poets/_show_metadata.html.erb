@@ -27,7 +27,7 @@
   <% if @res["keywords"].present? %>
     <div class="author_data row">
       <h4>Region</h4>
-        <p><%= @res["keywords"] %></p>
+        <p><%= @res["keywords"].join(", ") %></p>
     </div>
   <% end %>
 
@@ -68,7 +68,7 @@
   <% if @res["person_nationality_k"].present? %>
     <div class="author_data row">
       <h4>Ethnic Nationality</h4>
-        <p><%= @res["person_nationality_k"] %></p>
+        <p><%= @res["person_nationality_k"].join(", ") %></p>
     </div>
   <% end %>
 
@@ -82,7 +82,7 @@
   <% if @res["spatial_name_birth_k"].present? %>
     <div class="author_data row">
       <h4>Birth Place</h4>
-        <p><%= @res["spatial_name_birth_k"] %></p>
+        <p><%= @res["spatial_name_birth_k"].join(", ") %></p>
     </div>
   <% end %>
 

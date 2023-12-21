@@ -11,7 +11,7 @@ information which is needs to display %>
 
             <% if ["inthenewscommentaries", "inthenewsevents",
                   "inthenewsnewsitems", "inthenewspoets",
-                  "inthenewsworks", "contemporarypoets"].include?(@section) %>
+                  "inthenewsworks", "index_of_poets"].include?(@section) %>
               <%= render_overridable("items", "search_res_item", locals: { item: item }) %>
 
 
