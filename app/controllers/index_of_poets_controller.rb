@@ -1,4 +1,4 @@
-class ContemporarypoetsController < ApplicationController
+class IndexOfPoetsController < ApplicationController
 
   def about
     @title = "About"
@@ -13,7 +13,7 @@ class ContemporarypoetsController < ApplicationController
   end
 
   def home
-    @title = "Contemporary African Poets"
+    @title = "Index of Poets"
   end
 
   # NOTE being overridden in items_override.rb

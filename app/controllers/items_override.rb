@@ -17,7 +17,7 @@ ItemsController.class_eval do
     end
 
     # Get selected facet's info
-    if @section == "contemporarypoets" && @browse_facet.include?("person.name_")
+    if @section == "index_of_poets" && @browse_facet.include?("person.name_")
       @browse_facet = "person.name"
     end
     @browse_facet_info = @page_facets[@browse_facet]
@@ -38,7 +38,7 @@ ItemsController.class_eval do
     }
     if @browse_facet == "featured"
       @title = "#{t "browse.browse_type"} #{@browse_facet_info["label"]}"
-      render "contemporarypoets/featured"
+      render "index_of_poets/featured"
     else
       # Get facet results
       @res = @items_api.query(options).facets
@@ -63,7 +63,8 @@ ItemsController.class_eval do
   def item_retrieve(id)
     if @section
       type = @section.gsub("inthenews", "")
-      if type == "poets"
+      # make sure that items or only rendering in the proper section, otherwise show not found
+      if type == "poets" || type == "index_of_poets"
         type = "person"
       elsif type == "newsitems"
         type = "news"
@@ -73,8 +74,6 @@ ItemsController.class_eval do
         type = "work"
       elsif type == "commentaries"
         type = "commentary"
-      elsif type == "contemporarypoets"
-        type = "cap"
       end
       if !(id.include?(type))
         @title = t "item.no_item", id: id,
