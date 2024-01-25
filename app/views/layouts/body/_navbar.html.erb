@@ -8,9 +8,9 @@
          
         </li>
         <% end %>
-        <li class="<%= active?(/^#{config.relative_url_root}\/contemporarypoets/,
+        <li class="<%= active?(/^#{config.relative_url_root}\/index-of-poets/,
           request.path) %>">
-          <%= link_to "Contemporary African Poets", contemporarypoets_home_path %>
+          <%= link_to "Index of Poets", index_of_poets_home_path %>
         </li>
         <li class="<%= active?(/^#{config.relative_url_root}\/inthenews/, request.path) %>">
           <%= link_to "African Poets and Poetry in the News", inthenews_home_path %>

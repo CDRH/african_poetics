@@ -3,7 +3,7 @@ default: &default
   api_options:
     # only return section items by default
     f:
-      - subcategory|Contemporary Poet 
+      - subcategory|Index of Poets
     # sorting and response number
     sort:
       - date|asc

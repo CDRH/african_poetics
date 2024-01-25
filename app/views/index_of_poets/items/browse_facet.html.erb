@@ -2,7 +2,7 @@
   - "sort_by" sort value (e.g. "count|desc")
 %>
 
-<h1 class="sectiontitle"><%= t "contemporaryafricanpoets.title" %></h1>
+<h1 class="sectiontitle"><%= t "index_of_poets.title" %></h1>
 
 <h2><%= t "browse.browse_type", default: "Browse by" %> <%= @browse_facet_info["label"] %></h2>
 <%# deviation from orchid default: moving the tabs to a partial for
@@ -32,9 +32,9 @@
       <% if @res.key?(facet_name) %>
         <%# switch for person.name? %>
         <% if @browse_facet.include?"person.name" %>
-          <%= button_to "A-G", contemporarypoets_browse_facet_path("person.name_ag"), method: :get %>
-          <%= button_to "H-M", contemporarypoets_browse_facet_path("person.name_hm"), method: :get %>
-          <%= button_to "N-Z", contemporarypoets_browse_facet_path("person.name_nz"), method: :get %>
+          <%= button_to "A-G", index_of_poets_browse_facet_path("person.name_ag"), method: :get %>
+          <%= button_to "H-M", index_of_poets_browse_facet_path("person.name_hm"), method: :get %>
+          <%= button_to "N-Z", index_of_poets_browse_facet_path("person.name_nz"), method: :get %>
         <% end %>
         <% if params[:facet].include?"person.name" %>
           <% letters = params[:facet].split("_")[1] %>

@@ -111,8 +111,8 @@ module InthenewsHelper
     type = @section.sub("inthenews", "")
     if type == "newsitems"
       type = "news"
-    elsif type == "contemporarypoets"
-      type = "contemporary poets"
+    elsif type == "index_of_poets"
+      type = "index of poets"
     end
     type.titleize if type
   end

@@ -1,36 +1,36 @@
 <div class="row">
   <div class="col-sm-6">
    
-    <h1 class="sectiontitle"><%= t "contemporaryafricanpoets.title" %></h1>
+    <h1 class="sectiontitle"><%= t "index_of_poets.title" %></h1>
     <p><strong>The Index of Contemporary African Poets</strong> is an enhanced index of published contemporary African poets. The Index represents a comprehensive listing of contemporary African poets who have published full-length books or chapbooks in the last two decades, as well as the names and details of poets who are yet to publish a collection but who have had their work appear in journals and on web spaces.  This site will be followed by a related listing that will include performance and oral performance poetry.</p>
 
 
     <div class="row">
-      <%= link_to contemporarypoets_browse_facet_path(facet: "featured") do %>
+      <%= link_to index_of_poets_browse_facet_path(facet: "featured") do %>
         <div class="col-sm-6 home_callout home_callout_1">
           <p>Browse by Featured Poet</p>
         </div>
       <% end %>
-      <%= link_to contemporarypoets_browse_facet_path(facet: "person.name") do %>
+      <%= link_to index_of_poets_browse_facet_path(facet: "person.name") do %>
         <div class="col-sm-6 home_callout home_callout_2">
           <p>Browse All Poets</p>
         </div>
       <% end %>
     </div>
     <div class="row">
-      <%= link_to contemporarypoets_browse_facet_path(facet: "places") do %>
+      <%= link_to index_of_poets_browse_facet_path(facet: "places") do %>
         <div class="col-sm-6 home_callout home_callout_3">
           <p>Browse by Country</p>
         </div>
       <% end %>
-      <%= link_to contemporarypoets_browse_facet_path(facet: "person.role") do %>
+      <%= link_to index_of_poets_browse_facet_path(facet: "person.role") do %>
         <div class="col-sm-6 home_callout home_callout_4">
           <p>Browse by Gender</p>
         </div>
       <% end %>
       </div>
       <div class="row">
-        <%= link_to contemporarypoets_browse_facet_path(facet: "keywords") do %>
+        <%= link_to index_of_poets_browse_facet_path(facet: "keywords") do %>
           <div class="col-sm-12 home_callout home_callout_5_span">
             <p>Browse by Region Map</p>
         </div>
