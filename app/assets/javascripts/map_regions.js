@@ -19,13 +19,15 @@ $(document).ready(function() {
 
   // North_Africa -> North Africa
   function getRegionTextFromCode(text) {
-    if (text === "North_Africa") {
-      text = "Northern_Africa"
-    } else if (text === "East_Africa") {
-      text = "Eastern_Africa"
-    } else if (text === "West_Africa") {
-      text = "Western_Africa"
-    }
+    // substitute region text for the correct API query
+    // currently this is unnecessary
+    // if (text === "North_Africa") {
+    //   text = "Northern_Africa"
+    // } else if (text === "East_Africa") {
+    //   text = "Eastern_Africa"
+    // } else if (text === "West_Africa") {
+    //   text = "Western_Africa"
+    // }
     return text ? text.replace("_", " ") : null;
   }
 
