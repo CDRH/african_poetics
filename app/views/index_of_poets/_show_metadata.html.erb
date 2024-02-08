@@ -24,32 +24,37 @@
     </div>
   <% end %>
 
-  <% if @res["keywords"].present? %>
+  <% if @res["spatial"]["region"].present? %>
     <div class="author_data row">
       <h4>Region</h4>
-        <p><%= @res["keywords"].join(", ") %></p>
+        <p><%= @res["spatial"]["region"].join(", ") %></p>
     </div>
   <% end %>
 
-  <% if @res["person"]["role"].present? %>
+  <% if @res["person_gender_k"].present? %>
     <div class="author_data row">
       <h4>Gender</h4>
-        <p><%= @res["person"]["role"]%></p>
+        <p><%= @res["person_gender_k"] %></p>
     </div>
   <% end %>
 
-  <% if @res["works"].present? %>
-    <div class="author_data row">
-      <h4>Bibliography</h4>
-          <ul>
-            <% @res["works"].each do |work| %>
-              <li>
-                <%= work %>
-              </li>
-            <% end %>
-          </ul>
-    </div>
-  <% end %>
+<% if @res["works"].present? %>
+  <h3>Bibliography</h3>
+  <div class="item_data">
+    <ul>
+      <% @res["works"].each do |work| %>
+        <% work_data = work.split("|")[0] %>
+        <% if work_data.present? %>
+          <% role = work.split("|")[1] %>
+          <%# markdown parsing %>
+          <% title = parse_md_brackets(work_data) %>
+          <% id = parse_md_parentheses(work_data) %>
+          <li><%= link_to title, inthenewsworks_item_path(id) %> (<%= role %>)</li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div><%# / .item-data %>
+<% end %>
 
   <% if @res["source"].present? %>
     <div class="author_data row">
@@ -58,38 +63,24 @@
     </div>
   <% end %>
 
-  <% if @res["person"]["id"].present? %>
-    <div class="author_data row">
-      <h4>Authority File</h4>
-        <p><a href="<%= @res["person"]["id"] %>"><%= @res["person"]["id"] %></a></p>
-    </div>
-  <% end %>
-
-  <% if @res["person_nationality_k"].present? %>
-    <div class="author_data row">
-      <h4>Ethnic Nationality</h4>
-        <p><%= @res["person_nationality_k"].join(", ") %></p>
-    </div>
-  <% end %>
-
-  <% if @res["person_birth_date_k"].present? %>
+  <% if @res["date_not_before"].present? %>
     <div class="author_data row">
      <h4>Birth Date</h4>
-        <p><%= @res["person_birth_date_k"] %></p>
+        <p><%= @res["date_not_before"] %></p>
     </div>
   <% end %>
 
-  <% if @res["spatial_name_birth_k"].present? %>
+  <% if @res["spatial"]["country"].present? %>
     <div class="author_data row">
       <h4>Birth Place</h4>
-        <p><%= @res["spatial_name_birth_k"].join(", ") %></p>
+        <p><%= @res["spatial"]["country"].join(", ") %></p>
     </div>
   <% end %>
 
-  <% if @res["person_death_date_k"].present? %>
+  <% if @res["date_not_after"].present? %>
     <div class="author_data row">
       <h4>Death Date</h4>
-        <p><%= @res["person_death_date_k"] %></p>
+        <p><%= @res["date_not_after"] %></p>
     </div>
   <% end %>
 
@@ -100,38 +91,17 @@
     </div>
   <% end %>
 
-  <% if @res["person_trait1_k"].present? %>
+  <% if @res["keywords"].present? %>
+    <h3>Education</h3>
     <div class="author_data row">
-      <h4>Education</h4>
-        <p><%= @res["person_trait1_k"] %></p>
-    </div>
-  <% end %>
-
-  <% if @res["citation_title_k"].present? %>
-    <div class="author_data row">
-      <h4>Selected Works</h4>
-        <p><%= @res["citation_title_k"] %></p>
-    </div>
+      <p><%= @res["keywords"].join(", ") %></p>
+    </div><%# /.item_data %>
   <% end %>
 
   <% if @res["language"].present? %>
     <div class="author_data row">
       <h4>Languages</h4>
         <p><%= @res["language"] %></p>
-    </div>
-  <% end %>
-
-  <% if @res["citation_role_k"].present? %>
-    <div class="author_data row">
-      <h4>Publisher Type</h4>
-        <p><%= @res["citation_role_k"] %></p>
-    </div>
-  <% end %>
-
-  <% if @res["contributor_name_k"].present? %>
-    <div class="author_data row">
-      <h4>Contributors</h4>
-        <p><%= @res["contributor_name_k"] %></p>
     </div>
   <% end %>
 
