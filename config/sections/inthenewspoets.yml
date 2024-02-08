@@ -4,6 +4,7 @@ default: &default
     # only return section items by default
     f:
       - category|People
+      - subcategory|In the News
     # sorting and response number
     sort:
       - date|asc
