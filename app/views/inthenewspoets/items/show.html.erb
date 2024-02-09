@@ -133,7 +133,7 @@
 <%# TODO could possibly construct this more easily with elasticsearch,
 assuming that all poets are readily available as person.name, etc %>
 <% if @res["person"].present? %>
-  <% rel_people = @res["person"] %>
+  <% rel_people = @res["person"].select {|p| p["id"] != @res["identifier"]} %>
   <h3>
     Close Relationships (<%= rel_people.count %>)
     <button type="button" class="btn btn-default collapsed"
