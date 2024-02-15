@@ -18,9 +18,9 @@ default: &default
 
   facets:
     en:
-      person.name:
+      title:
         label: Poet
-      person.role:
+      person_gender_k:
         label: Gender
         flags:
           - search_filter
@@ -28,7 +28,7 @@ default: &default
         label: Country
         flags:
           - search_filter
-      keywords:
+      spatial.region:
         label: Region
         flags:
           - search_filter

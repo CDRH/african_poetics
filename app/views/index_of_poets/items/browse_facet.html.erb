@@ -7,7 +7,7 @@
 <h2><%= t "browse.browse_type", default: "Browse by" %> <%= @browse_facet_info["label"] %></h2>
 <%# deviation from orchid default: moving the tabs to a partial for
     inclusion from other templates %>
-<% if @browse_facet != "person.name" %>
+<% if @browse_facet != "title" %>
   <div class="btn-group buffer-bottom-sm">
     <button type="button" class="btn btn-default dropdown-toggle"
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,13 +30,13 @@
     <div role="tabpanel"
       class="tab-pane <%= active?(facet_name, @browse_facet) %>" id="<%= id %>">
       <% if @res.key?(facet_name) %>
-        <%# switch for person.name? %>
-        <% if @browse_facet.include?"person.name" %>
-          <%= button_to "A-G", index_of_poets_browse_facet_path("person.name_ag"), method: :get %>
-          <%= button_to "H-M", index_of_poets_browse_facet_path("person.name_hm"), method: :get %>
-          <%= button_to "N-Z", index_of_poets_browse_facet_path("person.name_nz"), method: :get %>
+        <%# switch for title %>
+        <% if @browse_facet.include?"title" %>
+          <%= button_to "A-G", index_of_poets_browse_facet_path("title_ag"), method: :get %>
+          <%= button_to "H-M", index_of_poets_browse_facet_path("title_hm"), method: :get %>
+          <%= button_to "N-Z", index_of_poets_browse_facet_path("title_nz"), method: :get %>
         <% end %>
-        <% if params[:facet].include?"person.name" %>
+        <% if params[:facet].include?"title" %>
           <% letters = params[:facet].split("_")[1] %>
           <% case letters %>
           <% when "ag", nil %>
@@ -52,7 +52,7 @@
             <% @res[facet_name].each do |list| %>
               <tr>
                   <% text = list[0].blank? ? t("browse.no_label", default: "No label") : value_label(facet_name, list[0]) %>
-                  <% if facet_name != "person.name" %>
+                  <% if facet_name != "title" %>
                     <td class="index_num">
                       <%= link_to prefix_path("search_path",
                         f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
