@@ -11,7 +11,7 @@
   </div>
 
   <div class="col-md-9">
-    <div class="row">
+    <div>
       <%= render partial: "inthenews/search_text_field", locals: {
         label: "Search Commentaries"
       } %>
@@ -22,7 +22,7 @@
           role: "button" %>
       </p>
     </div>
-    <div class="row">
+    <div>
         <% if @featured %>
           <h3>Featured Commentary</h3>
           <% link = inthenewscommentaries_item_path(id: db_to_es_id("commentary", @featured.id)) %>
