@@ -1,10 +1,228 @@
 @import "bootstrap-variables";
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family: "Source Sans", Helvetica, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Oswald", Arial, Helvetica, sans-serif !important;
+}
+
+.site-title-container .site-title {
+  font-family: "Oswald", Helvetica, sans-serif !important;
+  box-shadow: 5px 5px solid;
+}
+
+.controller_general.action_index .home_para {
+  text-align: left;
+}
+
+
+/*
+.controller_general.action_index .home_illustration {
+  background-image: url('APDP_homebanner-gray.png');
+  background-position: top;
+  background-size: cover;
+  border-left: none;
+  border-right: none;
+  border: solid 1px #357fa0;
+  height: 350px;
+}
+*/
+
+.home_buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.home_button {
+  max-width: 500px;
+  width: 100%;
+}
+
+.home_button a {
+  align-items: center;
+  background-color: rgba(0,0,0,0.1);
+  color: #fff;
+  display: inline-flex;
+  font-family: "Oswald", Arial, Helvetica, sans-serif !important;
+  font-size: 36px;
+  height: 100%;
+  justify-content: center;
+  line-height: 1.1;
+  min-height: 125px;
+  padding: 2rem 5rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 50ms ease;
+  vertical-align: center;
+  width: 100%;
+}
+
+.home_button a:hover {
+  background-color: transparent;
+  transition: all 50ms ease;
+  text-decoration: underline;
+}
+
+/* Tablet width */
+
+@media screen and (min-width: $screen-sm) { // (min-width:825px) {
+  .home_buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .home_button {
+    width: 48%;
+  }
+
+  .home_button a {
+    min-height: 150px;
+  }
+}
+
+/* Desktop width */
+
+@media screen and (min-width: $screen-md) {
+  .home_button {
+    width: auto;
+    max-width: none;
+    flex-grow: 1;
+  }
+}
+
+/* Xtra wide */
+@media screen and (min-width: 1200px) {
+
+}
+
+/* Background patterns */
+
+.home_button {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-shadow: 0px 0px 10px rgba(0,0,0,1);
+}
+
+.blue_bg_pattern {
+  background-color: teal;
+  background-image: url('blue500.png');
+}
+
+.brick_bg_pattern {
+  background-color: green;
+  background-image: url('brick500.png');
+}
+
+.green_bg_pattern {
+  background-color: green;
+  background-image: url('green500.png');
+}
+
+.purple_bg_pattern {
+  background-color: indigo;
+  background-image: url('purple500.png');
+}
+
+a {
+  color: #2E6D8A; /* Button teal */
+}
+
+@media screen and (min-width: $screen-sm) {
+  .navbar-default .navbar-nav > li > a:hover {
+    color: #fff;
+    background-color: #25576e; /* Map dark blue */
+  }
+
+  .navbar-default .navbar-nav > li a {
+    padding-top: 16px;
+  }
+}
+
+
+/* Cards with images */
+
+
+.home_cards {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  .home_card {
+    border: 1px solid $gray-light;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    padding-bottom: 1rem;
+
+    a {
+      align-items: center;
+      background-color: rgba(0,0,0,0.1);
+      color: #fff;
+      display: inline-flex;
+      font-family: "Oswald", Arial, Helvetica, sans-serif !important;
+      font-size: 36px;
+      height: 100%;
+      justify-content: center;
+      line-height: 1.1;
+      min-height: 125px;
+      padding: 2rem 5rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 50ms ease;
+      vertical-align: center;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-sm) { // (min-width:825px) {
+  .home_cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .home_card {
+    width: 48%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $gray-lightish: #aaa;
 $screen-tablet: 720px;
 
-$headerfont: 'PT Sans Narrow', sans-serif;
-$buttonfont: $font-family-sans-serif;
+$headerfont: $font-family-sans-serif;
+$buttonfont: $font-family-sans-serif-body;
 
 // ------------
 // HTML
@@ -70,7 +288,7 @@ a.btn, .btn, input {
 }
 
 .lead {
-  font-size: 1.3em;
+  font-size: 18px;
 }
 
 #header {
@@ -145,11 +363,11 @@ a.btn, .btn, input {
 }
 
 // logo more like their mockup when small, white bigger text when large
-@media (min-width: 768px) { 
+@media screen and (min-width: $screen-sm) { 
   .site-title-container .site-title {
     color: white;
     display: block;
-    font-size: 3.5em;
+    font-size: 2.75em;
     margin: 0 .5em 0 0;
     padding: 0;
     text-align: center;
@@ -158,10 +376,16 @@ a.btn, .btn, input {
   }
 }
 
+@media screen and (min-width: $screen-md) {
+  .site-title-container .site-title {
+    font-size: 3.5em;
+  }
+}
+
 // navbar and section navbar
 .navbar {
   border: none;
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-sans-serif-body;
   margin-bottom: 0;
   a:hover{
     text-decoration: underline !important;
@@ -181,10 +405,19 @@ a.btn, .btn, input {
 }
 
 .navbar-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
+  flex-wrap: nowrap;
+  li {
+    display: block;
+  }
+}
+
+@media screen and (min-width: $screen-sm) {
+  .navbar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 // Footer 
@@ -253,8 +486,8 @@ a .home_callout {
     color: white;
     display: flex;
     font-family: $buttonfont;
-    font-size: .9em;
-    font-weight: 100;
+    // font-size: .9em;
+    // font-weight: 100;
     justify-content: center;
     line-height: 1.1em;
     margin: .1em .1em .1em .1em;
@@ -472,7 +705,7 @@ svg path.re {
 
 .internal_nav_tabs {
   display: block;
-  font-family: $font-family-sans-serif;
+  font-family: $font-family-sans-serif-body;
   margin-bottom: 15px;
 
   li {
