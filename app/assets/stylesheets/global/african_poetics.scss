@@ -620,8 +620,12 @@ svg path.re {
   }
 }
 
+// Badges 
+
 .badge-decade {
   vertical-align: text-bottom;
+  background-color: $brand-success;
+  color: #fff;
 }
 
 .timeslider {
