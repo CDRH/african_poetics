@@ -11,7 +11,7 @@
   </div>
 
   <div class="col-md-9">
-    <div class="row">
+    <div>
       <%= render partial: "inthenews/search_text_field", locals: {
         label: "Search News"
       } %>
@@ -23,7 +23,7 @@
       </p>
     </div>
     <div class="row">
-      <div class="col-xs-8">
+      <div class="col-sm-8">
         <div class="word_cloud">
           <h3>Browse by Tag</h3>
           <% @facets["keywords"].each do |tag, count| %>
@@ -33,11 +33,10 @@
               class: "btn cloud-#{cloud_class}", role: "button" do %>
                 <%= tag %>
               <% end %>
-            </span>
           <% end %>
         </div><%# /word_cloud %>
       </div>
-      <div class="col-xs-4">
+      <div class="col-sm-4">
         <h3>News Format</h3>
         <%= render partial: "inthenews/group_count_table", locals: {
           facet: "type" } %>

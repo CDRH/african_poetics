@@ -3,7 +3,7 @@
 %>
 
 <%= form_with(url: prefix_path("search_path"), method: "get", local: true) do %>
-  <%= label_tag(:q, label) %>
+  <%= label_tag(:q, label, class: "sr-only") %>
   <div class="input-group">
     <%= text_field_tag(:q, nil, class: "form-control", placeholder: "Search for...") %>
     <span class="input-group-btn">

@@ -20,7 +20,7 @@ $light-lighter: lighten($light-base, 11%);
 
 $brand-primary:         #479BC2 !default; // variant blue - lighter
 $brand-success:         #2E6D8A !default; // variant blue - darker
-$brand-info:            #357fa0  !default; // provided blue
+$brand-info:            #2E6D8A  !default; // provided blue #357fa0 was not WCAG contrast compliant
 $brand-warning:         #8dc63f !default; // yellow green
 $brand-danger:          #613E7A !default; // purple
 $nav-accent:            #ffc425 !default; // yellow
