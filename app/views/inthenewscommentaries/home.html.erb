@@ -22,7 +22,7 @@
           role: "button" %>
       </p>
     </div>
-    <div class="row">
+    <div>
         <% if @featured %>
           <h3>Featured Commentary</h3>
           <% link = inthenewscommentaries_item_path(id: db_to_es_id("commentary", @featured.id)) %>
