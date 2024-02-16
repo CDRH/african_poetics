@@ -74,7 +74,7 @@ a.btn, .btn, input {
 }
 
 #header {
-  background-color: $brand-info;
+  background-color: #357fa0;
   text-align: center; 
 
   .site-subtitle {
@@ -620,8 +620,12 @@ svg path.re {
   }
 }
 
+// Badges 
+
 .badge-decade {
   vertical-align: text-bottom;
+  background-color: $brand-success;
+  color: #fff;
 }
 
 .timeslider {
@@ -863,4 +867,10 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
     padding: 20px;
     text-align: center;
   }
+}
+
+// "Input Group Addon" Buttons e.g. to remove chosen search filters
+
+.search-filters .input-group .input-group-addon {
+  color: $text-color;
 }

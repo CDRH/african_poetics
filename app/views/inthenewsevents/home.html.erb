@@ -15,7 +15,7 @@
   </div>
 
   <div class="col-md-9">
-    <div class="row">
+    <div>
       <%= render partial: "inthenews/search_text_field", locals: {
         label: "Search Events"
       } %>
@@ -28,12 +28,12 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-8 decade_browse">
+      <div class="col-sm-8 decade_browse">
         <h3>Browse by Decade</h3>
         <%= render partial: "inthenews/browse_decade" %>
       </div>
 
-      <div class="col-xs-4">
+      <div class="col-sm-4">
       <h3>Regions</h3>
       <%= render partial: "inthenews/group_count_table", locals: {
         facet: "spatial.region" } %>
