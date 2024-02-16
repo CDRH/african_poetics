@@ -4,7 +4,7 @@
 %>
 
 <table>
-  <body>
+  <tbody>
     <% collection = @facets[facet] %>
     <% collection.each do |label, count| %>
       <% label = "Unknown" if label.nil? %>
@@ -19,5 +19,5 @@
         <td class="index_num"><%= link_to count, url %></td>
       </tr>
     <% end %>
-  </body>
+  </tbody>
 </table>
