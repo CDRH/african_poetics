@@ -106,11 +106,13 @@
 <% if @res["publisher"].present? %>
   <h3>Repositories (<%= @res["publisher"].count %>)</h3>
   <div class="item_data">
+    <ul>
     <% @res["publisher"].each do |publisher| %>
       <li>
         <%= publisher %>
       </li>
     <% end %>
+    </ul>
   </div><%# / .item-data %>
 <% end %>
 
