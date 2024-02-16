@@ -42,7 +42,7 @@
 // map display for regions
 
 @media (min-width: $screen-phone) {
-  #keywords.tab-pane {
+  #spacial\.region.tab-pane {
     display: flex; // child elements are table and div#regions_map
     table.index_table {
       
