@@ -18,18 +18,20 @@ default: &default
 
   facets:
     en:
-      person.name:
+      title:
         label: Poet
-        display: false
-      person.role:
+      person_gender_k:
         label: Gender
-        display: true
+        flags:
+          - search_filter
       places:
         label: Country
-        display: true
-      keywords:
+        flags:
+          - search_filter
+      spatial.region:
         label: Region
-        display: true
+        flags:
+          - search_filter
       works:
         label: Works
         display: true
