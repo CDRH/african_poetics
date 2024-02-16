@@ -7,7 +7,7 @@
   </h2>
 
   <% if @res["subcategory"].include?("In the News") %>
-    <h3>Poet in the news</h3>
+    <h3>Poet in the News</h3>
     <%= link_to @res["title"], inthenewspoets_item_path(@res["identifier"]) %>
   <% end %>
 
