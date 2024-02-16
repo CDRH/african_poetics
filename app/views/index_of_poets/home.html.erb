@@ -11,7 +11,7 @@
           <p>Browse by Featured Poet</p>
         </div>
       <% end %>
-      <%= link_to index_of_poets_browse_facet_path(facet: "person.name") do %>
+      <%= link_to index_of_poets_browse_facet_path(facet: "title") do %>
         <div class="col-sm-6 home_callout home_callout_2">
           <p>Browse All Poets</p>
         </div>
@@ -23,14 +23,14 @@
           <p>Browse by Country</p>
         </div>
       <% end %>
-      <%= link_to index_of_poets_browse_facet_path(facet: "person.role") do %>
+      <%= link_to index_of_poets_browse_facet_path(facet: "person_gender_k") do %>
         <div class="col-sm-6 home_callout home_callout_4">
           <p>Browse by Gender</p>
         </div>
       <% end %>
       </div>
       <div class="row">
-        <%= link_to index_of_poets_browse_facet_path(facet: "keywords") do %>
+        <%= link_to index_of_poets_browse_facet_path(facet: "spatial.region") do %>
           <div class="col-sm-12 home_callout home_callout_5_span">
             <p>Browse by Region Map</p>
         </div>

@@ -17,8 +17,8 @@ ItemsController.class_eval do
     end
 
     # Get selected facet's info
-    if @section == "index_of_poets" && @browse_facet.include?("person.name_")
-      @browse_facet = "person.name"
+    if @section == "index_of_poets" && @browse_facet.include?("title_")
+      @browse_facet = "title"
     end
     @browse_facet_info = @page_facets[@browse_facet]
     if @browse_facet_info.blank?
