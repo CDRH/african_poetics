@@ -12,32 +12,35 @@ $gray-darker:            lighten($gray-base, 13.5%) !default;
 $gray-dark:              lighten($gray-base, 20%) !default;
 $gray:                   lighten($gray-base, 33.5%) !default;
 $gray-light:             lighten($gray-base, 66.7%) !default;
-$gray-lighter:           lighten($gray-base, 75.5%) !default;
+$gray-lighter:           #e6e6e6; // lighten($gray-base, 75.5%) !default;
 
 $light-base: #d3dbde;
 $light-lighter: lighten($light-base, 11%);
 
-
-$brand-primary:         #479BC2 !default; // variant blue - lighter
-// $brand-success:         #2E6D8A !default; // variant blue - darker
-$brand-success:         #25576e !default; // even darker variant blue - fixes contrast
-$brand-info:            #357fa0  !default; // provided blue
-$brand-warning:         #8dc63f !default; // yellow green
+$brand-primary:         #206281 !default; // contrast compliant with white text
+$brand-success:         #206281 !default; // contrast compliant with white text
+$brand-info:            #356B61 !default; // contrast compliant with black text 356B61??
+$brand-warning:         #B8673F !default; // previously yellow green #8dc63f
 $brand-danger:          #613E7A !default; // purple
 $nav-accent:            #ffc425 !default; // yellow
 
+//--------
+// Additional APDP variables
+//--------
+$apdp-blue:             #357fa0 !default; // provided blue
+$gray-lightish: #aaa;
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               $light-base !default;
+$body-bg:               #fff !default;
 //** Global text color on `<body>`.
 $text-color:            $gray-darker !default;
 
 //** Global textual link color.
-$link-color:            $brand-info !default;
+$link-color:            $brand-primary !default;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      darken($link-color, 20%) !default;
 //** Link hover decoration.
@@ -55,7 +58,7 @@ $font-family-serif:            'Crimson Text', Georgia, 'Times New Roman', Times
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-serif !default;
 
-$font-size-base:          18px !default;
+$font-size-base:          20px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -67,14 +70,14 @@ $font-size-h5:            $font-size-base !default;
 $font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
-$line-height-base:        1.428571429 !default; // 20/14
+$line-height-base:        1.6; // 1.428571429 !default; // 20/14
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 //** By default, this inherits from the `<body>`.
 $headings-font-family:    $font-family-sans-serif !default;
 $headings-font-weight:    400 !default;
-$headings-line-height:    1.1 !default;
+$headings-line-height:    1.5 !default;
 $headings-color:          inherit !default;
 
 
@@ -156,12 +159,12 @@ $table-border-color:            #ddd !default;
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              $brand-info !default;
+$btn-default-color:              $brand-primary !default;
 $btn-default-bg:                 #fff !default;
 $btn-default-border:             #ccc !default;
 
 $btn-primary-color:              #fff !default;
-$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-bg:                 $apdp-blue !default;
 $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
 
 $btn-success-color:              #fff !default;
@@ -382,10 +385,10 @@ $navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
 
 // Navbar links
 $navbar-default-link-color:                #000 !default;
-$navbar-default-link-hover-color:          $brand-success !default;
-$navbar-default-link-hover-bg:             transparent !default;
+$navbar-default-link-hover-color:          #ffffff !default;
+$navbar-default-link-hover-bg:             $brand-primary !default;
 $navbar-default-link-active-color:         #000 !default;
-$navbar-default-link-active-bg:            #fff !default;
+$navbar-default-link-active-bg:            lighten($brand-primary, 50%) !default;
 $navbar-default-link-disabled-color:       #ccc !default;
 $navbar-default-link-disabled-bg:          transparent !default;
 
@@ -431,8 +434,8 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 //##
 
 //=== Shared nav styles
-$nav-link-padding:                          10px 15px !default;
-$nav-link-hover-bg:                         $gray-lighter !default;
+$nav-link-padding:                          7px 10px 5px 10px !default;
+$nav-link-hover-bg:                         $brand-primary !default;
 
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;
@@ -443,7 +446,7 @@ $nav-tabs-border-color:                     $gray-light !default;
 $nav-tabs-link-hover-border-color:          $gray-lighter !default;
 
 $nav-tabs-active-link-hover-bg:             #fff !default;
-$nav-tabs-active-link-hover-color:          $brand-info !default;
+$nav-tabs-active-link-hover-color:          $brand-primary !default;
 $nav-tabs-active-link-hover-border-color:   $gray-light !default;
 
 $nav-tabs-justified-link-border-color:            $gray-light !default;
@@ -468,8 +471,8 @@ $pagination-hover-bg:                  $gray-lighter !default;
 $pagination-hover-border:              #ddd !default;
 
 $pagination-active-color:              #fff !default;
-$pagination-active-bg:                 $brand-primary !default;
-$pagination-active-border:             $brand-primary !default;
+$pagination-active-bg:                 $apdp-blue !default;
+$pagination-active-border:             $apdp-blue !default;
 
 $pagination-disabled-color:            $gray-light !default;
 $pagination-disabled-bg:               #fff !default;
@@ -665,7 +668,7 @@ $progress-bar-color:          #fff !default;
 $progress-border-radius:      $border-radius-base !default;
 
 //** Default progress bar color
-$progress-bar-bg:             $brand-primary !default;
+$progress-bar-bg:             $apdp-blue !default;
 //** Success progress bar color
 $progress-bar-success-bg:     $brand-success !default;
 //** Warning progress bar color
@@ -729,8 +732,8 @@ $panel-default-border:        #ddd !default;
 $panel-default-heading-bg:    #f5f5f5 !default;
 
 $panel-primary-text:          #fff !default;
-$panel-primary-border:        $brand-primary !default;
-$panel-primary-heading-bg:    $brand-primary !default;
+$panel-primary-border:        $apdp-blue !default;
+$panel-primary-heading-bg:    $apdp-blue !default;
 
 $panel-success-text:          $state-success-text !default;
 $panel-success-border:        $state-success-border !default;
@@ -780,9 +783,9 @@ $well-border:                 darken($well-bg, 7%) !default;
 //
 //##
 
-$badge-color:                 $brand-success !default;
+$badge-color:                 $brand-primary !default;
 //** Linked badge text color on hover
-$badge-link-hover-color:      $brand-success !default;
+$badge-link-hover-color:      darken !default;
 $badge-bg:                    $gray-light !default;
 
 //** Badge text color in active nav link

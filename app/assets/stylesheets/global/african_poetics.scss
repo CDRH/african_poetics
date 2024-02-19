@@ -1,26 +1,37 @@
 @import "bootstrap-variables";
 
+// Fonts
+
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+
+
 body {
   font-family: "Source Sans", Helvetica, sans-serif !important;
+  line-height: $line-height-base;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Oswald", Arial, Helvetica, sans-serif !important;
 }
 
-.site-title-container .site-title {
-  font-family: "Oswald", Helvetica, sans-serif !important;
-  box-shadow: 5px 5px solid;
-}
+
+//--------
+// Additional variables
+//--------
+
+$drop-shadow-color: rgba(0,0,0,0.5);
+$screen-tablet: 720px;
+
+$headerfont: $font-family-sans-serif;
+$buttonfont: $font-family-sans-serif-body;
+
 
 .controller_general.action_index .home_para {
   text-align: left;
 }
-
 
 /*
 .controller_general.action_index .home_illustration {
@@ -29,200 +40,104 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   border-left: none;
   border-right: none;
-  border: solid 1px #357fa0;
+  border: solid 1px $brand-primary;
   height: 350px;
 }
 */
 
-.home_buttons {
-  align-items: center;
+
+
+
+//---------
+// Bootstrap 3 code for cards
+//---------
+
+//
+// Variables
+//
+
+$card-border-width: 1px;
+$card-border-radius: 5px;
+$card-spacer-x: 2rem;
+$card-spacer-y: 1.5rem;
+
+//
+// Base styles
+//
+
+.card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 3rem;
-}
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  word-wrap: break-word;
+  background-color: white;
+  background-clip: border-box;
+ // border: $card-border-width solid $gray-light;
+  // opting for box-shadow instead {
+  border-radius: $card-border-radius;
 
-.home_button {
-  max-width: 500px;
-  width: 100%;
-}
-
-.home_button a {
-  align-items: center;
-  background-color: rgba(0,0,0,0.1);
-  color: #fff;
-  display: inline-flex;
-  font-family: "Oswald", Arial, Helvetica, sans-serif !important;
-  font-size: 36px;
-  height: 100%;
-  justify-content: center;
-  line-height: 1.1;
-  min-height: 125px;
-  padding: 2rem 5rem;
-  text-align: center;
-  text-decoration: none;
-  transition: all 50ms ease;
-  vertical-align: center;
-  width: 100%;
-}
-
-.home_button a:hover {
-  background-color: transparent;
-  transition: all 50ms ease;
-  text-decoration: underline;
-}
-
-/* Tablet width */
-
-@media screen and (min-width: $screen-sm) { // (min-width:825px) {
-  .home_buttons {
-    flex-direction: row;
-    flex-wrap: wrap;
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
   }
 
-  .home_button {
-    width: 48%;
-  }
-
-  .home_button a {
-    min-height: 150px;
-  }
-}
-
-/* Desktop width */
-
-@media screen and (min-width: $screen-md) {
-  .home_button {
-    width: auto;
-    max-width: none;
-    flex-grow: 1;
-  }
-}
-
-/* Xtra wide */
-@media screen and (min-width: 1200px) {
-
-}
-
-/* Background patterns */
-
-.home_button {
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 0px 0px 10px rgba(0,0,0,1);
-}
-
-.blue_bg_pattern {
-  background-color: teal;
-  background-image: url('blue500.png');
-}
-
-.brick_bg_pattern {
-  background-color: green;
-  background-image: url('brick500.png');
-}
-
-.green_bg_pattern {
-  background-color: green;
-  background-image: url('green500.png');
-}
-
-.purple_bg_pattern {
-  background-color: indigo;
-  background-image: url('purple500.png');
-}
-
-a {
-  color: #2E6D8A; /* Button teal */
-}
-
-@media screen and (min-width: $screen-sm) {
-  .navbar-default .navbar-nav > li > a:hover {
-    color: #fff;
-    background-color: #25576e; /* Map dark blue */
-  }
-
-  .navbar-default .navbar-nav > li a {
-    padding-top: 16px;
-  }
-}
-
-
-/* Cards with images */
-
-
-.home_cards {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 3rem;
-
-  .home_card {
-    border: 1px solid $gray-light;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.25);
-    padding-bottom: 1rem;
-
-    a {
-      align-items: center;
-      background-color: rgba(0,0,0,0.1);
-      color: #fff;
-      display: inline-flex;
-      font-family: "Oswald", Arial, Helvetica, sans-serif !important;
-      font-size: 36px;
-      height: 100%;
-      justify-content: center;
-      line-height: 1.1;
-      min-height: 125px;
-      padding: 2rem 5rem;
-      text-align: center;
-      text-decoration: none;
-      transition: all 50ms ease;
-      vertical-align: center;
-      width: 100%;
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      border-top-left-radius: $card-border-radius;
+      border-top-right-radius: $card-border-radius;
     }
   }
-}
 
-@media screen and (min-width: $screen-sm) { // (min-width:825px) {
-  .home_cards {
-    flex-direction: row;
-    flex-wrap: wrap;
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      border-bottom-radius: $card-border-radius;
+    }
   }
 
-  .home_card {
-    width: 48%;
+
+  .card-body {
+    color: $text-color;
+    flex: 1 1 auto;
+    padding: $card-spacer-y $card-spacer-x;
+  }
+
+  .card-title {
+    line-height: 1.1;
+    margin-bottom: $card-spacer-y;
+    margin-top: $card-spacer-y / 2;
+  }
+
+  .card-subtitle {
+    margin-top: -$card-spacer-y / 2;
+    margin-bottom: 0;
+  }
+
+  .card-text {
+    padding-bottom: $card-spacer-y;
+  }
+
+  .card-text:last-child {
+    margin-bottom: 0;
+  }
+
+  .card-link {
+    &:hover {
+      text-decoration: none;
+    }
+
+    + .card-link {
+      margin-left: $card-spacer-x;
+    }
+  }
+
+  // Card image caps
+  .card-img-top {
+    width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+    border-top-left-radius: $card-border-radius;
+    border-top-right-radius: $card-border-radius;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$gray-lightish: #aaa;
-$screen-tablet: 720px;
-
-$headerfont: $font-family-sans-serif;
-$buttonfont: $font-family-sans-serif-body;
 
 // ------------
 // HTML
@@ -230,7 +145,6 @@ $buttonfont: $font-family-sans-serif-body;
 
 body {
   //background-image: image-url("template/funky-lines.png");
-  background-color: #fff; 
   height: 100%;
 }
 
@@ -238,17 +152,28 @@ body {
 a {
   text-decoration: underline;
   &:hover {
-    text-decoration-color: $brand-info;
+    text-decoration-color: $link-color;
     text-decoration-thickness: 2px;
   }
 }
 
-#header a, #footer a, a.btn, .browse_categories a, .panel a,
-.home_callout_links a, .callouts a,  .inthenews_bg_info > a {
+#header a, 
+#footer a, 
+a.btn, 
+.browse_categories a, 
+.panel a,
+.home_callout_links a, 
+.callouts a,  
+.inthenews_bg_info > a {
   text-decoration: none;
 }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6,
+h1, .h1, 
+h2, .h2, 
+h3, .h3, 
+h4, .h4, 
+h5, .h5, 
+h6, .h6,
 label {
   font-family: $headerfont;
 }
@@ -288,11 +213,12 @@ a.btn, .btn, input {
 }
 
 .lead {
-  font-size: 18px;
+  font-size: 20px;
+  line-height: $line-height-base;
 }
 
 #header {
-  background-color: $brand-info;
+  background-color: $apdp-blue; // provided blue
   text-align: center; 
 
   .site-subtitle {
@@ -315,19 +241,20 @@ a.btn, .btn, input {
   width: 100%; 
 
   .site-title {
+    box-shadow: 5px 5px solid;
     color: black;
     display: block;
     float: right;
-    font-family: "PT Sans Narrow";
-    font-size: 1.8em;
+    font-family: "Oswald", Helvetica, sans-serif !important;
+    font-size: 1.5em;
     font-weight: 400;
     line-height: 1em;
-    margin: 0 -170px 0 0;
-    padding: .3em .5em 0 0;
+    margin: -6px -170px 0 0;
+    padding: 0 .5em 0 0;
     text-align:  right;
     text-shadow: 0px 0px 4px #FFFFFF, 0px 0px 8px #FFFFFF;
     width: 2.9em;
-    z-index: 400;
+    z-index: 4;
   }
 }
 
@@ -340,7 +267,7 @@ a.btn, .btn, input {
   align-items: center;
   display: flex;
   flex-grow: 0;
-  z-index: 400;
+  z-index: 4;
   
   h1, .h1 {
     font-size: inherit;
@@ -349,7 +276,7 @@ a.btn, .btn, input {
 
 .site-title-container03 {
   flex-grow: 0;
-  z-index: 300;
+  z-index: 3;
 }
 
 .site-title-container04 { //right box, background white
@@ -364,21 +291,29 @@ a.btn, .btn, input {
 
 // logo more like their mockup when small, white bigger text when large
 @media screen and (min-width: $screen-sm) { 
-  .site-title-container .site-title {
-    color: white;
-    display: block;
-    font-size: 2.75em;
-    margin: 0 .5em 0 0;
-    padding: 0;
-    text-align: center;
-    text-shadow: none;
-    width: auto;
+  .site-title-container {
+    background-image: url('header-texture.jpg');
+
+    .site-title {
+      color: white;
+      display: block;
+      font-size: 2.5em;
+      margin: -20px .5em 0 0;
+      padding: 0;
+      text-align: center;
+      text-shadow: 5px 5px 3px rgba(0,0,0,1);
+      width: auto;
+    }
+
+    .site-title-container02 { // where the actual title is 
+      background-image: linear-gradient(to right, rgba(53, 127, 160, 0), rgba(53, 127, 160, 1));
+    }
   }
 }
 
 @media screen and (min-width: $screen-md) {
   .site-title-container .site-title {
-    font-size: 3.5em;
+    font-size: 3em;
   }
 }
 
@@ -386,28 +321,43 @@ a.btn, .btn, input {
 .navbar {
   border: none;
   font-family: $font-family-sans-serif-body;
+  font-size: 18px;
   margin-bottom: 0;
-  a:hover{
-    text-decoration: underline !important;
+  z-index: 5;
+}
+
+.navbar-default .navbar-container {
+  box-shadow: 0 0 10px $drop-shadow-color;
+
+  .navbar-nav {
+    margin: 0 -15px;
   }
 }
 
-.navbar-main {
-  background-color: $gray-light;
-}
-
-.navbar-section.navbar {
-  min-height: 25px;
-
-  a {
-    padding: 5px 10px;
+.navbar-section {
+  background-color: $navbar-default-link-active-bg;
+  z-index: 4;
+  &.navbar {
+    min-height: 25px;
   }
 }
 
 .navbar-container {
   flex-wrap: nowrap;
+
   li {
     display: block;
+  }
+}
+
+// Bootstrap doesn't include an active page link hover, adding it here
+
+.navbar-default .navbar-nav > .active > a {
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: $navbar-default-link-hover-bg;
+    color: $navbar-default-link-hover-color;
   }
 }
 
@@ -426,7 +376,7 @@ a.btn, .btn, input {
   background-color: $gray-base;
   color: white;
   margin-bottom:0;
-  margin-top: 3em;
+  padding-top: 2em;
   padding-bottom: 2em;
   text-align: center;
   
@@ -444,12 +394,20 @@ a.btn, .btn, input {
   text-align: center;
   img {
     max-width: 50%;
-    margin: 2em;
+    margin: 1em 2em;
   }
 }
 
 .footer_logo_ford {
   margin: 1em 0;
+}
+
+@media screen and (min-width: $screen-md) {
+  .footer_logo {
+    img {
+      margin: 1em 2em;
+    }
+  }
 }
 
 // ------------
@@ -593,6 +551,12 @@ $callout_4_text: $callout-text;
 // Map
 // ---------
 
+$map-color-1: #479BC2;
+$map-color-2: #ffc425;
+$map-color-3: #8dc63f;
+$map-color-4: #2E6D8A;
+$map-color-5: #8467AB;
+
 // Region/Country map
 
 svg {
@@ -601,67 +565,66 @@ svg {
 
 // Country Styling
 
-svg path:nth-child(9n + 1) {
-  fill: $brand-primary;
+svg path:nth-child(9n + 1), // Mali, Angola, etc.
+svg #ng path { // Nigeria
+  fill: $map-color-1;
 }
-svg path:nth-child(9n + 2) {
-  
-  fill: $nav-accent;
+svg path:nth-child(9n + 2), // Libya, Namibia, etc.
+svg path#zm { // Zimbabwe
+  fill: $map-color-2;
 }
-svg path:nth-child(9n + 3) {
-  fill: $brand-warning;
+svg path:nth-child(9n + 3), // Niger, Mozambique, etc.
+svg #sl path, // Sierra Leone
+svg path#cd { // 
+  fill: $map-color-3;
 }
-svg path:nth-child(9n + 4) {
-  fill: mix($brand-success, #fff, 80%);
+svg path:nth-child(9n + 4) { // Egypt, Tanzania, etc.
+  fill: $map-color-5;
 }
-svg path:nth-child(9n + 5) {
-  fill: mix($brand-warning, #fff, 70%);
+svg path:nth-child(9n + 5) { // Algeria, Ethiopia, etc.
+  fill: mix($map-color-3, #fff, 70%);
 }
-svg path:nth-child(9n + 6) {
-  fill: mix($brand-warning, #000, 70%);
+svg path:nth-child(9n + 6) { // Cameroon, Uganda, etc.
+  fill: mix($map-color-3, #000, 70%);
 }
-svg path:nth-child(9n + 7) {
-  fill: $brand-success;
+svg path:nth-child(9n + 7) { // Chad, Botswana, etc.
+  fill: $map-color-4;
 }
-svg path:nth-child(9n + 8) {
-  fill: mix($brand-success, #000, 80%);
+svg path:nth-child(9n + 8) { // Kenya, Liberia, etc.
+  fill: mix($map-color-4, #000, 80%);
 }
-svg path:nth-child(9n + 9) {
-  fill: mix($brand-primary, #000, 75%);
-}
-
-svg path#bf {
-  fill: mix($nav-accent, #000, 80%);
-}
-
-svg #sl path,
-svg path#cd {
-  fill: $brand-warning;
+svg path:nth-child(9n + 9) { // CAR
+  fill: $map-color-5;
 }
 
-svg #gq path {
-  fill: mix($brand-warning, #fff, 70%);
+svg path#bf { // Burkina Faso
+  fill: mix($map-color-2, #000, 80%);
 }
 
-svg path#za {
-  fill: mix($brand-primary, #000, 75%);
+svg #gq path { // Equitorial Guinea
+  fill: mix($map-color-3, #fff, 70%);
 }
 
-svg #ng path {
-  fill: $brand-primary;
+svg path#mw, // Malawi
+svg path#za { // South Africa
+  fill: mix($map-color-1, #000, 75%);
+}
+
+svg path#bw {  // Botswana
+  fill: $map-color-5;
 }
 
 // Styles pulled from Wikipedia SVG
 
 svg path.circle {
   fill-opacity:.5;
-  fill: $brand-primary;
+  fill: $apdp-blue;
   opacity: 0;
   opacity:.5;
   stroke-dasharray:none;
   stroke-opacity:.5;
   stroke-width:10;
-  stroke: $brand-primary;
+  stroke: $apdp-blue;
 }
 
 // Hide Island countris for now 
@@ -714,9 +677,13 @@ svg path.re {
     border-color: #ccc;
     a {
       text-decoration: none;
+      &:focus, 
+      &:hover {
+        color: white;
+      }
     }
     &.active a {
-      background-color: $brand-primary;
+      background-color: $brand-info;
       color: white;
     }
   }
@@ -804,7 +771,7 @@ svg path.re {
 // Home Page
 
 .inthenews_background {
-  background-color: $brand-primary;
+  background-color: $apdp-blue;
   background-size: cover;
   background: image-url("template/APDP_inthenewsbanner.jpg");
   height: 350px;
@@ -858,7 +825,7 @@ svg path.re {
 }
 
 .timeslider {
-  background-color: rgba($brand-success,.1);
+  background-color: rgba($brand-info,.1);
   border-bottom: solid 2px #aaa;
   display: flex;
   justify-content: space-between;
@@ -1075,7 +1042,7 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
     background-size: cover;
     border-left: none;
     border-right: none;
-    border: solid 1px $brand-info;
+    border: solid 1px $apdp-blue;
     height: 350px;
     z-index: -1;
   }
@@ -1091,10 +1058,10 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   }
 
   .home_para {
-    background-color: rgba(255,255,255,.6 );
-    box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
+    // background-color: rgba(255,255,255,.6 );
+    // box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
     padding: 20px;
-    text-align: center;
+    // text-align: center;
   }
 }
 
@@ -1103,3 +1070,479 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
 .search-filters .input-group .input-group-addon {
   color: $text-color;
 }
+
+
+////////////////////// Homepage cards section
+
+#explore {
+  background-color: $gray-lighter;
+  box-shadow: inset 0 0 10px #686868;
+  padding-bottom: 2rem;
+  padding-top: 5rem;
+
+
+  /* "Explore" H2 - Not in use right now
+  h2 {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+    font-weight: 600;
+    color: white;
+    font-size: 7rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1;
+    &:before {
+      // -webkit-text-stroke-width: 10px;
+      // -webkit-text-stroke-color: white;
+      content: "EXPLORE";
+      color: white;
+      letter-spacing: 2px;
+      position: absolute;
+      text-shadow: 
+        // -4px -4px 3px black,
+        // -4px 4px 3px black,
+        // 4px -4px 3px black,
+        5px 5px 3px rgba(0,0,0,0.5), 
+        6px 6px 3px rgba(0,0,0,0.45),
+        7px 7px 3px rgba(0,0,0,0.4), 
+        8px 8px 3px rgba(0,0,0,0.35), 
+        9px 9px 3px rgba(0,0,0,0.3), 
+        10px 10px 3px rgba(0,0,0,0.25), 
+        11px 11px 3px rgba(0,0,0,0.2), 
+        12px 12px 3px rgba(0,0,0,0.15), 
+        13px 13px 3px rgba(0,0,0,0.10), 
+        14px 14px 3px rgba(0,0,0,0.05);
+      z-index: -1;
+    }
+  }
+  */
+}
+
+#funds {
+  padding-top: 3rem;
+  padding-bottom: 0;
+}
+
+//////// Old cards code
+
+/*
+.home_cards {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  .home_card {
+    border: 1px solid $gray-light;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    padding-bottom: 1rem;
+
+    img {
+      width: 100%;
+    }
+
+    a {
+      align-items: center;
+      display: inline-flex;
+      font-family: "Oswald", Arial, Helvetica, sans-serif !important;
+      font-size: 30px;
+      justify-content: center;
+      line-height: 1.1;
+      padding: 2rem 3rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all 50ms ease;
+      vertical-align: center;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: $screen-sm) { // (min-width:825px) {
+  .home_cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .home_card {
+    max-width: 45%;
+  }
+}
+
+/*
+
+.homepage_cards {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem 6rem;
+  flex: 1 1 1 1;
+
+  .card {
+    border: 1px solid $gray-light;
+    border-radius: 3px;
+    box-shadow: 0 1 3px rgba($gray-light, 0.5);
+  }
+}
+*/
+
+
+
+// 
+// Home page cards - flexbox
+// 
+
+/*
+.homepage-cards {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  // row-gap: 3.5rem;
+
+  .card {
+//    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    // flex-basis: auto;
+
+    &:hover {
+      background-color: $gray-lighter;
+    }
+    
+    a {
+      color: $text-color;
+      text-decoration: none;
+
+      &:hover {
+
+        .card-title {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  p {
+  color: $gray-darker;
+  }
+}
+
+// Sm to Md width 
+@media screen and (min-width: $screen-sm) {
+  .homepage-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+    .card {
+      flex-basis: 46%; 
+      a {
+        min-height: 417px; // Match tallest, "African Poets and Poetry in the News"
+      }
+    }
+  }  
+}
+
+
+@media screen and (min-width: $screen-lg) {
+  .homepage-cards {
+    column-gap: 3%;
+    justify-content: center;
+    
+    .card {
+      flex-basis: 30%;
+    }
+  }  
+}
+*/
+
+
+
+
+/*
+// Buttons with background patterns
+
+.home_buttons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.home_button {
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.home_button a {
+  align-items: center;
+  background-color: rgba(0,0,0,0.1);
+  color: #fff;
+  display: inline-flex;
+  font-family: "Oswald", Arial, Helvetica, sans-serif !important;
+  font-size: 36px;
+  height: 100%;
+  justify-content: center;
+  line-height: 1.1;
+  min-height: 125px;
+  padding: 2rem 5rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 50ms ease;
+  vertical-align: center;
+  width: 100%;
+}
+
+.home_button a:hover {
+  background-color: transparent;
+  transition: all 50ms ease;
+  text-decoration: underline;
+}
+
+// Tablet
+
+@media screen and (min-width: $screen-sm) { // (min-width:825px) {
+  .home_buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .home_button {
+    width: 48%;
+  }
+
+  .home_button a {
+    min-height: 150px;
+  }
+}
+
+// Desktop
+
+@media screen and (min-width: $screen-md) {
+  .home_button {
+    width: auto;
+    max-width: none;
+    flex-grow: 1;
+  }
+}
+
+// Background images
+
+.home_button {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-shadow: 0px 0px 10px rgba(0,0,0,1);
+}
+
+.blue_bg_pattern {
+  background-color: teal;
+  background-image: url('blue500.png');
+}
+
+.brick_bg_pattern {
+  background-color: green;
+  background-image: url('brick500.png');
+}
+
+.green_bg_pattern {
+  background-color: green;
+  background-image: url('green500.png');
+}
+
+.purple_bg_pattern {
+  background-color: indigo;
+  background-image: url('purple500.png');
+}
+*/
+
+
+
+
+// 
+// Home page cards - grid
+// 
+
+@media screen and (min-width: $screen-lg) {
+  .visible-block.visible-block-reset-lg {
+
+  }
+}
+
+.homepage-cards {
+  line-height: 1.5;
+  margin-bottom: 3rem;
+
+  div:last-of-type > div {
+    margin-bottom: 0;
+  }
+  
+
+  .card {
+    box-shadow: 3px 3px 10px $drop-shadow-color;
+    margin-bottom: 5rem;
+
+
+
+    &:hover {
+      background-color: $gray-lighter;
+    }
+    
+    a {
+      color: $text-color;
+      text-decoration: none;
+
+      &:hover {
+        .card-title {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  p {
+  color: $gray-darker;
+  }
+}
+
+@media screen and (min-width: $screen-sm) {
+  .homepage-cards {
+    .card a {
+      min-height: 422px; // Match tallest, "African Poets and Poetry in the News"
+    }
+  }
+}
+
+@media screen and (min-width: $screen-md) {
+
+  // 1 card in last row: comment this out
+  // 2 cards in last row: -n+4
+  // 3 cards in last row: -n+5  
+ .homepage-cards > div:nth-last-of-type(-n+4) > div {
+    margin-bottom: 0px;
+  }
+}
+
+
+
+
+// CSS Patterns on cards
+
+.placeholder-pattern {
+  border-radius: 5px 5px 0 0;
+  min-height: 171px;
+  width: 100%;
+
+  &.pattern-triangles {
+    --s: 30px; /* control the size */
+    --c1: #b62f31;
+    --c2: #ecdacb;
+    --c3: #8e1f08;
+    
+    --_g: calc(2*var(--s)*1.732) calc(2*var(--s)) 
+      conic-gradient(from 60deg at 62.5% 50%,var(--c3) 60deg,#0000 0); 
+    background:
+          calc( 2.598*var(--s)/2) calc(var(--s)/ 2)/var(--_g),
+          calc(-0.866*var(--s)/2) calc(var(--s)/-2)/var(--_g),
+      repeating-conic-gradient(var(--c2) 0 90deg,#0000 0 180deg) 
+          0 0/calc(2*var(--s)*1.732) calc(2*var(--s)),
+      repeating-conic-gradient(from 60deg,var(--c1) 0 60deg,var(--c2) 0 180deg) 
+          0 0/calc(var(--s)*1.732) var(--s)
+  }
+  
+  &.pattern-eyes {
+    --s: 88px; /* control the size */
+    --c1: #154e68;
+    --c2: #4296bd;
+    
+    --_g: #0000 24%,
+      var(--c2) 26% 34%,var(--c1) 36% 44%,
+      var(--c2) 46% 54%,var(--c1) 56% 64%,
+      var(--c2) 66% 74%,#0000 76%;
+    background:
+      radial-gradient(100% 100% at 100% 0,var(--_g)),
+      radial-gradient(100% 100% at 0 100%,var(--_g)),
+      radial-gradient(var(--c2) 14%,var(--c1) 16%) 
+        calc(var(--s)/2) calc(var(--s)/2);
+    background-size: var(--s) var(--s);
+  }
+  
+  &.pattern-zigzags {
+    --s: 88px; /* control the size */
+    --c1: #ebe7d1; // #7fb49c;
+    --c2: #B8673F; // #6C946C; // #4D826A;
+    
+    background:
+      conic-gradient(from  30deg at 87.5% 75%,var(--c1)  60deg,var(--c2) 0 120deg,#0000 0) 0 calc(.2165*var(--s)),
+      conic-gradient(from -90deg at 50%   25%,var(--c2)  60deg,var(--c1) 0 180deg,#0000 0),
+      conic-gradient(from  90deg at 50%   75%,var(--c2) 120deg,var(--c1) 0 180deg,#0000 0),
+      conic-gradient(from -30deg at 87.5% 50%,var(--c2) 120deg,var(--c1) 0 240deg,#0000 0),
+      conic-gradient(from  90deg at 37.5% 50%,var(--c2) 120deg,var(--c1) 0 180deg,var(--c2) 0 240deg,var(--c1) 0);
+    background-size: var(--s) calc(.866*var(--s));
+  }
+
+  &.pattern-leaves {
+    // Previous blue-green: 4D826A 
+    // dark blue green: 356B61
+    --s: 35px; /* control the size */
+    --b: 15px; /* control the thickness of the curved lines */
+    
+    --_r: calc(1.28*var(--s) + var(--b)/2) at top 50%;
+    --_f: calc(99.5% - var(--b)),#356B61 calc(101% - var(--b)) 99.5%,#0000 101%;
+    --_g0: calc(-.8*var(--s)), #abd5c2 var(--_f);
+    --_g1: calc(-.8*var(--s)), #7fb49c var(--_f);
+    --_s: calc(1.8*var(--s) + var(--b));
+    background: 
+      radial-gradient(var(--_r) right var(--_g0)) calc(-1*var(--_s)) var(--s),
+      radial-gradient(var(--_r) left  var(--_g1))         var(--_s)  calc(-1*var(--s)),
+      radial-gradient(var(--_r) right var(--_g1)) calc(var(--_s)/-2) calc(-1*var(--s)),
+      radial-gradient(var(--_r) left  var(--_g0)) calc(var(--_s)/ 2) var(--s),
+      linear-gradient(90deg,#abd5c2 50%,#7fb49c 0);
+    background-size: var(--_s) calc(4*var(--s));
+  }
+  
+  &.pattern-angle {
+    --s: 54px; /* control the size */
+    --c1: #5c437e;  // #596499; // #2E6087; // red #9E5A61
+    --c2: #8467AB; //  #596499; // #173F5E; // red #692737
+    
+    --g: var(--c1)    3.125%,var(--c2) 0 9.375%,
+          var(--c1) 0 15.625%,var(--c2) 0 21.875%,
+          var(--c1) 0 28.125%,#0000 0;
+    background: 
+      linear-gradient(225deg,#0000    3.125%,var(--c2) 0 9.375%,
+                              #0000 0 78.125%,var(--c2) 0 84.375%,#0000 0) 
+        0 calc(var(--s)/2),
+      linear-gradient( 45deg,var(--g)) 0 var(--s),
+      linear-gradient( 45deg,var(--g)) calc(var(--s)/-2) calc(var(--s)/-2),
+      linear-gradient(225deg,var(--g)) var(--s) 0,
+      linear-gradient(225deg,var(--g)) calc(var(--s)/2) var(--s),
+      repeating-linear-gradient(-45deg,var(--c1) -3.125% 3.125%,var(--c2) 0 9.375%);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+  }
+}
+
+// Get it to zoom the pattern on hover maybe?
+
+.patterned {
+  .card:hover {
+    box-shadow: 3px 3px 10px rgba(0,0,0,1);
+    transition: 500ms;
+  }
+}
+
+
+
+
+

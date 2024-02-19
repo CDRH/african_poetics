@@ -1,32 +1,267 @@
 <p class="lead home_para"><strong>The African Poetry Digital Portal</strong> is a project of the <%= link_to "African Poetry Book Fund", about_africanpoetrybookfund_path %>. The Portal  is a resource for the study of the history of African Poetry providing access to biographical information, artifacts, news, video recording, images and documents related to African poetry from antiquity to the present. It will also feature specially curated digital projects on various aspects of African poetry.</p>
 
-</div>
+</div> <%# closes main container %>
 
-<!-- cards - in progress -->
-<!--
-<div class="container">
-  <div class="home_cards">
-    <div class="home_card">
-      <a href="index-of-poets">Index of Poets</a>
-    </div>
-    <div class="home_card">
-      <a href="inthenews">African Poets and Poetry in the News</a>
-    </div>
-    <div class="home_card">
-      <a href="grant">Critical Bibliographies</a>
-    </div>
-    <div class="home_card">
-      <a href="grant">Digital Humanities Grant</a>
-    </div>
+<!-- cards - in progress
 
+
+
+<div id="explore" class="row">
+  <div class="container">
+    <div class="col-xs-12">
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="index-of-poets">
+            <div class="card-image">
+              <%= image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Index of Poets</h3>
+              <p class="card-text">An enhanced index of published African poets, browsable by name, country, region, and gender.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="inthenews">
+            <div class="card-image">
+              <%= image_tag("purple500.png", :alt => "Purple pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">African Poets and Poetry in the News</h3>
+              <p class="card-text">Articles, interviews, images, reviews, and references to African poetics in African and British Newspapers.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="criticalbibliographies">
+            <div class="card-image">
+              <%= image_tag("green500.png", :alt => "Green pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Critical Bibliographies</h3>
+              <p class="card-text">Crowdsourced bibliographies on the life and times and works of some of Africa’s major poets.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="">
+          <div class="card-image">
+              <%= image_tag("brick500.png", :alt => "Red pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Collections Hub</h3>
+              <p class="card-text">A nexus of collections, manuscripts, documents and other artifacts and sources that relate to African Poetry and Poetics.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="dhgrant">
+            <div class="card-image">
+                <%= image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Digital Humanities Grant</h3>
+                <p class="card-text">Grant funding for digital humanities scholarship and research in African Poetry.</p>
+              </div>
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<div id="funds" class="container">
+  <p class="lead home_para">The first two sections of the portal—<%= link_to "Index of Poets", index_of_poets_home_path %> and <%= link_to "African Poets and Poetry in the News", inthenews_home_path %> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
+</div>
+ -->
+
+
+<div id="explore" class="row">
+  <div class="container">
+    <div class="col-xs-12 homepage-cards patterned">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="index-of-poets">
+            <div class="card-image">
+              <div class="placeholder-pattern pattern-triangles">
+              </div>
+              <%# image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Index of Poets</h3>
+              <p class="card-text">An enhanced index of published African poets, browsable by name, country, region, and gender.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="inthenews">
+            <div class="card-image">
+              <div class="placeholder-pattern pattern-eyes">
+              </div>
+              <%# image_tag("purple500.png", :alt => "Purple pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">African Poets and Poetry in the News</h3>
+              <p class="card-text">Articles, interviews, images, reviews, and references to African poetics in African and British Newspapers.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="criticalbibliographies">
+            <div class="card-image">
+              <div class="placeholder-pattern pattern-leaves">
+              </div>
+              <%# image_tag("green500.png", :alt => "Green pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Critical Bibliographies</h3>
+              <p class="card-text">Crowdsourced bibliographies on the life and times and works of some of Africa’s major poets.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- Bootstrap 3.x div that makes columns wrap -->
+      <div class="clearfix visible-lg-block"></div>
+      <!-- /Boostrap 3.x div -->
+      <div class="col-sm-6 col-lg-4 col-lg-offset-2">
+        <div class="card">
+          <a href="">
+          <div class="card-image">
+              <div class="placeholder-pattern pattern-angle">
+              </div>
+              <%# image_tag("brick500.png", :alt => "Red pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Collections Hub</h3>
+              <p class="card-text">A nexus of collections, manuscripts, documents and other artifacts and sources that relate to African Poetry and Poetics.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- Bootstrap 3.x div that makes columns wrap -->
+      <div class="clearfix visible-md-block"></div>
+      <!-- /Boostrap 3.x div -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="dhgrant">
+            <div class="card-image">
+                <div class="placeholder-pattern pattern-zigzags">
+                </div>
+                <%# image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Digital Humanities Grant</h3>
+                <p class="card-text">Grant funding for digital humanities scholarship and research in African Poetry.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="funds" class="container">
+  <p class="lead home_para">The first two sections of the portal—<%= link_to "Index of Poets", index_of_poets_home_path %> and <%= link_to "African Poets and Poetry in the News", inthenews_home_path %> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
+</div>
+
+
+<!-- cards - flexbox (uncomment CSS to use)
+<div id="explore" class="row">
+  <div class="container">
+    <div class="col-xs-12 homepage-cards patterned">
+      <div class="card">
+        <a href="index-of-poets">
+          <div class="card-image">
+            <div class="placeholder-pattern pattern-triangles">
+            </div>
+            <%# image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Index of Poets</h3>
+            <p class="card-text">An enhanced index of published African poets, browsable by name, country, region, and gender.</p>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="inthenews">
+          <div class="card-image">
+            <div class="placeholder-pattern pattern-eyes">
+            </div>
+            <%# image_tag("purple500.png", :alt => "Purple pattern", :class => "card-img-top") %>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">African Poets and Poetry in the News</h3>
+            <p class="card-text">Articles, interviews, images, reviews, and references to African poetics in African and British Newspapers.</p>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="criticalbibliographies">
+          <div class="card-image">
+            <div class="placeholder-pattern pattern-leaves">
+            </div>
+            <%# image_tag("green500.png", :alt => "Green pattern", :class => "card-img-top") %>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Critical Bibliographies</h3>
+            <p class="card-text">Crowdsourced bibliographies on the life and times and works of some of Africa’s major poets.</p>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="">
+        <div class="card-image">
+            <div class="placeholder-pattern pattern-angle">
+            </div>
+            <%# image_tag("brick500.png", :alt => "Red pattern", :class => "card-img-top") %>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Collections Hub</h3>
+            <p class="card-text">A nexus of collections, manuscripts, documents and other artifacts and sources that relate to African Poetry and Poetics.</p>
+          </div>
+        </a>
+      </div>
+      <div class="card">
+        <a href="dhgrant">
+        <div class="card-image">
+            <div class="placeholder-pattern pattern-zigzags">
+            </div>
+            <%# image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Digital Humanities Grant</h3>
+            <p class="card-text">Grant funding for digital humanities scholarship and research in African Poetry.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <div id="funds" class="container">
+  <p class="lead home_para">The first two sections of the portal—<%= link_to "Index of Poets", index_of_poets_home_path %> and <%= link_to "African Poets and Poetry in the News", inthenews_home_path %> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
+</div>
+
 -->
-
-
-<!-- buttons with pattern backgrounds -->
+<!-- buttons with pattern backgrounds
 
 <div class="container">
+
+  <h2 class="text-center">Explore</h2>
   <div class="home_buttons">
     <div class="home_button blue_bg_pattern">
       <a href="index-of-poets">Index of Poets</a>
@@ -42,8 +277,7 @@
     </div>
   </div>
 </div>
-
-
+ -->
 
 <%# end container div to make full width illustration %>
 <!-- Hiding for homepage mockup
@@ -74,4 +308,3 @@
     <% end %>
   </div>
 -->
-  <p class="lead home_para">The first two sections of the portal—<%= link_to "Index of Poets", index_of_poets_home_path %> and <%= link_to "African Poets and Poetry in the News", inthenews_home_path %> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
