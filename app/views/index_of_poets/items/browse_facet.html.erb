@@ -33,9 +33,9 @@
         <%# switch for title %>
         <% if @browse_facet.include?"title" %>
           <div class="btn-group">
-            <%= button_to "A-G", index_of_poets_browse_facet_path("person.name_ag"), method: :get, :class => "btn btn-default" %>
-            <%= button_to "H-M", index_of_poets_browse_facet_path("person.name_hm"), method: :get, :class => "btn btn-default" %>
-            <%= button_to "N-Z", index_of_poets_browse_facet_path("person.name_nz"), method: :get, :class => "btn btn-default" %>
+            <%= button_to "A-G", index_of_poets_browse_facet_path("title_ag"), method: :get, :class => "btn btn-default" %>
+            <%= button_to "H-M", index_of_poets_browse_facet_path("title_hm"), method: :get, :class => "btn btn-default" %>
+            <%= button_to "N-Z", index_of_poets_browse_facet_path("title_nz"), method: :get, :class => "btn btn-default" %>
           </div>
         <% end %>
         <% if params[:facet].include?"title" %>
