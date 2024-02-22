@@ -1060,7 +1060,7 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   .home_para {
     // background-color: rgba(255,255,255,.6 );
     // box-shadow: 0px 0px 14px 0px rgba(255,255,255,.6 );
-    padding: 20px;
+    padding: 24px 20px 20px 20px;
     // text-align: center;
   }
 }
@@ -1079,6 +1079,41 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   box-shadow: inset 0 0 10px #686868;
   padding-bottom: 2rem;
   padding-top: 5rem;
+
+  h2 {
+    font-weight: 700;
+    color: white;
+    font-size: 7rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1;
+    &:before {
+      // -webkit-text-stroke-width: 10px;
+      // -webkit-text-stroke-color: white;
+      content: "EXPLORE";
+      color: white;
+      letter-spacing: 2px;
+      position: absolute;
+      text-shadow: 
+        // -4px -4px 3px black,
+        // -4px 4px 3px black,
+        // 4px -4px 3px black,
+        5px 5px 3px rgba(0,0,0,0.5), 
+        6px 6px 3px rgba(0,0,0,0.45),
+        7px 7px 3px rgba(0,0,0,0.4), 
+        8px 8px 3px rgba(0,0,0,0.35), 
+        9px 9px 3px rgba(0,0,0,0.3), 
+        10px 10px 3px rgba(0,0,0,0.25), 
+        11px 11px 3px rgba(0,0,0,0.2), 
+        12px 12px 3px rgba(0,0,0,0.15), 
+        13px 13px 3px rgba(0,0,0,0.10), 
+        14px 14px 3px rgba(0,0,0,0.05);
+      z-index: -1;
+    }
+  }
+
 
 
   /* "Explore" H2 - Not in use right now
