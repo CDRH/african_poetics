@@ -6,11 +6,6 @@
     <% end %>
   </h2>
 
-  <% if @res["subcategory"].include?("In the News") %>
-    <h3>Poet in the News</h3>
-    <%= link_to @res["title"], inthenewspoets_item_path(@res["identifier"]) %>
-  <% end %>
-
   <%= render_overridable "index_of_poets", "show_metadata" %>
 
   <%# if @res["type"] == "Featured" %>

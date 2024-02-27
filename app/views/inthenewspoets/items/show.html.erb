@@ -2,11 +2,6 @@
 
 <h2><%= @res["title"] %></h2>
 
-<% if @res["subcategory"].include?("Index of Poets") %>
-  <h3>Poet in Index of Poets</h3>
-  <%= link_to @res["title"], index_of_poets_item_path(@res["identifier"]) %>
-<% end %>
-
 <h3>Biography</h3>
 
 <% if @res["places"].present? %>
@@ -20,6 +15,7 @@
     Birth date: <%= @res["date_not_before"] %>
   </div>
 <% end %>
+
 <% if @res["spatial"].present? %>
   <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
   <% if birthplace.present? %>
@@ -168,4 +164,10 @@ assuming that all poets are readily available as person.name, etc %>
       <% end %>
     </ul>
   </div><%# /.item_data %>
+
+  <h3>Relevant resources</h3>
+  <% if @res["subcategory"].include?("Index of Poets") %>
+    <h4>Poet in Index of Poets</h4>
+    <%= link_to @res["title"], index_of_poets_item_path(@res["identifier"]) %>
+  <% end %>
 <% end %>
