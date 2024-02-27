@@ -32,9 +32,11 @@
       <% if @res.key?(facet_name) %>
         <%# switch for title %>
         <% if @browse_facet.include?"title" %>
-          <%= button_to "A-G", index_of_poets_browse_facet_path("title_ag"), method: :get %>
-          <%= button_to "H-M", index_of_poets_browse_facet_path("title_hm"), method: :get %>
-          <%= button_to "N-Z", index_of_poets_browse_facet_path("title_nz"), method: :get %>
+          <div class="btn-group">
+            <%= button_to "A-G", index_of_poets_browse_facet_path("title_ag"), method: :get, :class => "btn btn-default" %>
+            <%= button_to "H-M", index_of_poets_browse_facet_path("title_hm"), method: :get, :class => "btn btn-default" %>
+            <%= button_to "N-Z", index_of_poets_browse_facet_path("title_nz"), method: :get, :class => "btn btn-default" %>
+          </div>
         <% end %>
         <% if params[:facet].include?"title" %>
           <% letters = params[:facet].split("_")[1] %>
