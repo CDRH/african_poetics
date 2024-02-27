@@ -12,7 +12,7 @@
 
   <% if @res["description"].present? %>
     <div class="author_data row">
-      <h4>Biography</h4>
+      <h2>Biography</h2>
         <p><%= simple_format(@res["description"]) %></p>
     </div>
   <% end %>
@@ -20,7 +20,7 @@
 
   <% if @res["date_not_before"].present? %>
     <div class="author_data row">
-     <h4>Birth Date</h4>
+     <h2>Birth Date</h2>
         <p><%= @res["date_not_before"] %></p>
     </div>
   <% end %>
@@ -29,7 +29,7 @@
     <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
     <% if birthplace.present? %>
       <div class="author_data row">
-        <h4>Place of Birth</h4>
+        <h2>Place of Birth</h2>
           <div>
             <% if birthplace[0]["city"] %>
               <%= birthplace[0]["city"]  %>, 
@@ -42,14 +42,14 @@
 
   <% if @res["date_not_after"].present? %>
     <div class="author_data row">
-      <h4>Death Date</h4>
+      <h2>Death Date</h2>
         <p><%= @res["date_not_after"] %></p>
     </div>
   <% end %>
 
   <% if @res["place_death_k"].present? %>
     <div class="author_data row">
-      <h4>Place of Death</h4>
+      <h2>Place of Death</h2>
         <p><%= @res["place_death_k"] %></p>
     </div>
   <% end %>
@@ -57,12 +57,12 @@
   <%# if @res["person_gender_k"].present? %>
     <%# <div class="author_data row"> %>
       <%# <h4>Gender</h4> %>
-        <p><%#= @res["person_gender_k"] %></p>
+        <!--<p>--><%#= @res["person_gender_k"] %><!--</p>-->
     <%# </div> %>
   <%# end %>
 
   <% if @res["ethnicity_k"].present? %>
-    <h3>Ethnicity</h3>
+    <h2>Ethnicity</h2>
     <div class="author_data row">
       <p><%= @res["ethnicity_k"].join(", ") %></p>
     </div><%# /.item_data %>
@@ -70,63 +70,63 @@
 
   <% if @res["places"].present? %>
     <div class="author_data row">
-      <h4>Country of Nationality</h4>
+      <h2>Country of Nationality</h2>
         <p><%= @res["places"].join(", ") %></p>
     </div>
   <% end %>
 
   <% if @res["country_residence_k"].present? %>
     <div class="author_data row">
-      <h4>Country of Residence</h4>
+      <h2>Country of Residence</h2>
         <p><%= @res["country_residence_k"].join(", ") %></p>
     </div>
   <% end %>
 
   <% if @res["language"].present? %>
     <div class="author_data row">
-      <h4>Languages Spoken</h4>
+      <h2>Languages Spoken</h2>
         <p><%= @res["language"] %></p>
     </div>
   <% end %>
 
   <% if @res["keywords"].present? %>
-    <h3>Education</h3>
+    <h2>Education</h2>
     <div class="author_data row">
       <p><%= @res["keywords"].join(", ") %></p>
     </div><%# /.item_data %>
   <% end %>
 
-  <h3>Select Works</h3>
+  <h2>Select Works</h2>
   
   <% if @res["poems_k"].present? %>
     <div class="author_data row">
-      <h4>Poems</h4>
+      <h3>Poems</h3>
         <p><%= simple_format(@res["poems_k"]) %></p>
     </div>
   <% end %>
 
   <% if @res["poetry_collections_k"].present? %>
     <div class="author_data row">
-      <h4>Poetry Collections</h4>
+      <h3>Poetry Collections</h3>
         <p><%= simple_format(@res["poetry_collections_k"]) %></p>
     </div>
   <% end %>
 
   <% if @res["speeches_k"].present? %>
     <div class="author_data row">
-      <h4>Speeches, Lectures, Interviews, Performances / Critical Articles, Media </h4>
+      <h3>Speeches, Lectures, Interviews, Performances / Critical Articles, Media </h3>
         <p><%= simple_format(@res["speeches_k"]) %></p>
     </div>
   <% end %>
 
   <% if @res["source"].present? %>
     <div class="author_data row">
-      <h4>Sources</h4>
+      <h2>Sources</h2>
         <p><%= @res["source"] %></p>
     </div>
   <% end %>
 
-  <h3>Relevant resources</h3>
+  <h2>Relevant resources</h2>
 
   <% if @res["subcategory"].include?("In the News") %>
     <h3>Poet in the News</h3>
