@@ -2,90 +2,33 @@
 
 </div> <%# closes main container %>
 
-<div id="search-all">
-  <div class="container">
-    <div class="col-xs-12">
-
-    </div>
-  </div>
-</div>
-
-<!-- cards - in progress
-<div id="explore" class="row">
-  <div class="container">
-    <div class="col-xs-12">
-    <div class="row">
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <a href="index-of-poets">
-            <div class="card-image">
-              <%= image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Index of Poets</h3>
-              <p class="card-text">An enhanced index of published African poets, browsable by name, country, region, and gender.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <a href="inthenews">
-            <div class="card-image">
-              <%= image_tag("purple500.png", :alt => "Purple pattern", :class => "card-img-top") %>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">African Poets and Poetry in the News</h3>
-              <p class="card-text">Articles, interviews, images, reviews, and references to African poetics in African and British Newspapers.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <a href="criticalbibliographies">
-            <div class="card-image">
-              <%= image_tag("green500.png", :alt => "Green pattern", :class => "card-img-top") %>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Critical Bibliographies</h3>
-              <p class="card-text">Crowdsourced bibliographies on the life and times and works of some of Africa’s major poets.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <a href="">
-          <div class="card-image">
-              <%= image_tag("brick500.png", :alt => "Red pattern", :class => "card-img-top") %>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Collections Hub</h3>
-              <p class="card-text">A nexus of collections, manuscripts, documents and other artifacts and sources that relate to African Poetry and Poetics.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="card">
-          <a href="dhgrant">
-            <div class="card-image">
-                <%= image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
-              </div>
-              <div class="card-body">
-                <h3 class="card-title">Digital Humanities Grant</h3>
-                <p class="card-text">Grant funding for digital humanities scholarship and research in African Poetry.</p>
-              </div>
-            </a>
+<div id="homepage-search">
+  <svg viewBox='0' xmlns='http://www.w3.org/2000/svg'>
+    <filter id='noiseFilter'>
+      <feTurbulence 
+        type='fractalNoise' 
+        baseFrequency='0.71' 
+        numOctaves='3' 
+        stitchTiles='stitch'/>
+    </filter>
+    <rect width='100%' height='100%' filter='url(#noiseFilter)'/>
+  </svg>
+  <div class="homepage-searchbox">
+    <div class="container">
+      <div class="col-xs-12">
+        <form action="/inthenews/poets/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+          <label for="q" class="h2">Search the Portal</label>
+          <div class="input-group">
+            <input type="text" name="q" id="q" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <input type="submit" name="commit" value="Search" class="btn btn-default" data-disable-with="Search">
+            </span>
           </div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
- -->
 
 
 <div id="explore" class="row">
@@ -180,6 +123,86 @@
 <div id="funds" class="container">
   <p class="lead home_para">The first two sections of the portal—<%= link_to "Index of Poets", index_of_poets_home_path %> and <%= link_to "African Poets and Poetry in the News", inthenews_home_path %> have been developed with the support of the <a href="https://www.fordfoundation.org/">Ford Foundation</a> and the <a href="https://cdrh.unl.edu/">Center for Digital Research in the Humanities</a> at the <a href="https://www.unl.edu/">University of Nebraska, Lincoln</a>.</p>
 </div>
+
+
+
+
+<!-- cards - in progress
+<div id="explore" class="row">
+  <div class="container">
+    <div class="col-xs-12">
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="index-of-poets">
+            <div class="card-image">
+              <%= image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Index of Poets</h3>
+              <p class="card-text">An enhanced index of published African poets, browsable by name, country, region, and gender.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="inthenews">
+            <div class="card-image">
+              <%= image_tag("purple500.png", :alt => "Purple pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">African Poets and Poetry in the News</h3>
+              <p class="card-text">Articles, interviews, images, reviews, and references to African poetics in African and British Newspapers.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="criticalbibliographies">
+            <div class="card-image">
+              <%= image_tag("green500.png", :alt => "Green pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Critical Bibliographies</h3>
+              <p class="card-text">Crowdsourced bibliographies on the life and times and works of some of Africa’s major poets.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="">
+          <div class="card-image">
+              <%= image_tag("brick500.png", :alt => "Red pattern", :class => "card-img-top") %>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Collections Hub</h3>
+              <p class="card-text">A nexus of collections, manuscripts, documents and other artifacts and sources that relate to African Poetry and Poetics.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card">
+          <a href="dhgrant">
+            <div class="card-image">
+                <%= image_tag("blue500.png", :alt => "Blue pattern", :class => "card-img-top") %>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Digital Humanities Grant</h3>
+                <p class="card-text">Grant funding for digital humanities scholarship and research in African Poetry.</p>
+              </div>
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
 
 
 <!-- cards - flexbox (uncomment CSS to use)

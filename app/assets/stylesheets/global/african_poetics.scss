@@ -216,6 +216,7 @@ a.btn, .btn, input {
 .lead {
   font-size: 20px;
   line-height: $line-height-base;
+  margin-bottom: 2rem;
 }
 
 #header {
@@ -1077,338 +1078,20 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
 
 #explore {
   background-color: $gray-lighter;
-  box-shadow: inset 0 0 10px #686868;
+  box-shadow: inset 0 0 10px $drop-shadow-color;
   padding-bottom: 2rem;
   padding-top: 5rem;
-
-  h2 {
-    font-weight: 700;
-    color: white;
-    font-size: 7rem;
-    letter-spacing: 2px;
-    margin-bottom: 2rem;
-    position: relative;
-    text-transform: uppercase;
-    z-index: 1;
-    &:before {
-      // -webkit-text-stroke-width: 10px;
-      // -webkit-text-stroke-color: white;
-      content: "EXPLORE";
-      color: white;
-      letter-spacing: 2px;
-      position: absolute;
-      text-shadow: 
-        // -4px -4px 3px black,
-        // -4px 4px 3px black,
-        // 4px -4px 3px black,
-        5px 5px 3px rgba(0,0,0,0.5), 
-        6px 6px 3px rgba(0,0,0,0.45),
-        7px 7px 3px rgba(0,0,0,0.4), 
-        8px 8px 3px rgba(0,0,0,0.35), 
-        9px 9px 3px rgba(0,0,0,0.3), 
-        10px 10px 3px rgba(0,0,0,0.25), 
-        11px 11px 3px rgba(0,0,0,0.2), 
-        12px 12px 3px rgba(0,0,0,0.15), 
-        13px 13px 3px rgba(0,0,0,0.10), 
-        14px 14px 3px rgba(0,0,0,0.05);
-      z-index: -1;
-    }
-  }
-
-
-
-  /* "Explore" H2 - Not in use right now
-  h2 {
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: white;
-    font-weight: 600;
-    color: white;
-    font-size: 7rem;
-    letter-spacing: 2px;
-    margin-bottom: 2rem;
-    position: relative;
-    text-transform: uppercase;
-    z-index: 1;
-    &:before {
-      // -webkit-text-stroke-width: 10px;
-      // -webkit-text-stroke-color: white;
-      content: "EXPLORE";
-      color: white;
-      letter-spacing: 2px;
-      position: absolute;
-      text-shadow: 
-        // -4px -4px 3px black,
-        // -4px 4px 3px black,
-        // 4px -4px 3px black,
-        5px 5px 3px rgba(0,0,0,0.5), 
-        6px 6px 3px rgba(0,0,0,0.45),
-        7px 7px 3px rgba(0,0,0,0.4), 
-        8px 8px 3px rgba(0,0,0,0.35), 
-        9px 9px 3px rgba(0,0,0,0.3), 
-        10px 10px 3px rgba(0,0,0,0.25), 
-        11px 11px 3px rgba(0,0,0,0.2), 
-        12px 12px 3px rgba(0,0,0,0.15), 
-        13px 13px 3px rgba(0,0,0,0.10), 
-        14px 14px 3px rgba(0,0,0,0.05);
-      z-index: -1;
-    }
-  }
-  */
 }
-
-#funds {
-  padding-top: 3rem;
-  padding-bottom: 0;
-}
-
-//////// Old cards code
-
-/*
-.home_cards {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-  justify-content: center;
-  margin-bottom: 3rem;
-
-  .home_card {
-    border: 1px solid $gray-light;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.25);
-    padding-bottom: 1rem;
-
-    img {
-      width: 100%;
-    }
-
-    a {
-      align-items: center;
-      display: inline-flex;
-      font-family: "Oswald", Arial, Helvetica, sans-serif !important;
-      font-size: 30px;
-      justify-content: center;
-      line-height: 1.1;
-      padding: 2rem 3rem;
-      text-align: center;
-      text-decoration: none;
-      transition: all 50ms ease;
-      vertical-align: center;
-      width: 100%;
-    }
-  }
-}
-
-@media screen and (min-width: $screen-sm) { // (min-width:825px) {
-  .home_cards {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .home_card {
-    max-width: 45%;
-  }
-}
-
-/*
-
-.homepage_cards {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem 6rem;
-  flex: 1 1 1 1;
-
-  .card {
-    border: 1px solid $gray-light;
-    border-radius: 3px;
-    box-shadow: 0 1 3px rgba($gray-light, 0.5);
-  }
-}
-*/
-
-
-
-// 
-// Home page cards - flexbox
-// 
-
-/*
-.homepage-cards {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  line-height: 1.5;
-  margin-bottom: 3rem;
-  // row-gap: 3.5rem;
-
-  .card {
-//    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
-    // flex-basis: auto;
-
-    &:hover {
-      background-color: $gray-lighter;
-    }
-    
-    a {
-      color: $text-color;
-      text-decoration: none;
-
-      &:hover {
-
-        .card-title {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  p {
-  color: $gray-darker;
-  }
-}
-
-// Sm to Md width 
-@media screen and (min-width: $screen-sm) {
-  .homepage-cards {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-    .card {
-      flex-basis: 46%; 
-      a {
-        min-height: 417px; // Match tallest, "African Poets and Poetry in the News"
-      }
-    }
-  }  
-}
-
-
-@media screen and (min-width: $screen-lg) {
-  .homepage-cards {
-    column-gap: 3%;
-    justify-content: center;
-    
-    .card {
-      flex-basis: 30%;
-    }
-  }  
-}
-*/
-
-
-
-
-/*
-// Buttons with background patterns
-
-.home_buttons {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
-  margin-bottom: 3rem;
-}
-
-.home_button {
-  border-radius: 5px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.home_button a {
-  align-items: center;
-  background-color: rgba(0,0,0,0.1);
-  color: #fff;
-  display: inline-flex;
-  font-family: "Oswald", Arial, Helvetica, sans-serif !important;
-  font-size: 36px;
-  height: 100%;
-  justify-content: center;
-  line-height: 1.1;
-  min-height: 125px;
-  padding: 2rem 5rem;
-  text-align: center;
-  text-decoration: none;
-  transition: all 50ms ease;
-  vertical-align: center;
-  width: 100%;
-}
-
-.home_button a:hover {
-  background-color: transparent;
-  transition: all 50ms ease;
-  text-decoration: underline;
-}
-
-// Tablet
-
-@media screen and (min-width: $screen-sm) { // (min-width:825px) {
-  .home_buttons {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .home_button {
-    width: 48%;
-  }
-
-  .home_button a {
-    min-height: 150px;
-  }
-}
-
-// Desktop
-
-@media screen and (min-width: $screen-md) {
-  .home_button {
-    width: auto;
-    max-width: none;
-    flex-grow: 1;
-  }
-}
-
-// Background images
-
-.home_button {
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  text-shadow: 0px 0px 10px rgba(0,0,0,1);
-}
-
-.blue_bg_pattern {
-  background-color: teal;
-  background-image: url('blue500.png');
-}
-
-.brick_bg_pattern {
-  background-color: green;
-  background-image: url('brick500.png');
-}
-
-.green_bg_pattern {
-  background-color: green;
-  background-image: url('green500.png');
-}
-
-.purple_bg_pattern {
-  background-color: indigo;
-  background-image: url('purple500.png');
-}
-*/
-
-
 
 
 // 
 // Home page cards - grid
 // 
+
+#funds {
+  padding-top: 3rem;
+  padding-bottom: 0;
+}
 
 .homepage-cards {
   line-height: 1.5;
@@ -1418,17 +1101,10 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
     margin-bottom: 0;
   }
   
-
   .card {
     box-shadow: 3px 3px 10px $drop-shadow-color;
     margin-bottom: 5rem;
 
-
-
-    &:hover {
-      background-color: $gray-lighter;
-    }
-    
     a {
       color: $text-color;
       text-decoration: none;
@@ -1455,7 +1131,6 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
 }
 
 @media screen and (min-width: $screen-md) {
-
   // 1 card in last row: comment this out
   // 2 cards in last row: -n+4
   // 3 cards in last row: -n+5  
@@ -1463,9 +1138,6 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
     margin-bottom: 0px;
   }
 }
-
-
-
 
 // CSS Patterns on cards
 
@@ -1476,9 +1148,15 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
 
   &.pattern-triangles {
     --s: 30px; /* control the size */
+    --c1: #B75E33; // #b62f31;
+    --c2: #ecdacb;
+    --c3: #a25023; // #953E1B;
+
+    /* First draft colors
     --c1: #b62f31;
     --c2: #ecdacb;
     --c3: #8e1f08;
+     */
     
     --_g: calc(2*var(--s)*1.732) calc(2*var(--s)) 
       conic-gradient(from 60deg at 62.5% 50%,var(--c3) 60deg,#0000 0); 
@@ -1493,8 +1171,13 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   
   &.pattern-eyes {
     --s: 88px; /* control the size */
+    --c1: #553b78; // #154e68;
+    --c2: #8467AB; // #4296bd;
+
+    /* First draft colors
     --c1: #154e68;
     --c2: #4296bd;
+     */
     
     --_g: #0000 24%,
       var(--c2) 26% 34%,var(--c1) 36% 44%,
@@ -1510,9 +1193,14 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   
   &.pattern-zigzags {
     --s: 88px; /* control the size */
-    --c1: #ebe7d1; // #7fb49c;
-    --c2: #B8673F; // #6C946C; // #4D826A;
-    
+    --c1: #e3d8b7; 
+    --c2: #CA910B;
+
+    /* First draft colors
+    --c1: #ebe7d1; 
+    --c2: #B8673F;
+     */
+
     background:
       conic-gradient(from  30deg at 87.5% 75%,var(--c1)  60deg,var(--c2) 0 120deg,#0000 0) 0 calc(.2165*var(--s)),
       conic-gradient(from -90deg at 50%   25%,var(--c2)  60deg,var(--c1) 0 180deg,#0000 0),
@@ -1527,25 +1215,40 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
     // dark blue green: 356B61
     --s: 35px; /* control the size */
     --b: 15px; /* control the thickness of the curved lines */
+    --c1: #356B61;
+    --c2: #abd5c2;
+    --c3: #7fb49c;
+
+
+    /* First draft colors
+    --c1: #356B61;
+    --c2: #abd5c2;
+    --c3: #7fb49c;
+     */
     
     --_r: calc(1.28*var(--s) + var(--b)/2) at top 50%;
-    --_f: calc(99.5% - var(--b)),#356B61 calc(101% - var(--b)) 99.5%,#0000 101%;
-    --_g0: calc(-.8*var(--s)), #abd5c2 var(--_f);
-    --_g1: calc(-.8*var(--s)), #7fb49c var(--_f);
+    --_f: calc(99.5% - var(--b)),var(--c1) calc(101% - var(--b)) 99.5%,#0000 101%;
+    --_g0: calc(-.8*var(--s)), var(--c2) var(--_f);
+    --_g1: calc(-.8*var(--s)), var(--c3) var(--_f);
     --_s: calc(1.8*var(--s) + var(--b));
     background: 
       radial-gradient(var(--_r) right var(--_g0)) calc(-1*var(--_s)) var(--s),
       radial-gradient(var(--_r) left  var(--_g1))         var(--_s)  calc(-1*var(--s)),
       radial-gradient(var(--_r) right var(--_g1)) calc(var(--_s)/-2) calc(-1*var(--s)),
       radial-gradient(var(--_r) left  var(--_g0)) calc(var(--_s)/ 2) var(--s),
-      linear-gradient(90deg,#abd5c2 50%,#7fb49c 0);
+      linear-gradient(90deg,#abd5c2 50%,var(--c3) 0);
     background-size: var(--_s) calc(4*var(--s));
   }
   
   &.pattern-angle {
     --s: 54px; /* control the size */
-    --c1: #5c437e;  // #596499; // #2E6087; // red #9E5A61
-    --c2: #8467AB; //  #596499; // #173F5E; // red #692737
+    --c1: #154e68; // #5c437e;
+    --c2: #4296bd; // #8467AB;
+    
+    /* First draft colors
+    --c1: #5c437e;
+    --c2: #8467AB;
+    */
     
     --g: var(--c1)    3.125%,var(--c2) 0 9.375%,
           var(--c1) 0 15.625%,var(--c2) 0 21.875%,
@@ -1563,16 +1266,69 @@ html[class*="inthenews"] .search_result_field span:last-of-type {
   }
 }
 
-// Get it to zoom the pattern on hover maybe?
+// "Zoom" animation on hover
 
 .patterned {
-  .card:hover {
-    box-shadow: 3px 3px 10px rgba(0,0,0,1);
-    transition: 500ms;
+  .card {
+    &:hover {
+      background-color: lighten($gray-lighter, 5%);
+      box-shadow: 3px 3px 15px rgba(0,0,0,0.75);
+      transform: scale(1.03,1.03);
+      transition: 250ms;
+    }
+    transition: 250ms;
   }
 }
 
+//
+// Homepage Search Box
+// 
 
+// Change searchbox color gradient here
+$search-bg: $apdp-blue; // $
+$search-bg-darker: darken($search-bg, 10%);
 
+#homepage-search {
 
+  // CSS gradient background
+  background: $search-bg-darker;
+  background: linear-gradient(0deg, $search-bg 0%, $search-bg-darker 50%); 
+
+  border-bottom: 1px solid darken($search-bg, 10%);
+  // border-top: 1px solid darken($brand-primary, 10%);
+  box-shadow: inset 0 2px 3px $drop-shadow-color;
+  position: relative;
+  z-index: 5;
+
+  .container {
+    padding-bottom: 3.25rem;
+    padding-top: 2.5rem;
+  }
+
+  .h2 {
+    color: #fff;
+    display: block;
+    font-size: 48px;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    text-align: center;
+    text-shadow: 5px 5px 3px black;
+  }
+
+  .homepage-searchbox .input-group {
+    box-shadow: 4px 4px 4px black;
+    margin: auto;
+    max-width: 50%;
+  }
+}
+
+#homepage-search {
+  position: relative;
+  svg {
+    height: 100%;
+    opacity: 12%;
+    position: absolute;
+    top: 0px;
+  }
+}
 
