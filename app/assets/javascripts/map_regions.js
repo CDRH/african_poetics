@@ -86,7 +86,7 @@ $(document).ready(function() {
       var fullurl = search_path + "?f[]=spatial.region|" + href;
     // CAP
     } else {
-      var fullurl = "../search?f[]=keywords|"+href;
+      var fullurl = "../search?f[]=spatial.region|"+href;
     }
     window.location = fullurl;  
   });
