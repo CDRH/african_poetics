@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   #get "/country", to: "general#country", as: "country"
 
-  get "/bibliographies", to: "general#bibliographies", as: "bibliographies"
   get "/dhgrant", to: "general#dhgrant"
 
   scope "/index-of-poets" do
@@ -84,6 +83,23 @@ Rails.application.routes.draw do
     get "/technicaldetails", to: "about#technicaldetails",
       as:  "about_technicaldetails", defaults: { section: "about" }
 
+  end
+
+  scope "/bibliographies" do
+    get "/", to: "bibliographies#home",
+      as: "bibliographies", defaults: { section: "bibliographies" }
+    get "/kofi-awoonor", to: "bibliographies#kofi-awoonor",
+      as: "bibliographies_kofi_awoonor", defaults: { section: "bibliographies" }
+    get "tanella-boni", to: "bibliographies#tanella-boni",
+      as: "bibliographies_tanella_boni", defaults: { section: "bibliographies" }
+    get "keorapetse-kgositsile", to: "bibliographies#keorapetse-kgositsile",
+      as: "bibliographies_keorapetse_kgositsile", defaults: { section: "bibliographies" }
+    get "antjie-krog", to: "bibliographies#antjie-krog",
+      as: "bibliographies_antjie_krog", defaults: { section: "bibliographies" }
+    get "gabriel-okara", to: "bibliographies#gabriel-okara",
+      as: "bibliographies_gabriel_okara", defaults: { section: "bibliographies" }
+    get "wole-soyinka", to: "bibliographies#wole-soyinka",
+      as: "bibliographies_wole_soyinka", defaults: { section: "bibliographies" }
   end
 
 end
