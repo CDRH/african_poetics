@@ -247,21 +247,25 @@ a.btn, .btn, input {
 // Site Wide code
 // ------------
 
-// About and DH grant
+// About, DH grant, and Bibliographies
+
+.bibliography-image {
+  margin: 10px 0;
+}
 
 .dh-scholar-image {
   margin-top: 10px;
 }
 
 @media (min-width: $screen-tablet) {
-  .dhgrant_image,
-  .dh-scholar-image {
+  .dh-scholar-image,
+  .bibliography-image   {
     float: right;
     margin: 10px 0 20px 20px;
   }
 
-  .dhgrant_image {
-    max-width: 40%;
+  .bibliography-image {
+    max-width: 225px;
   }
 }
 
