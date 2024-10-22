@@ -7,6 +7,24 @@ $headerfont: 'PT Sans Narrow', sans-serif;
 $buttonfont: $font-family-sans-serif;
 
 // ------------
+// Utility Classes
+// ------------
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.5rem;
+}
+
+.pt-3 {
+  padding-top: 1.5rem;
+}
+
+
+
+// ------------
 // HTML
 // ------------
 
@@ -231,12 +249,20 @@ a.btn, .btn, input {
 
 // About and DH grant
 
-@media (min-width: $screen-tablet) {
-.dhgrant_image {
-  max-width: 40%;
-  float: right;
-  margin: 10px 0 20px 20px;
+.dh-scholar-image {
+  margin-top: 10px;
 }
+
+@media (min-width: $screen-tablet) {
+  .dhgrant_image,
+  .dh-scholar-image {
+    float: right;
+    margin: 10px 0 20px 20px;
+  }
+
+  .dhgrant_image {
+    max-width: 40%;
+  }
 }
 
 // Callouts
@@ -485,6 +511,8 @@ svg path.re {
     color: #fff;
     border: 1px solid;
     border-color: #ccc;
+    margin-bottom: 5px;
+    
     a {
       text-decoration: none;
     }
