@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   #get "/country", to: "general#country", as: "country"
 
   get "/dhgrant", to: "general#dhgrant"
+  get "/dhprojects", to: "general#dhprojects"
 
   scope "/index-of-poets" do
     get "/", to: "index_of_poets#home", as: :index_of_poets_home,
