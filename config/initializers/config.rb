@@ -1,7 +1,7 @@
 # Orchid Config
 
-PUBLIC = YAML.load_file("#{Rails.root}/config/public.yml")[Rails.env]
-PRIVATE = YAML.load_file("#{Rails.root}/config/private.yml")[Rails.env]
+PUBLIC = YAML.load_file("#{Rails.root}/config/public.yml", aliases: true)[Rails.env]
+PRIVATE = YAML.load_file("#{Rails.root}/config/private.yml", aliases: true)[Rails.env]
 
 VERSION = PUBLIC["app_options"]["version"]
 
@@ -27,7 +27,7 @@ if APP_OPTS.key?("sections")
     config_path = Rails.root.join("config", "sections", "#{name}.yml")
 
     if File.exists?(config_path)
-      SECTIONS[name] = YAML.load_file(config_path)[Rails.env]
+      SECTIONS[name] = YAML.load_file(config_path, aliases: true)[Rails.env]
       SECTIONS[name]["name"] = name
     else
       raise "Section config file not found: #{config_path}"

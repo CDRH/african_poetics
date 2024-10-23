@@ -23,7 +23,7 @@ module Svg
     # create an object from countries.yml mapping
     # for lowercase code to region to simplify lookup
 
-    country_mapping = YAML.load_file(yml_path)["countries"]
+    country_mapping = YAML.load_file(yml_path, aliases: true)["countries"]
     @code_to_region = {}
     country_mapping.each do |country, info|
       if info["code"] && info["region"]

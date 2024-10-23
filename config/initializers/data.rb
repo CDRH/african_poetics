@@ -4,7 +4,7 @@
 yml_path = File.join(Rails.root, "config", "data", "countries.yml")
 
 begin
-  COUNTRIES = YAML.load_file(yml_path)["countries"]
+  COUNTRIES = YAML.load_file(yml_path, aliases: true)["countries"]
   
   # TODO remove or alter this when we are no longer supporting originally
   # proof of concept map

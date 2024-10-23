@@ -73,18 +73,20 @@ module InthenewsHelper
   end
 
   def word_cloud_count(count)
-    count = count.to_i
-    case count
-    when 1..3
-      "smallest"
-    when 4..8
-      "small"
-    when 9..15
-      "medium"
-    when 16..25
-      "large"
-    else
-      "largest"
+    if count.class == Hash && count["num"]
+      count = count["num"].to_i
+      case count
+      when 1..3
+        "smallest"
+      when 4..8
+        "small"
+      when 9..15
+        "medium"
+      when 16..25
+        "large"
+      else
+        "largest"
+      end
     end
   end
 
