@@ -15,8 +15,8 @@
         <li class="<%= active?(/^#{config.relative_url_root}\/inthenews/, request.path) %>">
           <%= link_to "African Poets and Poetry in the News", inthenews_home_path %>
         </li>
-        <li class="<%= active?(/^#{config.relative_url_root}\/criticalbibliographies/, request.path) %>">
-          <%= link_to t("criticalbibliographies.title", default: "Critical Bibliographies"), criticalbibliographies_path %>
+        <li class="<%= active?(/^#{config.relative_url_root}\/bibliographies/, request.path) %>">
+          <%= link_to t("bibliographies.title", default: "Critical Bibliographies"), bibliographies_path %>
         </li>
         <li class="<%= active?(/^#{config.relative_url_root}\/about/, request.path) %>">
           <%= link_to t("about.title", default: "About"), about_path %>

@@ -7,6 +7,24 @@ $headerfont: 'PT Sans Narrow', sans-serif;
 $buttonfont: $font-family-sans-serif;
 
 // ------------
+// Utility Classes
+// ------------
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.5rem;
+}
+
+.pt-3 {
+  padding-top: 1.5rem;
+}
+
+
+
+// ------------
 // HTML
 // ------------
 
@@ -41,6 +59,12 @@ img {
 
 ul {
   list-style-type: square;
+}
+
+ol.roman-numerals {
+  list-style-type: upper-roman;
+  list-style-position: inside;
+  margin-bottom: 14px;
 }
 
 a.btn, .btn, input {
@@ -223,14 +247,26 @@ a.btn, .btn, input {
 // Site Wide code
 // ------------
 
-// About and DH grant
+// About, DH grant, and Bibliographies
+
+.bibliography-image {
+  margin: 10px 0;
+}
+
+.dh-scholar-image {
+  margin-top: 10px;
+}
 
 @media (min-width: $screen-tablet) {
-.dhgrant_image {
-  max-width: 40%;
-  float: right;
-  margin: 10px 0 20px 20px;
-}
+  .dh-scholar-image,
+  .bibliography-image   {
+    float: right;
+    margin: 10px 0 20px 20px;
+  }
+
+  .bibliography-image {
+    max-width: 225px;
+  }
 }
 
 // Callouts
@@ -479,6 +515,8 @@ svg path.re {
     color: #fff;
     border: 1px solid;
     border-color: #ccc;
+    margin-bottom: 5px;
+    
     a {
       text-decoration: none;
     }
