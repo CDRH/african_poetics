@@ -3,7 +3,7 @@ default: &default
   api_options:
     # only return section items by default
     f:
-      - subcategory|Index of Poets
+      - category2|Index of Poets
     # sorting and response number
     sort:
       - date|asc
@@ -24,7 +24,7 @@ default: &default
         label: Gender
         flags:
           - search_filter
-      places:
+      spatial.short_name:
         label: Country
         flags:
           - search_filter

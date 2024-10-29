@@ -1,4 +1,4 @@
-<% if !params["f"].try(:any?) { |param| param.include?("places") } %>
+<% if !params["f"].try(:any?) { |param| param.include?("spatial.short_name") } %>
   <%= search_result_item_field(locals[:item], "keywords", "Education") %>
   <%# note: below field needs to be parsed further %>
 

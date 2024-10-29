@@ -15,7 +15,7 @@
 <h3>Published</h3>
 <%= @res["date"] if @res["date_display"]%>
 <br>
-<%= @res["publisher"].join(" | ") if @res["publisher"] %>
+<%= @res["citation"]["publisher"].join(" | ") if @res["citation"] && @res["citation"]["publisher"] %>
 
 <% authors = @res["person"].select { |person| person["role"] == "Article Author"} %>
 <% if authors.present? %>
@@ -28,7 +28,7 @@
 
 <h3>Citation</h3>
 <div class="well">
-  "<%= @res["alternative"] %>", <%= @res["publisher"][0] if @res["publisher"] %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") if @res["date"] %>,
+  "<%= @res["alternative"] %>", <%= @res["citation"]["publisher"][0] if @res["citation"] && @res["citation"]["publisher"]  %>, <%= @res["date"].to_datetime.strftime("%d %b %Y") if @res["date"] %>,
   <%= @res["page_k"] %> <%= @res["rights_holder"][0] if @res["rights_holder"] %>, <%= link_to @res["rights_uri"], @res["rights_uri"] %>.
   Accessed <%= @res["date_not_after"].to_datetime.strftime("%d %b %Y") if @res["date_not_after"] %>
 </div>
@@ -76,11 +76,11 @@
   No people associated with this news item
 <% end %>
 
-<% if @res["works"].present? %>
-  <h3>Related Works (<%= @res["works"].count %>)</h3>
+<% if @res["citation"].present? && @res["citation"]["works"].present? %>
+  <h3>Related Works (<%= @res["citation"]["works"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["works"].each do |work| %>
+      <% @res["citation"]["works"].each do |work| %>
         <%# markdown parsing %>
         <% name = parse_md_brackets(work) %>
         <% id = parse_md_parentheses(work) %>
@@ -103,11 +103,11 @@
   </div><%# / .item-data %>
 <% end %>
 
-<% if @res["publisher"].present? %>
-  <h3>Repositories (<%= @res["publisher"].count %>)</h3>
+<% if @res["citation"].present? && @res["citation"]["publisher"].present? %>
+  <h3>Repositories (<%= @res["citation"]["publisher"].count %>)</h3>
   <div class="item_data">
     <ul>
-    <% @res["publisher"].each do |publisher| %>
+    <% @res["citation"]["publisher"].each do |publisher| %>
       <li>
         <%= publisher %>
       </li>
@@ -116,12 +116,12 @@
   </div><%# / .item-data %>
 <% end %>
 
-<% if @res["relation"].present? %>
-  <h3>Commentaries (<%= @res["relation"].count %>)</h3>
+<% if @res["has_relation"].present? && @res["has_relation"]["title"].present? %>
+  <h3>Commentaries (<%= @res["has_relation"]["title"].count %>)</h3>
   <div class="item_data">
     <ul>
       <%# markdown parsing %>
-      <% @res["relation"].each do |commentary| %>
+      <% @res["has_relation"]["title"].each do |commentary| %>
         <% name = parse_md_brackets(commentary) %>
         <% id = parse_md_parentheses(commentary) %>
         <% if name.present? %>

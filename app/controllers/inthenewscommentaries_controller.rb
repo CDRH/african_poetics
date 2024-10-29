@@ -8,7 +8,7 @@ class InthenewscommentariesController < ItemsController
         "keywords",
         "subjects",
         "person.name",
-        "works"
+        "citation.title"
       ]
     }).facets
 

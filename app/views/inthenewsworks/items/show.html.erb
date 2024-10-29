@@ -88,11 +88,11 @@
   </div><%# / .item-data %>
 <% end %>
 
-<% if @res["relation"].present? %>
-  <h3>Commentaries (<%= @res["relation"].count %>)</h3>
+<% if @res["has_relation"].present? && @res["has_relation"]["title"].present?  %>
+  <h3>Commentaries (<%= @res["has_relation"]["title"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["relation"].each do |item| %>
+      <% @res["has_relation"]["title"].each do |item| %>
         <%# markdown parsing %>
         <% name = parse_md_brackets(item) %>
         <% id = parse_md_parentheses(item) %>

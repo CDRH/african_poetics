@@ -10,10 +10,11 @@
   <%# pulling entirely from elasticsearch currently %>
   <div class="metadata">
     
-  <% if @res["places"].present? %>
+  <% if @res["spatial"].present?&& @res["spatial"].find { |place| place["role"] == "placename" } %>
     <div class="author_data row">
       <h4>Country</h4>
-        <p><%= @res["places"].join(", ") %></p>
+        <% places = @res["spatial"].find { |place| place["role"] == "placename" } %>
+        <p><%= places["short_name"].join(", ") %></p>
     </div>
   <% end %>
 
@@ -31,11 +32,11 @@
     </div>
   <% end %>
 
-  <% if @res["works"].present? %>
+  <% if @res["citation"] && @res["citation"]["works"].present? %>
     <div class="author_data row">
       <h4>Bibliography</h4>
           <ul>
-            <% @res["works"].each do |work| %>
+            <% @res["citation"]["works"].each do |work| %>
               <li>
                 <%= work %>
               </li>
@@ -44,10 +45,10 @@
     </div>
   <% end %>
 
-  <% if @res["source"].present? %>
+  <% if @res["has_source"].present? && @res["has_source"]["title"].present? %>
     <div class="author_data row">
       <h4>Source</h4>
-        <p><%= @res["source"] %></p>
+        <p><%= @res["has_source"]["title"] %></p>
     </div>
   <% end %>
 

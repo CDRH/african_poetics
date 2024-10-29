@@ -26,7 +26,7 @@
   <% end %>
 
   <% if @res["spatial"].present? %>
-    <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
+    <% birthplace = @res["spatial"].select { |place| place["role"] == "birth place" } %>
     <% if birthplace.present? %>
       <div class="author_data row">
         <h2>Place of Birth</h2>
@@ -68,10 +68,11 @@
     </div><%# /.item_data %>
   <% end %>
 
-  <% if @res["places"].present? %>
+  <% if @res["spatial"].present? && @res["spatial"].find { |s| s["role"] == "placename" } %>
     <div class="author_data row">
       <h2>Country of Nationality</h2>
-        <p><%= @res["places"].join(", ") %></p>
+        <% nationality = @res["spatial"].find { |s| s["role"] == "placename" } %>
+        <p><%= nationality["short_name"].join(", ") %></p>
     </div>
   <% end %>
 
@@ -119,16 +120,16 @@
     </div>
   <% end %>
 
-  <% if @res["source"].present? %>
+  <% if @res["has_source"].present? && @res["has_source"]["title"].present? %>
     <div class="author_data row">
       <h2>Sources</h2>
-        <p><%= @res["source"] %></p>
+        <p><%= simple_format(@res["has_source"]["title"]) %></p>
     </div>
   <% end %>
 
   <h2>Relevant resources</h2>
 
-  <% if @res["subcategory"].include?("In the News") %>
+  <% if @res["category2"].include?("In the News") %>
     <h3>Poet in the News</h3>
     <%= link_to @res["title"], inthenewspoets_item_path(@res["identifier"]) %>
   <% end %>

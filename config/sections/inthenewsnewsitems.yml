@@ -30,11 +30,11 @@ default: &default
         label: Decade
         flags:
           - search_filter
-#      places:
+#      spatial.short_name:
 #        label: Location
 #        flags:
 #          - search_filter
-      publisher:
+      citation.publisher:
         label: Publication
         flags:
           - search_filter

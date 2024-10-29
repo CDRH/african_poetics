@@ -4,7 +4,7 @@ default: &default
     # only return section items by default
     f:
       - category|People
-      - subcategory|In the News
+      - category2|In the News
     # sorting and response number
     sort:
       - date|asc
@@ -29,7 +29,7 @@ default: &default
         label: Region
         flags:
           - search_filter
-      places:
+      spatial.short_name:
         label: Country of Nationality
         flags:
           - search_filter

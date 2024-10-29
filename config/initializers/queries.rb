@@ -6,10 +6,10 @@ end
 sort_by = API_OPTS["browse_sort"]
 options = {
   facet: "title",
-  facet_num: 1000,
+  facet_limit: 1000,
   facet_sort: sort_by,
   num: 0,
-  f: ["subcategory|Index of Poets"]
+  f: ["category2|Index of Poets"]
 }
 res = $api.query(options).facets
 # sort poets alphabetically, note that Elasticsearch order needs to be corrected for case and diacritics

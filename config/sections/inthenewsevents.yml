@@ -30,7 +30,7 @@ default: &default
         label: Decade
         flags:
           - search_filter
-      places:
+      spatial.short_name:
         label: Location
         flags:
           - search_filter

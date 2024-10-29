@@ -8,7 +8,7 @@ class InthenewsnewsitemsController < ItemsController
         "type"
       ],
       "facet_sort" => "term|asc",
-      "facet_num" => 600
+      "facet_limit" => 600
     }).facets
     set_page_facets
     @skip_fields = ["keywords", "type"]

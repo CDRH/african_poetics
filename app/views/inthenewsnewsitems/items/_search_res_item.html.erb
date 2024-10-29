@@ -1,7 +1,7 @@
-<%= search_result_item_field(locals[:item], "creator", "Author") %>
+<%= search_result_item_field(locals[:item], "creator.name", "Author") %>
 
 <%= search_result_item_field(locals[:item], "date_display", "Date") %>
 
-<%= search_result_item_field(locals[:item], "person", "Poets") %>
+<%= search_result_item_field(locals[:item], "person.name", "Poets") %>
 
-<%= search_result_item_field(locals[:item], "publisher", "Publisher") %>
+<%= search_result_item_field(locals[:item], "citation.publisher", "Publisher") %>
