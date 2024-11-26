@@ -1,12 +1,12 @@
 <%# expects
   - "sort_by" sort value (e.g. "count|desc")
 %>
-
 <h1 class="sectiontitle"><%= t "index_of_poets.title" %></h1>
 
 <h2><%= t "browse.browse_type", default: "Browse by" %> <%= @browse_facet_info["label"] %></h2>
 <%# deviation from orchid default: moving the tabs to a partial for
     inclusion from other templates %>
+
 <% if @browse_facet != "title" %>
   <div class="btn-group buffer-bottom-sm">
     <button type="button" class="btn btn-default dropdown-toggle"
@@ -17,8 +17,8 @@
 
     <ul class="dropdown-menu">
       <% sort_fields_facets.each do |sort_field, label| %>
-        <%= render_overridable("sort_dropdown_item", label: label,
-          sort_url: prefix_path("browse_facet_path", facet_sort: sort_field)) %>
+        <%= render_overridable("items", "sort_dropdown_item", label: label,
+          sort_url: prefix_path("browse_facet_path", f: params[:f], facet_sort: sort_field)) %>
       <% end %>
     </ul>
   </div>
@@ -29,7 +29,13 @@
     <% id = facet_name.parameterize(separator: ".")  %>
     <div role="tabpanel"
       class="tab-pane <%= active?(facet_name, @browse_facet) %>" id="<%= id %>">
-      <% if @res.key?(facet_name) %>
+      <%# handling nested bucket aggregations in format ["rdf.predicate[rdf.type#case_role]", "case_roles"] %>
+      <%# query will be based on the original facet, the first part %>
+      <%# api response will use the aggregation name, the second part %>
+      <% original_facet = facet_name %>
+      <% facet_name = facet_info["aggregation_name"] if facet_info["aggregation_name"] %>
+
+      <% if @res && @res.key?(facet_name) %>
         <%# switch for title %>
         <% if @browse_facet.include?"title" %>
           <div class="btn-group">
@@ -51,30 +57,82 @@
         <% end %>
         <table class="index_table">
           <tbody>
-            <% @res[facet_name].each do |list| %>
-              <tr>
-                  <% text = list[0].blank? ? t("browse.no_label", default: "No label") : value_label(facet_name, list[0]) %>
-                  <% if facet_name != "title" %>
+            <% @res[facet_name].each do |key, value| %>
+              <%# NOTE the below line accommodates Apium v1.0 as well as
+                  v1.1 when facet responses included more information %>
+              <% key, label, num = format_facet_response(key, value) %>
+              <% selected = facet_selected?(original_facet, key) %>
+              <% if !selected %>
+                <tr>
+                    <% text = create_label(
+                      facet_label(
+                        type: facet_name,
+                        normalized: key,
+                        label: label
+                      ),
+                      t("browse.no_label")
+                    ) %>
+                    <% if facet_name != "title" %>
+                      <td class="index_num">
+                        <%= link_to prefix_path(route_path,
+                          f: ["#{original_facet}|#{key}"]), rel: "nofollow" do %>
+                          <%= num %>
+                        <% end %>
+                      </td>
+                      <td class="index_spacer">
+                        <%= link_to prefix_path(route_path,
+                          f: ["#{original_facet}|#{key}"]), rel: "nofollow" do %>
+                          <span></span>
+                        <% end %>
+                      </td>
+                      <td class="index_name">
+                        <%= link_to prefix_path(route_path,
+                          f: ["#{original_facet}|#{key}"]), rel: "nofollow" do %>
+                          <%= sanitize text %>
+                        <% end %>
+                      </td>
+                    <% end %>
+                </tr>
+              <% else %>
+                  <tr class = "selected" >
+                    <% text = create_label(
+                      facet_label(
+                        type: facet_name,
+                        normalized: key,
+                        label: label
+                      ),
+                      t("browse.no_label")
+                    ) %>
                     <td class="index_num">
-                      <%= link_to prefix_path("search_path",
-                        f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
-                        <%= list[1]["num"] %>
+                      <%= link_to prefix_path(route_path,
+                        f: ["#{original_facet}|#{key}"]), rel: "nofollow" do %>
+                        <%= num %>
                       <% end %>
                     </td>
                     <td class="index_spacer">
-                      <%= link_to prefix_path("search_path",
-                        f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
+                      <%= link_to prefix_path(route_path,
+                        f: ["#{original_facet}|#{key}"]), rel: "nofollow" do %>
                         <span></span>
                       <% end %>
                     </td>
-                  <% end %>
-                  <td class="index_name">
-                    <%= link_to prefix_path("search_path",
-                      f: ["#{facet_name}|#{list[0]}"]), rel: "nofollow" do %>
-                      <%= text %>
-                    <% end %>
-                  </td>
-              </tr>
+                    <td class="index_name">
+                      <%= link_to prefix_path(route_path,
+                        f: ["#{original_facet}|#{key}"]), rel: "nofollow" do %>
+                        <%= sanitize text %>
+                      <% end %>
+                    </td>
+                    <td>
+                      <%= link_to prefix_path(route_path,
+                          remove_facet(original_facet, key)), rel: "nofollow" do %>
+                          <button class="btn btn-default btn-xs"
+                                  title="<%= t("search.filters.clear", label: @page_facets[original_facet]['label'], default: "Clear #{@page_facets[original_facet]['label']} Filter") %>"
+                                  aria-label="<%= t("search.filters.clear", label: @page_facets[original_facet]['label'], default: "Clear #{@page_facets[original_facet]['label']} Filter") %>">
+                            <span class="pull-right glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </button>
+                      <% end %>
+                    </td>
+                </tr>
+              <% end %>
             <% end %>
           <tbody>
         </table>
@@ -84,6 +142,6 @@
           <%= render "partials/map_africa" %>
         </div>
       <% end %>
-    </div><%# /tabpanel %>
+    </div>
   <% end %>
-</div>
+</ul>
