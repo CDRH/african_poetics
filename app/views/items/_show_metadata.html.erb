@@ -25,10 +25,10 @@
     </div>
   <% end %>
 
-  <% if @res["person"]["role"].present? %>
+  <% if @res["person"].present? and @res["person"].select { |person| person["role"] } %>
     <div class="author_data row">
       <h4>Gender</h4>
-        <p><%= @res["person"]["role"]%></p>
+        <p><%= @res["person"].map { |person| person["role"] }.join(", ") %></p>
     </div>
   <% end %>
 
@@ -52,10 +52,10 @@
     </div>
   <% end %>
 
-  <% if @res["person"]["id"].present? %>
+  <% if @res["person"].present? and @res["person"].select { |person| person["id"] } %>
     <div class="author_data row">
       <h4>Authority File</h4>
-        <p><a href="<%= @res["person"]["id"] %>"><%= @res["person"]["id"] %></a></p>
+        <p><a href="<%= @res["person"].map { |person| person["id"] }[0] %>"><%= @res["person"].map{ |person| person["id"] }[0]%></a></p>
     </div>
   <% end %>
 
