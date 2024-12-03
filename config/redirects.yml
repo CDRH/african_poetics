@@ -1,0 +1,16 @@
+# List of path strings and regular expressions to redirect or rewrite
+# Enable by adding the path to this file in config/public.yml "redirect_files"
+
+# redirect Orchid-default routes to home page, when they don't make sense without a section
+
+# search path
+-
+  method:     r301
+  from:       /search
+  to:         /
+
+# item/:id show pages
+-
+  method:     r301
+  from:       !ruby/regexp /^\/item\/(apdp\.(.*)\.\d{6})$/
+  to:         /

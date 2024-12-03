@@ -24,8 +24,8 @@ default: &default
 
     # accepts an array of yaml file locations, loaded in the order they appear below
     # see config/redirects.example.yml for more information
-    # redirect_files:
-    #   - config/redirects.yml
+    redirect_files:
+      - config/redirects.yml
 
     # SECTIONS
     # List of section names corresponding to YAML files in config/sections/
