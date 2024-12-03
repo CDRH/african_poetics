@@ -3,7 +3,7 @@
 
     <% class_no = (index+1)%4 + 1 %>
     <%= link_to prefix_path("search_path", { f: ["topics|#{decade}"] }), class: "display_callout display_callout_#{class_no}" do %>
-      <%= decade %> <span class="badge badge-decade"><%= count %></span>
+      <%= decade %> <span class="badge badge-decade"><%= count["num"] %></span>
     <% end %>
   <% end %>
 </div>

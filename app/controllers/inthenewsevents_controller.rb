@@ -8,7 +8,7 @@ class InthenewseventsController < ItemsController
         "topics"  # decade
       ],
       "facet_sort" => "term|asc",
-      "facet_num" => 50
+      "facet_limit" => 50
     }).facets
 
     set_page_facets

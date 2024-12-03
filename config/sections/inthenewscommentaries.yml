@@ -26,7 +26,7 @@ default: &default
         label: Event
         flags:
           - search_filter
-      works:
+      citation.title:
         label: Work
         flags:
           - search_filter

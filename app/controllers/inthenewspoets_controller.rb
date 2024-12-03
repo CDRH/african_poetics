@@ -8,7 +8,7 @@ class InthenewspoetsController < ItemsController
         "spatial.region"
       ],
       "facet_sort" => "term|asc",
-      "facet_num" => 30
+      "facet_limit" => 30
     }).facets
 
     set_page_facets

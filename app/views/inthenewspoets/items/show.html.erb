@@ -4,9 +4,10 @@
 
 <h3>Biography</h3>
 
-<% if @res["places"].present? %>
+<% if @res["spatial"].present?&& @res["spatial"].find { |place| place["role"] == "placename" } %>
   <div>
-    <%= @res["places"].join(", ") %>
+    <% places = @res["spatial"].find { |place| place["role"] == "placename" } %>
+    <%= places["short_name"].join(", ") %>
   </div>
 <% end %>
 
@@ -17,7 +18,7 @@
 <% end %>
 
 <% if @res["spatial"].present? %>
-  <% birthplace = @res["spatial"].select { |place| place["type"] == "birth place" } %>
+  <% birthplace = @res["spatial"].select { |place| place["role"] == "birth place" } %>
   <% if birthplace.present? %>
     <div>
       Birth location: 
@@ -40,7 +41,7 @@
 <% end %>
 
 <div class="well">
-  <%= @res["description"] %>
+  <%= simple_format(@res["description"]) %>
 </div>
 
 <% if @res["keywords"].present? %>
@@ -93,11 +94,11 @@
   </div>
 <% end %>
 
-<% if @res["works"].present? %>
-  <h3>Related Works (<%= @res["works"].count %>)</h3>
+<% if @res["citation"].present? && @res["citation"]["works"].present?  %>
+  <h3>Related Works (<%= @res["citation"]["works"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["works"].each do |work| %>
+      <% @res["citation"]["works"].each do |work| %>
         <% work_data = work.split("|")[0] %>
         <% if work_data.present? %>
           <% role = work.split("|")[1] %>
@@ -111,11 +112,11 @@
   </div><%# / .item-data %>
 <% end %>
 
-<% if @res["relation"].present? %>
-  <h3>Commentaries (<%= @res["relation"].count %>)</h3>
+<% if @res["has_relation"].present? && @res["has_relation"]["title"].present? %>
+  <h3>Commentaries (<%= @res["has_relation"]["title"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["relation"].each do |item| %>
+      <% @res["has_relation"]["title"].each do |item| %>
         <%# markdown parsing %>
         <% name = parse_md_brackets(item) %>
         <% id = parse_md_parentheses(item) %>
@@ -166,7 +167,7 @@ assuming that all poets are readily available as person.name, etc %>
   </div><%# /.item_data %>
 
   <h3>Relevant resources</h3>
-  <% if @res["subcategory"].include?("Index of Poets") %>
+  <% if @res["category2"].include?("Index of Poets") %>
     <h4>Poet in Index of Poets</h4>
     <%= link_to @res["title"], index_of_poets_item_path(@res["identifier"]) %>
   <% end %>

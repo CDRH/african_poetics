@@ -24,8 +24,8 @@ default: &default
 
     # accepts an array of yaml file locations, loaded in the order they appear below
     # see config/redirects.example.yml for more information
-    # redirect_files:
-    #   - config/redirects.yml
+    redirect_files:
+      - config/redirects.yml
 
     # SECTIONS
     # List of section names corresponding to YAML files in config/sections/
@@ -41,7 +41,7 @@ default: &default
   api_options:
     # example of default filter for all queries
     # f:
-    #   - subcategory|Writings
+    #   - category2|Writings
     # sorting and response number
     sort:
       - title_sort|asc
@@ -87,7 +87,7 @@ default: &default
         label: Language
         flags:
           - search_filter
-      subcategory:
+      category2:
         label: Subcategory
         flags:
           - search_filter
@@ -99,7 +99,7 @@ default: &default
         label: Format
         flags:
           - search_filter
-      places:
+      spatial.short_name:
         label: Places
         flags:
           - search_filter

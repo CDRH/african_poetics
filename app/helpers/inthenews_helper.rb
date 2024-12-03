@@ -65,26 +65,45 @@ module InthenewsHelper
   end
 
   def search_result_item_field(item, field, label)
-    if item[field].present?
+    # need to account for nested field
+    if field.include?(".")
+      field1 = field.split(".")[0]
+      field2 = field.split(".")[1]
+      #need to account for field1 being an array
+      if item[field1].present? 
+        if item[field1].class == Array
+          matching_item = item[field1].collect { |ele| ele[field2] }
+          list = matching_item if matching_item
+        elsif item[field1].class == Hash
+          if item[field1][field2]
+            list = item[field1][field2].class == Array ? item[field1][field2] : [item[field1][field2]]
+          end
+        end
+      end
+    elsif item[field].present?
       list = item[field].class == Array ? item[field] : [item[field]]
+    end
+    if list
       render partial: "partials/search_res_item_field",
-        locals: { label: label, list: list }
+          locals: { label: label, list: list }
     end
   end
 
   def word_cloud_count(count)
-    count = count.to_i
-    case count
-    when 1..3
-      "smallest"
-    when 4..8
-      "small"
-    when 9..15
-      "medium"
-    when 16..25
-      "large"
-    else
-      "largest"
+    if count.class == Hash && count["num"]
+      count = count["num"].to_i
+      case count
+      when 1..3
+        "smallest"
+      when 4..8
+        "small"
+      when 9..15
+        "medium"
+      when 16..25
+        "large"
+      else
+        "largest"
+      end
     end
   end
 

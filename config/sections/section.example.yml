@@ -3,7 +3,7 @@ default: &default
   api_options:
     # only return section items by default
     f:
-      - subcategory|section
+      - category2|section
     # sorting and response number
     sort:
       - date|asc
@@ -33,7 +33,7 @@ default: &default
       languages:
         label: Language
         display: true
-      subcategory:
+      category2:
         label: Subcategory
         display: true
       creator.name:
@@ -42,7 +42,7 @@ default: &default
       format:
         label: Format
         display: true
-      places:
+      spatial.short_name:
         label: Places
         display: true
 

@@ -10,10 +10,11 @@
   <%# pulling entirely from elasticsearch currently %>
   <div class="metadata">
     
-  <% if @res["places"].present? %>
+  <% if @res["spatial"].present?&& @res["spatial"].find { |place| place["role"] == "placename" } %>
     <div class="author_data row">
       <h4>Country</h4>
-        <p><%= @res["places"].join(", ") %></p>
+        <% places = @res["spatial"].find { |place| place["role"] == "placename" } %>
+        <p><%= places["short_name"].join(", ") %></p>
     </div>
   <% end %>
 
@@ -24,18 +25,18 @@
     </div>
   <% end %>
 
-  <% if @res["person"]["role"].present? %>
+  <% if @res["person"].present? and @res["person"].select { |person| person["role"] } %>
     <div class="author_data row">
       <h4>Gender</h4>
-        <p><%= @res["person"]["role"]%></p>
+        <p><%= @res["person"].map { |person| person["role"] }.join(", ") %></p>
     </div>
   <% end %>
 
-  <% if @res["works"].present? %>
+  <% if @res["citation"] && @res["citation"]["works"].present? %>
     <div class="author_data row">
       <h4>Bibliography</h4>
           <ul>
-            <% @res["works"].each do |work| %>
+            <% @res["citation"]["works"].each do |work| %>
               <li>
                 <%= work %>
               </li>
@@ -44,17 +45,17 @@
     </div>
   <% end %>
 
-  <% if @res["source"].present? %>
+  <% if @res["has_source"].present? && @res["has_source"]["title"].present? %>
     <div class="author_data row">
       <h4>Source</h4>
-        <p><%= @res["source"] %></p>
+        <p><%= @res["has_source"]["title"] %></p>
     </div>
   <% end %>
 
-  <% if @res["person"]["id"].present? %>
+  <% if @res["person"].present? and @res["person"].select { |person| person["id"] } %>
     <div class="author_data row">
       <h4>Authority File</h4>
-        <p><a href="<%= @res["person"]["id"] %>"><%= @res["person"]["id"] %></a></p>
+        <p><a href="<%= @res["person"].map { |person| person["id"] }[0] %>"><%= @res["person"].map{ |person| person["id"] }[0]%></a></p>
     </div>
   <% end %>
 

@@ -1,8 +1,8 @@
-<% if @section.include?("inthenews") %>
+<% if @section.present? && @section.include?("inthenews") %>
   <%= render_overridable "partials", "inthenews_title" %>
 <% end %>
 
-<% if @section.include?("commentaries") %>
+<% if @section.present? && @section.include?("commentaries") %>
   <h1>Commentaries</h1>
 <% elsif params["q"].blank? && params["f"].blank? %>
   <h1><%= t "search.all_items", default: "All Items" %></h1>

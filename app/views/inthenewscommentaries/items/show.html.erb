@@ -64,11 +64,11 @@
   </div><%# / .item-data %>
 <% end %>
 
-<% if @res["works"].present? %>
-  <h3>Related Works (<%= @res["works"].count %>)</h3>
+<% if @res["citation"].present? && @res["citation"]["works"].present? %>
+  <h3>Related Works (<%= @res["citation"]["works"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["works"].each do |work| %>
+      <% @res["citation"]["works"].each do |work| %>
         <%# markdown parsing %>
         <% name = parse_md_brackets(work) %>
         <% id = parse_md_parentheses(work) %>

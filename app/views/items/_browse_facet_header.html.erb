@@ -1,4 +1,4 @@
-<% if @section.include?("inthenews") %>
+<% if @section.present? && @section.include?("inthenews") %>
   <%= render_overridable "partials", "inthenews_title" %>
 <% end %>
 

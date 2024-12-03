@@ -32,7 +32,7 @@ ItemsController.class_eval do
 
     options = {
       facet: @browse_facet,
-      facet_num: 10000,
+      facet_limit: 10000,
       facet_sort: sort_by,
       num: 0
     }
