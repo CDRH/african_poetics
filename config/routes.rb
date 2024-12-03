@@ -1,5 +1,3 @@
-# override default Orchid routing to avoid generic unscoped routes, which lead to errors or jumbled info
-
 Rails.application.routes.draw do
 
   with_period = /[^\/]+/
@@ -104,9 +102,5 @@ Rails.application.routes.draw do
     get "wole-soyinka", to: "bibliographies#wole-soyinka",
       as: "bibliographies_wole_soyinka", defaults: { section: "bibliographies" }
   end
-
-  #redefine default routes so they don't show up outside of the sections, where metadata can get confused
-  get 'item/:id', to: 'general#item_redir', as: 'item', constraints: { id: with_period }
-  get "search", to: 'general#index', as: "search"
 
 end
