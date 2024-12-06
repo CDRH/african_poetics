@@ -46,17 +46,11 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # Local changes for secure HTTPS config
-  #   Can be toggled off with env var for local production env testing
-  config.force_ssl = ENV['RAILS_PROD_NOSSL'].blank?
-  #   Handle STS here instead of Apache, or Rails duplicates header contents
-  #   Also unset cache-control header in HTTPS vhost for same reason
-  config.ssl_options = { hsts: { preload: true } }
+  config.force_ssl = false
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
-  # Local change to reduce log bloat
-  config.log_level = :warn
+  config.log_level = :info
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -123,4 +117,20 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+
+  # LOCAL CHANGES
+  # Secure HTTPS config
+  #   Can be toggled off with env var for local production env testing
+  config.force_ssl = ENV['RAILS_PROD_NOSSL'].blank?
+  #   HSTS here instead of Apache, otherwise Rails duplicates header contents
+  #   Also unset cache-control header in Apache HTTPS vhost for same reason
+  config.ssl_options = {
+    hsts: { expires: 31536000, preload: true, subdomains: true }
+  }
+  # In case we ever need to disable HSTS on a public site, switch to this
+  # config.ssl_options = { hsts: false }
+
+  # Reduce log bloat
+  config.log_level = :warn
 end
