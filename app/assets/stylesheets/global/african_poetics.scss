@@ -588,17 +588,27 @@ svg path.re {
   // display: flex;
   display: block;
 
+  .metadata {
+    margin-top: 0;
+  }
 }
 
 .poet_image { 
   display: block;
-  float: right;
-  margin: 0 0 15px 15px;
+  margin: 15px 0;
   
   img {
     border: 2px solid #aaa;
     max-height: 400px;
     max-width: 100%;
+  }
+}
+
+@media screen and (min-width: $screen-tablet) {
+  .poet_image { 
+    float: right;
+    margin: 15px 0 15px 15px;
+    max-width: 50%;
   }
 }
 
