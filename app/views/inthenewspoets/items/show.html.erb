@@ -94,11 +94,11 @@
   </div>
 <% end %>
 
-<% if @res["citation"].present? && @res["citation"]["works"].present?  %>
-  <h3>Related Works (<%= @res["citation"]["works"].count %>)</h3>
+<% if @res["citation"].present? %>
+  <h3>Related Works (<%= @res["citation"]["title"].count %>)</h3>
   <div class="item_data">
     <ul>
-      <% @res["citation"]["works"].each do |work| %>
+      <% @res["citation"]["title"].each do |work| %>
         <% work_data = work.split("|")[0] %>
         <% if work_data.present? %>
           <% role = work.split("|")[1] %>

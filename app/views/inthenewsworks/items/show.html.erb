@@ -10,9 +10,9 @@
   </div>
 <% end %>
 
-<% if @res["publisher"].present? %>
+<% if @res["citation"].present? && @res["citation"]["publisher"].present? %>
   <div>
-    Publisher: <%= @res["publisher"].join(", ") %>
+    Publisher: <%= @res["citation"]["publisher"].join(", ") %>
   </div>
 <% end %>
 

@@ -30,7 +30,7 @@ default: &default
         label: Year
         flags:
           - search_filter
-      publisher:
+      citation.publisher:
         label: Publisher
         flags:
           - search_filter
