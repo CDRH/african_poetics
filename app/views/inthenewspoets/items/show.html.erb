@@ -7,7 +7,9 @@
 <% if @res["spatial"].present?&& @res["spatial"].find { |place| place["role"] == "placename" } %>
   <div>
     <% places = @res["spatial"].find { |place| place["role"] == "placename" } %>
-    <%= places["short_name"].join(", ") %>
+    <% if places && places["short_name"].present? %>
+      <%= places["short_name"].join(", ") %>
+    <% end %>
   </div>
 <% end %>
 
