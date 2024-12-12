@@ -68,11 +68,13 @@
     </div><%# /.item_data %>
   <% end %>
 
-  <% if @res["spatial"].present? && @res["spatial"].find { |s| s["role"] == "placename" } %>
+  <% if @res["spatial"].present? %>
     <div class="author_data row">
-      <h2>Country of Nationality</h2>
         <% nationality = @res["spatial"].find { |s| s["role"] == "placename" } %>
-        <p><%= nationality["short_name"].join(", ") %></p>
+        <% if nationality && nationality["short_name"] %>
+          <h2>Country of Nationality</h2>
+          <p><%= nationality["short_name"].join(", ") %></p>
+        <% end %>
     </div>
   <% end %>
 
