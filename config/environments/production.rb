@@ -133,4 +133,7 @@ Rails.application.configure do
 
   # Reduce log bloat
   config.log_level = :warn
+
+  # Allow access via public domain
+  config.hosts << "africanpoetics.unl.edu"
 end
