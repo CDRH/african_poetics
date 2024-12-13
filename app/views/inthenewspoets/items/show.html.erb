@@ -102,12 +102,15 @@
     <ul>
       <% @res["citation"]["title"].each do |work| %>
         <% work_data = work.split("|")[0] %>
-        <% if work_data.present? %>
-          <% role = work.split("|")[1].gsub('"', '') %>
+        <% role_data = work.split("|")[1] %>
+        <% if work_data.present? && role_data.present? %>
+          <% role = role_data.gsub('"', '') %>
           <%# markdown parsing %>
           <% title = parse_md_brackets(work_data) %>
           <% id = parse_md_parentheses(work_data) %>
-          <li><%= link_to title, inthenewsworks_item_path(id) %> (<%= role %>)</li>
+          <% if title.present? && id.present? %>
+            <li><%= link_to title, inthenewsworks_item_path(id) %> (<%= role %>)</li>
+          <% end %>
         <% end %>
       <% end %>
     </ul>
