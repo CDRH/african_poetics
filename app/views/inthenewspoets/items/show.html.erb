@@ -96,7 +96,7 @@
   </div>
 <% end %>
 
-<% if @res["citation"].present? %>
+<% if @res["citation"].present? && @res["citation"]["title"].present? %>
   <h3>Related Works (<%= @res["citation"]["title"].count %>)</h3>
   <div class="item_data">
     <ul>
