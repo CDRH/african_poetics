@@ -83,4 +83,7 @@ Rails.application.configure do
       1, 32.megabytes
     )
   )
+  if ENV["RAILS_DEV_HOST"].present?
+    config.hosts << ENV["RAILS_DEV_HOST"]
+  end
 end
