@@ -32,6 +32,7 @@ default: &default
     # YAML file contains api_options and facets values applied section-wide
     sections:
       - index_of_poets
+      - inthenews
       - inthenewscommentaries
       - inthenewsevents
       - inthenewsnewsitems
