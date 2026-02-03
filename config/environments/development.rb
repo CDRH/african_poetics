@@ -83,4 +83,8 @@ Rails.application.configure do
       1, 32.megabytes
     )
   )
+  # add domain to hosts so it doesn't get blcked
+  if ENV["RAILS_DEV_HOST"].present?
+    config.hosts << ENV["RAILS_DEV_HOST"]
+  end
 end
